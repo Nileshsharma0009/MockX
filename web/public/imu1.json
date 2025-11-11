@@ -1,0 +1,1471 @@
+{
+ "A": { 
+  "english":[
+  {
+    "question": "Identify the part of the sentence with an error: Ram was / senior to / Sam in college.",
+    "options": ["Ram was", "senior to", "Sam in college.", "No error"],
+    "answer": 3
+  },
+  {
+    "question": "Choose the correctly spelt word:",
+    "options": ["Dilema", "Dillema", "Dilemma", "Dilemna"],
+    "answer": 2
+  },
+  {
+    "question": "Select the synonym for 'Aberration':",
+    "options": ["Deviation", "Normality", "Conformity", "Usualness"],
+    "answer": 0
+  },
+  {
+    "question": "Select the antonym of 'Artificial':",
+    "options": ["Ordinary", "Tailored", "Natural", "Possible"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct passive form: 'The manager handed out the assignments.'",
+    "options": [
+      "The assignments were handing out by the manager.",
+      "The assignments handed out the manager.",
+      "The assignments were handed out by the manager.",
+      "The assignments were handed out from the manager."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which sentence is in active voice?",
+    "options": [
+      "The cat was chased by the dog.",
+      "Hockey was played by Ram.",
+      "The boy was bitten by the dog.",
+      "Ram played hockey."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Fill in the blank with the correct preposition: She is interested ___ music.",
+    "options": ["at", "to", "for", "in"],
+    "answer": 3
+  },
+  {
+    "question": "Choose the sentence with the correct question tag: You have done your homework, _____?",
+    "options": ["haven't you?", "have you?", "isn't it?", "did you?"],
+    "answer": 0
+  },
+  {
+    "question": "Add a question tag: The girl is playing the piano, ____?",
+    "options": ["isn't it?", "is she?", "isn't she?", "doesn't she?"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is an idiom for 'to face a difficult situation'?",
+    "options": ["Break the ice", "Bite the bullet", "Jump the gun", "Hold your horses"],
+    "answer": 1
+  },
+  {
+    "question": "Pick the correct indirect speech: She said, “I am very tired now.”",
+    "options": [
+      "She said she was very tired then.",
+      "She said that she is very tired now.",
+      "She said that she very tired.",
+      "She is very tired now."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the word opposite in meaning to 'Spurious':",
+    "options": ["Gracious", "Genial", "Genuine", "Gratuitous"],
+    "answer": 2
+  },
+  {
+    "question": "Select the correct sentence: Ben was in great ______ about the job offer.",
+    "options": ["dilemma", "dillema", "dillemma", "dilemna"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct option: We went to the market ____ it was raining.",
+    "options": ["but", "because", "when", "although"],
+    "answer": 3
+  },
+  {
+    "question": "Fill in the blank (adjective): She is as _____ as her sister.",
+    "options": ["tallest", "taller", "tall", "tallly"],
+    "answer": 2
+  },
+  {
+    "question": "Select the synonym for 'Facetious':",
+    "options": ["Serious", "Playful", "Dull", "Sad"],
+    "answer": 1
+  },
+  {
+    "question": "Which sentence is correctly arranged?",
+    "options": [
+      "He a book is reading.",
+      "He is reading a book.",
+      "Book reading he is.",
+      "A book reading is he."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Pick the right option: “He refused to ‘kow tow’ to the government’s wishes.” ‘Kow tow’ means –",
+    "options": ["Be defensive", "Be submissive", "Be supportive", "Be helpful"],
+    "answer": 1
+  },
+  {
+    "question": "Change into passive: 'Someone stole my wallet at the party.'",
+    "options": [
+      "My wallet was stealing at the party by someone.",
+      "My wallet was stolen at the party.",
+      "My wallet was stolen at the party by someone.",
+      "My wallet were stolen at the party by someone."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Vacuum", "Vaccum", "Vacum", "Vacuem"],
+    "answer": 0
+  },
+  {
+    "question": "Fill in the blank with a preposition: The train arrived ____ time.",
+    "options": ["by", "on", "at", "in"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the antonym for 'Garrulous':",
+    "options": ["Chatty", "Talkative", "Outspoken", "Quiet"],
+    "answer": 3
+  },
+  {
+    "question": "Change to direct speech: He said that he was reading a book.",
+    "options": [
+      "He said: \"He is reading a book.\"",
+      "He said, \"I am reading a book.\"",
+      "He said: \"He was reading a book.\"",
+      "He said, \"He read a book.\""
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct idiom: ‘To spill the beans’ means:",
+    "options": ["To eat a lot", "To clean", "To reveal a secret", "To be angry"],
+    "answer": 2
+  },
+  {
+    "question": "Pick the correct synonym for 'Juxtapose':",
+    "options": ["Hide", "Contrast", "Combine", "Separate"],
+    "answer": 1
+  },
+  {
+    "question": "Pick the correct antonym for 'Ebullient':",
+    "options": ["Depressed", "Excited", "Cheerful", "Overjoyed"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the sentence that is correct:",
+    "options": [
+      "Each of the players have a jersey.",
+      "Each of the players has a jersey.",
+      "Each of the player have a jersey.",
+      "Each of player has a jersey."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Pick the correct change of voice: 'They will publish the results next week.'",
+    "options": [
+      "The results is published next week.",
+      "The results will published by them next week.",
+      "The results will be published next week.",
+      "The result will be publishing next week."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correctly arranged sentence:",
+    "options": [
+      "Quickly the finished work he.",
+      "He quickly finished the work.",
+      "He the work finished quickly.",
+      "Work quickly finished the he."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Fill in the blank: Rina is fond ____ music.",
+    "options": ["of", "for", "to", "with"],
+    "answer": 0
+  },
+  {
+    "question": "Select the correct question tag: She will come, ____?",
+    "options": ["willn't she?", "won't she?", "doesn't she?", "will she?"],
+    "answer": 1
+  },
+  {
+    "question": "Correct the error in the sentence: The children was playing in the garden.",
+    "options": [
+      "No error",
+      "were playing",
+      "is playing",
+      "are playing"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Recieve", "Receive", "Recievee", "Receeve"],
+    "answer": 1
+  },
+  {
+    "question": "Pick the correct sentence:",
+    "options": [
+      "Bread and butter are his favourite breakfast.",
+      "Bread and butter is his favourite breakfast.",
+      "Bread and butters is his favourite breakfast.",
+      "Bread and butter are his favourite breakfasts."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Select the synonym for 'Belligerent':",
+    "options": ["Aggressive", "Passive", "Peaceful", "Friendly"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the antonym of 'Capricious':",
+    "options": ["Unpredictable", "Constant", "Fickle", "Impulsive"],
+    "answer": 1
+  },
+  {
+    "question": "Arrange the sentence: the/ at/ parade/ band/ the/ led/ the/ front.",
+    "options": [
+      "The band led the parade at the front.",
+      "The parade the band led at the front.",
+      "At the front the band led the parade.",
+      "The band at the front led the parade."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the right word: The medicine was bitter in ____.",
+    "options": ["taste", "smell", "look", "sound"],
+    "answer": 0
+  },
+  {
+    "question": "Direct to indirect speech: He said, “She was working.”",
+    "options": [
+      "He said she is working.",
+      "He said that she was working.",
+      "He said that she is worked.",
+      "He said she worked."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Definately", "Definetly", "Definitely", "Definetely"],
+    "answer": 2
+  },
+  {
+    "question": "Fill in the blank with an adjective: The road is too ____.",
+    "options": ["slipperily", "slippery", "slipper", "slipped"],
+    "answer": 1
+  },
+  {
+    "question": "Select the correct option: He decided to ____ his old books.",
+    "options": ["dispose", "despose", "disposse", "dispoze"],
+    "answer": 0
+  }
+],
+
+  "gk":[
+  {
+    "question": "Which is the only major river in India that flows westwards and empties into the Arabian Sea?",
+    "options": ["Ganga", "Godavari", "Narmada", "Krishna"],
+    "answer": 2
+  },
+  {
+    "question": "Which port is India's largest container port, handling the highest cargo volume?",
+    "options": ["Chennai Port", "Jawaharlal Nehru Port (JNPT)", "Kandla Port", "Mormugao Port"],
+    "answer": 1
+  },
+  {
+    "question": "What is the source of the Godavari River?",
+    "options": ["Amarkantak Plateau", "Trimbakeshwar (Nasik)", "Gangotri Glacier", "Western Ghats in Karnataka"],
+    "answer": 1
+  },
+  {
+    "question": "Which is the only major riverine port in India?",
+    "options": ["Visakhapatnam Port", "Syama Prasad Mookerjee Port (Kolkata Port)", "Cochin Port", "Paradip Port"],
+    "answer": 1
+  },
+  {
+    "question": "Which Indian port is strategically located on the crossroads of east-west ocean trade routes and is built on an island?",
+    "options": ["Cochin Port", "Mormugao Port", "Chennai Port", "New Mangalore Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the only major Indian port to provide weekly direct container service to the United States?",
+    "options": ["Chennai Port", "V.O. Chidambaranar Port (Tuticorin)", "Paradip Port", "Jawaharlal Nehru Port"],
+    "answer": 1
+  },
+  {
+    "question": "What is the deepest point in the Indian Ocean?",
+    "options": ["Kermadec Trench", "Mariana Trench", "Diamantina Deep", "Java Trench"],
+    "answer": 2
+  },
+  {
+    "question": "At which confluence is Paradip Port located?",
+    "options": ["Ganga-Brahmaputra", "Godavari-Bay of Bengal", "Krishna-Arabian Sea", "Mahanadi-Bay of Bengal"],
+    "answer": 3
+  },
+  {
+    "question": "Which river flows through the largest number of Indian states?",
+    "options": ["Ganga", "Yamuna", "Godavari", "Krishna"],
+    "answer": 2
+  },
+  {
+    "question": "Which major Indian port is situated closest to the international shipping route between Saudi Arabia and Singapore?",
+    "options": ["Port Blair", "New Mangalore Port", "Mumbai Port", "Kolkata Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian port is recognized as the deepest and is one of the largest by cargo handled on the east coast?",
+    "options": ["Paradip Port", "Chennai Port", "Visakhapatnam Port", "Syama Prasad Mookerjee Port"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian river, not draining into the sea, forms an inland drainage basin?",
+    "options": ["Luni", "Yamuna", "Sutlej", "Ganga"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the primary export cargo at Mormugao Port?",
+    "options": ["Tea", "Iron ore", "Coal", "Seafood"],
+    "answer": 1
+  },
+  {
+    "question": "Which major Indian river forms the boundary between Madhya Pradesh and Maharashtra for part of its course?",
+    "options": ["Godavari", "Tapti", "Krishna", "Narmada"],
+    "answer": 3
+  },
+  {
+    "question": "Which island group lies in the Indian Ocean and is under Indian sovereignty?",
+    "options": ["Lakshadweep", "Seychelles", "Socotra", "Cocos"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the only Indian major port built after Independence that is completely corporatized?",
+    "options": ["Kamarajar Port (Ennore)", "Paradip Port", "Mumbai Port", "V.O. Chidambaranar Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the largest port by volume and handles most of India's petroleum imports?",
+    "options": ["Kandla Port (Deendayal Port)", "Cochin Port", "Mumbai Port", "Jawaharlal Nehru Port"],
+    "answer": 0
+  },
+  {
+    "question": "The Sunderbans Delta is formed primarily by which two rivers?",
+    "options": ["Brahmaputra & Teesta", "Yamuna & Chambal", "Ganga & Brahmaputra", "Mahanadi & Godavari"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian river is known as the 'Dakshin Ganga' due to its size and significance?",
+    "options": ["Krishna", "Godavari", "Kaveri", "Tapti"],
+    "answer": 1
+  },
+  {
+    "question": "Which major Indian port is closest to India's southernmost mainland tip?",
+    "options": ["Tuticorin (V.O Chidambaranar Port)", "Kochi Port", "Chennai Port", "New Mangalore Port"],
+    "answer": 0
+  }
+],
+  "apptitude":[
+  {
+    "question": "If in a code, BUILD is written as 29125 and FAITH as 613829, how is GLARE coded?",
+    "options": ["791125", "781529", "791529", "791225"],
+    "answer": 2
+  },
+  {
+    "question": "What is the next number in the series: 3, 6, 18, 72, 360, ?",
+    "options": ["2160", "1800", "1080", "1260"],
+    "answer": 0
+  },
+  {
+    "question": "Find the odd one out: 121, 144, 169, 196, 225, 244",
+    "options": ["196", "225", "244", "169"],
+    "answer": 2
+  },
+  {
+    "question": "Analogy: Lawyer : Courtroom :: Architect : ?",
+    "options": ["Blueprint", "Construction Site", "Law", "Building"],
+    "answer": 1
+  },
+  {
+    "question": "If WORD is coded as 2565715, how is BOOK coded?",
+    "options": ["2151511", "2151115", "2115151", "2151514"],
+    "answer": 0
+  },
+  {
+    "question": "Arrange in the correct sequence: Seed, Fruit, Leaves, Plant, Flower",
+    "options": ["Seed, Plant, Leaves, Flower, Fruit", "Plant, Seed, Leaves, Fruit, Flower", "Seed, Plant, Flower, Leaves, Fruit", "Seed, Plant, Flower, Fruit, Leaves"],
+    "answer": 0
+  },
+  {
+    "question": "In a certain code, if EAST is written as ZHVG, how will WEST be written?",
+    "options": ["DVHG", "ZVHG", "ZHVG", "DVGV"],
+    "answer": 0
+  },
+  {
+    "question": "Find the next term: B, D, G, K, P, ?",
+    "options": ["U", "V", "W", "T"],
+    "answer": 0
+  },
+  {
+    "question": "What is the missing number? 2, 6, 12, 20, ?, 42",
+    "options": ["28", "30", "32", "36"],
+    "answer": 1
+  },
+  {
+    "question": "If TABLE is coded as GZYOV, how will CHAIR be coded?",
+    "options": ["XSEVD", "XSVED", "XSVDV", "XSVDE"],
+    "answer": 0
+  },
+  {
+    "question": "Six persons A, B, C, D, E, and F sit in a circle. A is opposite C; B sits to the immediate right of A; D sits to the immediate left of C. Who sits opposite to B?",
+    "options": ["E", "F", "D", "A"],
+    "answer": 1
+  },
+  {
+    "question": "Blood relation: Pointing to a photograph, a man said, “She is the daughter of my grandfather’s only son.” How is the girl related to the man?",
+    "options": ["Cousin", "Sister", "Daughter", "Niece"],
+    "answer": 1
+  },
+  {
+    "question": "If the present ages of A and B are in the ratio 5:6 and after 4 years the ratio becomes 7:8, what is the sum of their present ages?",
+    "options": ["44", "48", "42", "52"],
+    "answer": 1
+  },
+  {
+    "question": "In a mixture of 60 litres, the ratio of milk to water is 4:2. How much water should be added to make the ratio 3:4?",
+    "options": ["32 litres", "40 litres", "36 litres", "48 litres"],
+    "answer": 2
+  },
+  {
+    "question": "If 6 machines take 6 minutes to make 6 widgets, how long will 100 machines take to make 100 widgets?",
+    "options": ["6 minutes", "1 minute", "100 minutes", "10 minutes"],
+    "answer": 0
+  },
+  {
+    "question": "If FRIEND is coded as HTKGPF, what is the code for ENEMY?",
+    "options": ["GPGOA", "GPGMA", "GPGQA", "GPFOA"],
+    "answer": 2
+  },
+  {
+    "question": "Which shape completes the pattern: Circle, Triangle, Square, Circle, Triangle, ?",
+    "options": ["Circle", "Square", "Triangle", "Rectangle"],
+    "answer": 1
+  },
+  {
+    "question": "If (x + y) : (x – y) = 9:5, find the ratio x:y.",
+    "options": ["7:2", "8:3", "9:4", "6:5"],
+    "answer": 1
+  },
+  {
+    "question": "General Knowledge: Which country will chair the G20 summit in 2026?",
+    "options": ["India", "Brazil", "Italy", "Indonesia"],
+    "answer": 0
+  },
+  {
+    "question": "Which member nation of BRICS is NOT a member of the G20 as of 2025?",
+    "options": ["Russia", "India", "China", "South Africa"],
+    "answer": null
+  },
+  {
+    "question": "Find the odd one out: Jupiter, Mars, Earth, Sun",
+    "options": ["Jupiter", "Mars", "Earth", "Sun"],
+    "answer": 3
+  },
+  {
+    "question": "If A is brother of B; B is sister of C; C is mother of D. How is D related to A?",
+    "options": ["Son", "Daughter", "Nephew", "Niece"],
+    "answer": 3
+  },
+  {
+    "question": "Sitting arrangement: Five people are sitting in a row. A is to the left of B but right of C. D is to the right of B but left of E. Who is sitting in the middle?",
+    "options": ["B", "A", "D", "C"],
+    "answer": 0
+  },
+  {
+    "question": "If the ratio of ages of A and B is 3:4 and the sum of their ages is 56, what is B's age?",
+    "options": ["21", "32", "24", "28"],
+    "answer": 1
+  },
+  {
+    "question": "If 1500 is divided into three parts proportional to 2:3:4, what is the largest part?",
+    "options": ["666", "666.67", "600", "500"],
+    "answer": 1
+  },
+  {
+    "question": "If in a certain code, CAMERA is written as QBNEQZ, how will MONITOR be written?",
+    "options": ["NPOJUPS", "NPOKUPS", "NPOJUPT", "NPOJURT"],
+    "answer": 0
+  },
+  {
+    "question": "Find the next number in the series: 1, 3, 6, 10, 15, ?",
+    "options": ["21", "22", "20", "24"],
+    "answer": 0
+  },
+  {
+    "question": "Code: If LEVEL is coded as 12345, how will DEVIL be coded?",
+    "options": ["45231", "54321", "51432", "54231"],
+    "answer": 3
+  },
+  {
+    "question": "Blood relation: A is father of B; B is mother of C; C is brother of D. How is D related to A?",
+    "options": ["Son", "Daughter", "Grandchild", "Cannot say"],
+    "answer": 2
+  },
+  {
+    "question": "In a code language, 'TREE' is written as 'USFF'. How will 'BRANCH' be written?",
+    "options": ["CSBODI", "CSBNDI", "CSBPDI", "CSBOCI"],
+    "answer": 0
+  },
+  {
+    "question": "Ratio problem: The ratio of three quantities is 3:4:5. If the largest is 40, what is the sum of the three quantities?",
+    "options": ["84", "96", "90", "72"],
+    "answer": 1
+  },
+  {
+    "question": "Sitting arrangement: A, B, C, D, and E are sitting in a circle. A is opposite C; B is left to A; D is right to C. Who is to the right of B?",
+    "options": ["A", "E", "D", "C"],
+    "answer": 1
+  },
+  {
+    "question": "What is the time taken by 8 workers to finish a work if 5 workers take 12 days?",
+    "options": ["7.5 days", "10 days", "9 days", "8 days"],
+    "answer": 2
+  },
+  {
+    "question": "General Knowledge: Which country hosted the Summer Olympics in 2024?",
+    "options": ["France", "Japan", "USA", "China"],
+    "answer": 0
+  },
+  {
+    "question": "In coding, if 'PENCIL' is written as 'QFODJM', what is the code for 'MARKER'?",
+    "options": ["NBSLFS", "NBSLES", "NBSMFS", "NBSLFS"],
+    "answer": 0
+  },
+  {
+    "question": "Analogy: Sword : Warrior :: Pen : ?",
+    "options": ["Writer", "Deliverer", "Artist", "Speaker"],
+    "answer": 0
+  },
+  {
+    "question": "If 4 people can finish a work in 12 days, how many people are needed to finish the work in 6 days?",
+    "options": ["6", "8", "10", "12"],
+    "answer": 1
+  },
+  {
+    "question": "If the average of 5 numbers is 18 and one number is excluded, the average becomes 16. What is the excluded number?",
+    "options": ["30", "26", "28", "24"],
+    "answer": 2
+  },
+  {
+    "question": "Ratio: A is twice as old as B. After 5 years, the ratio of their ages becomes 3:2. What is the present age of A?",
+    "options": ["20", "25", "30", "35"],
+    "answer": 0
+  },
+  {
+    "question": "General Knowledge: Which is the current chair country of BRICS in 2025?",
+    "options": ["Russia", "Brazil", "South Africa", "India"],
+    "answer": 3
+  }
+]
+
+
+  },
+  "B":{ 
+    "physics":[
+  {
+    "question": "Two point charges +3 μC and -2 μC are placed 30 cm apart in vacuum. At what point between them will the electric potential be zero?",
+    "options": ["18 cm from +3 μC", "12 cm from +3 μC", "20 cm from -2 μC", "Equal distance from both"],
+    "answer": 0
+  },
+  {
+    "question": "A parallel plate capacitor has plates of area A separated by a distance d, filled with two dielectrics of constants K₁ and K₂ (each of thickness d/2). Its equivalent capacitance is:",
+    "options": [
+      "2KA/d, K = K₁ + K₂",
+      "2ε₀A/(d(K₁ + K₂))",
+      "2ε₀A(K₁K₂)/(d(K₁ + K₂))",
+      "ε₀A(K₁ + K₂)/d"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "When 0.1 C charge is moved between two points having a potential difference of 5 V, the work done is:",
+    "options": ["0.5 J", "2 J", "5 J", "0.05 J"],
+    "answer": 0
+  },
+  {
+    "question": "A cell of emf 12 V and internal resistance 1Ω is connected with a 5Ω resistor. The current in the circuit is:",
+    "options": ["2.0 A", "1.2 A", "1.5 A", "2.4 A"],
+    "answer": 2
+  },
+  {
+    "question": "What is the drift velocity of electrons in a copper wire if current is 2 A, cross-sectional area is 2×10⁻⁶ m², and n = 8.5×10²⁸ m⁻³?",
+    "options": ["7.4×10⁻⁴ m/s", "7.4×10⁻⁵ m/s", "7.4×10⁻³ m/s", "7.4×10⁻⁶ m/s"],
+    "answer": 1
+  },
+  {
+    "question": "A wire 2 m long and 0.5 mm² in cross section has resistance 0.2 Ω. What is its resistivity?",
+    "options": [
+      "5×10⁻⁸ Ω·m",
+      "2×10⁻⁸ Ω·m",
+      "1×10⁻⁷ Ω·m",
+      "1×10⁻⁸ Ω·m"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which process is isothermal in a PV diagram?",
+    "options": [
+      "Vertical line",
+      "Horizontal line",
+      "A curve (PV = constant)",
+      "None of these"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "A gas expands from 1L to 4L against a constant external pressure of 2 atm. Work done by the gas (1 atm = 1.01×10⁵ N/m²)?",
+    "options": ["606 J", "6060 J", "303 J", "3030 J"],
+    "answer": 0
+  },
+  {
+    "question": "Which equation correctly expresses the first law of thermodynamics?",
+    "options": [
+      "ΔU = Q + W",
+      "ΔU = Q – W",
+      "ΔU = W – Q",
+      "ΔU = QW"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "For an ideal Carnot engine operating between T₁ = 500 K and T₂ = 300 K, what is the maximum efficiency?",
+    "options": ["40%", "60%", "20%", "50%"],
+    "answer": 0
+  },
+  {
+    "question": "A vector A = 3i + 4j. Its magnitude is:",
+    "options": ["5", "7", "25", "3.5"],
+    "answer": 0
+  },
+  {
+    "question": "A projectile fired at an angle θ with speed u has maximum range R on horizontal ground. For a fixed u, R is maximum when θ =",
+    "options": ["30°", "45°", "60°", "90°"],
+    "answer": 1
+  },
+  {
+    "question": "Which physical quantity can be negative: speed, distance, velocity, scalar product?",
+    "options": ["Distance", "Speed", "Velocity", "Both velocity and scalar product"],
+    "answer": 3
+  },
+  {
+    "question": "Which figure best represents the path of a projectile under gravity?",
+    "options": ["Circle", "Straight line", "Parabola", "Ellipse"],
+    "answer": 2
+  },
+  {
+    "question": "If a body moves in a circle of radius 5 m at 10 m/s, its centripetal acceleration is:",
+    "options": ["10 m/s²", "5 m/s²", "20 m/s²", "2 m/s²"],
+    "answer": 0
+  },
+  {
+    "question": "A rigid body is acted upon by equal and opposite forces but not along the same line. The body:",
+    "options": [
+      "Moves in a straight line",
+      "Remains at rest",
+      "Rotates",
+      "Becomes stationary"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Torque is maximum when the angle between force and position vector is:",
+    "options": ["0°", "30°", "60°", "90°"],
+    "answer": 3
+  },
+  {
+    "question": "Moment of inertia depends on:",
+    "options": [
+      "Mass",
+      "Distribution of mass",
+      "Position of axis",
+      "All of these"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Angular momentum of a particle is conserved if:",
+    "options": [
+      "Net force is zero",
+      "No torque acts",
+      "No force acts",
+      "Both force and torque are zero"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A body of mass 2 kg rolls down with velocity 4 m/s. Its total kinetic energy if it is a solid sphere (moment of inertia = (2/5)mr²):",
+    "options": ["8 J", "16 J", "6.4 J", "12 J"],
+    "answer": 2
+  },
+  {
+    "question": "If a force of 10 N displaces a mass by 2 m, the work done is:",
+    "options": ["20 J", "5 J", "0 J", "2 J"],
+    "answer": 0
+  },
+  {
+    "question": "A ball is dropped from a height h. Its velocity just before hitting the ground is:",
+    "options": [
+      "√2gh",
+      "2gh",
+      "gh",
+      "h/g"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Potential energy of spring is maximum when:",
+    "options": [
+      "It is at mean position",
+      "It is at extreme position",
+      "Half way from mean to extreme",
+      "Never"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A body moves with uniform velocity. What is its net force?",
+    "options": ["mg", "zero", "F=ma", "infinity"],
+    "answer": 1
+  },
+  {
+    "question": "A block is acted by constant force but moves perpendicular to the force. Work done by the force is:",
+    "options": ["maximum", "minimum", "zero", "equal to potential energy"],
+    "answer": 2
+  },
+  {
+    "question": "A particle of mass m executes SHM of amplitude A. Its maximum acceleration is:",
+    "options": [
+      "A/T",
+      "Aω²",
+      "A²ω",
+      "mAω"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "For a pendulum of length l, period T is proportional to:",
+    "options": [
+      "√l",
+      "1/√l",
+      "l²",
+      "l"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "A particle executes SHM with amplitude 10 cm and time period 2 s. Maximum speed is:",
+    "options": ["10π cm/s", "5π cm/s", "20π cm/s", "2π cm/s"],
+    "answer": 0
+  },
+  {
+    "question": "In SHM, displacement versus time is best described as:",
+    "options": ["Exponential", "Linear", "Sinusoidal", "Parabolic"],
+    "answer": 2
+  },
+  {
+    "question": "Waves in which particles vibrate in direction perpendicular to propagation are:",
+    "options": [
+      "Longitudinal",
+      "Transverse",
+      "Stationary",
+      "None"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "If a lens has a power of +2 D, its focal length is:",
+    "options": [
+      "2 m",
+      "0.5 m",
+      "1 m",
+      "0.2 m"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A light ray enters from air to glass at 30°. If refractive index is √3, angle of refraction is:",
+    "options": ["60°", "30°", "45°", "15°"],
+    "answer": 3
+  },
+  {
+    "question": "In Young’s double slit, the distance between slits is doubled, the fringe spacing:",
+    "options": [
+      "Increases",
+      "Decreases",
+      "Remains same",
+      "Doubles"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Critical angle for total internal reflection is smallest for light passing from:",
+    "options": [
+      "Glass to air",
+      "Water to air",
+      "Air to glass",
+      "Air to water"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "A convex lens of focal length f forms a real, inverted image of an object at distance 2f from the lens. The image is:",
+    "options": [
+      "Virtual and upright",
+      "Same size as object",
+      "Magnified",
+      "Diminished"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In a p-n junction diode, current flows when:",
+    "options": [
+      "p-side is negative",
+      "n-side is positive",
+      "n-side and p-side both are positive",
+      "p-side is positive and n-side is negative"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "The energy gap is maximum in:",
+    "options": [
+      "Conductor",
+      "Insulator",
+      "Semiconductor",
+      "Photodiode"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The basic logic gate which gives high output only when both inputs are high is:",
+    "options": [
+      "OR",
+      "AND",
+      "NOT",
+      "NAND"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A photodiode is used for detecting:",
+    "options": [
+      "Current",
+      "Voltage",
+      "Magnetic field",
+      "Light"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Photoelectric effect provides evidence for:",
+    "options": [
+      "Wave nature",
+      "Particle nature",
+      "Both",
+      "None"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "An alpha particle is doubly ionized helium. Compared to proton, its mass is:",
+    "options": [
+      "Same",
+      "Twice",
+      "Four times",
+      "Half"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "The half-life of a radioactive material is 2 hours. What fraction remains after 6 hours?",
+    "options": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/16"
+    ],
+    "answer": 2
+  }
+],
+    
+    "chemistry":[
+  {
+    "question": "What is the major product of the reaction: 2-bromopropane + alcoholic KOH (heat)?",
+    "options": ["Propene", "1-Propanol", "Acetone", "2-Propanol"],
+    "answer": 0
+  },
+  {
+    "question": "How will you prepare acetophenone from benzene?",
+    "options": [
+      "Friedel–Crafts acylation with CH3COCl/AlCl3",
+      "Bromination followed by hydrolysis",
+      "Reaction with CH3MgBr then oxidation",
+      "Nitration, reduction, then diazotization"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Predict the product formed when acetylene reacts with dilute H2SO4 in presence of HgSO4:",
+    "options": [
+      "Ethanol",
+      "Acetaldehyde",
+      "Acetic acid",
+      "Ethanoic anhydride"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which reagent would best distinguish between aldehydes and ketones?",
+    "options": [
+      "Tollens reagent",
+      "Br2 water",
+      "NaOH",
+      "Conc. H2SO4"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the product of the reaction: PhMgBr + CO2 (followed by acid hydrolysis)?",
+    "options": ["Benzoic acid", "Benzene", "Phenol", "Benzaldehyde"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following compounds has the structure CH3CH2COOH?",
+    "options": [
+      "Propanoic acid",
+      "Butanoic acid",
+      "Ethanoic acid",
+      "2-Butenoic acid"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Name the product when benzoic acid is treated with SOCl2.",
+    "options": [
+      "Benzoyl chloride",
+      "Benzaldehyde",
+      "Benzyl chloride",
+      "Benzene"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which is the major product when cyclohexene reacts with cold, dilute KMnO4?",
+    "options": [
+      "Cyclohexane-1,2-diol",
+      "Cyclohexanone",
+      "Adipic acid",
+      "Benzene"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following formulas corresponds to an aromatic compound?",
+    "options": [
+      "C6H6",
+      "C3H8",
+      "C4H10",
+      "C2H6O"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Identify the product: Ethanol + PCC (Pyridinium chlorochromate)?",
+    "options": [
+      "Ethanal",
+      "Ethanoic acid",
+      "Propanal",
+      "Methanol"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "How would you synthesize tert-butyl alcohol from acetone?",
+    "options": [
+      "React with CH3MgBr (Grignard) and water",
+      "React with NaBH4",
+      "React with Br2",
+      "React with CH3COCl"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The IUPAC name of (CH3)2CHCH2CH3 is:",
+    "options": [
+      "2-Methylbutane",
+      "2,2-Dimethylpropane",
+      "Neopentane",
+      "n-Pentane"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the product of the reaction: phenol + Br2 (water)?",
+    "options": [
+      "2,4,6-Tribromophenol",
+      "Bromobenzene",
+      "Benzene",
+      "Bromoacetophenone"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which compound will give a positive iodoform test?",
+    "options": [
+      "Ethanol",
+      "Methanol",
+      "Propene",
+      "Formaldehyde"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The molecular formula C2H4O can represent which compound?",
+    "options": [
+      "Ethanol or Ethanal",
+      "Ethanoic acid",
+      "Acetone",
+      "Acetamide"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the result when benzene reacts with fuming HNO3 in presence of H2SO4?",
+    "options": [
+      "Nitrobenzene",
+      "Aniline",
+      "Benzoic acid",
+      "Phenol"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following is the starting material for the Gabriel synthesis of primary amines?",
+    "options": [
+      "Phthalimide",
+      "Aniline",
+      "Urea",
+      "Acetamide"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "AgNO3 reacts with an alkyl halide to give a white precipitate immediately; the halide is most likely:",
+    "options": [
+      "Tert-butyl bromide",
+      "Ethyl chloride",
+      "Methyl bromide",
+      "Propyl chloride"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The coordination number in [Fe(CN)6]4– is:",
+    "options": [
+      "6",
+      "4",
+      "2",
+      "8"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following oxides of nitrogen is neutral in nature?",
+    "options": [
+      "N2O",
+      "NO2",
+      "N2O5",
+      "NO"
+    ],
+    "answer": 0
+  }
+],
+    
+    "maths":[
+  {
+    "question": "If f(x) is continuous on [a,b] and differentiable on (a,b), and f(a) = f(b), then which of the following statements is guaranteed by Rolle's theorem?",
+    "options": [
+      "There exists c in (a,b) such that f'(c) = 0",
+      "f'(x) > 0 for all x in (a,b)",
+      "f has a maximum at a and a minimum at b",
+      "f is constant on [a,b]"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If the vectors a = 2i + 3j + k and b = i – j + 2k are perpendicular to a vector c, which of the following must be true?",
+    "options": [
+      "c · (a + b) = 0",
+      "c · a = 0 and c · b = 0",
+      "c = a × b",
+      "c = a + b"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A die is rolled twice. Which of the following statements is TRUE about the probability that the sum is 8?",
+    "options": [
+      "It is equal to 5/36",
+      "It is equal to 7/36",
+      "It is independent of the result of the first roll",
+      "It is 1/6"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If limₓ→0 (sin 5x)/(3x) = L, then L is:",
+    "options": [
+      "5/3",
+      "3/5",
+      "1",
+      "0"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If a sequence {aₙ} satisfies: aₙ = 2aₙ₋₁ + 1 with a₁ = 1, then the explicit formula for aₙ is:",
+    "options": [
+      "aₙ = 2ⁿ – 1",
+      "aₙ = 2ⁿ + 1",
+      "aₙ = 2n + 1",
+      "aₙ = n²"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If f(x) = x^3 – 3x^2 + 4, at which point is f(x) neither a maximum nor a minimum?",
+    "options": ["x = 0", "x = 1", "x = 2", "x = 3"],
+    "answer": 1
+  },
+  {
+    "question": "Statement: For a quadratic equation ax² + bx + c = 0, if the roots are real and equal, then b² – 4ac = 0.\nWhich of the following is correct?",
+    "options": [
+      "The statement is true and sufficient",
+      "The statement is true but not sufficient for real roots",
+      "The statement is false",
+      "The statement is only true for positive roots"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Find the value of k such that the vectors u = (k, 2, 3) and v = (1, k – 1, 4) are orthogonal.",
+    "options": [
+      "k = 2",
+      "k = –1",
+      "k = 1",
+      "k = 3"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "If A is the set of even numbers and B is the set of multiples of 3 from 1 to 30, then |A ∩ B| is:",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "8"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If P and Q are events such that P(P ∩ Q) = 0.2, P(P) = 0.5 and P(Q) = 0.6, which of the following is TRUE about independence?",
+    "options": [
+      "P and Q are independent",
+      "P and Q are not independent",
+      "P and Q are mutually exclusive",
+      "Cannot determine"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The height of a building is measured using the angle of elevation as 45°. If the observer moves 20 m closer to the building, the angle changes to 60°. The height of the building is:",
+    "options": [
+      "20√3 m",
+      "20 m",
+      "40 m",
+      "10√3 m"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "If y = e^(2x) sin 3x, find dy/dx.",
+    "options": [
+      "e^(2x)(2 sin 3x + 3 cos 3x)",
+      "e^(2x)(3 sin 3x + 2 cos 3x)",
+      "2e^(2x) sin 3x",
+      "3e^(2x) cos 3x"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Evaluate the limit limₓ→0 (1 – cos 3x)/x².",
+    "options": [
+      "9/2",
+      "0",
+      "3/2",
+      "∞"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following functions is continuous everywhere but differentiable nowhere?",
+    "options": [
+      "y = |x|",
+      "Weierstrass function",
+      "y = x^2",
+      "y = sin x"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The point where the tangent to y = x^3 – 3x^2 + 2 is horizontal is:",
+    "options": [
+      "x = 0 and x = 2",
+      "x = 1 and x = 2",
+      "x = 0 and x = 1",
+      "x = 1 only"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Number of ways to choose 4 people out of 6 to form a team is:",
+    "options": [
+      "15",
+      "24",
+      "20",
+      "6"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following numbers is irrational?",
+    "options": [
+      "π",
+      "8/2",
+      "√9",
+      "1/3"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The function f(x) = 1/x is:",
+    "options": [
+      "Continuous for all real x",
+      "Continuous only for x ≠ 0",
+      "Discontinuous for all x",
+      "Differentiable at x=0"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "If the radius of a sphere is increasing at a rate of 2 cm/s, then the rate of change of the volume when radius is 5 cm is:",
+    "options": [
+      "500π cm³/s",
+      "100π cm³/s",
+      "250π cm³/s",
+      "50π cm³/s"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "The area bounded by the curves y = x² and y = 4 – x² is:",
+    "options": [
+      "8",
+      "16",
+      "4",
+      "12"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If two non-parallel planes intersect, their intersection is a:",
+    "options": [
+      "Point",
+      "Line",
+      "Plane",
+      "None of these"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Find the number of real roots of the equation x^4 – 5x^2 + 6 = 0.",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "0"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The sum of all positive integers less than 50 divisible by 5 is:",
+    "options": [
+      "225",
+      "275",
+      "450",
+      "500"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The 20th term of the Arithmetic Progression 3,8,13... is:",
+    "options": [
+      "98",
+      "103",
+      "93",
+      "100"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If z = 1 + i, then the value of z^6 is:",
+    "options": [
+      "-8",
+      "8i",
+      "-8i",
+      "8"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The derivative of f(x) = ln (sin x) is:",
+    "options": [
+      "cot x",
+      "tan x",
+      "1/sin x",
+      "cos x"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If P(n,r) stands for permutations of n things taken r at a time, then P(7,3) is:",
+    "options": [
+      "210",
+      "343",
+      "126",
+      "504"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If cosine of an acute angle is 12/13, compute its sine.",
+    "options": [
+      "5/13",
+      "12/13",
+      "13/12",
+      "√(5/13)"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The set of all points equidistant from points A(1,2) and B(3,–1) is:",
+    "options": [
+      "x + 2y = 7",
+      "x – 2y = 7",
+      "x – 2y = 1",
+      "2x – y = 7"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If limₓ→0 (tan 3x)/(x) = L, then L equals:",
+    "options": [
+      "3",
+      "0",
+      "1",
+      "∞"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "An equation of the sphere with center (1,2,3) and radius 4 is:",
+    "options": [
+      "(x–1)^2 + (y–2)^2 + (z–3)^2 =16",
+      "(x+1)^2 + (y+2)^2 + (z+3)^2 =4",
+      "(x–1)^2 + (y–2)^2 + (z–3)^2 =4",
+      "(x+1)^2 + (y–2)^2 + (z+3)^2 =16"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The derivative of y = x sin x is:",
+    "options": [
+      "sin x + x cos x",
+      "cos x + x sin x",
+      "x cos x",
+      "sin x"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If the sum of n terms of an arithmetic progression is given by Sₙ = 3n² + 5n, then the nth term is:",
+    "options": [
+      "6n + 2",
+      "6n + 8",
+      "3n + 5",
+      "6n + 5"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If 1 is a root of the equation x^3 + px^2 + qx + r = 0, then:",
+    "options": [
+      "p + q + r = –1",
+      "p + q + r = 0",
+      "p + q + r = 1",
+      "p + q + r > 0"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "If f(x) = x/(x+1), then f'(1) is:",
+    "options": [
+      "1/4",
+      "1/2",
+      "1/3",
+      "0"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In the triangle with sides 5, 12, and 13, the angle opposite to side 13 is:",
+    "options": [
+      "Right angle",
+      "Acute angle",
+      "Obtuse angle",
+      "Not possible"
+    ],
+    "answer": 0
+  }
+]
+
+    
+
+  }
+}

@@ -1,0 +1,1288 @@
+{
+ "A": { 
+  "english":[
+  {
+    "question": "Identify the error in the sentence: Neither the teacher nor the students was prepared for the surprise test.",
+    "options": ["Neither the teacher", "nor the students", "was prepared", "No error"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correctly spelt word:",
+    "options": ["Connoisseur", "Connisseur", "Conoisser", "Connoisuer"],
+    "answer": 0
+  },
+  {
+    "question": "Select the synonym for 'Obfuscate':",
+    "options": ["Clarify", "Confuse", "Illuminate", "Simplify"],
+    "answer": 1
+  },
+  {
+    "question": "Choose the antonym of 'Sycophant':",
+    "options": ["Adulator", "Flatterer", "Critic", "Fan"],
+    "answer": 2
+  },
+  {
+    "question": "Select the correct passive form of: 'They had been discussing the proposal all night.'",
+    "options": [
+      "The proposal had been discussed by them all night.",
+      "The proposal had been being discussed all night.",
+      "The proposal had been been discussed by them all night.",
+      "The proposal had been being discussed by them all night."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Which sentence is in active voice?",
+    "options": [
+      "The results were analyzed by the scientist carefully.",
+      "The scientist carefully analyzed the results.",
+      "Carefully the results were analyzed by the scientist.",
+      "Analyzed were the results by the scientist carefully."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Fill in the blank with the correct preposition: He succeeded ___ despite numerous obstacles.",
+    "options": ["in", "at", "on", "to"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct question tag: Hardly had he entered the room, ____?",
+    "options": ["had he", "hadn't he", "did he", "didn't he"],
+    "answer": 2
+  },
+  {
+    "question": "Add a question tag: Few of the students understood the lecture clearly, ____?",
+    "options": ["did they?", "don't they?", "didn't they?", "do they?"],
+    "answer": 0
+  },
+  {
+    "question": "Which idiom means 'to pretend ignorance to avoid responsibility'?",
+    "options": ["Turn a blind eye", "Burn the midnight oil", "Bite the bullet", "Break the ice"],
+    "answer": 0
+  },
+  {
+    "question": "Pick the correct indirect speech: She said, “If I had known, I would have helped you.”",
+    "options": [
+      "She said that if she had known, she would help me.",
+      "She said that if she had known, she would have helped me.",
+      "She said if she has known, she will help me.",
+      "She said that if she had known, she would have helped me."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Choose the antonym of 'Recalcitrant':",
+    "options": ["Obedient", "Defiant", "Stubborn", "Insubordinate"],
+    "answer": 0
+  },
+  {
+    "question": "Select the correctly formed sentence: Despite ___ warnings, he proceeded with the reckless plan.",
+    "options": ["the repeated", "repeating", "repeatedly", "repeat"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct conjunction: The candidate spoke eloquently, ____ he failed to convince the jury.",
+    "options": ["but", "yet", "although", "because"],
+    "answer": 1
+  },
+  {
+    "question": "Fill in the blank (adjective): The philosopher's argument was ____ enough to convince the skeptics.",
+    "options": ["convincing", "convince", "convinceable", "convincingly"],
+    "answer": 0
+  },
+  {
+    "question": "Select the synonym for 'Pernicious':",
+    "options": ["Harmless", "Harmful", "Benign", "Innocuous"],
+    "answer": 1
+  },
+  {
+    "question": "Which sentence is correctly arranged?",
+    "options": [
+      "Rapidly he efficiently finished the complex assignment.",
+      "He rapidly finished the complex assignment efficiently.",
+      "Efficiently rapidly he finished the complex assignment.",
+      "The complex assignment rapidly efficiently he finished."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the meaning of the idiom 'To throw in the towel':",
+    "options": ["To surrender defeat", "To clean up", "To take a risk", "To celebrate victory"],
+    "answer": 0
+  },
+  {
+    "question": "Change to passive voice: 'The committee will review the application tomorrow.'",
+    "options": [
+      "The application will be reviewed by the committee tomorrow.",
+      "The application will be reviewing by committee tomorrow.",
+      "The application will reviewing by committee tomorrow.",
+      "The application is reviewed by the committee tomorrow."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Accommodate", "Acommodate", "Accomodate", "Acomodate"],
+    "answer": 0
+  },
+  {
+    "question": "Fill in the blank with a preposition: He is notorious ____ bending the rules to his advantage.",
+    "options": ["for", "of", "about", "with"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the antonym for 'Magnanimous':",
+    "options": ["Generous", "Petty", "Charitable", "Altruistic"],
+    "answer": 1
+  },
+  {
+    "question": "Change to direct speech: He said that he had been working late.",
+    "options": [
+      "He said, \"I have been working late.\"",
+      "He said, \"I had been working late.\"",
+      "He said, \"I am working late.\"",
+      "He said, \"I was working late.\""
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Choose the correct idiom: ‘To cut corners’ means:",
+    "options": ["To do something badly to save time or money", "To waste resources", "To finish early", "To be very cautious"],
+    "answer": 0
+  },
+  {
+    "question": "Pick the synonym for 'Ephemeral':",
+    "options": ["Eternal", "Fleeting", "Permanent", "Lasting"],
+    "answer": 1
+  },
+  {
+    "question": "Pick the antonym for 'Impetuous':",
+    "options": ["Cautious", "Reckless", "Careless", "Hasty"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct sentence:",
+    "options": [
+      "None of the participants have signed the agreement.",
+      "None of the participants has signed the agreement.",
+      "None of the participant have signed the agreement.",
+      "None of the participants is signed the agreement."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Pick the correct change of voice: 'They are building the bridge meticulously.'",
+    "options": [
+      "The bridge is being built meticulously by them.",
+      "The bridge are being built meticulously by them.",
+      "The bridge is built meticulously by them.",
+      "The bridge are built meticulously by them."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correctly arranged sentence:",
+    "options": [
+      "At dawn the birds sang melodiously.",
+      "The birds melodiously sang at dawn.",
+      "Melodiously at dawn the birds sang.",
+      "The birds sang at dawn melodiously."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Fill in the blank: She is adept ____ handling complex negotiations.",
+    "options": ["in", "at", "on", "with"],
+    "answer": 1
+  },
+  {
+    "question": "Select the correct question tag: Rarely does he attend meetings, ____?",
+    "options": ["does he?", "doesn't he?", "isn't he?", "is he?"],
+    "answer": 0
+  },
+  {
+    "question": "Correct the error: Neither of the answers are correct.",
+    "options": ["No error", "is correct", "are correctly", "was correct"],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Indispensable", "Indispensible", "Indespensable", "Indepsensable"],
+    "answer": 0
+  },
+  {
+    "question": "Pick the correct sentence:",
+    "options": [
+      "The jury gives their verdict soon.",
+      "The jury give its verdict soon.",
+      "The jury gives its verdict soon.",
+      "The jury give their verdict soon."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Select the synonym for 'Pugnacious':",
+    "options": ["Combative", "Peaceful", "Timid", "Docile"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the antonym of 'Capitulate':",
+    "options": ["Surrender", "Resist", "Yield", "Submit"],
+    "answer": 1
+  },
+  {
+    "question": "Arrange the sentence: quickly/ the/ completed/ task/ was/ the/ technician/ by.",
+    "options": [
+      "The technician completed the task quickly.",
+      "The task was quickly completed by the technician.",
+      "Quickly the technician was completed task by the.",
+      "The task was completed quickly the technician by."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the right word: The fragrance of jasmine is ____.",
+    "options": ["aroma", "taste", "noise", "color"],
+    "answer": 0
+  },
+  {
+    "question": "Direct to indirect speech: He said, “I can solve all these problems by tomorrow.”",
+    "options": [
+      "He said that he could solve all those problems by tomorrow.",
+      "He said that he can solve all these problems by tomorrow.",
+      "He said that he could solve all these problems by tomorrow.",
+      "He said that he can solve all those problems by tomorrow."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Conscientious", "Consciencious", "Consciensious", "Concientious"],
+    "answer": 0
+  },
+  {
+    "question": "Fill in the blank with an adjective: The ancient manuscript is incredibly ____. ",
+    "options": ["fragile", "fragiley", "fragileness", "fragilen"],
+    "answer": 0
+  },
+  {
+    "question": "Select the correct option: They decided to ____ the outdated policies immediately.",
+    "options": ["revise", "rrevice", "revize", "revice"],
+    "answer": 0
+  }
+],
+
+  "gk":[
+  {
+    "question": "Which river system in India has the highest sediment load due to active tectonic uplift in the source region?",
+    "options": ["Ganga River System", "Brahmaputra River System", "Godavari River System", "Narmada River System"],
+    "answer": 1
+  },
+  {
+    "question": "The Indian river that flows through the maximum number of Indian states is:",
+    "options": ["Ganga", "Godavari", "Krishna", "Yamuna"],
+    "answer": 1
+  },
+  {
+    "question": "Which major Indian river originates near Triambakeshwar and flows eastward towards the Bay of Bengal?",
+    "options": ["Godavari", "Krishna", "Mahanadi", "Cauvery"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the only major inland riverine port among the following?",
+    "options": ["Paradip Port", "Visakhapatnam Port", "Syama Prasad Mookerjee Port (Kolkata)", "Chennai Port"],
+    "answer": 2
+  },
+  {
+    "question": "Indus River enters India through which state and joins which sea?",
+    "options": ["Jammu & Kashmir and Arabian Sea", "Himachal Pradesh and Bay of Bengal", "Punjab and Arabian Sea", "Rajasthan and Arabian Sea"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian port is the deepest container transshipment hub on the east coast?",
+    "options": ["Kolkata Port", "Visakhapatnam Port", "Paradip Port", "Chennai Port"],
+    "answer": 1
+  },
+  {
+    "question": "The Indian Ocean’s deepest point, called Diamantina Deep, lies in proximity to which geographical feature?",
+    "options": ["Central Indian Ridge", "Carlsberg Ridge", "Arabian Basin", "Laccadive Basin"],
+    "answer": 1
+  },
+  {
+    "question": "Which river basin in India is known for inland drainage and does not drain into any sea?",
+    "options": ["Luni", "Narmada", "Godavari", "Tapi"],
+    "answer": 0
+  },
+  {
+    "question": "The confluence where the Brahmaputra merges into the Bay of Bengal is called:",
+    "options": ["Sunderbans delta", "Rajmahal Hills", "Majuli Island", "Brahmaputra Delta"],
+    "answer": 0
+  },
+  {
+    "question": "Among the following ports, which one is strategically located on an island and serves as a critical hub on the east-west shipping route?",
+    "options": ["Cochin Port", "Jawaharlal Nehru Port", "Mormugao Port", "Tuticorin Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which tributary of Indus River flows through the Kashmir Valley?",
+    "options": ["Chenab", "Jhelum", "Ravi", "Beas"],
+    "answer": 1
+  },
+  {
+    "question": "Which major Indian river forms the natural boundary between Madhya Pradesh and Maharashtra?",
+    "options": ["Narmada", "Tapi", "Godavari", "Krishna"],
+    "answer": 0
+  },
+  {
+    "question": "The largest delta in the world, formed by which Indian river system, is called the Sunderbans?",
+    "options": ["Ganga-Brahmaputra", "Godavari", "Mahanadi", "Krishna"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian oceanic island group is closest to the equator?",
+    "options": ["Lakshadweep", "Andaman and Nicobar Islands", "Maldives", "Chagos Archipelago"],
+    "answer": 1
+  },
+  {
+    "question": "The river which originates from the Amarkantak Plateau is:",
+    "options": ["Narmada", "Godavari", "Mahanadi", "Tapi"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian major port was the first to be fully corporatized after Independence?",
+    "options": ["Kamarajar Port (Ennore)", "Jawaharlal Nehru Port", "Paradip Port", "Kolkata Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the largest Indian port handling most of the country's petroleum imports?",
+    "options": ["Kandla Port", "Jawaharlal Nehru Port", "Mumbai Port", "Cochin Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian river system includes major tributaries like the Beas, Chenab, and Ravi?",
+    "options": ["Indus River System", "Ganga River System", "Brahmaputra River System", "Godavari River System"],
+    "answer": 0
+  },
+  {
+    "question": "The confluence of Ganga and Yamuna rivers is at:",
+    "options": ["Allahabad (Prayagraj)", "Haridwar", "Varanasi", "Sultanpur"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian river is often called the 'Dakshin Ganga' due to its size and sacred significance?",
+    "options": ["Godavari", "Krishna", "Cauvery", "Mahanadi"],
+    "answer": 0
+  }
+],
+  "apptitude":[
+  {
+    "question": "If in a certain code, BEAR is coded as 2518 and LION as 3965, how is BOAR coded?",
+    "options": ["2598", "2318", "2519", "2581"],
+    "answer": 0
+  },
+  {
+    "question": "What comes next in the series: 7, 14, 29, 58, ___?",
+    "options": ["87", "116", "115", "118"],
+    "answer": 1
+  },
+  {
+    "question": "Find the odd term: 2, 6, 12, 20, 30, 42, 56, 72.",
+    "options": ["20", "42", "30", "72"],
+    "answer": 3
+  },
+  {
+    "question": "Analogy: Painter : Painting :: Architect : ?",
+    "options": ["Embroidery", "Statue", "Building", "Stone"],
+    "answer": 2
+  },
+  {
+    "question": "If SISTER is coded as 232086, then UNCLE is coded as:",
+    "options": ["25335", "34325", "24235", "23345"],
+    "answer": 1
+  },
+  {
+    "question": "Arrange the following in a meaningful sequence: 1. Leaves 2. Flowers 3. Fruits 4. Seed 5. Plant",
+    "options": ["5,1,2,3,4", "1,2,3,4,5", "1,5,2,4,3", "5,1,2,4,3"],
+    "answer": 0
+  },
+  {
+    "question": "Nonverbal: A triangle faces right, then is flipped vertically and turned upside down. How does it look now?",
+    "options": ["Triangle left", "Triangle down", "Triangle up", "Triangle right"],
+    "answer": 1
+  },
+  {
+    "question": "Sequence: QPO, SRQ, UTS, WVU, ___?",
+    "options": ["YXW", "YXZ", "YWX", "XVZ"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct option: 3, 9, 27, ?, 243",
+    "options": ["81", "90", "99", "72"],
+    "answer": 0
+  },
+  {
+    "question": "Which word does NOT belong: Square, Rectangle, Parallelogram, Circle",
+    "options": ["Square", "Triangle", "Circle", "Rectangle"],
+    "answer": 2
+  },
+  {
+    "question": "If PARK is coded as QBSL, how is SHIRT coded?",
+    "options": ["TIJSU", "RIHSU", "SJJSS", "TIKSU"],
+    "answer": 0
+  },
+  {
+    "question": "Sitting: Six people (A–F) are sitting in a row. D is between B and C, A is left of B, E is right of C, F is at one end. Who is at the other end?",
+    "options": ["A", "C", "E", "D"],
+    "answer": 0
+  },
+  {
+    "question": "If CAT = 3120, then DOG =?",
+    "options": ["4157", "4159", "4158", "4137"],
+    "answer": 2
+  },
+  {
+    "question": "In a family, there are six members: A and B are married couple; X and Y are brothers; X is the son of A; Y is the brother of Z; Z is the daughter of B. Who are the parents of Y?",
+    "options": ["A and Z", "A and B", "X and B", "A and Y"],
+    "answer": 1
+  },
+  {
+    "question": "Find the relationship: If Ram is the brother of Sunita, Sunita is the daughter of Shyam, how is Ram related to Shyam?",
+    "options": ["Son", "Brother", "Uncle", "Father"],
+    "answer": 0
+  },
+  {
+    "question": "Sitting: If A is sitting to the right of B but to the left of C, who is in the middle?",
+    "options": ["B", "A", "C", "Cannot be determined"],
+    "answer": 1
+  },
+  {
+    "question": "If the ratio of ages of A and B is 7:5 and after 6 years it becomes 13:11, what is A's present age?",
+    "options": ["54", "52", "56", "58"],
+    "answer": 1
+  },
+  {
+    "question": "If 4x = 3y and y = 12, what is the ratio of x to y?",
+    "options": ["4:9", "1:3", "3:4", "2:3"],
+    "answer": 2
+  },
+  {
+    "question": "If 32 litres of mixture has water and alcohol in the ratio 3:5, how much more water should be added to make it 1:1?",
+    "options": ["8L", "6L", "4L", "7L"],
+    "answer": 0
+  },
+  {
+    "question": "If the proportion 3:9::12:x, then x equals:",
+    "options": ["18", "27", "36", "6"],
+    "answer": 2
+  },
+  {
+    "question": "Verbal: If it takes 5 machines 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?",
+    "options": ["5", "100", "10", "50"],
+    "answer": 0
+  },
+  {
+    "question": "Analogy: Glucose : Carbohydrate :: Albumin : ?",
+    "options": ["Fat", "Protein", "Mineral", "Salt"],
+    "answer": 1
+  },
+  {
+    "question": "In a coded message, FRUITS is written as GSVHUT. How is GARDEN coded?",
+    "options": ["HBSDFO", "HBSEFO", "HBSFEO", "HBSDOF"],
+    "answer": 0
+  },
+  {
+    "question": "Counting in a code: If ‘EAR’ = 9, ‘NOSE’ = 14, ‘EYES’ = 16, then ‘LIPS’ = ?",
+    "options": ["14", "15", "13", "16"],
+    "answer": 2
+  },
+  {
+    "question": "Analogy: Moon : Satellite :: Earth : ?",
+    "options": ["Planet", "Asteroid", "Star", "Comet"],
+    "answer": 0
+  },
+  {
+    "question": "Blood relation: If A is the son of B, and B is the sister of C, what is A's relationship to C?",
+    "options": ["Nephew/Niece", "Cousin", "Father", "Mother"],
+    "answer": 0
+  },
+  {
+    "question": "In the code, if ‘PLANT’ is written as ‘OZBMS’, how is ‘GROWN’ written?",
+    "options": ["FQNBM", "FQVML", "FQMBM", "FQNBM"],
+    "answer": 0
+  },
+  {
+    "question": "A, B, C, D, E are sitting in line. D is left of B, right of E. C is right of B but not at the end. Who is in the center?",
+    "options": ["E", "B", "C", "D"],
+    "answer": 3
+  },
+  {
+    "question": "If ages of A and B are in the ratio 5:7 and after 6 years, ratio becomes 7:9. What is B's present age?",
+    "options": ["42", "36", "30", "28"],
+    "answer": 0
+  },
+  {
+    "question": "Analogy: Tree : Forest :: Star : ?",
+    "options": ["Galaxy", "Planet", "Cluster", "Sky"],
+    "answer": 0
+  },
+  {
+    "question": "Verbal analogy: Eye : See :: Ear : ?",
+    "options": ["Smell", "Hear", "Taste", "Feel"],
+    "answer": 1
+  },
+  {
+    "question": "If FRIEND is coded as HTKGPF, what is ENEMY coded as?",
+    "options": ["GPGOA", "GPGOA", "GPGMA", "GPGQA"],
+    "answer": 3
+  },
+  {
+    "question": "Nonverbal: Which shape should replace the question mark to continue the pattern in a visual sequence: square, circle, triangle, square, circle, ___?",
+    "options": ["Triangle", "Square", "Rectangle", "Circle"],
+    "answer": 0
+  },
+  {
+    "question": "Blood: If A is mother of B, C is father of A and D is son of C, how is D related to B?",
+    "options": ["Grandfather", "Uncle", "Father", "None"],
+    "answer": 0
+  },
+  {
+    "question": "Coding Decoding: If TABLE is written as GZYOV, how is CHAIR written?",
+    "options": ["XSEVD", "XSVDV", "XSVED", "XSVDE"],
+    "answer": 0
+  },
+  {
+    "question": "If (x + y) : (x – y) = 5:3, find the ratio x:y.",
+    "options": ["4:1", "2:1", "3:1", "5:3"],
+    "answer": 1
+  },
+  {
+    "question": "If the average age of a family of 6 is 20. When a member aged 36 leaves, the new average is?",
+    "options": ["18", "20", "17", "22"],
+    "answer": 0
+  },
+  {
+    "question": "GC—General Knowledge: Which country presides over the G20 in 2025?",
+    "options": ["India", "Brazil", "South Africa", "Japan"],
+    "answer": 1
+  },
+  {
+    "question": "India is a founding member of which of these organizations?",
+    "options": ["UN", "BRICS", "G7", "ASEAN"],
+    "answer": 1
+  },
+  {
+    "question": "How many total medals did India win at the 2024 BRICS Games in Kazan?",
+    "options": ["48", "29", "62", "50"],
+    "answer": 1
+  },
+  {
+    "question": "Which country will host the next Summer Olympics after Paris 2024?",
+    "options": ["USA", "UK", "China", "Japan"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following is NOT a member of both BRICS and G20 as of 2025?",
+    "options": ["Russia", "Brazil", "Saudi Arabia", "Indonesia"],
+    "answer": 3
+  }
+]
+
+  },
+  "B":{ 
+    "physics":[
+  {
+    "question": "Three identical capacitors, each of 6 μF, are connected so that their effective capacitance is 9 μF. How are they connected?",
+    "options": ["All in parallel", "All in series", "Two in parallel, then series with third", "Two in series, then parallel with third"],
+    "answer": 2
+  },
+  {
+    "question": "A point charge q is placed at the center of a cube. What is the flux through one face?",
+    "options": ["q/ε₀", "q/(2ε₀)", "q/(6ε₀)", "zero"],
+    "answer": 2
+  },
+  {
+    "question": "A potentiometer wire is 5 m long. What is the potential gradient if a cell of emf 10 V is connected across it?",
+    "options": ["2 V/m", "0.5 V/m", "1 V/m", "5 V/m"],
+    "answer": 0
+  },
+  {
+    "question": "In a Wheatstone bridge, if P=10Ω, Q=20Ω, R=25Ω, what must S be for balance?",
+    "options": ["20Ω", "40Ω", "12.5Ω", "50Ω"],
+    "answer": 1
+  },
+  {
+    "question": "Current flows east to west in a conductor. What is the direction of the magnetic field above it?",
+    "options": ["North", "East", "West", "Out of the page"],
+    "answer": 0
+  },
+  {
+    "question": "A circular coil of radius r carries current I. The magnetic field at the center is doubled if:",
+    "options": ["r is doubled", "I is halved", "I is doubled", "r is halved"],
+    "answer": 3
+  },
+  {
+    "question": "A solenoid of length 1 m has 2000 turns and carries 5 A. Its internal magnetic field is:",
+    "options": ["4π×10⁻³ T", "2π×10⁻³ T", "2π×10⁻² T", "4π×10⁻⁴ T"],
+    "answer": 0
+  },
+  {
+    "question": "When an inductor and a capacitor (each 1 H and 1 F, respectively) are connected in series, what is the angular frequency of their resonance?",
+    "options": ["1 rad/s", "0.5 rad/s", "2 rad/s", "π rad/s"],
+    "answer": 0
+  },
+  {
+    "question": "Two wires of same length, area, but different materials are connected in series across a voltage. Which statement is true?",
+    "options": [
+      "Both carry same current but may have different voltage drops",
+      "Both have the same resistance",
+      "Both develop the same electric field",
+      "Current is different in both"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "A rod of length l rotates with angular velocity ω about a fixed axis perpendicular to one end. What is the linear velocity at the free end?",
+    "options": ["ωl/2", "ωl", "2ωl", "ω/l"],
+    "answer": 1
+  },
+  {
+    "question": "If a block slides down an inclined plane making an angle θ with horizontal with coefficient of friction μ, its acceleration is:",
+    "options": ["g(sinθ-μcosθ)", "g(cosθ-μsinθ)", "g(sinθ+μcosθ)", "gμsinθ"],
+    "answer": 0
+  },
+  {
+    "question": "When a body falls freely from height h under gravity, potential energy lost equals:",
+    "options": [
+      "Kinetic energy gained",
+      "Half kinetic energy gained",
+      "Kinetic energy lost",
+      "Potential energy gained"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "A disc and a ring of equal mass and radius roll down the same incline without slipping. Who reaches first?",
+    "options": ["Disc", "Ring", "Both together", "Need more data"],
+    "answer": 0
+  },
+  {
+    "question": "A car follows a circular track of radius 100 m at speed 10 m/s. What is the required friction coefficient?",
+    "options": ["1.0", "0.1", "0.05", "0.01"],
+    "answer": 2
+  },
+  {
+    "question": "Two masses m and 2m are attached to a string passing over a pulley. Acceleration of m is:",
+    "options": [
+      "g/3 upward",
+      "g/2 downward",
+      "g/3 downward",
+      "g/2 upward"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "A particle moves in a circle at constant speed. Its acceleration:",
+    "options": ["Is always tangent to the circle", "Is zero", "Is constant", "Points towards the center"],
+    "answer": 3
+  },
+  {
+    "question": "In an adiabatic expansion of an ideal gas, which of the following is true?",
+    "options": [
+      "Heat supplied equals work done",
+      "No heat is exchanged",
+      "Temperature remains constant",
+      "Pressure remains constant"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Work done in an isobaric process at pressure P if volume changes from V₁ to V₂:",
+    "options": ["P(V₂ - V₁)", "V₂ - V₁", "PV₁ - PV₂", "P/V₁"],
+    "answer": 0
+  },
+  {
+    "question": "A gas undergoes isothermal compression. The internal energy:",
+    "options": [
+      "Increases",
+      "Decreases",
+      "Does not change",
+      "Depends on initial temp"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "A spring of k=100 N/m compressed by 0.2 m, energy stored is:",
+    "options": ["4 J", "2 J", "0.5 J", "1 J"],
+    "answer": 0
+  },
+  {
+    "question": "A pendulum clock loses 12 seconds a day at 30°C. If temperature falls to 20°C, how many seconds does it lose in 5 days? (α = 1.2 × 10⁻⁵/°C)",
+    "options": ["60", "48", "12", "0"],
+    "answer": 0
+  },
+  {
+    "question": "The potential difference across a wire of length l and resistance R carrying current I is:",
+    "options": ["IR", "I/l", "l/R", "IRl"],
+    "answer": 0
+  },
+  {
+    "question": "The phase difference between displacement and acceleration in SHM is:",
+    "options": ["π/2", "π", "0", "2π"],
+    "answer": 1
+  },
+  {
+    "question": "For a transverse wave on a string, which equation holds?",
+    "options": [
+      "v = √(T/μ)",
+      "v = μ/T",
+      "v = T/μ",
+      "μ = T/v"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "An unpolarized light of intensity I passes through two polarizers at 30° relative angle. Transmitted intensity is:",
+    "options": ["I/2", "I/4", "I/8", "3I/8"],
+    "answer": 3
+  },
+  {
+    "question": "A convex lens has focal length 15 cm. For an object at 45 cm, the image is:",
+    "options": ["Real, diminished", "Virtual, enlarged", "Real, same size", "Real, enlarged"],
+    "answer": 3
+  },
+  {
+    "question": "If the wavelength in Young's experiment is doubled, fringe width:",
+    "options": ["Is halved", "Becomes double", "Remains same", "Becomes four times"],
+    "answer": 1
+  },
+  {
+    "question": "Two coherent sources have path difference of 3λ/4; resultant intensity is:",
+    "options": [
+      "Maximum",
+      "Minimum",
+      "Zero",
+      "Between maximum and minimum"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "In a p-n-p transistor operated in active mode:",
+    "options": [
+      "Emitter-base is reverse, collector-base is forward",
+      "Both junctions forward biased",
+      "EB junction: forward, CB junction: reverse",
+      "Both reverse biased"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "A diode is used as a rectifier because:",
+    "options": [
+      "It can amplify signals",
+      "It allows current both ways",
+      "It conducts current in only one direction",
+      "It acts as switch"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "The forbidden gap of silicon is about:",
+    "options": ["1.2 eV", "0.7 eV", "3.6 eV", "0.2 eV"],
+    "answer": 0
+  },
+  {
+    "question": "De Broglie wavelength for a particle of momentum p is:",
+    "options": [
+      "h/p",
+      "p/h",
+      "h²/p",
+      "hp"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If kinetic energy of electron is quadrupled, its de Broglie wavelength becomes:",
+    "options": [
+      "Doubled",
+      "Halved",
+      "One-fourth",
+      "Quartered"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "For which transition of hydrogen atom is photon energy the maximum?",
+    "options": [
+      "n=2→n=1",
+      "n=3→n=2",
+      "n=4→n=3",
+      "n=5→n=4"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Binding energy per nucleon is highest for:",
+    "options": [
+      "Hydrogen",
+      "Iron",
+      "Uranium",
+      "Helium"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "When a radioactive nucleus emits a beta particle:",
+    "options": [
+      "A neutron turns to a proton",
+      "A proton turns to a neutron",
+      "Mass number increases by 2",
+      "Atomic number stays the same"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "A certain decay has a half-life of 10 seconds. How much remains after 30 seconds?",
+    "options": [
+      "1/2",
+      "1/3",
+      "1/4",
+      "1/8"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "X-rays are produced when high-speed electrons:",
+    "options": [
+      "Strike the anode",
+      "Move in vacuum",
+      "Leave cathode",
+      "Pass through magnetic field"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In photoelectric effect, stopping potential is proportional to:",
+    "options": [
+      "Frequency of incident light",
+      "Intensity of light",
+      "Wavelength of light",
+      "Work function"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following best illustrates the dual nature of electron?",
+    "options": [
+      "Diffraction by crystals",
+      "Photoelectric effect",
+      "Refraction",
+      "Tunneling effect"
+    ],
+    "answer": 0
+  }
+],
+    
+    "chemistry":[
+  {
+    "question": "What is the major product when 2-bromopropane is treated with alcoholic KOH under heat?",
+    "options": ["Propene", "Isopropanol", "Acetone", "1-Propanol"],
+    "answer": 0
+  },
+  {
+    "question": "How would you prepare benzaldehyde from toluene?",
+    "options": [
+      "Chromyl chloride oxidation (Etard reaction)",
+      "Oxidation with KMnO4",
+      "Friedel–Crafts acylation",
+      "Nitration followed by reduction"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the major product of electrophilic addition of HBr to propene in presence of peroxide?",
+    "options": [
+      "2-Bromopropane",
+      "1-Bromopropane",
+      "Propyl bromide",
+      "No reaction"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which reagent can oxidize primary alcohols to carboxylic acids but stops secondary alcohols at ketones?",
+    "options": [
+      "Potassium permanganate (KMnO4)",
+      "PCC (Pyridinium chlorochromate)",
+      "Chromic acid (H2CrO4)",
+      "Ozone (O3)"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In the reaction of phenol with bromine water, which product predominates?",
+    "options": [
+      "2,4,6-tribromophenol",
+      "Monobromophenol",
+      "Bromobenzene",
+      "Phenyl bromide"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the product when benzene reacts with acetyl chloride in presence of AlCl3?",
+    "options": [
+      "Acetophenone",
+      "Phenyl acetate",
+      "Benzophenone",
+      "Benzyl chloride"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the IUPAC name of the compound with formula CH3–CH2–CH(CH3)–CH2–CH3?",
+    "options": [
+      "2-Methylbutane",
+      "3-Methylpentane",
+      "2-Methylpentane",
+      "3-Ethylpentane"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which preparation method produces carboxylic acids by oxidation of alkylbenzenes?",
+    "options": [
+      "KMnO4 oxidation",
+      "PCC oxidation",
+      "Hydrogenation",
+      "Nucleophilic substitution"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "How do you prepare an amide directly from a carboxylic acid?",
+    "options": [
+      "Reaction with ammonia and heat",
+      "Reaction with alcohol",
+      "Hydrolysis with acid",
+      "Reaction with halogen"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which compound gives a positive Tollens test?",
+    "options": [
+      "Benzaldehyde",
+      "Acetone",
+      "Ethyl alcohol",
+      "Formic acid"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following compounds is aromatic?",
+    "options": [
+      "Cyclobutadiene",
+      "Benzene",
+      "Cyclooctatetraene",
+      "1,3,5-Cycloheptatriene"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the product when acetylene reacts with cold dilute KMnO4?",
+    "options": [
+      "Acetic acid",
+      "Ethyne glycol",
+      "Ethanol",
+      "Acetaldehyde"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the product of the reaction between benzene and chloromethane in the presence of AlCl3?",
+    "options": [
+      "Toluene",
+      "Chlorobenzene",
+      "Benzyl chloride",
+      "Anisole"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which reagent is used to convert carboxylic acids to acid chlorides?",
+    "options": [
+      "SOCl2",
+      "PCl3",
+      "PBr3",
+      "HCl"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the effect of NaBH4 on ketones?",
+    "options": [
+      "Reduction to a secondary alcohol",
+      "Oxidation to carboxylic acids",
+      "No reaction",
+      "Conversion to aldehydes"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the coordination number of Fe in the complex [Fe(CN)6]4–?",
+    "options": [
+      "6",
+      "4",
+      "2",
+      "8"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which oxide of nitrogen is neutral in nature?",
+    "options": [
+      "Nitrous oxide (N2O)",
+      "Nitrogen dioxide (NO2)",
+      "Dinitrogen pentoxide (N2O5)",
+      "Nitric oxide (NO)"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Identify the reaction type: Alkene + cold KMnO4 → vicinal diol",
+    "options": [
+      "Oxidation",
+      "Reduction",
+      "Hydrogenation",
+      "Addition"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which compound will react with Lucas reagent fastest?",
+    "options": [
+      "Tert-butanol",
+      "1-Butanol",
+      "Ethanol",
+      "Methanol"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the product of the following reaction: Benzene diazonium salt + CuCl?",
+    "options": [
+      "Chlorobenzene",
+      "Phenol",
+      "Benzene",
+      "Nitrobenzene"
+    ],
+    "answer": 0
+  }
+],
+    
+    "maths":[
+  {
+    "question": "The symmetric difference of sets A = {1,2,3} and B = {2,3,4,5} is:",
+    "options": ["{1,4,5}", "{2,3}", "{1,2,3,4,5}", "{1,2,3}"],
+    "answer": 0
+  },
+  {
+    "question": "How many ways can you arrange the letters of the word 'STATISTICS'?",
+    "options": ["50400", "453600", "100800", "151200"],
+    "answer": 1
+  },
+  {
+    "question": "From a deck of 52 cards, probability of drawing a king or a heart is:",
+    "options": ["1/4", "4/13", "2/13", "5/13"],
+    "answer": 3
+  },
+  {
+    "question": "The value of sin 75° is:",
+    "options": ["√3/2", "(√6+√2)/4", "(√3-1)/2", "(√6-√2)/4"],
+    "answer": 1
+  },
+  {
+    "question": "Height from the ground to an airplane flying at 1200 m, observed at 30°, is (take √3 ≈ 1.732):",
+    "options": ["1200√3 m", "600 m", "400√3 m", "1200 m"],
+    "answer": 0
+  },
+  {
+    "question": "Find the derivative of f(x) = x^2 sin x:",
+    "options": ["x^2 cos x", "2x cos x", "2x sin x + x^2 cos x", "sin x + x cos x"],
+    "answer": 2
+  },
+  {
+    "question": "Function f(x) = |x – 3| has a minimum value at x =",
+    "options": ["0", "3", "-3", "6"],
+    "answer": 1
+  },
+  {
+    "question": "The tangent to the curve y = x^2 at x=1 is:",
+    "options": ["y = 2x – 1", "y = x + 2", "y = x + 1", "y = 2x – 1"],
+    "answer": 0
+  },
+  {
+    "question": "If f(x) = ln(x^2+1), what is f'(x)?",
+    "options": ["1/(x^2+1)", "2x/(x^2+1)", "ln(2x)", "1/(2x^2)"],
+    "answer": 1
+  },
+  {
+    "question": "The value of ∫₀¹ x e^x dx is:",
+    "options": ["e - 2", "e", "1", "e - 1"],
+    "answer": 3
+  },
+  {
+    "question": "Let f(x) = x^2 – 4x + 7. The value of f at its minimum is:",
+    "options": ["3", "5", "7", "4"],
+    "answer": 1
+  },
+  {
+    "question": "The circle x^2 + y^2 – 6x + 8y + 9 = 0 has its center at:",
+    "options": ["(3,-4)", "(–3,4)", "(6,–8)", "(-3,–4)"],
+    "answer": 0
+  },
+  {
+    "question": "If the distance between points (1,2,3) and (4,6,8) is d, then:",
+    "options": ["√27", "√50", "7", "√34"],
+    "answer": 1
+  },
+  {
+    "question": "A geometric series has first term 2 and common ratio 3/2. Find the sum to infinity:",
+    "options": ["8", "12", "∞", "36"],
+    "answer": 2
+  },
+  {
+    "question": "Sum of the first n natural numbers is:",
+    "options": ["n(n–1)/2", "n^2", "n(n+1)/2", "2n+1"],
+    "answer": 2
+  },
+  {
+    "question": "Let z = 1 + i. Find |z|^4:",
+    "options": ["2", "4", "8", "16"],
+    "answer": 1
+  },
+  {
+    "question": "Solution of x^2 + 4 = 0 in complex numbers is:",
+    "options": ["±2", "±2i", "±4i", "No solution"],
+    "answer": 1
+  },
+  {
+    "question": "The limit of (sin x)/x as x→0 is:",
+    "options": ["0", "1", "∞", "undefined"],
+    "answer": 1
+  },
+  {
+    "question": "If f(x) = 1/x, x ≠ 0, then limₓ→0⁺ f(x) is:",
+    "options": ["0", "∞", "–∞", "1"],
+    "answer": 1
+  },
+  {
+    "question": "If n lines are drawn in a plane, no two parallel, maximum number of regions =",
+    "options": ["n", "n^2", "n(n+1)/2+1", "n(n–1)/2"],
+    "answer": 2
+  },
+  {
+    "question": "How many four-letter words can be formed from 'ALGEBRA'?",
+    "options": ["840", "210", "1260", "1440"],
+    "answer": 0
+  },
+  {
+    "question": "If P(A) = 0.6, P(B) = 0.2, A and B mutually exclusive, then P(A∪B) is:",
+    "options": ["0.8", "0.4", "1.2", "0.12"],
+    "answer": 0
+  },
+  {
+    "question": "sin(2x) in terms of tan x is:",
+    "options": ["2tanx/(1+tan^2x)", "tan2x", "(1–tan^2x)/(1+tan^2x)", "2tanx"],
+    "answer": 0
+  },
+  {
+    "question": "If tan θ = 3/4 and θ is acute, find sin θ:",
+    "options": ["4/5", "3/5", "5/3", "3/4"],
+    "answer": 1
+  },
+  {
+    "question": "If a tower casts a shadow √3 times its height, elevation angle is:",
+    "options": ["30°", "45°", "60°", "90°"],
+    "answer": 0
+  },
+  {
+    "question": "Area under the curve y = x^2 between x = 0 and x = 2 is:",
+    "options": ["4/3", "8/3", "2", "16/3"],
+    "answer": 1
+  },
+  {
+    "question": "Maximum value of f(x) = sin x + cos x is:",
+    "options": ["√2", "1", "2", "0"],
+    "answer": 0
+  },
+  {
+    "question": "If f(x) = e^x, then d²f/dx² at x=0 is:",
+    "options": ["1", "0", "2", "e"],
+    "answer": 0
+  },
+  {
+    "question": "If AB = 6, BC = 8 and angle B=90°, then AC is:",
+    "options": ["10", "14", "12", "8"],
+    "answer": 0
+  },
+  {
+    "question": "Equation of the plane passing through (1,1,1) and parallel to x+y+z=0 is:",
+    "options": ["x+y+z=1", "x+y+z=0", "x+y+z=3", "x–y+z=1"],
+    "answer": 0
+  },
+  {
+    "question": "The nth term of the AP: 3, 6, 9, 12… is:",
+    "options": ["3n", "3n–3", "n+3", "n–3"],
+    "answer": 0
+  },
+  {
+    "question": "If 1+i is a root of a polynomial with real coefficients, the other root is:",
+    "options": ["1–i", "–1–i", "i+1", "–1+i"],
+    "answer": 0
+  },
+  {
+    "question": "Distance from point (1,2,2) to plane x+y+z=4 is:",
+    "options": ["5/√3", "3/√3", "2/√3", "1/√3"],
+    "answer": 1
+  },
+  {
+    "question": "If limₓ→a (x^2–a^2)/(x–a) = 6, what is a?",
+    "options": ["1", "2", "3", "6"],
+    "answer": 2
+  },
+  {
+    "question": "If f(x) = |x|, then at x=0 the function is:",
+    "options": ["Differentiable", "Continuous but not differentiable", "Neither", "Discontinuous"],
+    "answer": 1
+  },
+  {
+    "question": "Eccentricity of the parabola y^2 = 4x is:",
+    "options": ["0", "1", "2", "∞"],
+    "answer": 1
+  },
+  {
+    "question": "A die is thrown twice. The probability of getting at least one six is:",
+    "options": ["11/36", "5/36", "1/6", "25/36"],
+    "answer": 0
+  },
+  {
+    "question": "If S = Σ_{k=1}^{10} (2k+1), find value of S:",
+    "options": ["110", "120", "100", "121"],
+    "answer": 1
+  },
+  {
+    "question": "The number of non-empty subsets of a set with 4 elements is:",
+    "options": ["15", "16", "8", "14"],
+    "answer": 0
+  },
+  {
+    "question": "The modulus of the complex number z = –1 + √3 i is:",
+    "options": ["2", "√2", "1", "4"],
+    "answer": 0
+  }
+]
+
+  }
+}

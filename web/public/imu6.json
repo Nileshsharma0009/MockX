@@ -1,0 +1,1237 @@
+{
+ "A": { 
+  "english":[
+  {
+    "question": "Find the error in the sentence: 'Each of the participants have submitted their project on time.'",
+    "options": [
+      "Each",
+      "participants",
+      "have",
+      "their"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct meaning of the idiom: 'To spill the beans.'",
+    "options": [
+      "To tell a secret unintentionally",
+      "To ruin a plan",
+      "To start cooking",
+      "To waste something"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Select the most appropriate synonym of 'Ephemeral':",
+    "options": [
+      "Permanent",
+      "Transient",
+      "Lasting",
+      "Enduring"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct antonym of 'Sycophant':",
+    "options": [
+      "Flatterer",
+      "Admirer",
+      "Critic",
+      "Fan"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Change into passive voice: 'The committee will announce the results tomorrow.'",
+    "options": [
+      "The results will be announced by the committee tomorrow.",
+      "The committee will be announced the results tomorrow.",
+      "The results will announce by the committee tomorrow.",
+      "The results announced by the committee tomorrow."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct question tag: 'Hardly had she reached home, ____?'",
+    "options": [
+      "had she",
+      "did she",
+      "has she",
+      "does she"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Change into indirect speech: 'He said, \"I have been waiting for two hours.\"'",
+    "options": [
+      "He said that he has been waiting for two hours.",
+      "He said that he had been waiting for two hours.",
+      "He said he was waiting for two hours.",
+      "He said that he waited for two hours."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Fill in the blank with the correct preposition: 'They were accused ____ stealing the documents.'",
+    "options": [
+      "for",
+      "of",
+      "with",
+      "about"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correctly spelled word:",
+    "options": [
+      "Indispensible",
+      "Indispensable",
+      "Indispensabel",
+      "Indispendable"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Identify the adjective in the sentence: 'She gave a comprehensive explanation during the meeting.'",
+    "options": [
+      "gave",
+      "comprehensive",
+      "during",
+      "meeting"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Find the error: 'Neither of the solutions seem to work effectively.'",
+    "options": [
+      "Neither",
+      "solutions",
+      "seem",
+      "effectively"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Choose the meaning of the idiom: 'To hit the nail on the head.'",
+    "options": [
+      "To cause damage",
+      "To say exactly the right thing",
+      "To hammer something",
+      "To get injured"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Select the synonym of 'Magnanimous':",
+    "options": [
+      "Vindictive",
+      "Generous",
+      "Selfish",
+      "Petty"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Pick the antonym of 'Obsolete':",
+    "options": [
+      "Outdated",
+      "Current",
+      "Old-fashioned",
+      "Ancient"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Convert into active voice: 'The results were announced by the principal yesterday.'",
+    "options": [
+      "The principal announced the results yesterday.",
+      "The principal was announcing the results yesterday.",
+      "The results announced the principal yesterday.",
+      "The results were announcing by the principal yesterday."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct question tag: 'Rarely do they arrive late, ____?'",
+    "options": [
+      "do they",
+      "don't they",
+      "did they",
+      "does they"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Change into indirect speech: 'The teacher said, \"You must submit the assignment by Monday.\"'",
+    "options": [
+      "The teacher said that you must submit the assignment by Monday.",
+      "The teacher said that they must submit the assignment by Monday.",
+      "The teacher said that we had to submit the assignment by Monday.",
+      "The teacher said that we must submit the assignment by Monday."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Fill in the blank with the correct adjective: 'The scientist made a ____ discovery that changed history.'",
+    "options": [
+      "remarkable",
+      "remarkably",
+      "remark",
+      "remarks"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correctly arranged sentence:",
+    "options": [
+      "Under the tree sat a cat black.",
+      "A black cat sat under the tree.",
+      "Sat a black cat the under tree.",
+      "Under the black cat a tree sat."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Find the error: 'Either the manager or the employees is responsible for the mistake.'",
+    "options": [
+      "Either",
+      "manager",
+      "is",
+      "responsible"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct idiom meaning: 'To burn the midnight oil.'",
+    "options": [
+      "To waste time",
+      "To work late into the night",
+      "To set fire to oil",
+      "To rest early"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Select the synonym of 'Meticulous':",
+    "options": [
+      "Careless",
+      "Thorough",
+      "Negligent",
+      "Sloppy"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Pick the antonym of 'Benevolent':",
+    "options": [
+      "Kind",
+      "Cruel",
+      "Generous",
+      "Charitable"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Change into passive voice: 'The gardener waters the plants every morning.'",
+    "options": [
+      "The plants are watered by the gardener every morning.",
+      "The gardener is watered by the plants every morning.",
+      "The plants watered by the gardener every morning.",
+      "The gardener waters by the plants every morning."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct question tag: 'Nobody told me the truth, ____?'",
+    "options": [
+      "did they",
+      "don't they",
+      "didn't they",
+      "does they"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change to indirect speech: 'She said, \"I am learning French.\"'",
+    "options": [
+      "She said that she was learning French.",
+      "She said that I am learning French.",
+      "She said that she learned French.",
+      "She said that she is learning French."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Fill in the blank: 'He is adept ____ solving complex problems.'",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "for"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correctly spelled word:",
+    "options": [
+      "Acquiesce",
+      "Aqcuiesce",
+      "Acquiese",
+      "Aquiesce"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Identify the adjective in the sentence: 'The ancient temple was a magnificent sight.'",
+    "options": [
+      "temple",
+      "ancient",
+      "was",
+      "sight"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Find the error: 'The team have decided to change their strategy.'",
+    "options": [
+      "team",
+      "have",
+      "decided",
+      "strategy"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the meaning of the idiom: 'To cry over spilled milk.'",
+    "options": [
+      "To complain about something irreversible",
+      "To cry unnecessarily",
+      "To spill something and cry",
+      "To regret after success"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Select the synonym of 'Incessant':",
+    "options": [
+      "Occasional",
+      "Continuous",
+      "Intermittent",
+      "Periodic"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Pick the antonym of 'Vigorous':",
+    "options": [
+      "Energetic",
+      "Lethargic",
+      "Strong",
+      "Robust"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Change into passive voice: 'The engineers are repairing the bridge now.'",
+    "options": [
+      "The bridge is being repaired by the engineers now.",
+      "The bridge was repaired by the engineers now.",
+      "The engineers repaired the bridge now.",
+      "The bridge has been repaired by the engineers now."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct question tag: 'Let’s start the meeting, ____?'",
+    "options": [
+      "shall we",
+      "won’t we",
+      "don’t we",
+      "doesn’t we"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change to indirect speech: 'He asked, \"Why are you leaving early?\"'",
+    "options": [
+      "He asked why are you leaving early.",
+      "He asked why I was leaving early.",
+      "He asked why am I leaving early.",
+      "He asked why was I leaving early."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Fill in the blank: 'She is very proficient ____ playing the piano.'",
+    "options": [
+      "on",
+      "at",
+      "in",
+      "with"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correctly spelled word:",
+    "options": [
+      "Resilient",
+      "Resilant",
+      "Resilint",
+      "Resillient"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Identify the adjective in the sentence: 'The vibrant colors of the painting attracted everyone.'",
+    "options": [
+      "vibrant",
+      "colors",
+      "painting",
+      "everyone"
+    ],
+    "answer": 0
+  }
+],
+  "gk":[
+  {
+    "question": "Which river is known as the 'Sorrow of Bihar' due to its frequent floods?",
+    "options": ["Kosi", "Ganga", "Brahmaputra", "Yamuna"],
+    "answer": 0
+  },
+  {
+    "question": "Which port is the deepest natural harbor in India?",
+    "options": ["Mumbai Port", "Kochi Port", "Chennai Port", "Visakhapatnam Port"],
+    "answer": 1
+  },
+  {
+    "question": "The Sundarbans delta is formed by the confluence of which rivers?",
+    "options": ["Ganga, Brahmaputra, Meghna", "Godavari, Krishna, Mahanadi", "Narmada, Tapi, Mahi", "Indus, Jhelum, Chenab"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the largest river island in India located in the Brahmaputra river?",
+    "options": ["Majuli", "Bhola", "Umananda", "Kachua"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian port is known as the 'Gateway of South India'?",
+    "options": ["Kochi", "Chennai", "Tuticorin", "Mangalore"],
+    "answer": 1
+  },
+  {
+    "question": "Which river originates from the Amarkantak plateau?",
+    "options": ["Narmada", "Tapi", "Godavari", "Mahanadi"],
+    "answer": 0
+  },
+  {
+    "question": "The Indian Ocean is bounded on the north by which mountain range?",
+    "options": ["Himalayas", "Aravalli Hills", "Vindhya Range", "Nilgiri Hills"],
+    "answer": 0
+  },
+  {
+    "question": "Which port is the second largest container port in India after Jawaharlal Nehru Port?",
+    "options": ["Mundra Port", "Chennai Port", "Visakhapatnam Port", "Kandla Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following rivers flows eastwards and drains into the Bay of Bengal?",
+    "options": ["Narmada", "Tapi", "Godavari", "Mahi"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian port is located on the eastern coast near the delta of the Godavari river?",
+    "options": ["Kakinada Port", "Paradip Port", "Tuticorin Port", "Kandla Port"],
+    "answer": 0
+  },
+  {
+    "question": "The Lakshadweep islands are located in which ocean?",
+    "options": ["Bay of Bengal", "Indian Ocean", "Arabian Sea", "Pacific Ocean"],
+    "answer": 2
+  },
+  {
+    "question": "Which river is the longest west-flowing river in India?",
+    "options": ["Tapi", "Narmada", "Mahi", "Godavari"],
+    "answer": 1
+  },
+  {
+    "question": "Which port is famous for being a major transshipment hub in the Arabian Sea?",
+    "options": ["Nhava Sheva (JNPT)", "Mundra Port", "Kandla Port", "Cochin Port"],
+    "answer": 0
+  },
+  {
+    "question": "The Chilika Lake, Asia's largest brackish water lagoon, is located near which port?",
+    "options": ["Paradip Port", "Kakinada Port", "Visakhapatnam Port", "Kolkata Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which river forms the natural boundary between India and Bangladesh for most of its length?",
+    "options": ["Teesta", "Ganga", "Brahmaputra", "Padma"],
+    "answer": 3
+  },
+  {
+    "question": "Which is the only major Indian port located on the west coast of the Deccan Plateau?",
+    "options": ["Mangalore Port", "Chennai Port", "Kolkata Port", "Visakhapatnam Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian river is known for having the highest sediment load in the world?",
+    "options": ["Ganga", "Brahmaputra", "Yamuna", "Godavari"],
+    "answer": 1
+  },
+  {
+    "question": "The Indira Point, the southernmost tip of India, is located in which island group?",
+    "options": ["Andaman Islands", "Nicobar Islands", "Lakshadweep Islands", "Maldives"],
+    "answer": 1
+  },
+  {
+    "question": "Which Indian port is located at the mouth of the Mahanadi river?",
+    "options": ["Paradip Port", "Visakhapatnam Port", "Chennai Port", "Kandla Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which ocean current affects the west coast of India and influences the monsoon?",
+    "options": ["Agulhas Current", "Somali Current", "Benguela Current", "Kuroshio Current"],
+    "answer": 1
+  }
+],
+  "apptitude":[
+  {
+    "question": "Book is to Reading as Fork is to:",
+    "options": ["Drawing", "Writing", "Eating", "Stirring"],
+    "answer": 2
+  },
+  {
+    "question": "Find the next number in the series: 2, 6, 12, 20, 30, __",
+    "options": ["42", "48", "40", "50"],
+    "answer": 0
+  },
+  {
+    "question": "If in a certain code, TABLE is written as UZCGF, how is CHAIR written in that code?",
+    "options": ["DJBJS", "DGJKT", "DIBJS", "DJBKT"],
+    "answer": 0
+  },
+  {
+    "question": "Pointing to a man, a woman said, 'His mother is the only daughter of my mother.' How is the woman related to the man?",
+    "options": ["Aunt", "Mother", "Grandmother", "Sister"],
+    "answer": 1
+  },
+  {
+    "question": "Five people A, B, C, D, and E are sitting in a row. B is to the immediate left of A. C is to the immediate right of B. D is to the right of E. Who is in the middle?",
+    "options": ["A", "B", "C", "D"],
+    "answer": 1
+  },
+  {
+    "question": "If the ages of two brothers are in the ratio 4:5 and their combined age is 54, what is the age of the older brother?",
+    "options": ["24", "30", "28", "27"],
+    "answer": 1
+  },
+  {
+    "question": "If 5 kg of sugar costs $20, how much will 8 kg cost?",
+    "options": ["32", "28", "34", "30"],
+    "answer": 0
+  },
+  {
+    "question": "Finger is to Hand as Leaf is to:",
+    "options": ["Tree", "Branch", "Root", "Flower"],
+    "answer": 1
+  },
+  {
+    "question": "Find the odd one out: 5, 11, 17, 22, 29, 35",
+    "options": ["5", "17", "22", "29"],
+    "answer": 2
+  },
+  {
+    "question": "If 'CAT' is coded as '3120' and 'DOG' is coded as '4157', what is the code for 'BEE'?",
+    "options": ["2115", "2125", "2155", "2114"],
+    "answer": 0
+  },
+  {
+    "question": "Identify the next figure in the sequence: ◼️, ◼️◼️, ◼️◼️◼️, __",
+    "options": ["◼️◼️◼️◼️", "◼️◼️", "◼️", "◼️◼️◼️◼️◼️"],
+    "answer": 0
+  },
+  {
+    "question": "If in a code, ‘HOUSE’ is written as ‘KRVVH’, then how is ‘RIVER’ written?",
+    "options": ["TLYGT", "ULYFT", "TKYGT", "TLYFT"],
+    "answer": 3
+  },
+  {
+    "question": "A is the son of B. C is the father of B. D is the son of C. How is D related to A?",
+    "options": ["Grandfather", "Uncle", "Brother", "Father"],
+    "answer": 1
+  },
+  {
+    "question": "Six friends P, Q, R, S, T, and U are sitting around a circular table. P is opposite Q. R is to the right of S. Who is sitting to the immediate left of P?",
+    "options": ["R", "S", "T", "U"],
+    "answer": 2
+  },
+  {
+    "question": "A is twice as old as B. Five years ago, A was three times as old as B. What is B's present age?",
+    "options": ["10", "15", "20", "25"],
+    "answer": 0
+  },
+  {
+    "question": "If 12 workers can complete a task in 15 days, how many days will 20 workers take to complete the same task?",
+    "options": ["9", "8", "7", "10"],
+    "answer": 3
+  },
+  {
+    "question": "Sword is to Warrior as Pen is to:",
+    "options": ["Student", "Writer", "Artist", "Soldier"],
+    "answer": 1
+  },
+  {
+    "question": "Find the missing number: 3, 9, 27, __, 243",
+    "options": ["81", "72", "90", "99"],
+    "answer": 0
+  },
+  {
+    "question": "Rearrange the letters of 'WASTED' to form a meaningful word.",
+    "options": ["WASTED", "AWEDTS", "STEWAD", "WADES"],
+    "answer": 0
+  },
+  {
+    "question": "Which figure completes the pattern? △, □, △, □, __",
+    "options": ["△", "□", "○", "▲"],
+    "answer": 0
+  },
+  {
+    "question": "If in a code, 'FISH' is written as 'GJTI', how is 'LION' written?",
+    "options": ["MJQP", "MKOP", "MJOO", "MKQQ"],
+    "answer": 0
+  },
+  {
+    "question": "X is the father of Y. Y is the mother of Z. How is X related to Z?",
+    "options": ["Grandfather", "Uncle", "Father", "Brother"],
+    "answer": 0
+  },
+  {
+    "question": "Four friends sit in a row facing north. P sits left of Q. R sits right of S. Who sits in the middle?",
+    "options": ["P", "Q", "R", "S"],
+    "answer": 3
+  },
+  {
+    "question": "The ratio of ages of two siblings is 3:4. After 6 years, the ratio becomes 5:6. What is the present age of the younger sibling?",
+    "options": ["12", "15", "18", "21"],
+    "answer": 1
+  },
+  {
+    "question": "If 3 liters of paint can cover 120 sq meters, how much paint is needed for 300 sq meters?",
+    "options": ["7.5 liters", "8 liters", "9 liters", "10 liters"],
+    "answer": 0
+  },
+  {
+    "question": "Tree is to Forest as Star is to:",
+    "options": ["Planet", "Galaxy", "Moon", "Sun"],
+    "answer": 1
+  },
+  {
+    "question": "Find the odd one: Triangle, Circle, Square, Ellipse",
+    "options": ["Triangle", "Circle", "Square", "Ellipse"],
+    "answer": 0
+  },
+  {
+    "question": "Find the synonym of 'Abundant'",
+    "options": ["Scarce", "Plentiful", "Rare", "Insufficient"],
+    "answer": 1
+  },
+  {
+    "question": "Which figure is the mirror image of 'P'?",
+    "options": ["b", "d", "q", "p"],
+    "answer": 2
+  },
+  {
+    "question": "If 'BRIGHT' is coded as 'CSJHUI', then 'LIGHT' is coded as:",
+    "options": ["MJHIU", "MJHUI", "MJHIJ", "MJGHI"],
+    "answer": 1
+  },
+  {
+    "question": "A is the brother of B. B is the father of C. How is A related to C?",
+    "options": ["Uncle", "Father", "Brother", "Cousin"],
+    "answer": 0
+  },
+  {
+    "question": "Six people sitting around a table. A is to the right of B and left of C. D is opposite B. Who is to the immediate left of D?",
+    "options": ["A", "B", "C", "E"],
+    "answer": 2
+  },
+  {
+    "question": "The ratio of ages of father and son is 7:3. After 5 years, the ratio becomes 9:4. What is the son's present age?",
+    "options": ["15", "20", "18", "25"],
+    "answer": 0
+  },
+  {
+    "question": "A recipe requires 3 cups of flour for 8 servings. How many cups are needed for 20 servings?",
+    "options": ["7.5", "7", "7.25", "8"],
+    "answer": 0
+  },
+  {
+    "question": "Find the number of triangles in a figure formed by intersecting lines.",
+    "options": ["15", "16", "18", "20"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is the cube root of 1331?",
+    "options": ["11", "12", "10", "13"],
+    "answer": 0
+  },
+  {
+    "question": "If 5 men can do a work in 12 days, how many men are needed to complete it in 8 days?",
+    "options": ["7", "8", "6", "9"],
+    "answer": 1
+  },
+  {
+    "question": "A train running at 60 km/hr crosses a pole in 9 seconds. What is the length of the train?",
+    "options": ["150 meters", "180 meters", "120 meters", "100 meters"],
+    "answer": 0
+  },
+  {
+    "question": "In a class of 60 students, 40 like football and 30 like basketball. How many like both if 10 like neither?",
+    "options": ["10", "15", "20", "25"],
+    "answer": 2
+  },
+  {
+    "question": "How many different words can be formed using the letters of the word 'LEVEL'?",
+    "options": ["60", "30", "20", "24"],
+    "answer": 3
+  },
+  {
+    "question": "In a code language, 'MANGO' is written as 'NBOHP'. How will 'APPLE' be written?",
+    "options": ["BQQMF", "BQQNG", "BPRMF", "AQPLF"],
+    "answer": 0
+  }
+]
+
+
+  },
+  "B":{ 
+    "physics":[
+  {
+    "question": "In electrostatics, two point charges +3 μC and -3 μC are placed 1 m apart in air. The magnitude of the force between them is approximately:",
+    "options": ["27 N", "9 N", "81 N", "3 N"],
+    "answer": 1
+  },
+  {
+    "question": "A current of 3 A flows through a wire for 2 minutes. The total charge passed through the wire is:",
+    "options": ["360 C", "180 C", "90 C", "720 C"],
+    "answer": 0
+  },
+  {
+    "question": "In an isothermal expansion of an ideal gas, which of the following quantities is zero?",
+    "options": ["Work done", "Change in internal energy", "Heat absorbed", "Pressure"],
+    "answer": 1
+  },
+  {
+    "question": "A projectile is fired at an angle of 60° with velocity 20 m/s. The time of flight is:",
+    "options": ["2 s", "3.53 s", "4 s", "1.77 s"],
+    "answer": 1
+  },
+  {
+    "question": "Moment of inertia of a solid sphere of mass M and radius R about its diameter is:",
+    "options": ["(2/5)MR²", "(1/2)MR²", "(3/5)MR²", "MR²"],
+    "answer": 0
+  },
+  {
+    "question": "If a force of 10 N is applied to move an object by 5 m in 2 seconds, the power developed is:",
+    "options": ["25 W", "50 W", "20 W", "10 W"],
+    "answer": 2
+  },
+  {
+    "question": "The period of oscillation of a simple pendulum is independent of:",
+    "options": ["Length of the string", "Mass of the bob", "Acceleration due to gravity", "Amplitude (small)"],
+    "answer": 1
+  },
+  {
+    "question": "In simple harmonic motion, the acceleration is maximum at:",
+    "options": ["Mean position", "Amplitude", "Quarter of period", "Zero displacement"],
+    "answer": 1
+  },
+  {
+    "question": "The focal length of a convex lens is 20 cm. An object is placed at 30 cm from the lens. The image distance is:",
+    "options": ["60 cm", "12 cm", "60/7 cm", "15 cm"],
+    "answer": 2
+  },
+  {
+    "question": "In a semiconductor, the charge carriers responsible for conduction are:",
+    "options": ["Only electrons", "Only holes", "Both electrons and holes", "Ions"],
+    "answer": 2
+  },
+  {
+    "question": "The work function of a metal is 2 eV. The threshold frequency of the metal is:",
+    "options": ["4.84 x 10^14 Hz", "3.29 x 10^14 Hz", "5.0 x 10^14 Hz", "6.0 x 10^14 Hz"],
+    "answer": 0
+  },
+  {
+    "question": "The total energy of a particle in infinite potential well of width ‘a’ at ground state is:",
+    "options": ["(h²/8ma²)", "(h²/2ma²)", "(h²/4ma²)", "0"],
+    "answer": 0
+  },
+  {
+    "question": "Two resistors 4 Ω and 6 Ω are connected in parallel. The equivalent resistance is:",
+    "options": ["2.4 Ω", "10 Ω", "24 Ω", "5 Ω"],
+    "answer": 0
+  },
+  {
+    "question": "The current through a conductor is 5 A when the voltage across it is 10 V. The resistance of the conductor is:",
+    "options": ["2 Ω", "0.5 Ω", "15 Ω", "50 Ω"],
+    "answer": 0
+  },
+  {
+    "question": "In an adiabatic process for an ideal gas, PV^γ = constant. For diatomic gas γ is approximately:",
+    "options": ["1.4", "1.67", "1.33", "1.25"],
+    "answer": 0
+  },
+  {
+    "question": "The acceleration of a body in projectile motion at the highest point is:",
+    "options": ["Zero", "g upward", "g downward", "Depends on velocity"],
+    "answer": 2
+  },
+  {
+    "question": "The angular velocity of a particle moving in a circle of radius 2 m with speed 4 m/s is:",
+    "options": ["8 rad/s", "2 rad/s", "4 rad/s", "0.5 rad/s"],
+    "answer": 1
+  },
+  {
+    "question": "The moment of inertia of a thin rod about an axis through its center and perpendicular to its length L is:",
+    "options": ["(1/12)ML²", "(1/3)ML²", "(1/4)ML²", "(1/2)ML²"],
+    "answer": 0
+  },
+  {
+    "question": "The power consumed in a circuit with voltage 220 V and resistance 110 Ω is:",
+    "options": ["440 W", "220 W", "110 W", "880 W"],
+    "answer": 1
+  },
+  {
+    "question": "In damped harmonic motion, the amplitude decreases:",
+    "options": ["Exponentially with time", "Linearly with time", "Quadratically with time", "Remains constant"],
+    "answer": 0
+  },
+  {
+    "question": "The wavelength of light used in Young's double slit experiment is 600 nm. If the fringe width is 0.3 mm, the distance between slits is:",
+    "options": ["2 mm", "0.6 mm", "1 mm", "0.3 mm"],
+    "answer": 2
+  },
+  {
+    "question": "In a p-n junction diode, the depletion region is:",
+    "options": ["Conducting region", "Non-conducting region", "Region of high conductivity", "Neutral region"],
+    "answer": 1
+  },
+  {
+    "question": "The maximum kinetic energy of emitted photoelectrons when light of frequency 8 x 10^14 Hz falls on a metal with work function 3.2 eV is:",
+    "options": ["1.48 eV", "2 eV", "0.5 eV", "1 eV"],
+    "answer": 0
+  },
+  {
+    "question": "The first excited state energy of hydrogen atom is -3.4 eV. The ionization energy from this state is:",
+    "options": ["3.4 eV", "10.2 eV", "13.6 eV", "0 eV"],
+    "answer": 1
+  },
+  {
+    "question": "The resistivity of a wire is 1.5 x 10^-8 Ωm. The resistance of wire of length 1 m and cross-sectional area 1 mm² is:",
+    "options": ["0.015 Ω", "0.15 Ω", "1.5 Ω", "15 Ω"],
+    "answer": 1
+  },
+  {
+    "question": "In the equation of motion of SHM, x = A cos(ωt + φ), the velocity is zero when:",
+    "options": ["x = ±A", "x = 0", "x = A/2", "x = -A/2"],
+    "answer": 0
+  },
+  {
+    "question": "The angular frequency of a mass-spring system is 10 rad/s. The time period is:",
+    "options": ["0.1 s", "0.2 s", "0.628 s", "0.314 s"],
+    "answer": 3
+  },
+  {
+    "question": "The critical angle of glass-air interface is 42°. The refractive index of glass is approximately:",
+    "options": ["1.33", "1.5", "2.0", "1.0"],
+    "answer": 1
+  },
+  {
+    "question": "If a convex lens of focal length 20 cm is dipped in water (n = 1.33), its focal length becomes:",
+    "options": ["15 cm", "30 cm", "40 cm", "26.7 cm"],
+    "answer": 3
+  },
+  {
+    "question": "The drift velocity of electrons in a conductor increases if:",
+    "options": ["Cross-sectional area decreases", "Resistance decreases", "Applied voltage increases", "All of the above"],
+    "answer": 3
+  },
+  {
+    "question": "In the photoelectric effect, the stopping potential for a certain metal is 2 V when illuminated by light of frequency 6 x 10^14 Hz. If the frequency is doubled, the stopping potential becomes:",
+    "options": ["4 V", "6 V", "8 V", "10 V"],
+    "answer": 2
+  },
+  {
+    "question": "The potential energy of a mass m attached to a spring of spring constant k and stretched by x is:",
+    "options": ["kx", "(1/2)kx²", "(1/2)kx", "kx²"],
+    "answer": 1
+  },
+  {
+    "question": "Two forces of 3 N and 4 N act at a point making an angle of 90° between them. The magnitude of resultant force is:",
+    "options": ["5 N", "7 N", "1 N", "12 N"],
+    "answer": 0
+  },
+  {
+    "question": "The escape velocity from the surface of the Earth is approximately:",
+    "options": ["11.2 km/s", "9.8 m/s²", "7.9 km/s", "3.2 km/s"],
+    "answer": 0
+  },
+  {
+    "question": "The SI unit of magnetic moment is:",
+    "options": ["A·m²", "Wb", "T", "N·m"],
+    "answer": 0
+  },
+  {
+    "question": "The capacitance of a capacitor increases when:",
+    "options": ["Distance between plates increases", "Area of plates decreases", "Dielectric constant increases", "None of the above"],
+    "answer": 2
+  },
+  {
+    "question": "The magnetic field at the center of a circular loop of radius R carrying current I is:",
+    "options": ["(μ₀I)/(2πR)", "(μ₀I)/(2R)", "(μ₀I)/(4πR)", "(μ₀I)/(R)"],
+    "answer": 1
+  },
+  {
+    "question": "The photoelectric current is proportional to:",
+    "options": ["Frequency of incident light", "Intensity of incident light", "Work function of metal", "Stopping potential"],
+    "answer": 1
+  },
+  {
+    "question": "The nuclear binding energy per nucleon for Iron (Fe) is approximately:",
+    "options": ["8.8 MeV", "7.6 MeV", "6.0 MeV", "5.0 MeV"],
+    "answer": 0
+  },
+  {
+    "question": "In beta decay, a neutron is converted into a:",
+    "options": ["Proton", "Electron", "Alpha particle", "Neutrino"],
+    "answer": 0
+  }
+],
+    
+    "chemistry":[
+  {
+    "question": "What is the major product of the reaction between 2-butene and Br2 in CCl4?",
+    "options": ["1,2-dibromobutane", "1,1-dibromobutane", "2-bromobutane", "butanone"],
+    "answer": 0
+  },
+  {
+    "question": "Which reagent will best convert benzene to nitrobenzene?",
+    "options": ["Conc. H2SO4 + HNO3", "HNO3 only", "Dilute H2SO4", "NaNO2 + HCl"],
+    "answer": 0
+  },
+  {
+    "question": "Predict the product of the reaction: CH3CH2OH + PCC → ?",
+    "options": ["Acetic acid", "Acetaldehyde", "Ethene", "Methane"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following compounds will give a positive iodoform test?",
+    "options": ["Methanol", "2-Propanol", "Benzyl alcohol", "1-Propanol"],
+    "answer": 1
+  },
+  {
+    "question": "What is the final product of the reaction of phenol with CH3COCl in presence of pyridine?",
+    "options": ["Phenyl acetate", "Acetophenone", "Acetanilide", "Benzaldehyde"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following compounds is aromatic?",
+    "options": ["Cyclooctatetraene", "Cyclopentadienyl anion", "Cyclohexatriene", "Cyclobutadiene"],
+    "answer": 1
+  },
+  {
+    "question": "Name the product formed when acetylene reacts with dilute H2SO4 in presence of HgSO4.",
+    "options": ["Acetaldehyde", "Acetic acid", "Ethanol", "Ethanal"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following is a correct method to prepare aldehydes?",
+    "options": ["Oxidation of primary alcohols using KMnO4", "Oxidation of primary alcohols using PCC", "Reduction of esters", "Hydrolysis of nitriles"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following gives a positive Tollens' test?",
+    "options": ["Benzaldehyde", "Acetone", "Toluene", "Benzyl alcohol"],
+    "answer": 0
+  },
+  {
+    "question": "What is the IUPAC name of CH3CH(OH)CH2CH3?",
+    "options": ["2-Butanol", "1-Butanol", "2-Hydroxybutane", "Butan-2-ol"],
+    "answer": 0
+  },
+  {
+    "question": "Which reaction converts a nitrile to a primary amine?",
+    "options": ["Reduction with LiAlH4", "Hydrolysis with HCl", "Reaction with Br2 and NaOH", "Friedel-Crafts reaction"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following would react with Na to evolve H2 gas?",
+    "options": ["CH3OH", "CH3COCH3", "CH3COOH", "CH3Cl"],
+    "answer": 0
+  },
+  {
+    "question": "Which product is formed when aniline is treated with bromine water?",
+    "options": ["2,4,6-tribromoaniline", "Monobromoaniline", "Nitroaniline", "Aniline hydrochloride"],
+    "answer": 0
+  },
+  {
+    "question": "Identify the compound: C4H8O2 gives effervescence with NaHCO3 and sweet smell.",
+    "options": ["Butanoic acid", "Butanone", "Methyl propanoate", "Butanol"],
+    "answer": 2
+  },
+  {
+    "question": "Which compound gives a carbylamine test?",
+    "options": ["Methylamine", "Aniline", "Acetamide", "Trimethylamine"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following will not undergo nucleophilic substitution easily?",
+    "options": ["Tert-butyl chloride", "Methyl chloride", "Benzyl chloride", "Vinyl chloride"],
+    "answer": 3
+  },
+  {
+    "question": "Identify the product: Phenol + NaOH + CO2 (heat and pressure) → ?",
+    "options": ["Benzoic acid", "Salicylic acid", "Anisole", "Phenyl acetate"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following does NOT exhibit tautomerism?",
+    "options": ["Acetone", "Phenol", "Acetophenone", "Ethyl acetate"],
+    "answer": 3
+  },
+  {
+    "question": "Which ion is responsible for the blue color of CuSO4·5H2O?",
+    "options": ["Cu+", "Cu2+", "SO4²⁻", "[Cu(H2O)4]²+"],
+    "answer": 3
+  },
+  {
+    "question": "Which of the following oxides is amphoteric?",
+    "options": ["Na2O", "SO2", "Al2O3", "CO2"],
+    "answer": 2
+  }
+],
+
+    
+    "maths":[
+  {
+    "question": "If A = {1,2,3}, B = {2,3,4}, then (A ∪ B) − (A ∩ B) is:",
+    "options": ["{1,4}", "{2,3}", "{1,2,3,4}", "{}"],
+    "answer": 0
+  },
+  {
+    "question": "Number of 5-digit numbers that can be formed using the digits 1 to 9 without repetition and divisible by 5 is:",
+    "options": ["5040", "4032", "3024", "2520"],
+    "answer": 3
+  },
+  {
+    "question": "The probability that a leap year will have 53 Sundays is:",
+    "options": ["1/7", "2/7", "3/7", "5/7"],
+    "answer": 1
+  },
+  {
+    "question": "If sin A + sin B = a and cos A + cos B = b, then sin(A+B) equals:",
+    "options": ["(a² - b²)/2", "ab", "√(a² + b²)", "(a² + b²)/2"],
+    "answer": 0
+  },
+  {
+    "question": "From the top of a tower 100 m high, an object is dropped. How long will it take to hit the ground? (g = 10 m/s²)",
+    "options": ["10 s", "5 s", "2 s", "√10 s"],
+    "answer": 1
+  },
+  {
+    "question": "If f(x) = x³ + 3x² + 5x + 7, then f'(x) equals:",
+    "options": ["x² + 3x + 5", "3x² + 6x + 5", "x² + 2x + 3", "3x² + 3x + 5"],
+    "answer": 1
+  },
+  {
+    "question": "The point on the curve y = x² + 1 where the tangent is parallel to the line y = 2x + 3 is:",
+    "options": ["(1,2)", "(1,3)", "(1,4)", "(-1,2)"],
+    "answer": 0
+  },
+  {
+    "question": "If f(x) = √(1 + sin 2x), then f'(π/4) is:",
+    "options": ["1", "0", "1/√2", "√2"],
+    "answer": 3
+  },
+  {
+    "question": "The function f(x) = |x - 3| is:",
+    "options": ["Differentiable everywhere", "Not differentiable at x = 0", "Not differentiable at x = 3", "Continuous but not differentiable at x = -3"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following functions is not one-one?",
+    "options": ["f(x) = x³", "f(x) = e^x", "f(x) = sin x on [0, π]", "f(x) = ln x"],
+    "answer": 2
+  },
+  {
+    "question": "The local maximum value of f(x) = x²(3 − x) is:",
+    "options": ["4", "6.75", "9", "3"],
+    "answer": 1
+  },
+  {
+    "question": "If ∫(x² + 1) dx = F(x) + C, then F(1) − F(0) equals:",
+    "options": ["2", "1.5", "4/3", "5/3"],
+    "answer": 3
+  },
+  {
+    "question": "The area enclosed between y = x² and y = 2x is:",
+    "options": ["4/3", "1", "2/3", "8/3"],
+    "answer": 3
+  },
+  {
+    "question": "The coordinates of the center of the circle x² + y² − 6x + 8y = 0 are:",
+    "options": ["(3, −4)", "(−3, 4)", "(6, −8)", "(−6, 8)"],
+    "answer": 0
+  },
+  {
+    "question": "Find the angle between the lines with direction ratios (2, -1, 2) and (1, 2, -2):",
+    "options": ["90°", "60°", "45°", "30°"],
+    "answer": 0
+  },
+  {
+    "question": "The 10th term of the sequence: 2, 5, 10, 17, ... is:",
+    "options": ["100", "89", "82", "97"],
+    "answer": 3
+  },
+  {
+    "question": "If z = 3 + 4i, then |z| + arg(z) equals approximately:",
+    "options": ["5 + π/4", "5 + π/3", "7 + π/2", "5 + π/2"],
+    "answer": 0
+  },
+  {
+    "question": "limₓ→0 (sin 3x)/(2x) is:",
+    "options": ["3/2", "1", "0", "2/3"],
+    "answer": 0
+  },
+  {
+    "question": "Number of subsets of set A = {a, b, c, d, e} containing at least 3 elements is:",
+    "options": ["26", "20", "16", "22"],
+    "answer": 1
+  },
+  {
+    "question": "How many 4-digit numbers can be formed using digits 1 to 9 without repetition?",
+    "options": ["3024", "5040", "4536", "3240"],
+    "answer": 0
+  },
+  {
+    "question": "Two cards are drawn from a deck. The probability that both are kings is:",
+    "options": ["1/221", "1/169", "1/663", "1/2210"],
+    "answer": 0
+  },
+  {
+    "question": "tan(A+B) equals:",
+    "options": ["(tan A + tan B)/(1 + tan A tan B)", "(tan A − tan B)/(1 − tan A tan B)", "tan A tan B", "tan A + tan B"],
+    "answer": 0
+  },
+  {
+    "question": "The angle of elevation from a point on the ground to the top of a 100 m tower is 60°. The distance from the point to the base of the tower is:",
+    "options": ["100√3 m", "50√3 m", "100/√3 m", "100 m"],
+    "answer": 2
+  },
+  {
+    "question": "If y = sin⁻¹(2x√(1 − x²)), then dy/dx equals:",
+    "options": ["2(1 − 2x²)/√(1 − 4x²(1 − x²))", "1/√(1 − x²)", "2/√(1 − x²)", "0"],
+    "answer": 0
+  },
+  {
+    "question": "The slope of the tangent to the curve y = ln x at x = e is:",
+    "options": ["1", "e", "0", "1/e"],
+    "answer": 0
+  },
+  {
+    "question": "At what point is the function f(x) = x³ − 3x² + 4 increasing?",
+    "options": ["x < 1 or x > 2", "x < 0", "x > 1", "1 < x < 2"],
+    "answer": 0
+  },
+  {
+    "question": "If f(x) = x² + 2x + 5, then ∫f(x) dx from 0 to 2 equals:",
+    "options": ["22", "20", "18", "24"],
+    "answer": 0
+  },
+  {
+    "question": "The area under y = cos x from 0 to π/2 is:",
+    "options": ["1", "0", "π/2", "2"],
+    "answer": 0
+  },
+  {
+    "question": "The length of the perpendicular from the point (1,2) to the line 3x + 4y − 10 = 0 is:",
+    "options": ["1", "2", "10/5", "2/√5"],
+    "answer": 3
+  },
+  {
+    "question": "The distance between points (1,2,3) and (4,6,8) is:",
+    "options": ["5√2", "5", "√50", "√27"],
+    "answer": 2
+  },
+  {
+    "question": "If a = 2, d = 3, n = 10, then the sum of AP is:",
+    "options": ["155", "140", "165", "170"],
+    "answer": 1
+  },
+  {
+    "question": "If z = 1 − i, then z⁴ equals:",
+    "options": ["4", "−4", "−2", "2"],
+    "answer": 0
+  },
+  {
+    "question": "limₓ→π/2 (tan x) = ?",
+    "options": ["∞", "0", "1", "Undefined"],
+    "answer": 0
+  },
+  {
+    "question": "The number of bijective functions from A to A where |A| = 4 is:",
+    "options": ["24", "16", "4", "8"],
+    "answer": 0
+  },
+  {
+    "question": "How many circular permutations are possible for 6 distinct people around a table?",
+    "options": ["720", "120", "60", "120"],
+    "answer": 1
+  },
+  {
+    "question": "A box contains 3 red and 2 blue balls. Two are drawn at random. Probability that both are red is:",
+    "options": ["3/10", "1/2", "2/5", "3/5"],
+    "answer": 0
+  },
+  {
+    "question": "If tan A = 3/4, then sin A equals:",
+    "options": ["3/5", "4/5", "5/3", "1"],
+    "answer": 0
+  },
+  {
+    "question": "What is the derivative of y = tan⁻¹(x²)?",
+    "options": ["2x/(1 + x⁴)", "1/(1 + x⁴)", "x/(1 + x²)", "2x/(1 + x²)"],
+    "answer": 0
+  },
+  
+  {
+    "question": "If A and B are independent events such that P(A) = 0.4 and P(B) = 0.5, then P(A ∪ B) is:",
+    "options": ["0.7", "0.9", "0.6", "0.3"],
+    "answer": 1
+  },
+  {
+    "question": "Evaluate: limₓ→0 (1 − cos x)/x²",
+    "options": ["0", "1", "1/2", "∞"],
+    "answer": 2
+  },
+  {
+    "question": "The value of ∫₀^π sin²x dx is:",
+    "options": ["π/2", "π", "0", "π/4"],
+    "answer": 0
+  },
+  {
+    "question": "The eccentricity of the hyperbola x²/9 − y²/4 = 1 is:",
+    "options": ["√5/3", "2/3", "5/3", "√5"],
+    "answer": 3
+  },
+  {
+    "question": "The angle between vectors **a** = 2i + j − k and **b** = i − 2j + 2k is:",
+    "options": ["90°", "60°", "120°", "45°"],
+    "answer": 0
+  }
+
+
+]  
+
+  }
+}

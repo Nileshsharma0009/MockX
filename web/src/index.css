@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animation delay classes */ 
+
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+} 
+/* ---------- paste after @tailwind ... in src/index.css ---------- */
+
+/* UI polish to match screenshot */
+.body-sans { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+.header-shadow {
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+/* Option card look (soft violet, pill border inside) */
+.option-card {
+  background: linear-gradient(180deg, #fbfbff 0%, #f3f1fb 100%);
+  border: 1px solid rgba(99,102,241,0.12);
+  border-radius: 12px;
+  padding: 14px 18px;
+  min-height: 56px;
+  transition: all .12s ease;
+}
+
+/* Highlight selected option */
+.option-card--selected {
+  background: linear-gradient(90deg, rgba(99,102,241,0.12), rgba(99,102,241,0.06));
+  box-shadow: 0 8px 30px rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.28);
+}
+
+/* Big centered question area spacing */
+.question-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 64px;
+}
+
+/* Palette / sidebar: fixed and scrolls independently */
+.right-palette {
+  position: fixed;
+  right: 24px;
+  top: 76px; /* below header */
+  width: 260px;
+  height: calc(100vh - 110px);
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  overflow-y: auto;
+  z-index: 60;
+}
+
+/* grid boxes inside palette */
+.qbox {
+  width: 38px;
+  height: 38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  margin:6px;
+  font-size:13px;
+  user-select:none;
+}
+.qbox.unseen { background:#f8fafc; color:#111827; border:1px solid rgba(15,23,42,0.04); }
+.qbox.answered { background:#7c3aed; color:white; }
+.qbox.review { background:#f59e0b; color:white; }
+.qbox.skipped { background:#ef4444; color:white; }
+.qbox.active { outline:3px solid rgba(124,58,237,0.14); transform:scale(1.05); }
+
+/* Make bottom control bar centered and floating */
+.controls-bar {
+  position: fixed;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  z-index: 50;
+}
+
+/* Smooth hover */
+.btn-smooth { transition: all 160ms ease; }
+
+/* Option label */
+.opt-label { width:28px; text-align:left; font-weight:600; color:#6b7280; }
+
+/* Floating summary button if used */
+.fab-right {
+  position: fixed;
+  right: 28px;
+  bottom: 110px;
+  width:54px; height:54px;
+  border-radius:999px; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(180deg,#6d28d9,#7c3aed); color:white; box-shadow:0 8px 28px rgba(124,58,237,0.25);
+  z-index:58;
+}
+/* Result card styling (optional if using Tailwind) */
+/* Only include if you're not fully relying on Tailwind utilities */
+#pdf-content {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+/* small helpers for printed card */
+@media print {
+  body * { visibility: hidden; }
+  #pdf-content, #pdf-content * { visibility: visible; }
+  #pdf-content { position: absolute; left: 0; top: 0; width: 100%; }
+}
