@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RegistrationForm from './Registration.jsx';
+
 // Icons
 import { Clock, GraduationCap, BarChart3, Trophy, Book } from 'lucide-react';
 
@@ -31,21 +32,21 @@ const Typewriter = ({ words, typingSpeed = 150, deletingSpeed = 100, delay = 100
   }, [subIndex, index, reverse, words, typingSpeed, deletingSpeed, delay]);
 
   return (
-<span className="inline-block min-w-[150px] font-extrabold text-sky-400/90">
-      {`${words[index].substring(0, subIndex)}`}
-      <span className="border-r-2   border-indigo-600  animate-blink" />
+    <span className="inline-block min-w-[150px] font-extrabold text-sky-600">
+      {words[index].substring(0, subIndex)}
+      <span className="border-r-2 border-sky-500 animate-blink ml-0.5" />
     </span>
   );
 };
 
 // --- Feature Card Component ---
 const FeatureCard = ({ icon: Icon, title, description, iconColor, bgColor }) => (
-  <div className="bg-white p-6 md:p-8 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-100 h-full flex flex-col items-start text-left">
-    <div className={`p-4 rounded-xl mb-6 ${bgColor} w-fit`}>
-      <Icon className={`w-9 h-9 ${iconColor}`} strokeWidth={2.5} />
+  <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 h-full flex flex-col items-start text-left">
+    <div className={`p-4 rounded-2xl mb-5 ${bgColor} w-fit shadow-sm`}>
+      <Icon className={`w-8 h-8 ${iconColor}`} strokeWidth={2.4} />
     </div>
-    <h3 className="text-2xl font-bold mb-3 text-gray-800">{title}</h3>
-    <p className="text-gray-600 leading-relaxed text-base">{description}</p>
+    <h3 className="text-xl md:text-2xl font-semibold mb-2 text-gray-900">{title}</h3>
+    <p className="text-gray-600 leading-relaxed text-sm md:text-base">{description}</p>
   </div>
 );
 
@@ -56,29 +57,38 @@ const First = () => {
   const handleRegisterSuccess = (data) => {
     console.log('User Registered:', data);
     setShowForm(false);
-    // redirect or open test page here if needed
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 font-sans text-gray-900 overflow-hidden relative">
-      {/* Background blobs (optional keyframes required in tailwind config) */}
-      <div className="absolute top-0 -left-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob" />
-      <div className="absolute top-0 -right-1/4 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-1/4 left-1/2 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000" />
+    <div className="min-h-screen font-sans text-gray-900 overflow-hidden relative bg-white">
 
-      {/* Header / Navbar */}
-      <header className="py-6 px-4 md:px-12 relative z-10 bg-white bg-opacity-80 backdrop-blur-sm shadow-sm">
-        <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center space-x-2">
-            <Book className="w-7 h-7 text-indigo-700" strokeWidth={2.5} />
-            <span className="text-2xl font-extrabold tracking-tight text-gray-800">TESTIFY</span>
+      {/* Pastel background blobs */}
+      <div className="absolute top-[-6rem] -left-24 w-80 h-80 bg-sky-100 rounded-full blur-3xl" />
+      <div className="absolute top-[-4rem] -right-24 w-96 h-96 bg-indigo-100 rounded-full blur-3xl" />
+      <div className="absolute bottom-[-4rem] left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-100 rounded-full blur-3xl" />
+
+      {/* Header */}
+      <header className="py-4 px-4 md:px-12 relative z-10">
+        <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl 
+          bg-white/70 border border-gray-200 backdrop-blur-xl px-4 md:px-6 py-3 shadow-md">
+          
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 
+              flex items-center justify-center shadow-md shadow-sky-200">
+              <Book className="w-6 h-6 text-white" strokeWidth={2.4} />
+            </div>
+            <div>
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900">IMUmate</span>
+              <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
+            </div>
           </div>
 
-          <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-lg">
-            <a href="#" className="hover:text-indigo-700 transition duration-200 ease-in-out">Home</a>
-            <a href="#" className="hover:text-indigo-700 transition duration-200 ease-in-out">Practice</a>
-            <a href="#" className="hover:text-indigo-700 transition duration-200 ease-in-out">Results</a>
-            <a href="#" className="hover:text-indigo-700 transition duration-200 ease-in-out">Help</a>
+          {/* Menu */}
+          <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
+            {["Home", "Practice", "Results", "Help"].map((item) => (
+              <a key={item} href="#" className="hover:text-sky-600 transition duration-200">{item}</a>
+            ))}
           </div>
         </nav>
       </header>
@@ -89,65 +99,99 @@ const First = () => {
           Ace Your <Typewriter words={['IMUCET', 'Dream']} />
         </h1>
 
-        {/* Register Button (opens modal) */}
-        <div className="p-6">
+        <p className="max-w-2xl mx-auto text-gray-600 text-base md:text-lg mb-8">
+          Exam-like mock tests with real-time tracking, instant results, and deep analytics to help
+          you dominate IMUCET with confidence.
+        </p>
+
+        {/* Button */}
+        <div className="p-4">
           <button
             onClick={() => setShowForm(true)}
-            aria-label="Register for IMUCET preparation"
-            className="relative group overflow-hidden bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-bold py-3 px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out text-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-75"
-          >
-            <span className="relative z-10">Register</span>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+            className="relative group overflow-hidden bg-gradient-to-r 
+            from-sky-500 via-indigo-500 to-purple-500 
+            text-white font-semibold py-3.5 px-12 rounded-full 
+            shadow-lg hover:shadow-xl transform hover:-translate-y-1 
+            transition duration-300 ease-out text-lg">
+            
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Register Now 
+            </span>
+
+            <div className="absolute inset-0 bg-white/20 opacity-0 
+              group-hover:opacity-100 transition-opacity duration-300" />
           </button>
         </div>
       </main>
 
-      {/* Features */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-16 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Feature Section */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
+        
+        <div className="flex flex-col md:flex-row justify-between mb-10">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900">Everything you need to crack IMUCET</h2>
+            <p className="mt-2 text-gray-500 text-sm md:text-base max-w-md">
+              Smart mock tests, detailed analysis, and instant performance insights—all in one place.
+            </p>
+          </div>
+
+          <p className="text-xs text-gray-400 mt-2">Updated patterns • Smart analytics • Instant feedback</p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
           <FeatureCard
             icon={Clock}
             title="180-Minute Tests"
-            description="Full-length mock tests with proper time tracking."
-            iconColor="text-purple-600"
-            bgColor="bg-purple-50"
+            description="True exam duration to help you build stamina."
+            iconColor="text-sky-500"
+            bgColor="bg-sky-100"
           />
+
           <FeatureCard
             icon={GraduationCap}
-            title="200 Questions"
-            description="Structured papers with real-exam difficulty levels."
-            iconColor="text-indigo-600"
-            bgColor="bg-indigo-50"
+            title="200 Smart Questions"
+            description="Latest IMUCET patterns & difficulty levels."
+            iconColor="text-indigo-500"
+            bgColor="bg-indigo-100"
           />
+
           <FeatureCard
             icon={BarChart3}
             title="Progress Tracking"
-            description="Review stats and boost your accuracy."
-            iconColor="text-green-600"
-            bgColor="bg-green-50"
+            description="Accuracy, weak areas, improvement charts."
+            iconColor="text-emerald-500"
+            bgColor="bg-emerald-100"
           />
+
           <FeatureCard
             icon={Trophy}
             title="Instant Results"
-            description="Get detailed analysis immediately after completion."
-            iconColor="text-yellow-600"
-            bgColor="bg-yellow-50"
+            description="Detailed scorecards within seconds."
+            iconColor="text-amber-500"
+            bgColor="bg-amber-100"
           />
+          
         </div>
       </section>
 
-      {/* Chat bubble */}
-      <div className="fixed bottom-6 right-6 h-14 w-14 rounded-full bg-pink-500 border-2 border-white shadow-xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-200 ease-out z-20">
-        <span className="text-white text-2xl">💬</span>
+      {/* Chat Bubble */}
+      <div className="fixed bottom-6 right-6 h-14 w-14 rounded-full bg-gradient-to-br 
+        from-pink-500 via-rose-500 to-red-500 
+        shadow-xl flex items-center justify-center cursor-pointer 
+        hover:scale-110 transition-transform duration-200 z-20 text-white text-2xl">
+        💬
       </div>
 
-      {/* Registration modal (conditionally rendered) */}
+      {/* Modal */}
       {showForm && (
         <RegistrationForm
           onClose={() => setShowForm(false)}
           onRegisterSuccess={handleRegisterSuccess}
         />
       )}
+
     </div>
   );
 };

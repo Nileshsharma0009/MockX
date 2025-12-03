@@ -17,9 +17,9 @@ export default function Navbar({ onToggleSidebar }) {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16">
-        <div className="relative h-full flex items-center">
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="py-4 px-4 md:px-12">
+        <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-4 md:px-6 py-3 shadow-md">
           {/* LEFT: hamburger + logo */}
           <div className="flex items-center gap-3">
             <button
@@ -31,60 +31,62 @@ export default function Navbar({ onToggleSidebar }) {
             </button>
 
             <div className="flex items-center gap-2 ml-1">
-              <span className="text-xl">🎓</span>
-              <span className="font-semibold text-base md:text-lg text-gray-900">IMU-MOCK</span>
+              <span className="text-2xl">🎓</span>
+              <div className="flex flex-col leading-tight">
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900">IMUmate</span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-gray-500">
+                  IMUCET • Mock Test
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* CENTER: absolute centered group (A B moon) */}
-          <div className="absolute inset-x-0 left-0 right-0 flex justify-center pointer-events-none">
-            {/* pointer-events-none prevents center from blocking clicks on left/right; inner group re-enables it */}
-            <div className="pointer-events-auto flex items-center gap-3">
-              <button
-                role="tab"
-                aria-selected={state.currentSection === "A"}
-                onClick={() => toggleSection("A")}
-                className={`px-3 py-2 rounded-full transition-colors duration-150 text-sm font-medium ${
-                  state.currentSection === "A"
-                    ? "bg-[#5c4d7d] text-white"
-                    : "bg-slate-100 text-gray-700"
-                }`}
-                title="Section A"
-              >
-                A
-              </button>
+          {/* CENTER: section toggles + dark mode */}
+          <div className="hidden sm:flex items-center gap-3 bg-slate-100/80 rounded-full px-2 py-1 shadow-sm">
+            <button
+              role="tab"
+              aria-selected={state.currentSection === "A"}
+              onClick={() => toggleSection("A")}
+              className={`px-3 py-1.5 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${
+                state.currentSection === "A"
+                  ? "bg-[#5c4d7d] text-white shadow-sm"
+                  : "bg-white text-gray-700"
+              }`}
+              title="Section A"
+            >
+              Section A
+            </button>
 
-              <button
-                role="tab"
-                aria-selected={state.currentSection === "B"}
-                onClick={() => toggleSection("B")}
-                className={`px-3 py-2 rounded-full transition-colors duration-150 text-sm font-medium ${
-                  state.currentSection === "B"
-                    ? "bg-[#5c4d7d] text-white"
-                    : "bg-slate-100 text-gray-700"
-                }`}
-                title="Section B"
-              >
-                B
-              </button>
+            <button
+              role="tab"
+              aria-selected={state.currentSection === "B"}
+              onClick={() => toggleSection("B")}
+              className={`px-3 py-1.5 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${
+                state.currentSection === "B"
+                  ? "bg-[#5c4d7d] text-white shadow-sm"
+                  : "bg-white text-gray-700"
+              }`}
+              title="Section B"
+            >
+              Section B
+            </button>
 
-              <button
-                id="darkModeToggle"
-                onClick={() => document.body.classList.toggle("dark-mode")}
-                className="px-3 py-2 rounded-full bg-[#5c4d7d] text-white text-sm"
-                aria-pressed={document.body.classList.contains("dark-mode")}
-                title="Toggle dark mode"
-              >
-                🌙
-              </button>
-            </div>
+            {/* <button
+              id="darkModeToggle"
+              onClick={() => document.body.classList.toggle("dark-mode")}
+              className="ml-1 px-3 py-1.5 rounded-full bg-[#5c4d7d] text-white text-xs md:text-sm"
+              aria-pressed={document.body.classList.contains("dark-mode")}
+              title="Toggle dark mode"
+            >
+              🌙
+            </button> */}
           </div>
 
           {/* RIGHT: fullscreen + timer */}
-          <div className="ml-auto flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <button
               onClick={enterFullscreen}
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-[#5c4d7d] hover:bg-[#43325f] text-white text-sm font-semibold transition"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-[#5c4d7d] hover:bg-[#43325f] text-white text-xs md:text-sm font-semibold transition"
               aria-label="Enter fullscreen"
             >
               Enter Fullscreen
@@ -92,14 +94,14 @@ export default function Navbar({ onToggleSidebar }) {
 
             <div
               id="timer"
-              className="min-w-[96px] px-4 py-[6px] rounded-full bg-[#2e1e2f] text-white text-sm font-medium text-center"
+              className="min-w-[96px] px-4 py-2 rounded-full bg-[#2e1e2f] text-white text-xs md:text-sm font-semibold text-center"
               aria-live="polite"
               title="Remaining time"
             >
               00:00:00
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );
