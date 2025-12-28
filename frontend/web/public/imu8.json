@@ -1,0 +1,20 @@
+{
+    "question": "Which sentence is in active voice?",
+    "options": [
+      "The cat was chased by the dog.",
+      "Hockey was played by Ram.",
+      "The boy was bitten by the dog.",
+      "Ram played hockey."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Fill in the blank with the correct preposition: She is interested ___ music.",
+    "options": ["at", "to", "for", "in"],
+    "answer": 3
+  },
+  {
+    "question": "Choose the sentence with the correct question tag: You have done your homework, _____?",
+    "options": ["haven't you?", "have you?", "isn't it?", "did you?"],
+    "answer": 0
+  },
