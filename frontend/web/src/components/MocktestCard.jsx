@@ -18,12 +18,15 @@ const handleStartTest = async () => {
 
   try {
     // 🔒 CHECK WITH BACKEND BEFORE ENTERING TEST
-    const res = await fetch(
-      `http://localhost:5000/api/mocks/${id}/questions`,
-      {
-        credentials: "include", // 🔥 IMPORTANT (cookie auth)
-      }
-    );
+ const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+
+const res = await fetch(
+  `${API_BASE}/api/mocks/${id}/questions`,
+  {
+    credentials: "include", // 🔥 cookie auth
+  }
+);
+
 
     if (res.status === 403) {
       const data = await res.json();

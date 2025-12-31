@@ -8,6 +8,7 @@ import {
   useTestDispatch,
 } from "./context/TestContext.jsx";
 
+import api from "../api/api";
 
 import Navbar from "./components/Navbar";
 import Timer from "./components/Timer";
@@ -53,9 +54,13 @@ useEffect(() => {
 
   localStorage.removeItem("testState_v1");
 
-  fetch(`http://localhost:5000/api/mocks/${resolvedMock}/questions`, {
-    credentials: "include", // 🔥 REQUIRED for cookie auth
-  })
+  // fetch(`http://localhost:5000/api/mocks/${resolvedMock}/questions`, {
+  //   credentials: "include", // 🔥 REQUIRED for cookie auth
+  // })
+
+  fetch(`${API_BASE}/api/mocks/${resolvedMock}/questions`, {
+  credentials: "include", // 🔥 REQUIRED for cookie auth
+})
     .then(async (r) => {
       // 🔒 BLOCK IF ALREADY ATTEMPTED
       if (r.status === 403) {
@@ -116,7 +121,18 @@ useEffect(() => {
 
 
 const token = localStorage.getItem("token");
-const res = await fetch("http://localhost:5000/api/tests/submit", {
+// const res = await fetch("http://localhost:5000/api/tests/submit", {
+//   method: "POST",
+//   credentials: "include", // 🔥 REQUIRED
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({ mockId, answers }),
+// }); 
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+
+const res = await fetch(`${API_BASE}/api/tests/submit`, {
   method: "POST",
   credentials: "include", // 🔥 REQUIRED
   headers: {

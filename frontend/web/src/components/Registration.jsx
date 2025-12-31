@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { X, Book, CheckCircle } from "lucide-react";
 import { signupUser } from "../api/auth.api";
-
+import api from "../api/api"; 
 const indianStates = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
   "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand",
@@ -72,7 +72,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
     try {
       setError("");
       setOtpLoading(true);
-      await axios.post("http://localhost:5000/api/auth/resend-otp", {
+      await api.post("/auth/resend-otp", {
         email: formData.email,
       });
       setOtpSent(true);
@@ -86,7 +86,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
   const verifyOTP = async () => {
     try {
       setOtpLoading(true);
-      await axios.post("http://localhost:5000/api/auth/verify-otp", {
+      await api.post("/auth/verify-otp", {
         email: formData.email,
         otp,
       });
