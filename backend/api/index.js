@@ -1,12 +1,19 @@
 import app from "../app.js";
 import connectDB from "../config/db.js";
 
+let isConnected = false;
+
 export default async function handler(req, res) {
   try {
-    await connectDB();
+    if (!isConnected) {
+      await connectDB();
+      isConnected = true;
+      console.log("✅ MongoDB connected (serverless)");
+    }
+
     return app(req, res);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error("❌ Server error:", error);
     return res.status(500).json({ error: "Server error" });
   }
 }
