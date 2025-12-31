@@ -1,2 +1,65 @@
-/mock test
-/my-react-app
+# =========================
+# Node / npm
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# =========================
+# Vite / React
+# =========================
+dist/
+.vite/
+.cache/
+
+# =========================
+# Build outputs
+# =========================
+build/
+coverage/
+
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# MongoDB
+# =========================
+*.db
+
+# =========================
+# Vercel
+# =========================
+.vercel
+
+# =========================
+# Optional (local only)
+# =========================
+server.local.js

@@ -25,5 +25,8 @@ app.use(express.json());
 app.get("/api/health", (req, res) => {
   res.json({ status: "API is running 🚀" });
 });
+app.get("/", (req, res) => {
+  res.json({ status: "server is running 🚀" });
+});
 
 export default app;
