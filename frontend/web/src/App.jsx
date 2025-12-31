@@ -8,7 +8,7 @@ import {
   useTestDispatch,
 } from "./context/TestContext.jsx";
 
-import api from "../api/api";
+
 
 import Navbar from "./components/Navbar";
 import Timer from "./components/Timer";
