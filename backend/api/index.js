@@ -3,44 +3,43 @@ import connectDB from "../config/db.js";
 
 let isConnected = false;
 
-/* ===== CORS Configuration for Vercel ===== */
 const isDevelopment = process.env.NODE_ENV !== "production";
 
-// Always include production URL in allowed origins
-const defaultProductionOrigins = [
+/* ===== Allowed Origins ===== */
+const productionOrigins = [
   "https://mock-x.vercel.app",
   "https://www.mock-x.vercel.app",
 ];
 
-const defaultDevelopmentOrigins = [
+const developmentOrigins = [
+  "http://localhost:3000",
   "http://localhost:5173",
   "http://localhost:5174",
-  "http://localhost:3000",
   "http://localhost:5175",
-  ...defaultProductionOrigins, // Include production URLs in dev too
+  ...productionOrigins,
 ];
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
+const allowedOrigins = (process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
   : isDevelopment
-  ? defaultDevelopmentOrigins
-  : defaultProductionOrigins;
+  ? developmentOrigins
+  : productionOrigins
+).map(o => o.trim().replace(/\/$/, ""));
 
 export default async function handler(req, res) {
-  // 🔥 CORS Headers - MUST be set before any response
-  const origin = req.headers.origin;
+  const origin = req.headers.origin?.replace(/\/$/, "");
 
-  // Check if origin is allowed
-  const isOriginAllowed = origin && (
-    allowedOrigins.includes(origin) ||
-    (isDevelopment && origin.startsWith("http://localhost:"))
-  );
+  const isOriginAllowed =
+    origin &&
+    (allowedOrigins.includes(origin) ||
+      (isDevelopment && origin.startsWith("http://localhost")));
 
-  // Always set CORS headers (required for preflight)
+  /* ===== CORS HEADERS ===== */
   if (isOriginAllowed) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
+  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -48,20 +47,18 @@ export default async function handler(req, res) {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
   );
 
-  // Handle preflight requests - MUST return early
+  /* ===== Preflight ===== */
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  // Log CORS issues for debugging (only if origin not allowed)
-  if (origin && !isOriginAllowed) {
-    console.log("⚠️ CORS: Origin not allowed:", origin);
-    console.log("⚠️ Allowed origins:", allowedOrigins);
-    console.log("⚠️ NODE_ENV:", process.env.NODE_ENV);
-    console.log("⚠️ isDevelopment:", isDevelopment);
+  /* ===== Debug (DEV only) ===== */
+  if (isDevelopment && origin && !isOriginAllowed) {
+    console.warn("⚠️ CORS blocked:", origin);
+    console.warn("Allowed:", allowedOrigins);
   }
 
   try {
@@ -71,10 +68,9 @@ export default async function handler(req, res) {
       console.log("✅ MongoDB connected");
     }
 
-    // 🔑 IMPORTANT - Pass to Express app
-    app.handle(req, res);
+    return app.handle(req, res);
   } catch (error) {
-    console.error("❌ Server crash:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("❌ Server Error:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 }
