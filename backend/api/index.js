@@ -11,9 +11,10 @@ export default async function handler(req, res) {
       console.log("✅ MongoDB connected");
     }
 
-    return app(req, res);
+    // 🔑 IMPORTANT
+    app.handle(req, res);
   } catch (error) {
     console.error("❌ Server crash:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
