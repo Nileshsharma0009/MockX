@@ -73,6 +73,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/mocks", mockRoutes);
 app.use("/api/tests", testRoutes);
 app.use("/api/results", resultRoutes);
+app.use("/api/auth", authRoutes);
 
 /* ===== ROOT ROUTE ===== */
 app.get("/", (req, res) => {

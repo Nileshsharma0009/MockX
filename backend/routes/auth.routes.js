@@ -18,4 +18,16 @@ authRouter.post("/resend-otp", resendOTP);
 // 🔐 get logged-in user
 authRouter.get("/me", protect, getMe);
 
+// OTP
+authRouter.post("/resend-otp", resendOTP);
+authRouter.post("/verify-otp", verifyOTP);
+
+// USER
+authRouter.get("/me", protect, getMe);
+
+// 🔴 DEBUG ROUTE (TEMP – VERY IMPORTANT)
+authRouter.get("/__test", (req, res) => {
+  res.json({ ok: true, route: "auth" });
+});
+
 export default authRouter;
