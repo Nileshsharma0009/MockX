@@ -1,22 +1,19 @@
-import serverless from "serverless-http";
 import app from "../app.js";
 import connectDB from "../config/db.js";
 
 let isConnected = false;
 
-const handler = serverless(app);
-
-export default async function (req, res) {
+export default async function handler(req, res) {
   try {
     if (!isConnected) {
       await connectDB();
       isConnected = true;
-      console.log("✅ MongoDB connected (serverless)");
+      console.log("✅ MongoDB connected");
     }
 
-    return handler(req, res);
+    return app(req, res);
   } catch (error) {
-    console.error("❌ Server error:", error);
-    return res.status(500).json({ error: "Server error" });
+    console.error("❌ Server crash:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 }
