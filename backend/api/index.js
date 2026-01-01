@@ -5,37 +5,40 @@ let isConnected = false;
 
 /* ===== CORS Configuration for Vercel ===== */
 const isDevelopment = process.env.NODE_ENV !== "production";
+
+// Always include production URL in allowed origins
+const defaultProductionOrigins = [
+  "https://mock-x.vercel.app",
+  "https://www.mock-x.vercel.app",
+];
+
+const defaultDevelopmentOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:3000",
+  "http://localhost:5175",
+  ...defaultProductionOrigins, // Include production URLs in dev too
+];
+
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
   : isDevelopment
-  ? [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://localhost:3000",
-      "http://localhost:5175",
-      "https://mock-x.vercel.app",
-    ]
-  : [
-      "https://mock-x.vercel.app",
-      "https://www.mock-x.vercel.app", // Include www variant if needed
-    ];
+  ? defaultDevelopmentOrigins
+  : defaultProductionOrigins;
 
 export default async function handler(req, res) {
   // 🔥 CORS Headers - MUST be set before any response
   const origin = req.headers.origin;
 
-  // Always set CORS headers
-  if (origin && allowedOrigins.includes(origin)) {
+  // Check if origin is allowed
+  const isOriginAllowed = origin && (
+    allowedOrigins.includes(origin) ||
+    (isDevelopment && origin.startsWith("http://localhost:"))
+  );
+
+  // Always set CORS headers (required for preflight)
+  if (isOriginAllowed) {
     res.setHeader("Access-Control-Allow-Origin", origin);
-  } else if (origin && isDevelopment && origin.startsWith("http://localhost:")) {
-    // Allow any localhost in development
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  } else if (origin) {
-    // Log for debugging in production to help troubleshoot
-    if (!isDevelopment) {
-      console.log("⚠️ CORS: Origin not allowed:", origin);
-      console.log("⚠️ Allowed origins:", allowedOrigins);
-    }
   }
 
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -51,6 +54,14 @@ export default async function handler(req, res) {
   // Handle preflight requests - MUST return early
   if (req.method === "OPTIONS") {
     return res.status(200).end();
+  }
+
+  // Log CORS issues for debugging (only if origin not allowed)
+  if (origin && !isOriginAllowed) {
+    console.log("⚠️ CORS: Origin not allowed:", origin);
+    console.log("⚠️ Allowed origins:", allowedOrigins);
+    console.log("⚠️ NODE_ENV:", process.env.NODE_ENV);
+    console.log("⚠️ isDevelopment:", isDevelopment);
   }
 
   try {

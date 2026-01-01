@@ -55,7 +55,17 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(cookieParser());
 
-/* ===== ROUTES ===== */
+/* ===== ROOT ROUTE ===== */
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Server is running 🚀",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+  });
+});
+
+/* ===== API ROUTES ===== */
 app.use("/api/auth", authRoutes);
 app.use("/api/mocks", mockRoutes);
 app.use("/api/tests", testRoutes);
