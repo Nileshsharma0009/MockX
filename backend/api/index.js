@@ -4,9 +4,21 @@ import connectDB from "../config/db.js";
 let isConnected = false;
 
 /* ===== CORS Configuration for Vercel ===== */
+const isDevelopment = process.env.NODE_ENV !== "production";
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
-  : ["http://localhost:5173", "https://mock-x.vercel.app"];
+  : isDevelopment
+  ? [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:3000",
+      "http://localhost:5175",
+      "https://mock-x.vercel.app",
+    ]
+  : [
+      "https://mock-x.vercel.app",
+      "https://www.mock-x.vercel.app", // Include www variant if needed
+    ];
 
 export default async function handler(req, res) {
   // 🔥 CORS Headers - MUST be set before any response
@@ -15,10 +27,15 @@ export default async function handler(req, res) {
   // Always set CORS headers
   if (origin && allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (origin && isDevelopment && origin.startsWith("http://localhost:")) {
+    // Allow any localhost in development
+    res.setHeader("Access-Control-Allow-Origin", origin);
   } else if (origin) {
-    // Log for debugging (remove in production if needed)
-    console.log("⚠️ CORS: Origin not allowed:", origin);
-    console.log("⚠️ Allowed origins:", allowedOrigins);
+    // Log for debugging in production to help troubleshoot
+    if (!isDevelopment) {
+      console.log("⚠️ CORS: Origin not allowed:", origin);
+      console.log("⚠️ Allowed origins:", allowedOrigins);
+    }
   }
 
   res.setHeader("Access-Control-Allow-Credentials", "true");

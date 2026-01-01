@@ -9,14 +9,29 @@ import resultRoutes from "./routes/result.routes.js";
 const app = express();
 
 /* ===== CORS Configuration ===== */
+const isDevelopment = process.env.NODE_ENV !== "production";
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
-  : ["http://localhost:5173", "https://mock-x.vercel.app"];
+  : isDevelopment
+  ? [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:3000",
+      "http://localhost:5175",
+      "https://mock-x.vercel.app",
+    ]
+  : [
+      "https://mock-x.vercel.app",
+      "https://www.mock-x.vercel.app", // Include www variant if needed
+    ];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
-  if (origin && allowedOrigins.includes(origin)) {
+  // In development, allow any localhost origin for flexibility
+  if (isDevelopment && origin && origin.startsWith("http://localhost:")) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (origin && allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
