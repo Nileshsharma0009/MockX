@@ -5,20 +5,17 @@ let isConnected = false;
 
 export default async function handler(req, res) {
   try {
-    // 🔌 Connect DB only once (important for Vercel)
     if (!isConnected) {
       await connectDB();
       isConnected = true;
       console.log("✅ MongoDB connected");
     }
 
-    // 🚀 Forward request to Express app
-    // Use app.handle() for proper Express integration with Vercel
-    app.handle(req, res);
+    // 🚀 IMPORTANT: return the Express app
+    return app(req, res);
+
   } catch (error) {
     console.error("❌ Server error:", error);
-    if (!res.headersSent) {
-      return res.status(500).json({ message: "Internal Server Error" });
-    }
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 }
