@@ -47,14 +47,18 @@ export const AuthProvider = ({ children }) => {
 
   // ✅ THIS IS THE FIX
 const login = async (email, password) => {
-  const res = await api.post("/auth/login", {
-    email,
-    password,
-  });
+  try {
+    const res = await api.post("/auth/login", {
+      email,
+      password,
+    });
 
     setUser(res.data.user); // 🔥 IMMEDIATE UI UPDATE
     return res.data.user;
-  };
+  } catch (error) {
+    throw error; // Re-throw for error handling in components
+  }
+};
 
   const logout = async () => {
   await api.post("/auth/logout");

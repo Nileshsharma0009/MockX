@@ -19,6 +19,9 @@ import StatsToggleFab from "./components/StatsToggleFab";
 
 import { shuffleWithGroups } from "./utils/shuffle";
 
+/* ---------- API Base URL ---------- */
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+
 /* ---------- helper: normalize mock id ---------- */
 function resolveMockId() {
   const param = new URLSearchParams(window.location.search).get("mock");
@@ -119,20 +122,7 @@ useEffect(() => {
 
       console.log("🟡 SENDING ANSWERS:", answers);
 
-
-const token = localStorage.getItem("token");
-// const res = await fetch("http://localhost:5000/api/tests/submit", {
-//   method: "POST",
-//   credentials: "include", // 🔥 REQUIRED
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ mockId, answers }),
-// }); 
-
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
-
-const res = await fetch(`${API_BASE}/api/tests/submit`, {
+      const res = await fetch(`${API_BASE}/api/tests/submit`, {
   method: "POST",
   credentials: "include", // 🔥 REQUIRED
   headers: {

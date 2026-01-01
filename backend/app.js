@@ -8,16 +8,15 @@ import resultRoutes from "./routes/result.routes.js";
 
 const app = express();
 
-/* ===== CORS FIX (keep this) ===== */
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://mock-x.vercel.app",
-];
+/* ===== CORS Configuration ===== */
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
+  : ["http://localhost:5173", "https://mock-x.vercel.app"];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
-  if (allowedOrigins.includes(origin)) {
+  if (origin && allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
@@ -28,7 +27,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
+    "GET, POST, PUT, DELETE, OPTIONS, PATCH"
   );
 
   if (req.method === "OPTIONS") {

@@ -37,16 +37,14 @@ const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRON
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
 
-const emailExists = await User.findOne({ email });
-if (emailExists) {
-  return res.status(400).json({ message: "Email already registered" });
-}
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
 
-
-const phoneExists = await User.findOne({ phone });
-if (phoneExists) {
-  return res.status(400).json({ message: "Phone number already registered" });
-}
+  const emailExists = await User.findOne({ email });
+  if (emailExists) {
+    return res.status(400).json({ message: "Email already registered" });
+  }
 
   
   const hashPassword = await bcrypt.hash(password, 10);
@@ -146,15 +144,17 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token", { httpOnly: true, secure: isProd, sameSite: "lax" });
+    const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
+    res.clearCookie("token", { 
+      httpOnly: true, 
+      secure: isProd, 
+      sameSite: isProd ? "none" : "lax" 
+    });
     return res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     console.error('Logout error:', error);
     return res.status(500).json({ message: "Logout failed" });
-  } 
-
-
-
+  }
 };
 export const getMe = (req, res) => {
   res.status(200).json({ user: req.user });
