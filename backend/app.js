@@ -73,7 +73,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/mocks", mockRoutes);
 app.use("/api/tests", testRoutes);
 app.use("/api/results", resultRoutes);
-app.use("/api/auth", authRoutes);
+
+
+app.get("/api/__ping", (req, res) => {
+  res.json({ ok: true });
+});
+
 
 /* ===== ROOT ROUTE ===== */
 app.get("/", (req, res) => {

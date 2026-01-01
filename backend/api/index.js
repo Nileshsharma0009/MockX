@@ -10,12 +10,9 @@ export default async function handler(req, res) {
       isConnected = true;
       console.log("✅ MongoDB connected");
     }
-
-    // 🚀 IMPORTANT: return the Express app
-    return app(req, res);
-
-  } catch (error) {
-    console.error("❌ Server error:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    return app(req, res); // 🔥 NOT app.listen
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Server error" });
   }
 }
