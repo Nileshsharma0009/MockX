@@ -12,10 +12,13 @@ export default async function handler(req, res) {
       console.log("✅ MongoDB connected");
     }
 
-    // 🚀 Forward request to Express
-    return app(req, res);
+    // 🚀 Forward request to Express app
+    // Use app.handle() for proper Express integration with Vercel
+    app.handle(req, res);
   } catch (error) {
     console.error("❌ Server error:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    if (!res.headersSent) {
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
   }
 }
