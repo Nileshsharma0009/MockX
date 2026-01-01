@@ -8,39 +8,85 @@ import resultRoutes from "./routes/result.routes.js";
 
 const app = express();
 
-/* ================= CORS (SIMPLE & HARD-CODED) ================= */
+/* ================= CORS CONFIG ================= */
+const isDevelopment = process.env.NODE_ENV !== "production";
+
+const allowedOrigins = (
+  process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(",")
+    : isDevelopment
+    ? [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        "https://mock-x.vercel.app",
+      ]
+    : [
+        "https://mock-x.vercel.app",
+      ]
+).map(o => o.trim().replace(/\/$/, ""));
+
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://mock-x.vercel.app");
+  const origin = req.headers.origin?.replace(/\/$/, "");
+
+  // ✅ Allow origin if in list
+  if (
+    origin &&
+    (allowedOrigins.includes(origin) ||
+      (isDevelopment && origin.startsWith("http://localhost")))
+  ) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
+  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
- 
   res.setHeader(
-  "Access-Control-Allow-Methods",
-  "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-);
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
 
+  // 🔥 Preflight
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
 
-  if (req.method === "OPTIONS") return res.sendStatus(200);
   next();
 });
+
 /* ================= MIDDLEWARE ================= */
 app.use(express.json());
 app.use(cookieParser());
 
-/* ================= HEALTH CHECK ================= */
-app.get("/api/__ping", (req, res) => {
+/* ================= TEST ROUTE ================= */
+app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
 
-/* ================= ROUTES ================= */
+/* ================= API ROUTES ================= */
 app.use("/api/auth", authRoutes);
 app.use("/api/mocks", mockRoutes);
 app.use("/api/tests", testRoutes);
 app.use("/api/results", resultRoutes);
 
-/* ================= ROOT ================= */
+
+app.get("/api/__ping", (req, res) => {
+  res.json({ ok: true });
+});
+
+
+/* ===== ROOT ROUTE ===== */
 app.get("/", (req, res) => {
-  res.json({ status: "backend running" });
+  res.status(200).json({
+    status: "success",
+    message: "Server is running 🚀",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+  });
 });
 
 export default app;
