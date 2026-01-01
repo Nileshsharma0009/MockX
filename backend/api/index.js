@@ -3,7 +3,39 @@ import connectDB from "../config/db.js";
 
 let isConnected = false;
 
+/* ===== CORS Configuration for Vercel ===== */
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
+  : ["http://localhost:5173", "https://mock-x.vercel.app"];
+
 export default async function handler(req, res) {
+  // 🔥 CORS Headers - MUST be set before any response
+  const origin = req.headers.origin;
+
+  // Always set CORS headers
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (origin) {
+    // Log for debugging (remove in production if needed)
+    console.log("⚠️ CORS: Origin not allowed:", origin);
+    console.log("⚠️ Allowed origins:", allowedOrigins);
+  }
+
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+  );
+
+  // Handle preflight requests - MUST return early
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   try {
     if (!isConnected) {
       await connectDB();
@@ -11,7 +43,7 @@ export default async function handler(req, res) {
       console.log("✅ MongoDB connected");
     }
 
-    // 🔑 IMPORTANT
+    // 🔑 IMPORTANT - Pass to Express app
     app.handle(req, res);
   } catch (error) {
     console.error("❌ Server crash:", error);
