@@ -18,7 +18,7 @@ const handleStartTest = async () => {
 
   try {
     // 🔒 CHECK WITH BACKEND BEFORE ENTERING TEST
- const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+ const API_BASE = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
 
 const res = await fetch(
   `${API_BASE}/api/mocks/${id}/questions`,

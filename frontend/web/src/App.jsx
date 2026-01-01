@@ -20,7 +20,7 @@ import StatsToggleFab from "./components/StatsToggleFab";
 import { shuffleWithGroups } from "./utils/shuffle";
 
 /* ---------- API Base URL ---------- */
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
 
 /* ---------- helper: normalize mock id ---------- */
 function resolveMockId() {

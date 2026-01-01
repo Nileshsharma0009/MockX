@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Mail, Eye, EyeOff, ArrowLeft } from 'lucide-react';
-import { authAPI } from '../utils/api';
+import { signupUser } from '../api/auth.api';
 
 function Signup() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ function Signup() {
     setLoading(true);
     setError('');
     try {
-      const response = await authAPI.signup({
+      const response = await signupUser({
         name: formData.name,
         email: formData.email,
         password: formData.password,

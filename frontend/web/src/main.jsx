@@ -11,7 +11,7 @@ import ResultPage from "./components/ResultPage.jsx";
 
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
-import AuthModals from "../src/pages/AuthModals.jsx";
+import AuthModals from "./pages/AuthModals.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
