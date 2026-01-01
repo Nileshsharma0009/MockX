@@ -27,12 +27,16 @@ export const AuthProvider = ({ children }) => {
   //   loadUser();
   // }, []);
 
-  useEffect(() => {
+useEffect(() => {
   const loadUser = async () => {
     try {
-      const res = await api.get("/auth/me");
+      const res = await api.get("/auth/me", {
+        withCredentials: true,
+      });
+
       setUser(res.data.user);
-    } catch {
+    } catch (err) {
+      // ✅ Expected when user is not logged in
       setUser(null);
     } finally {
       setLoading(false);

@@ -23,7 +23,11 @@ authRouter.post("/resend-otp", resendOTP);
 authRouter.post("/verify-otp", verifyOTP);
 
 // USER
-authRouter.get("/me", protect, getMe);
+router.get("/me", protect, (req, res) => {
+  res.status(200).json({
+    user: req.user,
+  });
+});
 
 // 🔴 DEBUG ROUTE (TEMP – VERY IMPORTANT)
 authRouter.get("/__test", (req, res) => {
