@@ -1,7 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 
-import authRoutes from "./routes/auth.route.js";
+import authRoutes from "./routes/auth.routes.js";
 import mockRoutes from "./routes/mock.routes.js";
 import testRoutes from "./routes/test.routes.js";
 import resultRoutes from "./routes/result.routes.js";
