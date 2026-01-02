@@ -1,10 +1,11 @@
+
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOTPEmail = async (email, otp) => {
   await resend.emails.send({
-    from: "MockX <no-reply@mockx.dev>", // works without custom domain
+    from: `"MockX" <${process.env.EMAIL_USER}>`, // works without custom domain
     to: email,
     subject: "Your MockX verification code",
     html: `
