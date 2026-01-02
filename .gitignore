@@ -63,3 +63,11 @@ logs/
 # Optional (local only)
 # =========================
 server.local.js
+
+# Env files
+.env
+backend/.env
+frontend/.env
+
+# Node
+node_modules/
