@@ -5,7 +5,7 @@ export const sendOTPEmail = async (email, otp) => {
     service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PSAS,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
