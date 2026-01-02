@@ -1,87 +1,133 @@
-
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOTPEmail = async (email, otp) => {
   await resend.emails.send({
-    from: `"MockX" <${process.env.EMAIL_USER}>`, // works without custom domain
+    from: "MockX <no-reply@mockx.dev>", // ✅ required for Resend free tier
     to: email,
     subject: "Your MockX verification code",
     html: `
-      <style>
-        @keyframes pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-          100% { transform: scale(1); }
-        }
-      </style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MockX OTP</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6fb;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-      <div style="font-family: Arial, Helvetica, sans-serif; background:#f4f6fb; padding:24px;">
-        <div style="
-          max-width:520px;
-          margin:auto;
-          background:#ffffff;
-          border-radius:14px;
-          box-shadow:0 12px 35px rgba(0,0,0,0.08);
-          overflow:hidden;
-        ">
+      .container {
+        max-width: 520px;
+        margin: 24px auto;
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      }
 
-          <div style="
-            background:linear-gradient(135deg,#4f46e5,#6366f1);
-            padding:22px;
-            text-align:center;
-            color:#ffffff;
-          ">
-            <h1 style="margin:0;font-size:22px;">MockX</h1>
-            <p style="margin:6px 0 0;font-size:13px;">
-              Smart Mock Tests • Real Results
-            </p>
-          </div>
+      .header {
+        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        padding: 22px;
+        text-align: center;
+        color: #ffffff;
+      }
 
-          <div style="padding:28px;">
-            <h2 style="margin-top:0;color:#111827;">Verify your email</h2>
+      .header h1 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: 1px;
+      }
 
-            <p style="font-size:14px;color:#374151;line-height:1.6;">
-              Use the OTP below to verify your email.
-            </p>
+      .header p {
+        margin: 6px 0 0;
+        font-size: 13px;
+        opacity: 0.9;
+      }
 
-            <div style="
-              margin:26px 0;
-              padding:18px;
-              text-align:center;
-              background:#eef2ff;
-              border-radius:12px;
-              border:1px dashed #4f46e5;
-              animation:pulse 1.8s infinite;
-            ">
-              <div style="
-                font-size:30px;
-                font-weight:800;
-                letter-spacing:6px;
-                color:#4f46e5;
-              ">
-                ${otp}
-              </div>
-            </div>
+      .content {
+        padding: 28px;
+      }
 
-            <p style="font-size:13px;color:#6b7280;">
-              ⏱ Valid for <b>10 minutes</b>. Do not share this code.
-            </p>
-          </div>
+      .content h2 {
+        margin-top: 0;
+        color: #111827;
+        font-size: 20px;
+      }
 
-          <div style="
-            background:#f9fafb;
-            padding:16px;
-            text-align:center;
-            font-size:12px;
-            color:#9ca3af;
-          ">
-            © ${new Date().getFullYear()} MockX. All rights reserved.
-          </div>
+      .content p {
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+      }
 
-        </div>
+      .otp-box {
+        margin: 26px 0;
+        padding: 18px;
+        text-align: center;
+        background: #eef2ff;
+        border-radius: 12px;
+        border: 1px dashed #4f46e5;
+      }
+
+      .otp {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: 6px;
+        color: #4f46e5;
+      }
+
+      .note {
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      .footer {
+        background: #f9fafb;
+        padding: 16px;
+        text-align: center;
+        font-size: 12px;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>MockX</h1>
+        <p>Smart Mock Tests • Real Results</p>
       </div>
+
+      <div class="content">
+        <h2>Verify your email</h2>
+
+        <p>
+          You're almost ready to begin your mock-test journey.
+          Use the OTP below to verify your email and unlock full access.
+        </p>
+
+        <div class="otp-box">
+          <div class="otp">${otp}</div>
+        </div>
+
+        <p class="note">
+          ⏱ <b>Valid for 10 minutes only.</b><br />
+          Do not share this code with anyone.
+        </p>
+      </div>
+
+      <div class="footer">
+        Didn’t request this? You can safely ignore this email.<br />
+        © ${new Date().getFullYear()} MockX. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>
     `,
   });
 };
