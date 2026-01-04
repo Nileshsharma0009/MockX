@@ -14,7 +14,7 @@ const Navbar = () => (
             <Book className="w-6 h-6 text-white" strokeWidth={2.4} />
           </div>
           <div>
-            <span className="text-2xl font-extrabold tracking-tight text-gray-900">IMUmate</span>
+            <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
             <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">
               IMUCET • Mock Tests
             </p>

@@ -148,7 +148,7 @@ const First = () => {
 
             <div>
               <span className="text-2xl font-extrabold tracking-tight text-gray-900">
-                IMUmate
+                MockX
               </span>
               <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">
                 IMUCET • Mock Tests

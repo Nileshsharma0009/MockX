@@ -33,7 +33,7 @@ export default function Navbar({ onToggleSidebar }) {
             <div className="flex items-center gap-2 ml-1">
               <span className="text-2xl">🎓</span>
               <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-extrabold tracking-tight text-gray-900">IMUmate</span>
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-gray-500">
                   IMUCET • Mock Test
                 </span>

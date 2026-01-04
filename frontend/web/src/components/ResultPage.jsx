@@ -106,7 +106,7 @@ export default function ResultPage() {
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
           a.href = url;
-          a.download = `${(mockTestName || "IMUmate_Result").replace(/\s+/g, "_")}.jpg`;
+          a.download = `${(mockTestName || "MockX_Result").replace(/\s+/g, "_")}.jpg`;
           document.body.appendChild(a);
           a.click();
           a.remove();
@@ -117,7 +117,7 @@ export default function ResultPage() {
         const img = canvas.toDataURL("image/jpeg", 0.95);
         const a = document.createElement("a");
         a.href = img;
-        a.download = `${(mockTestName || "IMUmate_Result").replace(/\s+/g, "_")}.jpg`;
+        a.download = `${(mockTestName || "MockX_Result").replace(/\s+/g, "_")}.jpg`;
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -143,14 +143,14 @@ export default function ResultPage() {
               className="result-watermark"
               alt="watermark"
               // default path: put the image in public/TESTIFY_Result.jpg or adjust as needed
-              src="/IMUmate_Result.jpg"
+              src="/MockX_Result.jpg"
               onError={() => {
                 /* ignore if not available */
               }}
             />
 
             <div className="header-top">
-              <h1>IMUmate Mock Test</h1>
+              <h1>MockX Mock Test</h1>
             </div>
 
             <div className="header-section">
@@ -257,7 +257,7 @@ export default function ResultPage() {
             </div>
 
             <div className="test-title">🎉 Thank You for Taking the Test!</div>
-            <div className="footer-section">Powered by IMUmate — All Rights Reserved.</div>
+            <div className="footer-section">Powered by MockX — All Rights Reserved.</div>
           </div>
         </div>
 
