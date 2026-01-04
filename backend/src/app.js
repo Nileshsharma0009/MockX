@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://mock-x.vercel.app",
+    origin: "http://localhost:5173"||"https://mock-x.vercel.app",
     credentials: true,
   })
 );

@@ -1,22 +1,20 @@
 import axios from "axios";
 
-
 const API_BASE =
-  import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+  import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 const api = axios.create({
   baseURL: `${API_BASE}/api`,
-  withCredentials: true, // ✅ ONLY for protected routes
+  withCredentials: true, // required for cookies
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-
 export const fetchMockQuestions = (mockId) =>
   api.get(`/mocks/${mockId}/questions`);
 
 export const submitAttempt = (data) =>
-  api.post(`/tests/submit`, data); // ✅ FIXED (was /attempts)
+  api.post(`/tests/submit`, data);
 
 export default api;
