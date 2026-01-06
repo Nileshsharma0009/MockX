@@ -1,9 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ResultStat from "./pages/ResultStat.jsx";
 
 import "./index.css";
-
+import ResultHistory from "./pages/ResultHistory.jsx";
+import ResultDetail from "./pages/ResultDetail.jsx";
 import First from "./components/First.jsx";
 import MockTestPage from "./components/MocktestPage.jsx";
 import App from "./App.jsx";
@@ -15,8 +17,8 @@ import AuthModals from "./pages/AuthModals.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
       <BrowserRouter>
+    <AuthProvider>
 
         {/* ✅ AUTH MODALS LIVE HERE */}
         <AuthModals />
@@ -24,6 +26,7 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           
           <Route path="/" element={<First />} />
+          <Route path="/result-history" element={<ProtectedRoute><ResultHistory /></ProtectedRoute>} />
 
           <Route
             path="/mock-tests"
@@ -33,6 +36,16 @@ createRoot(document.getElementById("root")).render(
               </ProtectedRoute>
             }
           />
+         {/* <Route
+  path="/result/:mockId"
+  element={
+    <ProtectedRoute>
+      <ResultDetail />
+    </ProtectedRoute>
+  }
+/> */}
+
+<Route path="/result/:resultId" element={<ResultPage />} />
 
           <Route
             path="/test"
@@ -43,10 +56,19 @@ createRoot(document.getElementById("root")).render(
             }
           />
 
-          <Route path="/result" element={<ResultPage />} />
+          
+          <Route
+  path="/result-stat"
+  element={
+
+      <ResultStat />
+    
+  }
+/>
+
         </Routes>
 
-      </BrowserRouter>
     </AuthProvider>
+      </BrowserRouter>
   </StrictMode>
 );

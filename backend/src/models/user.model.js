@@ -9,6 +9,12 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
 
+    age: Number,
+    phone: String,
+    state: String,
+    exam: String,
+    imucetOption: String,
+
     email: {
       type: String,
       required: true,
@@ -36,10 +42,7 @@ const userSchema = new mongoose.Schema(
     },
 
     /* ---------- EMAIL VERIFICATION ---------- */
-    isVerified: {
-      type: Boolean,
-      default: false,
-    },
+   
 
     verificationToken: {
       type: String,
@@ -54,18 +57,14 @@ const userSchema = new mongoose.Schema(
     resetPasswordExpire: {
       type: Date,
       default: null,
-    }, 
+    },
 
     otp: String,
-otpExpires: Date,
-isVerified: {
-  type: Boolean,
-  default: false,
-},
-
-
-
-
+    otpExpires: Date,
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

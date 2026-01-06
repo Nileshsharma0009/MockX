@@ -7,7 +7,7 @@ import genToken from '../config/token.js';
 const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
 
 export const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,phone, state, age, exam, imucetOption } = req.body;
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -23,9 +23,14 @@ export const register = async (req, res) => {
 
   const user = await User.create({
     name,
-    email,
-    password: hashPassword,
-    isVerified: true,
+  email,
+  phone,
+  state,
+  age,
+  exam,
+  imucetOption,
+  password: hashPassword,
+  isVerified: true,
   });
 
   res.status(201).json({
@@ -41,7 +46,7 @@ export const register = async (req, res) => {
 
 export const signup = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password ,phone, state, age, exam, imucetOption} = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -54,7 +59,7 @@ export const signup = async (req, res) => {
 
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({ name, email, password: hashPassword });
+    const user = await User.create({ name, email, phone, state, age, exam, imucetOption, password: hashPassword });
     const token = await genToken(user._id); 
 
 

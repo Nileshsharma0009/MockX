@@ -1,202 +1,392 @@
-/* Reset & base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: #f0f2f5; color: #333; padding: 10px; }
-
-/* Reset & base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: #f0f2f5; color: #333; padding: 10px; }
-
-/* container */
-.result-page-root .container { max-width: 800px; height: fit-content; margin: 10px auto; }
-
-/* pdf-content card */
-.pdf-content {
-    width: 600px;
-    max-width: 610px;
-    background: #fff;
-    padding: 18px;
-    border: 2px solid #1e3a8a;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    overflow: hidden;
-    position: relative;
-    /* Added background image for company watermark */
-    background-image: url('/path/to/your/company_logo_light.png'); /* Replace with your actual light-colored company logo path */
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 80%; /* Adjust size as needed */
-    background-blend-mode: lighten; /* Makes it blend subtly */
-    opacity: 0.95; /* Slightly reduce opacity to make watermark prominent but not distracting */
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Original watermark - keeping it if you want an additional one */
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #f1f5f9;
+  color: #020617;
+}
+
+.result-page-root {
+  padding: 32px 0;
+}
+
+/* ===============================
+   A4 PAGE
+================================ */
+.pdf-canvas {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 14mm;               /* reduced to prevent overflow */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Inner Border */
+.pdf-canvas::after {
+  content: "";
+  position: absolute;
+  top: 6mm;
+  left: 6mm;
+  right: 6mm;
+  bottom: 6mm;
+  border: 1.5px solid #1e3a8a;
+  pointer-events: none;
+}
+
+/* ===============================
+   WATERMARK
+================================ */
 .result-watermark {
-    position: absolute;
-    right: 8px;
-    top: 8px;
-    width: 140px;
-    opacity: 0.08;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 55%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Result card layout */
-.result-card { display: flex; flex-direction: column; gap: 12px; font-size: 13px; }
+/* ===============================
+   HEADER
+================================ */
+.header-top {
+  text-align: center;
+  z-index: 1;
+  margin-top: 16px;
+}
 
-/* header */
-.header-top h1 { text-align: center; color: #16325c; font-size: 20px; margin-top: 6px; }
-.header-section h2 { text-align: center; color: #16325c; font-size: 18px; margin: 6px 0; }
-.certificate-text { text-align: center; font-size: 12px; color: #444; margin-bottom: 8px; }
+.header-top h1 {
+  font-size: 26px;        /* FIXED from pt */
+  font-weight: 900;
+  color: #1e3a8a;
+  letter-spacing: -0.5px;
+}
 
-/* Info section */
-.info { background: #eef4ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 10px; }
-.info h3 { font-size: 14px; color: #16325c; text-align: center; margin-bottom: 8px; }
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.info-item { background: #fff; border: 1px solid #e6e6e6; padding: 10px; border-radius: 6px; text-align: center; }
-.info-label { font-size: 10px; color: #666; margin-bottom: 6px; }
-.info-value { font-size: 13px; font-weight: 700; color: #0f172a; word-break: break-word; }
+.header-section {
+  text-align: center;
+  margin: 22px 0;
+}
 
-/* Score section */
-.score { border: 1px solid #1e3a8a; padding: 14px; border-radius: 8px; text-align: center; background: #fff; }
-.score h3 { color: #16325c; margin-bottom: 8px; font-size: 15px; }
-.main-score { font-size: 22px; color: #dc2626; font-weight: 800; margin: 4px 0; }
-.result-date-time { font-size: 13px; color: #16325c; margin-bottom: 10px; }
+.header-section h2 {
+  font-size: 18px;        /* FIXED */
+  text-transform: uppercase;
+  color: #334155;
+  border-bottom: 2px solid #e2e8f0;
+  display: inline-block;
+  padding: 0 32px 4px;
+}
 
-/* score grid */
-.score-details { display: flex; gap: 10px; justify-content: space-between; }
-.score-item { flex: 1; border: 1px solid #eee; border-radius: 6px; padding: 10px; background: #fbfbfb; }
-.score-number { color: #16325c; font-weight: 700; font-size: 14px; }
-.score-label { color: #666; font-size: 11px; margin-top: 6px; }
+.certificate-text {
+  font-size: 12px;
+  margin-top: 12px;
+  color: #64748b;
+  font-style: italic;
+}
 
-/* performance badge */
-.performance-badge { display: inline-block; padding: 6px 12px; font-size: 12px; margin-top: 12px; font-weight: 700; border-radius: 999px; text-transform: uppercase; border: 1px solid; }
-.excellent { background: #dcfce7; color: #166534; border-color: #22c55e; }
-.good { background: #dbeafe; color: #1e40af; border-color: #3b82f6; }
-.average { background: #fef3c7; color: #92400e; border-color: #f59e0b; }
-.needs-improvement { background: #fee2e2; color: #dc2626; border-color: #ef4444; }
+/* ===============================
+   INFO SECTION
+================================ */
+.info {
+  margin-top: 18px;
+  z-index: 1;
+}
 
-/* notes */
-.note-wrapper { margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
-.note { background: #fffce8; border-left: 6px solid #f59e0b; padding: 10px; border-radius: 6px; color: #92400e; font-size: 13px; }
-.note::before { content: '📝'; margin-right: 6px; }
+.info h3 {
+  font-size: 12px;
+  color: #1e3a8a;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-left: 4px solid #1e3a8a;
+  padding-left: 8px;
+}
 
-/* extra links */
-.extra-links { text-align: center; margin-top: 8px; }
-.extra-links a { margin: 0 18px; color: #c96a1a; text-decoration: none; font-weight: 600; }
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+}
 
-/* footer and title */
-.test-title { text-align: center; font-size: 16px; color: #16325c; font-weight: 800; margin-top: 10px; }
+.info-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.info-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.info-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* ===============================
+   SCORE SECTION
+================================ */
+.score {
+  margin-top: 32px;
+  text-align: center;
+  padding: 22px;
+  background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.main-score {
+  font-size: 42px;       /* FIXED from 48pt */
+  font-weight: 900;
+  color: #1e3a8a;
+  line-height: 1.05;
+}
+
+.performance-badge {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12px;
+  padding: 7px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.excellent { background: #dcfce7; color: #15803d; }
+.good { background: #dbeafe; color: #1d4ed8; }
+.average { background: #fef3c7; color: #b45309; }
+.needs-improvement { background: #fee2e2; color: #b91c1c; }
+
+/* ===============================
+   FOOTER & SIGNATURE
+================================ */
+.footer-area {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.note {
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 0 32px;
+}
+
 .footer-section {
-    font-size: 12px;
-    text-align: center;
-    color: #6b7280;
-    margin-top: 6px;
-    display: flex; /* Changed to flex to align content */
-    justify-content: space-between; /* Space out the footer content */
-    align-items: flex-end; /* Align items to the bottom */
-    padding: 0 10px; /* Add some padding */
+  font-size: 10px;
+  text-align: center;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 12px;
 }
 
-/* Added for administration signature */
-.administration-signature {
-    text-align: right;
-    margin-top: 20px;
-    flex-grow: 1; /* Allow it to take available space */
+/* ===============================
+   DOWNLOAD BUTTON (SCREEN ONLY)
+================================ */
+.download-btn {
+  margin-top: 20px;
+  padding: 12px 40px;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.administration-signature p {
-    font-size: 11px;
-    color: #555;
-    margin-top: 4px;
-    position: relative; /* Needed for signature line */
-    padding-top: 15px; /* Space for the line */
+.download-btn:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
 }
 
-.administration-signature p::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%; /* Center the line */
-    transform: translateX(-50%); /* Adjust for perfect centering */
-    width: 120px; /* Length of the signature line */
-    border-top: 1px solid #333;
+/* ===============================
+   SCORE SECTION - PDF STABLE
+================================ */
+.score {
+  height: 260px;
+  margin-top: 30px;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* download button */
-.download-wrapper { text-align: center; margin-top: 16px; }
-.download-btn, .print-btn { /* Combined styles for both buttons for consistency */
-    padding: 10px 28px;
-    border-radius: 8px;
-    background: #1e3a8a;
-    color: #fff;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-.download-btn:hover, .print-btn:hover {
-    background-color: #1a2e77;
-}
-.download-btn[disabled], .print-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
-
-/* responsive */
-@media (max-width: 640px) {
-    .info-grid { grid-template-columns: 1fr; }
-    .score-details { flex-direction: column; }
-    .result-watermark { display: none; }
-    .pdf-content { background-size: contain; } /* Adjust watermark size for small screens */
-    .footer-section { flex-direction: column; align-items: center; gap: 10px; }
-    .administration-signature { text-align: center; }
-    .administration-signature p::before { left: 50%; transform: translateX(-50%); }
+/* Section title */
+.score h3 {
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #64748b;
+  margin-bottom: 16px; /* reduced slightly */
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+  font-weight: 700;
 }
 
-/* Print styles for A4 - Ensure these are active for printing */
+/* Main hero score */
+.main-score {
+  font-size: 48px;          /* 🔑 FIX: px instead of pt */
+  font-weight: 800;
+  color: #1e3a8a;
+  line-height: 1;           /* lock line height */
+  margin: 15px;                /* 🔑 remove margin-bottom */
+  font-variant-numeric: tabular-nums;
+  position: relative;
+}
+
+/* Badge spacing controlled explicitly */
+.performance-badge {
+  display: inline-block;
+  margin-top: 10px;         /* controlled spacing */
+  margin-bottom: 18px;      /* 🔑 replaces old large gap */
+  padding: 4px 16px;
+  font-size: 9pt;
+  font-weight: 800;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Grid locked to score */
+.score-details {
+  margin-top: 0;    
+          /* 🔑 critical fix */
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #e2e8f0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Grid items */
+.score-item {
+  background: #f8fafc;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-number {
+  font-size: 14pt;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.score-label {
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+
+
+/* Badge Variants */
+.excellent { background: #dcfce7; color: #166534; }
+.good { background: #dbeafe; color: #1e40af; }
+.average { background: #fef3c7; color: #92400e; }
+.needs-improvement { background: #fee2e2; color: #b91c1c; }
+
+
+
+/* ===============================
+   SCORE SECTION - FINAL FIX
+================================ */
+.score {
+  margin-top: 30px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  position: relative;
+}
+
+/* Section title */
+.score h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #64748b;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+  font-weight: 700;
+}
+
+/* Main hero score */
+.main-score {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1e3a8a;
+  line-height: 1;
+  margin: 8px 0;            /* 🔑 vertical only */
+  font-variant-numeric: tabular-nums;
+}
+
+/* Badge spacing */
+.performance-badge {
+  display: inline-block;
+  margin: 6px 0 16px;       /* 🔑 controls gap cleanly */
+  padding: 4px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Score grid */
+.score-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #e2e8f0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ===============================
+   PRINT SAFE
+================================ */
 @media print {
-    body {
-        margin: 0;
-        padding: 0;
-        background: none;
-    }
-    .result-page-root .container {
-        margin: 0;
-        padding: 0;
-        max-width: none;
-        width: 210mm; /* A4 width */
-        height: 297mm; /* A4 height */
-    }
-    .pdf-content {
-        width: 210mm;
-        height: 297mm;
-        margin: 0;
-        border: none;
-        box-shadow: none;
-        padding: 15mm; /* A4 margins */
-        background-image: url('/path/to/your/company_logo_light.png'); /* Ensure watermark also prints */
-        background-size: 150mm auto; /* Adjust size for print */
-        background-position: center center;
-        background-repeat: no-repeat;
-        opacity: 1; /* Make sure it's fully visible in print if needed, or adjust as desired */
-    }
-    .no-print {
-        display: none !important;
-    }
-    /* Adjust font sizes for print if necessary */
-    .result-card { font-size: 11pt; }
-    .header-top h1 { font-size: 18pt; }
-    .header-section h2 { font-size: 16pt; }
-    .certificate-text { font-size: 10pt; }
-    .info h3 { font-size: 12pt; }
-    .info-label { font-size: 8pt; }
-    .info-value { font-size: 11pt; }
-    .score h3 { font-size: 13pt; }
-    .main-score { font-size: 20pt; }
-    .result-date-time { font-size: 11pt; }
-    .score-number { font-size: 12pt; }
-    .score-label { font-size: 9pt; }
-    .performance-badge { font-size: 10pt; padding: 4px 8px; }
-    .note { font-size: 11pt; }
-    .extra-links a { font-size: 11pt; margin: 0 10px; }
-    .test-title { font-size: 14pt; }
-    .footer-section { font-size: 10pt; }
-    .administration-signature p { font-size: 9pt; padding-top: 10px; }
-    .administration-signature p::before { width: 100px; }
+  body {
+    background: none;
+  }
+
+  .download-btn {
+    display: none;
+  }
+
+  .pdf-canvas {
+    box-shadow: none;
+  }
 }

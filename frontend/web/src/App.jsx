@@ -8,6 +8,8 @@ import {
   useTestDispatch,
 } from "./context/TestContext.jsx";
 
+import { submitAttempt } from "./api/api";
+
 
 
 import Navbar from "./components/Navbar";
@@ -100,60 +102,251 @@ useEffect(() => {
 
 
   /* ✅ Submit test → backend scoring */
-  const handleSubmit = useCallback(async () => {
-    if (!window.confirm("Are you sure you want to submit the test?")) return;
+//   const handleSubmit = useCallback(async () => {
+//     if (!window.confirm("Are you sure you want to submit the test?")) return;
 
-    try {
-      const answers = {};
+//     try {
+//       const answers = {};
 
-      state.fullSetA.forEach((q, i) => {
-        const sel = state.selectedOptionsA[i];
-        if (sel !== null && sel !== undefined) {
-          answers[q.questionCode] = sel;
-        }
-      });
+//       state.fullSetA.forEach((q, i) => {
+//         const sel = state.selectedOptionsA[i];
+//         if (sel !== null && sel !== undefined) {
+//           answers[q.questionCode] = sel;
+//         }
+//       });
 
-      state.fullSetB.forEach((q, i) => {
-        const sel = state.selectedOptionsB[i];
-        if (sel !== null && sel !== undefined) {
-          answers[q.questionCode] = sel;
-        }
-      });
+//       state.fullSetB.forEach((q, i) => {
+//         const sel = state.selectedOptionsB[i];
+//         if (sel !== null && sel !== undefined) {
+//           answers[q.questionCode] = sel;
+//         }
+//       });
 
-      console.log("🟡 SENDING ANSWERS:", answers);
+//       console.log("🟡 SENDING ANSWERS:", answers);
 
-      const res = await fetch(`${API_BASE}/api/tests/submit`, {
-  method: "POST",
-  credentials: "include", // 🔥 REQUIRED
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ mockId, answers }),
-});
+//       const res = await submitAttempt({ mockId, answers });
+// const data = res.data;
+
+// //       const res = await fetch(`${API_BASE}/api/tests/submit`, {
+// //   method: "POST",
+// //   credentials: "include", // 🔥 REQUIRED
+// //   headers: {
+// //     "Content-Type": "application/json",
+// //   },
+// //   body: JSON.stringify({ mockId, answers }),
+// // });
 
 
-      if (!res.ok) throw new Error("Submission failed");
+//       if (!res.ok) throw new Error("Submission failed");
 
-      const data = await res.json();
+//       const data = await res.json();
 
-      localStorage.setItem("testScore", data.score);
-      localStorage.setItem("testResult", JSON.stringify(data));
-      localStorage.setItem("mockTestName", `IMU Mock Test ${mockId}`);
+//       localStorage.setItem("testScore", data.score);
+//       localStorage.setItem("testResult", JSON.stringify(data));
+//       localStorage.setItem("mockTestName", `IMU Mock Test ${mockId}`);
 
-      navigate("/result", { replace: true });
+//       navigate("/result", { replace: true });
 
-    } catch (err) {
-      console.error(err);
-      alert("Failed to submit test");
-    }
-  }, [
-    state.fullSetA,
-    state.fullSetB,
-    state.selectedOptionsA,
-    state.selectedOptionsB,
-    mockId,
-    navigate,
-  ]);
+//     } catch (err) {
+//       console.error(err);
+//       alert("Failed to submit test");
+//     }
+//   }, [
+//     state.fullSetA,
+//     state.fullSetB,
+//     state.selectedOptionsA,
+//     state.selectedOptionsB,
+//     mockId,
+//     navigate,
+//   ]);
+
+
+// const handleSubmit = useCallback(async () => {
+//   if (!window.confirm("Are you sure you want to submit the test?")) return;
+
+//   try {
+//     const answers = {};
+
+//     state.fullSetA.forEach((q, i) => {
+//       const sel = state.selectedOptionsA[i];
+//       if (sel !== null && sel !== undefined) {
+//         answers[q.questionCode] = sel;
+//       }
+//     });
+
+//     state.fullSetB.forEach((q, i) => {
+//       const sel = state.selectedOptionsB[i];
+//       if (sel !== null && sel !== undefined) {
+//         answers[q.questionCode] = sel;
+//       }
+//     });
+
+//     console.log("🟡 SENDING ANSWERS:", answers);
+
+//     // ✅ AXIOS CALL
+//     const res = await submitAttempt({ mockId, answers });
+//     const data = res.data; // 👈 this is the response body
+
+//     // ✅ STORE RESULT
+//     localStorage.setItem("testScore", data.score);
+//     localStorage.setItem("testResult", JSON.stringify(data));
+//     localStorage.setItem("mockTestName", `IMU Mock Test ${mockId}`);
+
+//     navigate("/result", { replace: true });
+
+//   } catch (err) {
+//     console.error("SUBMIT ERROR:", err.response?.data || err.message);
+//     alert(err.response?.data?.message || "Failed to submit test");
+//   }
+// }, [
+//   state.fullSetA,
+//   state.fullSetB,
+//   state.selectedOptionsA,
+//   state.selectedOptionsB,
+//   mockId,
+//   navigate,
+// ]);
+
+
+
+// const handleSubmit = useCallback(async () => {
+//   if (!window.confirm("Are you sure you want to submit the test?")) return;
+
+//   try {
+//     const answers = {};
+
+//     state.fullSetA.forEach((q, i) => {
+//       const sel = state.selectedOptionsA[i];
+//       if (sel !== null && sel !== undefined) {
+//         answers[q.questionCode] = sel;
+//       }
+//     });
+
+//     state.fullSetB.forEach((q, i) => {
+//       const sel = state.selectedOptionsB[i];
+//       if (sel !== null && sel !== undefined) {
+//         answers[q.questionCode] = sel;
+//       }
+//     });
+
+//     console.log("🟡 SENDING ANSWERS:", answers);
+
+//     // ✅ SUBMIT TEST (DB SAVE HAPPENS HERE)
+//     const res = await submitAttempt({ mockId, answers });
+//     const data = res.data;
+
+//     // 🔥 THIS IS THE KEY LINE (YOU WERE MISSING)
+//     localStorage.setItem("lastAttemptId", data.resultId);
+
+//     // OPTIONAL: keep mock name if you want
+//     localStorage.setItem("mockTestName", `IMU Mock Test ${mockId}`);
+
+//     // ✅ GO TO RESULT PAGE
+//     navigate("/result", { replace: true });
+
+//   } catch (err) {
+//     console.error("SUBMIT ERROR:", err.response?.data || err.message);
+//     alert(err.response?.data?.message || "Failed to submit test");
+//   }
+// }, [
+//   state.fullSetA,
+//   state.fullSetB,
+//   state.selectedOptionsA,
+//   state.selectedOptionsB,
+//   mockId,
+//   navigate,
+// ]);
+
+
+// const handleSubmit = useCallback(async () => {
+//   if (!window.confirm("Are you sure you want to submit the test?")) return;
+
+//   try {
+//     const answers = {};
+
+//     state.fullSetA.forEach((q, i) => {
+//       const sel = state.selectedOptionsA[i];
+//       if (sel !== null && sel !== undefined) {
+//         answers[q.questionCode] = sel;
+//       }
+//     });
+
+//     state.fullSetB.forEach((q, i) => {
+//       const sel = state.selectedOptionsB[i];
+//       if (sel !== null && sel !== undefined) {
+//         answers[q.questionCode] = sel;
+//       }
+//     });
+
+//     const res = await submitAttempt({ mockId, answers });
+//     const data = res.data;
+
+//     // ✅ STORE RESULT ID (THIS IS THE KEY)
+//     localStorage.setItem("lastResultId", data.resultId);
+
+//     // ✅ SINGLE NAVIGATION
+//     navigate("/result", { replace: true });
+
+//   } catch (err) {
+//     console.error("SUBMIT ERROR:", err.response?.data || err.message);
+//     alert(err.response?.data?.message || "Failed to submit test");
+//   }
+// }, [
+//   state.fullSetA,
+//   state.fullSetB,
+//   state.selectedOptionsA,
+//   state.selectedOptionsB,
+//   mockId,
+//   navigate,
+// ]);
+
+
+const handleSubmit = useCallback(async () => {
+  if (!window.confirm("Are you sure you want to submit the test?")) return;
+
+  try {
+    const answers = {};
+
+    state.fullSetA.forEach((q, i) => {
+      const sel = state.selectedOptionsA[i];
+      if (sel !== null && sel !== undefined) {
+        answers[q.questionCode] = sel;
+      }
+    });
+
+    state.fullSetB.forEach((q, i) => {
+      const sel = state.selectedOptionsB[i];
+      if (sel !== null && sel !== undefined) {
+        answers[q.questionCode] = sel;
+      }
+    });
+
+    const res = await submitAttempt({ mockId, answers });
+    const data = res.data;
+
+    // ✅ ROUTE-BASED RESULT (NO localStorage DEPENDENCY)
+    navigate(`/result/${data.resultId}`, { replace: true });
+
+  } catch (err) {
+    console.error("SUBMIT ERROR:", err.response?.data || err.message);
+    alert(err.response?.data?.message || "Failed to submit test");
+  }
+}, [
+  state.fullSetA,
+  state.fullSetB,
+  state.selectedOptionsA,
+  state.selectedOptionsB,
+  mockId,
+  navigate,
+]);
+
+useEffect(() => {
+  if (state.timer === 0 && !state.isSubmitted && !loading) {
+    handleSubmit(true); // 🔥 AUTO SUBMIT
+  }
+}, [state.timer, state.isSubmitted, loading, handleSubmit]);
+
+
 
   return (
     <>

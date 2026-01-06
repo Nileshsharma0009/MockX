@@ -121,3 +121,16 @@
   #pdf-content, #pdf-content * { visibility: visible; }
   #pdf-content { position: absolute; left: 0; top: 0; width: 100%; }
 }
+
+
+/* e.g. in index.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -27,7 +27,7 @@ export default function Navbar({ onToggleSidebar }) {
               aria-label="Toggle menu"
               className="p-2 rounded-md text-gray-700 hover:bg-gray-100 md:hidden"
             >
-              ☰
+              
             </button>
 
             <div className="flex items-center gap-2 ml-1">
