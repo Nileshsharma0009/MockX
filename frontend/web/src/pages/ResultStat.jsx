@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AIChatPanel from "./AIChatPanel";
 import { User, LogOut, Shield } from "lucide-react";
-import LoginModal from "../components/LoginModal";
+
+import { analyzeWithAI } from "../api/ai.api";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
 
@@ -133,17 +134,136 @@ const ResultStat = () => {
   return selected.subjectStats;
 }, [selected]);
 
-  const handleSendMessage = () => {
-    if (!chatInput.trim()) return;
-    setChatMessages((p) => [
-      ...p,
-      { id: Date.now(), role: "user", content: chatInput, ts: new Date() },
-      { id: Date.now() + 1, role: "assistant", content: "Thanks! Based on your data, focus first on your lowest-accuracy subject with timed practice.", ts: new Date() },
-    ]);
-    setChatInput("");
+  // const handleSendMessage = () => {
+  //   if (!chatInput.trim()) return;
+  //   setChatMessages((p) => [
+  //     ...p,
+  //     { id: Date.now(), role: "user", content: chatInput, ts: new Date() },
+  //     { id: Date.now() + 1, role: "assistant", content: "Thanks! Based on your data, focus first on your lowest-accuracy subject with timed practice.", ts: new Date() },
+  //   ]);
+  //   setChatInput("");
+  // };
+
+//   const handleSendMessage = async () => {
+//   if (!chatInput.trim() || !selected) return;
+
+//   const userMsg = {
+//     id: Date.now(),
+//     role: "user",
+//     content: chatInput,
+//     ts: new Date(),
+//   };
+
+//   setChatMessages((p) => [...p, userMsg]);
+//   setChatInput("");
+
+//   try {
+//     const res = await fetch(`${API_BASE}/api/ai/analyze`, {
+//       method: "POST",
+//       credentials: "include",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         question: chatInput,
+//         resultData: buildAiPayload(),
+//       }),
+//     });
+
+//     const data = await res.json();
+
+//     setChatMessages((p) => [
+//       ...p,
+//       {
+//         id: Date.now() + 1,
+//         role: "assistant",
+//         content: data.analysis,
+//         ts: new Date(),
+//       },
+//     ]);
+//   } catch (err) {
+//     setChatMessages((p) => [
+//       ...p,
+//       {
+//         id: Date.now() + 1,
+//         role: "assistant",
+//         content: "Sorry, I couldn’t analyze this right now.",
+//         ts: new Date(),
+//       },
+//     ]);
+//   }
+// };
+
+const handleSendMessage = async () => {
+  if (!chatInput.trim() || !selected) return;
+
+  const userMessage = {
+    id: Date.now(),
+    role: "user",
+    content: chatInput,
+    ts: new Date(),
   };
 
+  setChatMessages((prev) => [...prev, userMessage]);
+  setChatInput("");
+
+  try {
+    const payload = {
+      question: chatInput,
+      resultData: {
+        examCode: selected.examCode || "IMUCET",
+        mockId: selected.mockId,
+        summary: {
+          score: selected.score,
+          accuracy: selected.accuracy,
+          attempted: selected.attempted,
+        },
+        subjects: selected.subjectStats,
+      },
+    };
+
+    const { analysis } = await analyzeWithAI(payload);
+
+    setChatMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: analysis,
+        ts: new Date(),
+      },
+    ]);
+  } catch (err) {
+    setChatMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: "we are on maintancne ,will activate this soon.",// AI analysis failed . please try again later.
+        ts: new Date(),
+      },
+    ]);
+  }
+};
+
+
   if (loading) return <div className="min-h-screen flex items-center justify-center text-slate-400">Loading analysis…</div>;
+
+
+const buildAiPayload = () => {
+  if (!selected) return null;
+
+  return {
+    examCode: selected.examCode || "IMUCET",
+    mockId: selected.mockId,
+    summary: {
+      score: selected.score,
+      accuracy: selected.accuracy,
+      attempted: selected.attempted
+    },
+    subjects: selected.subjectStats
+  };
+};
+
+
 
   return (
     <div className="min-h-screen bg-slate-50">
