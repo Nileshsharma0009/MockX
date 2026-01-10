@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import html2pdf from "html2pdf.js";
+import html2canvas from "html2canvas";
+
 
 import "../ResultPage.css";
 
@@ -240,12 +242,12 @@ export default function ResultPage() {
           >
             {isDownloading ? "Preparing..." : "Download Result"}
           </button>
-          {/* <button
+          <button
   onClick={downloadPDF}
   className="download-btn"
 >
   Download PDF
-</button> */}
+</button>
 
         </div>
       </div>
