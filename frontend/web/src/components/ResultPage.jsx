@@ -235,18 +235,20 @@ export default function ResultPage() {
         </div>
 
         <div className="download-wrapper">
-          <button
+          {/* <button
             onClick={downloadJPG}
             className="download-btn"
             disabled={isDownloading}
           >
             {isDownloading ? "Preparing..." : "Download Result"}
-          </button>
+          </button> */}
+
           <button
   onClick={downloadPDF}
   className="download-btn"
+   disabled={isDownloading}
 >
-  Download PDF
+   {isDownloading ? "Preparing..." : "Download Result"}
 </button>
 
         </div>
