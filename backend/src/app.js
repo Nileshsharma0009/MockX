@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.routes.js";
 import mockRoutes from "./routes/mock.routes.js";
 import testRoutes from "./routes/test.routes.js";
 import resultRoutes from "./routes/result.routes.js";
+import paymentRoutes from "./routes/payment.routes.js";
 
 const app = express();
 
@@ -38,6 +39,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/mocks", mockRoutes);
 app.use("/api/tests", testRoutes);
 app.use("/api/results", resultRoutes);
+app.use("/api/payments", paymentRoutes);
+
 
 app.use("/api/ai", aiRoutes);
 

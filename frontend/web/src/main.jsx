@@ -10,6 +10,8 @@ import First from "./components/First.jsx";
 import MockTestPage from "./components/MocktestPage.jsx";
 import App from "./App.jsx";
 import ResultPage from "./components/ResultPage.jsx";
+import ExamCatalogPage from "./components/ExamCatalogPage.jsx";
+import ReviewFaqPage from "./pages/ReviewFaqPage.jsx";
 
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
@@ -27,7 +29,7 @@ createRoot(document.getElementById("root")).render(
           
           <Route path="/" element={<First />} />
           <Route path="/result-history" element={<ProtectedRoute><ResultHistory /></ProtectedRoute>} />
-
+{/* 
           <Route
             path="/mock-tests"
             element={
@@ -35,7 +37,7 @@ createRoot(document.getElementById("root")).render(
                 <MockTestPage />
               </ProtectedRoute>
             }
-          />
+          /> */}
          {/* <Route
   path="/result/:mockId"
   element={
@@ -44,6 +46,10 @@ createRoot(document.getElementById("root")).render(
     </ProtectedRoute>
   }
 /> */}
+
+<Route path="/mock-tests" element={<ExamCatalogPage />} />
+
+<Route path="/mock-tests/imucet" element={<MockTestPage />} />
 
 <Route path="/result/:resultId" element={<ResultPage />} />
 
@@ -66,6 +72,8 @@ createRoot(document.getElementById("root")).render(
   }
 />
 
+
+<Route path="/review-faq" element={<ReviewFaqPage />} />
         </Routes>
 
     </AuthProvider>

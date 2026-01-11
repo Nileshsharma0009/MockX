@@ -9,6 +9,7 @@ import {
 } from "./context/TestContext.jsx";
 
 import { submitAttempt } from "./api/api";
+import Footer from "./components/Footer.jsx";
 
 
 

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
+    "razorpay": "^2.9.6",
     "resend": "^6.6.0"
   }
 }

@@ -24,7 +24,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         else navigate("/result-history");
         break;
       case "Help":
-        alert("Help page coming soon");
+       navigate("/review-faq");
         break;
       case "Ai-Analyzer":
         if (!user) setShowLogin(true);
