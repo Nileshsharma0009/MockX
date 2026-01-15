@@ -218,7 +218,7 @@ const ExamCatalogPage = () => {
         </div>
 
         {/* VALUE PROPOSITION SECTION */}  {/* Commented out for future use */}
-        {/* <section className="mt-32 border-t border-slate-200 pt-24">
+        <section className="mt-32 border-t border-slate-200 pt-24">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl font-bold text-slate-900">
               Why serious aspirants invest in mock tests
@@ -246,7 +246,7 @@ const ExamCatalogPage = () => {
               </div>
             ))}
           </div>
-        </section> */}
+        </section>
       </main>
 
       {/* MODALS */}

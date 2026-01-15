@@ -4,11 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {faqs} from "../data/review.js";
 import { reviews } from "../data/review.js";
 
-/* ------------------ REVIEWS DATA (JSON) ------------------ */
 
-/* ------------------ FAQ DATA (JSON) ------------------ */
-
-/* ------------------ PAGE ------------------ */
 const ReviewsFaqPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const navigate = useNavigate();
