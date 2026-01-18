@@ -65,6 +65,7 @@ export const submitTest = async (req, res) => {
     const { mockId, answers } = req.body;
     const userId = req.user._id;
 
+    // ⛔ Prevent re-attempt
     const existing = await Result.findOne({ userId, mockId });
     if (existing) {
       return res.status(409).json({
@@ -78,18 +79,20 @@ export const submitTest = async (req, res) => {
     let score = 0;
     let total = 0;
 
-    const CORRECT_MARKS = 1;
-    const NEGATIVE_MARKS = 0.25;
-
-    const subjectStats = {};
+    // 🔥 SUBJECT STATS (dynamic)
+    const subjectStats = {}; 
+    // { phy: { attempted, correct, wrong } }
 
     for (const [code, selected] of Object.entries(answers)) {
       const q = await Question.findOne({ questionCode: code })
-        .select("+correctOption");
+        .select("+correctOption +marks +negativeMarks");
 
       if (!q) continue;
 
-      const subject = code.split("-")[2]; // eng, phy, math, etc
+      total += q.marks;
+
+      // ✅ derive subject from questionCode (MOST RELIABLE)
+      const subject = code.split("-")[2]; // phy, math, eng
 
       if (!subjectStats[subject]) {
         subjectStats[subject] = {
@@ -100,24 +103,24 @@ export const submitTest = async (req, res) => {
       }
 
       subjectStats[subject].attempted++;
-      total += CORRECT_MARKS;
 
       if (Number(selected) === q.correctOption) {
-        score += CORRECT_MARKS;
+        score += q.marks;
         subjectStats[subject].correct++;
       } else {
-        score -= NEGATIVE_MARKS;
+        score -= q.negativeMarks || 0;
         subjectStats[subject].wrong++;
       }
     }
 
+    // ✅ SAVE RESULT
     const result = await Result.create({
       userId,
       mockId,
       score,
       total,
       answers,
-      subjectStats,
+      subjectStats, // 🔥 KEY FOR AI ANALYZER
     });
 
     return res.status(201).json({
@@ -132,4 +135,3 @@ export const submitTest = async (req, res) => {
     res.status(500).json({ message: "Test submission failed" });
   }
 };
-
