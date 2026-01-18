@@ -56,7 +56,6 @@
 //   }
 // };
 
-
 import Question from "../models/question.model.js";
 import Result from "../models/result.model.js";
 
@@ -65,7 +64,6 @@ export const submitTest = async (req, res) => {
     const { mockId, answers } = req.body;
     const userId = req.user._id;
 
-    // ⛔ Prevent re-attempt
     const existing = await Result.findOne({ userId, mockId });
     if (existing) {
       return res.status(409).json({
@@ -79,20 +77,18 @@ export const submitTest = async (req, res) => {
     let score = 0;
     let total = 0;
 
-    // 🔥 SUBJECT STATS (dynamic)
-    const subjectStats = {}; 
-    // { phy: { attempted, correct, wrong } }
+    const CORRECT_MARKS = 1;
+    const NEGATIVE_MARKS = 0.25;
+
+    const subjectStats = {};
 
     for (const [code, selected] of Object.entries(answers)) {
       const q = await Question.findOne({ questionCode: code })
-        .select("+correctOption +marks +negativeMarks");
+        .select("+correctOption");
 
       if (!q) continue;
 
-      total += q.marks;
-
-      // ✅ derive subject from questionCode (MOST RELIABLE)
-      const subject = code.split("-")[2]; // phy, math, eng
+      const subject = code.split("-")[2]; // eng, phy, math, etc
 
       if (!subjectStats[subject]) {
         subjectStats[subject] = {
@@ -103,24 +99,24 @@ export const submitTest = async (req, res) => {
       }
 
       subjectStats[subject].attempted++;
+      total += CORRECT_MARKS;
 
       if (Number(selected) === q.correctOption) {
-        score += q.marks;
+        score += CORRECT_MARKS;
         subjectStats[subject].correct++;
       } else {
-        score -= q.negativeMarks || 0;
+        score -= NEGATIVE_MARKS;
         subjectStats[subject].wrong++;
       }
     }
 
-    // ✅ SAVE RESULT
     const result = await Result.create({
       userId,
       mockId,
       score,
       total,
       answers,
-      subjectStats, // 🔥 KEY FOR AI ANALYZER
+      subjectStats,
     });
 
     return res.status(201).json({
