@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mock-x.vercel.app/sitemap.xml

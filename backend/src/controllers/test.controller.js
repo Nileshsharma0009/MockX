@@ -64,6 +64,10 @@ export const submitTest = async (req, res) => {
     const { mockId, answers } = req.body;
     const userId = req.user._id;
 
+    // 🚨 DEV LOG (REMOVE LATER)
+    
+
+    // ⛔ Prevent re-attempt
     const existing = await Result.findOne({ userId, mockId });
     if (existing) {
       return res.status(409).json({
@@ -74,21 +78,26 @@ export const submitTest = async (req, res) => {
       });
     }
 
-    let score = 0;
-    let total = 0;
-
     const CORRECT_MARKS = 1;
     const NEGATIVE_MARKS = 0.25;
 
-    const subjectStats = {};
+    let score = 0;
+    let total = 0;
 
-    for (const [code, selected] of Object.entries(answers)) {
-      const q = await Question.findOne({ questionCode: code })
+    const subjectStats = {};
+    /*
+      subjectStats = {
+        eng: { attempted: 10, correct: 6, wrong: 4 }
+      }
+    */
+
+    for (const [questionCode, selectedOption] of Object.entries(answers)) {
+      const question = await Question.findOne({ questionCode })
         .select("+correctOption");
 
-      if (!q) continue;
+      if (!question) continue;
 
-      const subject = code.split("-")[2]; // eng, phy, math, etc
+      const subject = questionCode.split("-")[2]; // eng / phy / math / etc
 
       if (!subjectStats[subject]) {
         subjectStats[subject] = {
@@ -101,7 +110,10 @@ export const submitTest = async (req, res) => {
       subjectStats[subject].attempted++;
       total += CORRECT_MARKS;
 
-      if (Number(selected) === q.correctOption) {
+      // 🔍 DEBUG (REMOVE LATER)
+  
+
+      if (Number(selectedOption) === question.correctOption) {
         score += CORRECT_MARKS;
         subjectStats[subject].correct++;
       } else {
@@ -127,7 +139,8 @@ export const submitTest = async (req, res) => {
     });
 
   } catch (err) {
-    console.error("SUBMIT ERROR:", err);
-    res.status(500).json({ message: "Test submission failed" });
+    console.error("❌ SUBMIT ERROR:", err);
+    return res.status(500).json({ message: "Test submission failed" });
   }
 };
+

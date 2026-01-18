@@ -203,9 +203,12 @@ export default function ResultPage() {
                 <div className="score-label">Score</div>
               </div>
               <div className="score-item">
-                <div className="score-number">
-                  {total ? ((score / total) * 100).toFixed(1) + "%" : "-"}
-                </div>
+               <div className="score-number">
+  {total
+    ? `${Math.max(0, (score / total) * 100).toFixed(1)}%`
+    : "-"}
+</div>
+
                 <div className="score-label">Percentage</div>
                 
               </div>
