@@ -11,6 +11,7 @@
     "mongodb": "^7.0.0",
     "mongoose": "^9.1.4",
     "nodemon": "^3.1.11",
+    "razorpay": "^2.9.6",
     "resend": "^6.6.0"
   },
   "name": "backend",

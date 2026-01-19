@@ -7,8 +7,25 @@ import mockRoutes from "./routes/mock.routes.js";
 import testRoutes from "./routes/test.routes.js";
 import resultRoutes from "./routes/result.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
+import axios from "axios";
 
 const app = express();
+
+const url = `https://mockx-r65t.onrender.com/`;
+const interval = 30000;
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
 
 app.use(
   cors({
