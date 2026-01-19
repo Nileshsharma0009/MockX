@@ -151,7 +151,7 @@ const handleStartTest = async () => {
     </button>
   ) : (
     <button
-      onClick={() => navigate("/purchase")}
+      onClick={() => navigate("/mock-tests")}
       className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full"
     >
       🔒 Buy to Unlock
