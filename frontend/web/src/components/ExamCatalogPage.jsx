@@ -84,43 +84,43 @@ const ExamCatalogPage = () => {
   const { user, logout, refreshUser } = useAuth();
   const navigate = useNavigate();
 
-  // const handleBuyExam = async (examId) => {
-  //   try {
-  //     if (!user) { setShowLogin(true); return; }
+  const handleBuyExam = async (examId) => {
+    try {
+      if (!user) { setShowLogin(true); return; }
 
-  //     const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
-  //     if (!razorpayKey) {
-  //       alert("Payment configuration error. Key missing.");
-  //       return;
-  //     }
+      const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
+      if (!razorpayKey) {
+        alert("Payment configuration error. Key missing.");
+        return;
+      }
 
-  //     const res = await createOrder({ examId });
-  //     if (!res?.data?.id) {
-  //       alert("Failed to create payment order");
-  //       return;
-  //     }
+      const res = await createOrder({ examId });
+      if (!res?.data?.id) {
+        alert("Failed to create payment order");
+        return;
+      }
 
-  //     const options = {
-  //       key: razorpayKey,
-  //       amount: res.data.amount,
-  //       currency: "INR",
-  //       order_id: res.data.id,
-  //       name: "MockX",
-  //       description: "Exam Test Series",
-  //       handler: async function () {
-  //         setPaymentSuccess(true);
-  //         setTimeout(async () => { await refreshUser(); }, 2000);
-  //       },
-  //       theme: { color: "#4f46e5" },
-  //     };
+      const options = {
+        key: razorpayKey,
+        amount: res.data.amount,
+        currency: "INR",
+        order_id: res.data.id,
+        name: "MockX",
+        description: "Exam Test Series",
+        handler: async function () {
+          setPaymentSuccess(true);
+          setTimeout(async () => { await refreshUser(); }, 2000);
+        },
+        theme: { color: "#4f46e5" },
+      };
 
-  //     const rzp = new window.Razorpay(options);
-  //     rzp.open();
-  //   } catch (err) {
-  //     console.error("Payment error:", err);
-  //     alert("Payment failed. Please try again.");
-  //   }
-  // };
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error("Payment error:", err);
+      alert("Payment failed. Please try again.");
+    }
+  };
 
   const PAYMENTS_ENABLED =
   import.meta.env.VITE_PAYMENTS_ENABLED === "true";
@@ -188,7 +188,8 @@ const ExamCatalogPage = () => {
                   ))}
                 </ul>
 
-                {purchased || !PAYMENTS_ENABLED ? (
+               {purchased || !PAYMENTS_ENABLED ? (
+  /* ✅ FULL ACCESS */
   <button
     onClick={() => navigate(exam.route)}
     className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold
@@ -197,15 +198,31 @@ const ExamCatalogPage = () => {
     Start Test Series <ArrowRight className="w-4 h-4" />
   </button>
 ) : (
+  /* 🔒 NOT PURCHASED */
+ <div className="flex flex-col gap-[10px]">
+  <button
+    onClick={() => navigate(exam.route)}
+    className="w-full py-3 rounded-2xl border border-emerald-500
+               text-emerald-600 font-semibold hover:bg-emerald-50
+               transition-all flex items-center justify-center gap-2"
+  >
+    Start Free Mocks <ArrowRight className="w-4 h-4" />
+  </button>
+
   <button
     onClick={() => handleBuyExam(exam.id)}
-    className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600
+    className="w-full py-4 rounded-2xl bg-slate-900
                text-white font-bold hover:opacity-90 transition-all
                shadow-lg shadow-indigo-100"
   >
     Unlock Test Series
   </button>
+</div>
+
+  
+  
 )}
+
 <p className="mt-4 text-[11px] text-center text-slate-400 font-medium italic">
   {PAYMENTS_ENABLED
     ? "One-time payment • Secure checkout"

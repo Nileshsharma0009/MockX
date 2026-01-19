@@ -2,22 +2,52 @@ import express from "express";
 import Question from "../models/question.model.js";
 import Result from "../models/result.model.js";
 import protect from "../middleware/auth.middleware.js";
+import optionalAuth from "../middleware/optionalAuth.middleware.js";
 
 const router = express.Router();
 
-router.get("/:mockId/questions", protect, async (req, res) => {
+/**
+ * FREE MOCK RULE
+ * Mock 1 → FREE
+ * Others → PAID
+ */
+const FREE_MOCKS = ["1"];
+
+router.get("/:mockId/questions", optionalAuth, async (req, res) => {
   try {
     const { mockId } = req.params;
-    const userId = req.user._id;
+    const user = req.user || null;
 
-    // 🚫 BLOCK IF ALREADY ATTEMPTED
-    const attempted = await Result.findOne({ userId, mockId });
+    const isFreeMock = FREE_MOCKS.includes(mockId);
 
-    if (attempted) {
-      return res.status(403).json({
-        message: "Test already attempted",
-        redirectTo: "/mock-tests",
+    // 🔐 AUTH CHECK FOR PAID MOCKS
+    if (!isFreeMock) {
+      if (!user) {
+        return res.status(401).json({
+          message: "Login required",
+        });
+      }
+
+      if (!user.hasPurchasedBundle) {
+        return res.status(403).json({
+          message: "Purchase required",
+        });
+      }
+    }
+
+    // 🚫 BLOCK IF ALREADY ATTEMPTED (only if logged in)
+    if (user) {
+      const attempted = await Result.findOne({
+        userId: user._id,
+        mockId,
       });
+
+      if (attempted) {
+        return res.status(403).json({
+          message: "Test already attempted",
+          redirectTo: "/mock-tests",
+        });
+      }
     }
 
     // ✅ LOAD QUESTIONS
