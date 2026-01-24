@@ -228,7 +228,7 @@ const First = () => {
   </div>
 
   {/* BOTTOM INSIGHT CARD */}
-  <div className="mt-12 max-w-4xl mx-auto">
+  {/* <div className="mt-12 max-w-4xl mx-auto">
     <div className="bg-gradient-to-br from-gray-900 to-indigo-950 rounded-3xl p-1 shadow-xl">
       <div className="bg-white/5 backdrop-blur-sm rounded-[1.4rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
         <div className="h-14 w-14 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center flex-shrink-0">
@@ -243,7 +243,7 @@ const First = () => {
         </div>
       </div>
     </div>
-  </div>
+  </div> */}
 {/* </section> */}  {/* Commented out for future use */}
 
 
