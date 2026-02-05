@@ -1,52 +1,65 @@
 import React, { useRef, useEffect } from "react";
+import AnalysisMessage from "./AnalysisMessage";
 
-const AIChatPanel = ({ isOpenDesktop = true, messages, input, setInput, onSend }) => {
+const AIChatPanel = ({
+  isOpenDesktop = true,
+  messages,
+  input,
+  setInput,
+  onSend,
+}) => {
   const textareaRef = useRef(null);
 
-  // Auto-grow textarea when input changes
   useEffect(() => {
     const el = textareaRef.current;
     if (!el) return;
     el.style.height = "0px";
-    const next = Math.min(el.scrollHeight, 120); // cap at ~3–4 lines
-    el.style.height = next + "px";
+    el.style.height = Math.min(el.scrollHeight, 120) + "px";
   }, [input]);
 
   return (
     <div
-      className={`flex flex-col bg-white rounded-3xl border border-slate-100 shadow-sm shadow-slate-100 ${
-        isOpenDesktop ? "max-h-[560px] h-[560px]" : "max-h-[75vh] h-full"
-      }`}
+      className={`flex flex-col bg-white rounded-3xl border shadow-sm ${isOpenDesktop ? "h-[560px]" : "h-full max-h-[75vh]"
+        }`}
     >
       {/* Header */}
-      <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-slate-900 flex items-center justify-center text-lg">
-            🤖
-          </div>
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">
-              AI Performance Chat
-            </p>
-            <p className="text-xs text-slate-500">Chat with your personal mock coach.</p>
-          </div>
+      <div className="px-5 py-4 border-b flex gap-3 items-center">
+        <div className="h-9 w-9 rounded-2xl bg-indigo-600 flex items-center justify-center">
+          🤖
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-wider text-slate-400">
+            MockX Assistant
+          </p>
+          <p className="text-xs text-slate-500">
+            Performance analysis & guidance
+          </p>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 min-h-0 px-4 py-3 space-y-3 overflow-y-auto custom-scrollbar">
+      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-4">
         {messages.map((m) => {
           const isUser = m.role === "user";
+
           return (
-            <div key={m.id} className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
+            <div
+              key={m.id}
+              className={`flex ${isUser ? "justify-end" : "justify-start"}`}
+            >
               <div
-                className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${
-                  isUser
-                    ? "bg-slate-900 text-slate-50 rounded-br-sm"
-                    : "bg-slate-50 text-slate-800 border border-slate-100 rounded-bl-sm"
-                }`}
+                className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${isUser
+                  ? "bg-slate-900 text-white"
+                  : "bg-slate-50 border text-slate-800"
+                  }`}
               >
-                {m.content}
+                {/* 🔥 FIX HERE */}
+                {isUser ? (
+                  m.content
+                ) : (
+                  <AnalysisMessage data={m.content} />
+                )}
+
                 <div className="mt-1 text-[10px] text-slate-400 text-right">
                   {new Date(m.ts).toLocaleTimeString([], {
                     hour: "2-digit",
@@ -60,35 +73,25 @@ const AIChatPanel = ({ isOpenDesktop = true, messages, input, setInput, onSend }
       </div>
 
       {/* Input */}
-      <div className="px-4 pb-4 pt-2 border-t border-slate-100 bg-white shrink-0">
+      <div className="border-t px-4 py-3">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             onSend();
           }}
-          className="flex items-end gap-2"
+          className="flex gap-2"
         >
-          <div className="flex-1">
-            <div className="relative">
-              <textarea
-                ref={textareaRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about weak topics, time management, or next mock strategy..."
-                className="w-full max-h-[120px] overflow-y-auto rounded-2xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-transparent"
-              />
-            </div>
-          </div>
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center h-9 w-9 rounded-2xl bg-slate-900 text-slate-50 text-xs font-medium hover:bg-slate-800 active:scale-95 transition"
-          >
+          <textarea
+            ref={textareaRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask about weak areas or next plan..."
+            className="flex-1 resize-none rounded-xl border px-3 py-2 text-xs"
+          />
+          <button className="h-9 w-9 rounded-xl bg-slate-900 text-white">
             ⬆
           </button>
         </form>
-        <p className="mt-1 text-[10px] text-slate-400">
-          AI suggestions are tailored to this mock’s performance.
-        </p>
       </div>
     </div>
   );
