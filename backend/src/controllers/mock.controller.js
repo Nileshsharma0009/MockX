@@ -16,8 +16,8 @@ export const getMockQuestions = async (req, res) => {
     const FALLBACK_MOCKS = {
       "1": { exam: "imucet", isFree: true },
       "imu1": { exam: "imucet", isFree: true },
-      "2": { exam: "imucet", isFree: false },
-      "imu2": { exam: "imucet", isFree: false },
+      "2": { exam: "imucet", isFree: true },
+      "imu2": { exam: "imucet", isFree: true },
       "3": { exam: "imucet", isFree: false },
       "imu3": { exam: "imucet", isFree: false },
       "4": { exam: "imucet", isFree: false },
