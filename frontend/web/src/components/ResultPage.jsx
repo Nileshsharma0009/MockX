@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import html2pdf from "html2pdf.js";
 import html2canvas from "html2canvas";
-
+import { ArrowLeft } from "lucide-react";
 
 import "../ResultPage.css";
 
@@ -125,7 +125,22 @@ export default function ResultPage() {
 
   return (
     <div className="result-page-root">
-      <div className="container">
+      {/* Simple Header with Back Button */}
+      <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50 bg-white/95 border-b border-gray-200">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="text-sm font-medium">Back</span>
+          </button>
+          <h1 className="text-2xl font-extrabold text-gray-900">MockX Result</h1>
+          <div className="w-20" /> {/* Spacer for alignment */}
+        </div>
+      </header>
+
+      <div className="container pt-24">
         <div ref={contentRef} className="pdf-content">
           <img
             className="result-watermark"

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { 
   User, LogOut, Shield, BookOpen, CheckCircle, 
-  Lock, ArrowRight, TrendingUp, Target, 
+  Lock, ArrowRight, TrendingUp, Target, Menu, X,
   BarChart3, Clock, ShieldCheck 
 } from "lucide-react";
 import LoginModal from "./LoginModal";
@@ -14,6 +14,7 @@ import Footer from "./Footer.jsx";
 /* ---------------- NAVBAR COMPONENT ---------------- */
 const Navbar = ({ user, logout, setShowLogin }) => {
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (item) => {
     switch (item) {
@@ -31,10 +32,17 @@ const Navbar = ({ user, logout, setShowLogin }) => {
   return (
     <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50">
       <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/80 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-sm">
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
-          <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center shadow-md shadow-sky-200">
-            <span className="text-white font-extrabold text-lg">M</span>
-          </div>
+          
           <div>
             <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
             <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">Exam Prep</p>
@@ -73,6 +81,24 @@ const Navbar = ({ user, logout, setShowLogin }) => {
           )}
         </div>
       </nav>
+
+      {/* Mobile Navigation Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden px-4 mt-4 w-full absolute left-0 right-0">
+          <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2 mx-4">
+            {["Home", "Results", "Help"].map((item) => (
+              <button
+                key={item}
+                onClick={() => { handleNavClick(item); setIsMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition duration-200 flex items-center justify-between group"
+              >
+                <span>{item}</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">→</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };

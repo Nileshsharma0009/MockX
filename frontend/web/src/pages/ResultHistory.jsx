@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Lock, ArrowRight } from "lucide-react";
+import { Lock, ArrowRight, User, LogOut, Shield, Menu, X } from "lucide-react";
 
 const API_BASE =
   import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
@@ -12,6 +12,7 @@ const TOTAL_MOCKS = 10;
 
 const Navbar = ({ user, logout, setShowLogin }) => {
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const handleNavClick = (item) => {
     switch (item) {
@@ -35,12 +36,18 @@ const Navbar = ({ user, logout, setShowLogin }) => {
   };
 
   return (
-    <header className="py-4 px-4 md:px-12 relative z-10">
+    <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-20 bg-white/95">
       <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-md">
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
-          <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center shadow-md shadow-sky-200">
-            <span className="text-white font-extrabold text-lg">IM</span>
-          </div>
           <div>
             <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
             <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
@@ -72,6 +79,24 @@ const Navbar = ({ user, logout, setShowLogin }) => {
           )}
         </div>
       </nav>
+
+      {/* Mobile Navigation Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden px-4 mt-4 w-full">
+          <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2">
+            {["Home", "Practice", "Results", "Help"].map((item) => (
+              <button
+                key={item}
+                onClick={() => { handleNavClick(item); setIsMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition duration-200 flex items-center justify-between group"
+              >
+                <span>{item}</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">→</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
@@ -79,10 +104,11 @@ const Navbar = ({ user, logout, setShowLogin }) => {
 
 const ResultHistory = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -108,7 +134,9 @@ const ResultHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 relative">
+      <Navbar user={user} logout={logout} setShowLogin={setShowLogin} />
+      <div className="px-4 py-12 pt-28">
       <div className="max-w-5xl mx-auto">
 
         {/* HEADER */}
@@ -208,6 +236,7 @@ const ResultHistory = () => {
         <p className="mt-12 text-center text-xs text-slate-400">
           Tip: Attempt mocks regularly and use AI Analyzer for insights 📈
         </p>
+      </div>
       </div>
     </div>
   );
