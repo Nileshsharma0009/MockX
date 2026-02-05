@@ -23,9 +23,8 @@ const FormInput = ({ id, label, type = "text", value, onChange, error }) => (
       value={value}
       onChange={onChange}
       autoComplete="off"
-      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 ${
-        error ? "border-red-500" : "border-gray-300"
-      }`}
+      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 ${error ? "border-red-500" : "border-gray-300"
+        }`}
       required
     />
     {error && <p className="text-red-600 text-xs mt-1">{error}</p>}
@@ -117,10 +116,10 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className="bg-white rounded-2xl max-w-lg w-full shadow-xl"
+        className="bg-white rounded-2xl max-w-lg w-[95%] md:w-full shadow-xl max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-5 border-b bg-indigo-50 flex justify-between">
+        <div className="p-4 md:p-5 border-b bg-indigo-50 flex justify-between shrink-0">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <Book className="text-indigo-600" /> Create Account
           </h2>
@@ -147,7 +146,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-6 overflow-y-auto">
+          <form onSubmit={handleSubmit} className="p-5 md:p-6 overflow-y-auto custom-scrollbar">
             {error && (
               <div className="mb-3 text-sm bg-red-50 text-red-700 p-2 rounded">
                 {error}
@@ -198,17 +197,17 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
             </button>
 
             <div className="mt-4 text-center text-sm text-gray-600">
-  Already have an account?{" "}
-  <span
-    onClick={() => {
-      onClose();
-      onOpenLogin?.();
-    }}
-    className="text-indigo-600 font-bold cursor-pointer hover:underline"
-  >
-    Login
-  </span>
-</div>
+              Already have an account?{" "}
+              <span
+                onClick={() => {
+                  onClose();
+                  onOpenLogin?.();
+                }}
+                className="text-indigo-600 font-bold cursor-pointer hover:underline"
+              >
+                Login
+              </span>
+            </div>
 
           </form>
         )}

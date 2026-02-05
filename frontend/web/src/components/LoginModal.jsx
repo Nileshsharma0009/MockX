@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Mail, Eye, EyeOff, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
-export default function LoginModal({ onClose , onOpenRegister }) {
+export default function LoginModal({ onClose, onOpenRegister }) {
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
@@ -40,7 +40,7 @@ export default function LoginModal({ onClose , onOpenRegister }) {
       />
 
       {/* Modal */}
-      <div className="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 animate-fadeIn">
+      <div className="relative z-10 w-[90%] max-w-sm bg-white rounded-2xl shadow-2xl p-6 md:p-8 animate-fadeIn max-h-[90vh] overflow-y-auto">
         {/* Close */}
         <button
           onClick={onClose}
@@ -120,7 +120,7 @@ export default function LoginModal({ onClose , onOpenRegister }) {
             Don&apos;t have an account?{" "}
             <span
               onClick={() => {
-                onClose(); 
+                onClose();
                 onOpenRegister?.(); // close login modal
                 // open register modal OR navigate
               }}

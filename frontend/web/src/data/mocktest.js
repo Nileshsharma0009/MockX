@@ -13,7 +13,7 @@ const mockTests = [
     title: "Mock Test 2",
     description: "Full syllabus coverage | 180 minutes | 200 questions",
     releaseDate: "2026-01-10T11:00:00+05:30",
-    isFree: false,         // 🔒 PAID
+    isFree: true,         // ✅ FREE MOCK
   },
   {
     id: 3,

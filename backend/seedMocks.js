@@ -24,7 +24,7 @@ const mocks = [
         title: "Mock Test 2",
         description: "Full syllabus coverage | 180 minutes | 200 questions",
         exam: "imucet",
-        isFree: false,
+        isFree: true,
     },
     {
         _id: "imu3",
@@ -54,7 +54,8 @@ const mocks = [
 
 const seed = async () => {
     try {
-        console.log("Connecting to DB...", process.env.MONGODB_URL);
+        console.log("🔍 ENV PATH:", join(__dirname, ".env"));
+        console.log("🔍 Loading MONGODB_URL:", process.env.MONGODB_URL ? "✅ FOUND" : "❌ MISSING");
         await mongoose.connect(process.env.MONGODB_URL);
         console.log("Connected. Seeding mocks...");
 

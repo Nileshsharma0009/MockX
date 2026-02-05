@@ -123,45 +123,45 @@ const First = () => {
         </nav>
 
         {/* Mobile Navigation Dropdown */}
-{isMobileMenuOpen && (
-  <div className="absolute left-0 right-0 top-full z-50 md:hidden">
-    {/* Backdrop */}
-    <div
-      className="fixed inset-0 bg-black/30 backdrop-blur-sm"
-      onClick={() => setIsMobileMenuOpen(false)}
-    />
+        {isMobileMenuOpen && (
+          <div className="absolute left-0 right-0 top-full z-50 md:hidden">
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
 
-    {/* Menu panel */}
-    <div className="relative px-4 mt-2">
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2">
-        {["Home", "Practice", "Results", "Help"].map((item) => (
-          <button
-            key={item}
-            onClick={() => handleNavClick(item)}
-            className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition"
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-    </div>
-  </div>
-)}
+            {/* Menu panel */}
+            <div className="relative px-4 mt-2">
+              <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2">
+                {["Home", "Practice", "Results", "Help"].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => handleNavClick(item)}
+                    className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
       </header>
 
       {/* Main Hero */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-24 pb-20 text-center relative z-10">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight mb-8 text-gray-800">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 text-center relative z-10">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 md:mb-8 text-gray-800">
           Ace Your <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
         </h1>
 
-        <p className="max-w-2xl mx-auto text-gray-600 text-base md:text-lg mb-8">    Studying hard is only half the battle. Structure your practice to ensure every hour of study translates into higher marks.</p>
+        <p className="max-w-2xl mx-auto text-gray-600 text-sm md:text-lg mb-8 px-2">    Studying hard is only half the battle. Structure your practice to ensure every hour of study translates into higher marks.</p>
         <div className="p-4">
           {!user ? (
-            <button onClick={() => setShowForm(true)} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3.5 px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-lg">Register Now</button>
+            <button onClick={() => setShowForm(true)} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Register Now</button>
           ) : (
-            <button onClick={() => navigate("/mock-tests")} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3.5 px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-lg">Go to Practice</button>
+            <button onClick={() => navigate("/mock-tests")} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Go to Practice</button>
           )}
         </div>
       </main>
