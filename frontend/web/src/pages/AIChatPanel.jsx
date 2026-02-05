@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Send } from "lucide-react";
+import { Send, Bot } from "lucide-react";
 import AnalysisMessage from "./AnalysisMessage";
 
 const AIChatPanel = ({
@@ -28,7 +28,7 @@ const AIChatPanel = ({
       {/* Header */}
       <div className="px-5 py-4 border-b flex gap-3 items-center">
         <div className="h-9 w-9 rounded-2xl bg-indigo-600 flex items-center justify-center">
-          🤖
+          <Bot className="w-5 h-5 text-white" />
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-wider text-slate-400">
@@ -111,5 +111,20 @@ const AIChatPanel = ({
     </div>
   );
 };
+
+export const createWelcomeMessage = (userName) => ({
+  id: "welcome",
+  role: "assistant",
+  content: {
+    title: `Hey ${userName || "Student"}`,
+    points: [
+      "I am here to help you boost your score!",
+      "Analyze your mock test performance",
+      "Generate a structured improvement plan",
+    ],
+    hint: "Try asking: Weakest subject or Next 14-day plan",
+  },
+  ts: new Date().toISOString(),
+});
 
 export default AIChatPanel;

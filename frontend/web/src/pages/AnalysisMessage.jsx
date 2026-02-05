@@ -1,4 +1,5 @@
 import React from "react";
+import { Rocket, CheckCircle2, XCircle } from "lucide-react";
 
 /**
  * Helper to parse bold markdown (e.g. **text**) into JSX
@@ -118,7 +119,7 @@ const AnalysisMessage = ({ data }) => {
                     {advice && <p className="text-indigo-800 mb-2">{advice}</p>}
                     {action && (
                         <div className="flex gap-2 items-start font-medium text-indigo-900">
-                            <span>🚀</span>
+                            <Rocket className="w-5 h-5 flex-shrink-0 text-indigo-600" />
                             <span>{parseBold(action)}</span>
                         </div>
                     )}
@@ -130,13 +131,13 @@ const AnalysisMessage = ({ data }) => {
                 <div className="grid grid-cols-2 gap-3 mt-2">
                     <div className="bg-emerald-50 p-3 rounded-xl border border-emerald-100 text-xs">
                         <div className="font-bold text-emerald-800 mb-1 flex items-center gap-1">
-                            <span>✅</span> DO
+                            <CheckCircle2 className="w-4 h-4" /> DO
                         </div>
                         <p className="text-emerald-900">{parseBold(data.mentorNotes.do)}</p>
                     </div>
                     <div className="bg-red-50 p-3 rounded-xl border border-red-100 text-xs">
                         <div className="font-bold text-red-800 mb-1 flex items-center gap-1">
-                            <span>⛔</span> DON'T
+                            <XCircle className="w-4 h-4" /> DON'T
                         </div>
                         <p className="text-red-900">{parseBold(data.mentorNotes.dont)}</p>
                     </div>

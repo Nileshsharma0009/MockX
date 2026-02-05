@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import AIChatPanel from "./AIChatPanel";
-import { User, LogOut, Shield, Menu, X } from "lucide-react";
+import AIChatPanel, { createWelcomeMessage } from "./AIChatPanel";
+import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
 import { analyzeQuery } from "../analysis/analysisEngine";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
 
@@ -100,7 +100,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
                 className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition duration-200 flex items-center justify-between group"
               >
                 <span>{item}</span>
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">→</span>
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400" />
               </button>
             ))}
           </div>
@@ -137,20 +137,8 @@ const ResultStat = () => {
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
 
-  const DEFAULT_WELCOME_MSG = {
-    id: "welcome",
-    role: "assistant",
-    content: {
-      title: "MockX Official Assistant",
-      points: [
-        "Analyze your mock test performance",
-        "Identify weak subjects",
-        "Generate a structured improvement plan",
-      ],
-      hint: "Try asking: Weakest subject or Next 14-day plan",
-    },
-    ts: new Date().toISOString(),
-  };
+  /* ---------------- CHAT CONFIG ---------------- */
+  const getWelcomeMsg = () => createWelcomeMessage(user?.name);
 
 
   // Fetch Results
@@ -169,26 +157,40 @@ const ResultStat = () => {
 
   // Load Chat History for Selected Mock
   useEffect(() => {
-    if (!selected?.mockId || !user?.id) return;
+    console.log("ChatHistory Effect Triggered", { userId: user?.id, mockId: selected?.mockId });
+    // If no user, can't load history
+    if (!user) return;
 
-    const key = `chat_history_${user.id}_${selected.mockId}`;
+    const userId = user.id || user._id || "user";
+    // Determine key based on selected mock or general
+    const contextId = selected?.mockId || "general";
+    const key = `chat_history_${userId}_${contextId}`;
+
     const saved = localStorage.getItem(key);
 
     if (saved) {
       try {
-        setChatMessages(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        // Only use saved history if it has messages, otherwise show welcome
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setChatMessages(parsed);
+        } else {
+          setChatMessages([getWelcomeMsg()]);
+        }
       } catch (e) {
         console.error("Failed to parse chat history", e);
-        setChatMessages([DEFAULT_WELCOME_MSG]);
+        setChatMessages([getWelcomeMsg()]);
       }
     } else {
-      setChatMessages([DEFAULT_WELCOME_MSG]);
+      setChatMessages([getWelcomeMsg()]);
     }
-  }, [selected?.mockId, user?.id]);
+  }, [selected?.mockId, user]);
 
   const saveChatHistory = (msgs) => {
-    if (!selected?.mockId || !user?.id) return;
-    const key = `chat_history_${user.id}_${selected.mockId}`;
+    if (!user) return;
+    const userId = user.id || user._id || "user";
+    const contextId = selected?.mockId || "general";
+    const key = `chat_history_${userId}_${contextId}`;
     localStorage.setItem(key, JSON.stringify(msgs));
   };
 
@@ -313,7 +315,9 @@ const ResultStat = () => {
         </div>
       </main>
 
-      <button onClick={() => setIsAiOpen((s) => !s)} className="lg:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 text-white text-2xl shadow-xl">🤖</button>
+      <button onClick={() => setIsAiOpen((s) => !s)} className="lg:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+        <Bot size={28} />
+      </button>
 
       {isAiOpen && (
         <div
@@ -327,7 +331,9 @@ const ResultStat = () => {
           >
             <div className={`flex items-center justify-between p-3 border-b border-gray-100 bg-white rounded-t-3xl transition-opacity duration-200 ${isInputFocused ? "opacity-0 h-0 p-0 overflow-hidden" : "opacity-100"}`}>
               <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-2xl bg-indigo-600 flex items-center justify-center text-white">🤖</div>
+                <div className="h-8 w-8 rounded-2xl bg-indigo-600 flex items-center justify-center text-white">
+                  <Bot size={18} />
+                </div>
                 <div>
                   <div className="text-sm font-semibold text-gray-800">MockX Assistant</div>
                   <div className="text-xs text-slate-400">Context: {selected?.mockId || "General"}</div>
