@@ -1,42 +1,75 @@
 import Question from "../models/question.model.js";
 import Result from "../models/result.model.js";
 import Mock from "../models/mock.model.js";
-    import { isPaymentEnabled } from "../utils/paymentToggle.js";
+import { isPaymentEnabled } from "../utils/paymentToggle.js";
 export const getMockQuestions = async (req, res) => {
   try {
     const { mockId } = req.params;
     const user = req.user;
 
     /* -----------------------------
-       1️⃣ CHECK MOCK EXISTS
+       1️⃣ CHECK MOCK EXISTS (Safe Fallback)
     ----------------------------- */
-    const mock = await Mock.findById(mockId);
+    let mock = await Mock.findById(mockId);
+
+    // ⚠️ Fallback Data (Matches Frontend Config)
+    const FALLBACK_MOCKS = {
+      "1": { exam: "imucet", isFree: true },
+      "imu1": { exam: "imucet", isFree: true },
+      "2": { exam: "imucet", isFree: false },
+      "imu2": { exam: "imucet", isFree: false },
+      "3": { exam: "imucet", isFree: false },
+      "imu3": { exam: "imucet", isFree: false },
+      "4": { exam: "imucet", isFree: false },
+      "imu4": { exam: "imucet", isFree: false },
+      "5": { exam: "imucet", isFree: false },
+      "imu5": { exam: "imucet", isFree: false },
+      "6": { exam: "imucet", isFree: false },
+      "imu6": { exam: "imucet", isFree: false },
+    };
+
     if (!mock) {
-      return res.status(404).json({
-        message: "Mock not found",
-      });
+      const fallback = FALLBACK_MOCKS[mockId];
+      if (fallback) {
+        mock = { _id: mockId, ...fallback };
+      } else {
+        // Generic default
+        mock = {
+          _id: mockId,
+          exam: "imucet",
+          isFree: mockId === "1" || mockId === "imu1",
+        };
+      }
     }
 
-    const examId = mock.exam; // 🔥 THIS WAS MISSING
+    const examId = mock.exam;
+
+    // Check if free (Database flag or Hardcoded legacy ID)
+    const isFree = mock.isFree || mockId === "1" || mockId === "imu1";
 
     /* -----------------------------
-       2️⃣ PAYMENT CHECK (EXAM LEVEL)
+       2️⃣ ACCESS CONTROL CHECK
     ----------------------------- */
-    if (!user.purchasedExams.includes(examId)) {
+    let hasAccess = false;
+
+    // ✅ Case A: It's free
+    if (isFree) {
+      hasAccess = true;
+    }
+    // ✅ Case B: Payments are disabled globally
+    else if (!isPaymentEnabled()) {
+      hasAccess = true;
+    }
+    // ✅ Case C: User has purchased the specific exam bundle
+    else if (user && user.purchasedExams && user.purchasedExams.includes(examId)) {
+      hasAccess = true;
+    }
+
+    if (!hasAccess) {
       return res.status(403).json({
         message: "Please purchase this exam to access mocks",
       });
     }
-
-
-
-if (isPaymentEnabled()) {
-  if (!req.user.purchasedExams.includes(examId)) {
-    return res.status(403).json({
-      message: "Please purchase access",
-    });
-  }
-}
 
     /* -----------------------------
        3️⃣ BLOCK RE-ATTEMPT
@@ -53,7 +86,7 @@ if (isPaymentEnabled()) {
       });
     }
 
-    
+
 
     /* -----------------------------
        4️⃣ LOAD QUESTIONS

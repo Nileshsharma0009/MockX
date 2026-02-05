@@ -1,128 +1,130 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const MockTestCard = ({ id, emoji, code, level, title, description, available, date , isFree  ,user}) => {
+const MockTestCard = ({ id, emoji, code, level, title, description, available, date, isFree, user }) => {
   const navigate = useNavigate();
 
-// const handleStartTest = async () => {
-//   const userData = localStorage.getItem("userData");
-//   if (!userData) {
-//     alert("Please register first to start the test");
-//     return;
-//   }
+  // const handleStartTest = async () => {
+  //   const userData = localStorage.getItem("userData");
+  //   if (!userData) {
+  //     alert("Please register first to start the test");
+  //     return;
+  //   }
 
-//   if (!available) {
-//     alert(`⏳ ${title} will be available on ${date}`);
-//     return;
-//   }
+  //   if (!available) {
+  //     alert(`⏳ ${title} will be available on ${date}`);
+  //     return;
+  //   }
 
-//   try {
-//     // 🔒 CHECK WITH BACKEND BEFORE ENTERING TEST
-//  const API_BASE = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+  //   try {
+  //     // 🔒 CHECK WITH BACKEND BEFORE ENTERING TEST
+  //  const API_BASE = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
 
-// const res = await fetch(
-//   `${API_BASE}/api/mocks/${id}/questions`,
-//   {
-//     credentials: "include", // 🔥 cookie auth
-//   }
-// );
-
-
-//     if (res.status === 403) {
-//       const data = await res.json();
-//       alert("❌ You have already attempted this test.");
-//       return; // 🚫 STOP navigation
-//     }
-
-//     if (!res.ok) {
-//       throw new Error("Failed to start test");
-//     }
-
-//     // ✅ SAFE TO ENTER TEST
-//     navigate(`/test?mock=${id}`);
-//   } catch (err) {
-//     console.error(err);
-//     alert("Unable to start test. Please try again.");
-//   }
-// };
-
-// const handleStartTest = async () => {
-//   if (!available) {
-//     alert(`⏳ ${title} will be available on ${date}`);
-//     return;
-//   }
-
-//   try {
-//     const API_BASE =
-//       import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
-
-//     const res = await fetch(
-//       `${API_BASE}/api/mocks/${id}/questions`,
-//       {
-//         credentials: "include", // 🔥 cookie auth
-//       }
-//     );
-
-//     if (res.status === 401) {
-//       alert("Please login or register first");
-//       return;
-//     }
-
-//     if (res.status === 403) {
-//       alert("❌ You have already attempted this test.");
-//       return;
-//     }
-
-//     if (!res.ok) {
-//       throw new Error("Failed to start test");
-//     }
-
-//     navigate(`/test?mock=${id}`);
-//   } catch (err) {
-//     console.error(err);
-//     alert("Unable to start test. Please try again.");
-//   }
-// }; 
+  // const res = await fetch(
+  //   `${API_BASE}/api/mocks/${id}/questions`,
+  //   {
+  //     credentials: "include", // 🔥 cookie auth
+  //   }
+  // );
 
 
-const handleStartTest = async () => {
-  if (!available) {
-    alert(`⏳ ${title} will be available on ${date}`);
-    return;
-  }
+  //     if (res.status === 403) {
+  //       const data = await res.json();
+  //       alert("❌ You have already attempted this test.");
+  //       return; // 🚫 STOP navigation
+  //     }
 
-  // 🔐 LOGIN CHECK (only for paid mocks)
-  if (!isFree && !user) {
-    alert("Please login or register to access paid mocks");
-    return;
-  }
+  //     if (!res.ok) {
+  //       throw new Error("Failed to start test");
+  //     }
 
-  try {
-    const API_BASE =
-      import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+  //     // ✅ SAFE TO ENTER TEST
+  //     navigate(`/test?mock=${id}`);
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("Unable to start test. Please try again.");
+  //   }
+  // };
 
-    const res = await fetch(
-      `${API_BASE}/api/mocks/${id}/questions`,
-      {
-        credentials: "include",
-      }
-    );
+  // const handleStartTest = async () => {
+  //   if (!available) {
+  //     alert(`⏳ ${title} will be available on ${date}`);
+  //     return;
+  //   }
 
-    if (res.status === 403) {
-      alert("🔒 Please purchase the bundle to unlock this mock");
+  //   try {
+  //     const API_BASE =
+  //       import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+
+  //     const res = await fetch(
+  //       `${API_BASE}/api/mocks/${id}/questions`,
+  //       {
+  //         credentials: "include", // 🔥 cookie auth
+  //       }
+  //     );
+
+  //     if (res.status === 401) {
+  //       alert("Please login or register first");
+  //       return;
+  //     }
+
+  //     if (res.status === 403) {
+  //       alert("❌ You have already attempted this test.");
+  //       return;
+  //     }
+
+  //     if (!res.ok) {
+  //       throw new Error("Failed to start test");
+  //     }
+
+  //     navigate(`/test?mock=${id}`);
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("Unable to start test. Please try again.");
+  //   }
+  // }; 
+
+
+  const handleStartTest = async () => {
+    if (!available) {
+      alert(`⏳ ${title} will be available on ${date}`);
       return;
     }
 
-    if (!res.ok) {
-      throw new Error("Failed to start test");
+    // 🔐 LOGIN CHECK (only for paid mocks, if payments are enabled)
+    const paymentsEnabled = import.meta.env.VITE_PAYMENTS_ENABLED === "true";
+
+    if (!isFree && !user && paymentsEnabled) {
+      alert("Please login or register to access paid mocks");
+      return;
     }
 
-    navigate(`/test?mock=${id}`);
-  } catch (err) {
-    console.error(err);
-    alert("Unable to start test. Please try again.");
-  }
-};
+    try {
+      const API_BASE =
+        import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+
+      const res = await fetch(
+        `${API_BASE}/api/mocks/${id}/questions`,
+        {
+          credentials: "include",
+        }
+      );
+
+      if (res.status === 403) {
+        alert("🔒 Please purchase the bundle to unlock this mock");
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error("Failed to start test");
+      }
+
+      navigate(`/test?mock=${id}`);
+    } catch (err) {
+      console.error(err);
+      alert("Unable to start test. Please try again.");
+    }
+  };
 
 
 
@@ -141,27 +143,27 @@ const handleStartTest = async () => {
       <h2 className="text-2xl font-semibold text-gray-800 mb-2">{title}</h2>
       <p className="text-gray-500 mb-6 text-sm leading-relaxed">{description}</p>
 
-    {available ? (
-  isFree || user?.hasPurchasedBundle ? (
-    <button
-      onClick={handleStartTest}
-      className="bg-white/30 backdrop-blur-md text-sky-700 font-semibold px-6 py-3 rounded-full border border-sky-200"
-    >
-      Start Test
-    </button>
-  ) : (
-    <button
-      onClick={() => navigate("/mock-tests")}
-      className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full"
-    >
-      🔒 Buy to Unlock
-    </button>
-  )
-) : (
-  <button disabled className="bg-gray-200 px-6 py-3 rounded-full">
-    Available on {date}
-  </button>
-)}
+      {available ? (
+        isFree || user?.hasPurchasedBundle ? (
+          <button
+            onClick={handleStartTest}
+            className="bg-white/30 backdrop-blur-md text-sky-700 font-semibold px-6 py-3 rounded-full border border-sky-200"
+          >
+            Start Test
+          </button>
+        ) : (
+          <button
+            onClick={() => navigate("/mock-tests")}
+            className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full"
+          >
+            🔒 Buy to Unlock
+          </button>
+        )
+      ) : (
+        <button disabled className="bg-gray-200 px-6 py-3 rounded-full">
+          Available on {date}
+        </button>
+      )}
 
     </div>
   );

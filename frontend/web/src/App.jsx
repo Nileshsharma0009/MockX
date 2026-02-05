@@ -62,24 +62,6 @@
 
 //   // fetch(`http://localhost:5000/api/mocks/${resolvedMock}/questions`, {
 //   //   credentials: "include", // 🔥 REQUIRED for cookie auth
-//   // })
-
-//   fetch(`${API_BASE}/api/mocks/${resolvedMock}/questions`, {
-//   credentials: "include", // 🔥 REQUIRED for cookie auth
-// })
-//     .then(async (r) => {
-//       // 🔒 BLOCK IF ALREADY ATTEMPTED
-//       if (r.status === 403) {
-//         const data = await r.json();
-//         alert("You have already attempted this test.");
-//         navigate("/mock-tests"); // ⬅️ redirect here
-//         return null;
-//       }
-
-//       if (!r.ok) throw new Error("Failed to load questions");
-//       return r.json();
-//     })
-//     .then((data) => {
 //       if (!data) return; // ⬅️ important
 
 
@@ -181,7 +163,7 @@
 // export default function App() {
 //   return (
 //     <TestProvider>
-       
+
 //       <TestPageInner />
 //     </TestProvider>
 //   );
@@ -252,7 +234,8 @@ function TestPageInner() {
     })
       .then(async (r) => {
         if (r.status === 403) {
-          alert("You have already attempted this test.");
+          const data = await r.json();
+          alert(data.message || "Access denied.");
           navigate("/mock-tests");
           return null;
         }
