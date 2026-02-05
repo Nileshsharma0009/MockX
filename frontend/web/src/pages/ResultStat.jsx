@@ -6,7 +6,8 @@ import { User, LogOut, Shield } from "lucide-react";
 import { analyzeQuery } from "../analysis/analysisEngine";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
 
-const API_BASE = "http://localhost:5000";
+const API_BASE =
+  import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
 
 const SUBJECTS = {
   eng: { name: "English" },
