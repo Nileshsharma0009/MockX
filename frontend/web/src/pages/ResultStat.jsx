@@ -131,25 +131,29 @@ const ResultStat = () => {
   const [loading, setLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
   const [isAiOpen, setIsAiOpen] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
-  const [chatMessages, setChatMessages] = useState([
-    {
-      id: 1,
-      role: "assistant",
-      content: {
-        title: "MockX Official Assistant",
-        points: [
-          "Analyze your mock test performance",
-          "Identify weak subjects",
-          "Generate a structured improvement plan",
-        ],
-        hint: "Try asking: Weakest subject or Next 14-day plan",
-      },
-      ts: new Date().toISOString(),
-    },
-  ]);
+  /* ---------------- CHAT STATE ---------------- */
+  const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
 
+  const DEFAULT_WELCOME_MSG = {
+    id: "welcome",
+    role: "assistant",
+    content: {
+      title: "MockX Official Assistant",
+      points: [
+        "Analyze your mock test performance",
+        "Identify weak subjects",
+        "Generate a structured improvement plan",
+      ],
+      hint: "Try asking: Weakest subject or Next 14-day plan",
+    },
+    ts: new Date().toISOString(),
+  };
+
+
+  // Fetch Results
   useEffect(() => {
     if (!user) { navigate("/"); return; }
     fetch(`${API_BASE}/api/results/my`, { credentials: "include" })
@@ -163,6 +167,32 @@ const ResultStat = () => {
       .catch(() => setLoading(false));
   }, [user, navigate]);
 
+  // Load Chat History for Selected Mock
+  useEffect(() => {
+    if (!selected?.mockId || !user?.id) return;
+
+    const key = `chat_history_${user.id}_${selected.mockId}`;
+    const saved = localStorage.getItem(key);
+
+    if (saved) {
+      try {
+        setChatMessages(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse chat history", e);
+        setChatMessages([DEFAULT_WELCOME_MSG]);
+      }
+    } else {
+      setChatMessages([DEFAULT_WELCOME_MSG]);
+    }
+  }, [selected?.mockId, user?.id]);
+
+  const saveChatHistory = (msgs) => {
+    if (!selected?.mockId || !user?.id) return;
+    const key = `chat_history_${user.id}_${selected.mockId}`;
+    localStorage.setItem(key, JSON.stringify(msgs));
+  };
+
+
   const subjectStats = useMemo(() => {
     if (!selected?.subjectStats) return null;
     return selected.subjectStats;
@@ -174,10 +204,12 @@ const ResultStat = () => {
     if (!text || !text.trim()) return;
 
     // Add User Message
-    setChatMessages((prev) => [
-      ...prev,
-      { id: Date.now(), role: "user", content: text, ts: new Date().toISOString() },
-    ]);
+    const userMsg = { id: Date.now(), role: "user", content: text, ts: new Date().toISOString() };
+    setChatMessages((prev) => {
+      const next = [...prev, userMsg];
+      saveChatHistory(next);
+      return next;
+    });
     setChatInput("");
 
     // Generate Analysis (Instant)
@@ -190,15 +222,17 @@ const ResultStat = () => {
 
       const safeResponse = normalizeAssistantContent(rawResponse);
 
-      setChatMessages((prev) => [
-        ...prev,
-        {
+      setChatMessages((prev) => {
+        const assistantMsg = {
           id: Date.now() + 1,
           role: "assistant",
           content: safeResponse,
           ts: new Date().toISOString(),
-        },
-      ]);
+        };
+        const next = [...prev, assistantMsg];
+        saveChatHistory(next);
+        return next;
+      });
     }, 500);
   };
 
@@ -279,12 +313,58 @@ const ResultStat = () => {
         </div>
       </main>
 
-      <button onClick={() => setIsAiOpen(true)} className="lg:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 text-white text-2xl shadow-xl">🤖</button>
+      <button onClick={() => setIsAiOpen((s) => !s)} className="lg:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 text-white text-2xl shadow-xl">🤖</button>
 
       {isAiOpen && (
-        <div className="fixed inset-0 z-50 flex items-end lg:hidden">
-          <div className="absolute inset-0 bg-black/30" onClick={() => setIsAiOpen(false)} />
-          <div className="w-full bg-white rounded-t-3xl p-4 max-h-[85vh]"><AIChatPanel isOpenDesktop={false} messages={chatMessages} input={chatInput} setInput={setChatInput} onSend={handleSendMessage} /></div>
+        <div
+          className="fixed inset-0 z-50 lg:hidden pointer-events-none flex flex-col justify-end"
+        >
+          {/* Backdrop passes clicks due to pointer-events-none */}
+
+          <div
+            className={`w-full pointer-events-auto bg-white rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] border-t border-gray-100 flex flex-col transition-all duration-300 ease-out ${isInputFocused ? "h-[90vh] pb-8" : "h-[60vh]"
+              }`}
+          >
+            <div className={`flex items-center justify-between p-3 border-b border-gray-100 bg-white rounded-t-3xl transition-opacity duration-200 ${isInputFocused ? "opacity-0 h-0 p-0 overflow-hidden" : "opacity-100"}`}>
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-2xl bg-indigo-600 flex items-center justify-center text-white">🤖</div>
+                <div>
+                  <div className="text-sm font-semibold text-gray-800">MockX Assistant</div>
+                  <div className="text-xs text-slate-400">Context: {selected?.mockId || "General"}</div>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsAiOpen(false)}
+                className="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full p-2 transition-colors"
+                aria-label="Close chat"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Chat Content */}
+            <div className="flex-1 min-h-0 bg-white">
+              <AIChatPanel
+                isOpenDesktop={false}
+                messages={chatMessages}
+                input={chatInput}
+                setInput={setChatInput}
+                onSend={handleSendMessage}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
+              />
+            </div>
+
+            {/* Minimal close btn when focused */}
+            {isInputFocused && (
+              <button
+                onClick={() => setIsInputFocused(false)}
+                className="absolute top-2 right-2 bg-slate-100 text-slate-400 p-1 rounded-full z-50 shadow-sm"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
         </div>
       )}
 
