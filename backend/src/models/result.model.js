@@ -88,6 +88,11 @@ const ResultSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+    isSubmitted: {
+      type: Boolean,
+      default: true, // Default true for backward compatibility
+    },
   },
   { timestamps: true }
 );

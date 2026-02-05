@@ -17,4 +17,7 @@ export const fetchMockQuestions = (mockId) =>
 export const submitAttempt = (data) =>
   api.post(`/tests/submit`, data);
 
+export const saveProgress = (data) =>
+  api.post(`/tests/save`, data);
+
 export default api;
