@@ -14,6 +14,7 @@ import {
   X
 } from "lucide-react";
 import Footer from "./Footer.jsx";
+import MainNavbar from "./MainNavbar.jsx";
 
 // --- Typewriter Component (Keep as is) ---
 const Typewriter = ({ words, typingSpeed = 150, deletingSpeed = 100, delay = 1000 }) => {
@@ -74,81 +75,11 @@ const First = () => {
       <div className="absolute top-[-4rem] -right-24 w-96 h-96 bg-indigo-100 rounded-full blur-3xl" />
 
       {/* Header */}
-      <header className="py-4 px-4 md:px-12 relative z-20">
-        <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-md">
-          <div className="flex items-center gap-3">
-            {/* Mobile Menu Button - Hamburger on Left */}
-            <button
-              className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+      <MainNavbar
+        desktopLinks={["Home", "Practice", "Results", "Help"]}
+        setShowLogin={setShowLogin}
+      />
 
-            {/* <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center shadow-md shadow-sky-200">
-              <span className="text-white font-extrabold text-lg">IM</span>
-            </div> */}
-            <div>
-              <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
-              <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
-            </div>
-          </div>
-
-          <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-            {["Home", "Practice", "Results", "Help"].map((item) => (
-              <button key={item} onClick={() => handleNavClick(item)} className="hover:text-sky-600 transition duration-200">
-                {item}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            {!user ? (
-              <button onClick={() => setShowLogin(true)} className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-sm font-semibold shadow hover:shadow-lg hover:scale-105 transition">
-                <User className="w-4 h-4" /> Login
-              </button>
-            ) : (
-              <div className="flex items-center gap-3">
-                {user.role === "admin" && <Shield className="w-4 h-4 text-indigo-600" />}
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100">
-                  <User className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm font-medium text-gray-800">{user.name}</span>
-                </div>
-
-                <LogOut onClick={logout} className="w-5 h-5 cursor-pointer text-red-500 hover:text-red-600 transition" />
-              </div>
-            )}
-          </div>
-        </nav>
-
-        {/* Mobile Navigation Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-full z-50 md:hidden">
-            {/* Backdrop */}
-            <div
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-
-            {/* Menu panel */}
-            <div className="relative px-4 mt-2">
-              <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2">
-                {["Home", "Practice", "Results", "Help"].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => handleNavClick(item)}
-                    className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-      </header>
 
       {/* Main Hero */}
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 text-center relative z-10">

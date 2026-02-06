@@ -71,22 +71,22 @@ export default function ResultPage() {
       DOWNLOAD RESULT AS IMAGE
       ========================= */
 
-      const downloadPDF = () => {
-  if (!contentRef.current) return;
+  const downloadPDF = () => {
+    if (!contentRef.current) return;
 
-  const element = contentRef.current;
+    const element = contentRef.current;
 
-  const opt = {
-    margin:       10,            // mm
-    filename:     `${mockTestName}_Result.pdf`,
-    image:        { type: "jpeg", quality: 0.98 },
-    html2canvas:  { scale: 2, useCORS: true },
-    jsPDF:        { unit: "mm", format: "a4", orientation: "portrait" },
-    pagebreak:    { mode: ["avoid-all", "css", "legacy"] }
+    const opt = {
+      margin: 10,            // mm
+      filename: `${mockTestName}_Result.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+    };
+
+    html2pdf().set(opt).from(element).save();
   };
-
-  html2pdf().set(opt).from(element).save();
-};
 
   const downloadJPG = async () => {
     if (!contentRef.current) return;
@@ -146,7 +146,7 @@ export default function ResultPage() {
             className="result-watermark"
             src="/MockX_Result.jpg"
             alt="watermark"
-            onError={() => {}}
+            onError={() => { }}
           />
 
           <div className="header-top">
@@ -218,38 +218,38 @@ export default function ResultPage() {
                 <div className="score-label">Score</div>
               </div>
               <div className="score-item">
-               <div className="score-number">
-  {total
-    ? `${Math.max(0, (score / total) * 100).toFixed(1)}%`
-    : "-"}
-</div>
+                <div className="score-number">
+                  {total
+                    ? `${Math.max(0, (score / total) * 100).toFixed(1)}%`
+                    : "-"}
+                </div>
 
                 <div className="score-label">Percentage</div>
-                
+
               </div>
               <div className={`performance-badge ${performance.cls}`}>
-              {performance.text}
-            </div>
+                {performance.text}
+              </div>
             </div>
           </div>
 
-
-  <div className="footer-section">
-          <div className="note">
-            <p>
-               Thanks for taking the mock test! Your feedback helps us improve the experience for everyone.
-            </p>
-            <div id="extra" className="extra-links">
-              <a href="https://forms.gle/SHub4HFjEep6adfm9" target="_blank" rel="noreferrer">feedBack</a>
-              <a href="https://telegram.me/KoToNe_0" target="_blank" rel="noreferrer">contact</a>
-              <a href="https://telegram.me/+PbIXyPZwU6llZGRl" target="_blank" rel="noreferrer">join</a>
-            </div>
-          </div>
 
           <div className="footer-section">
-            Powered by MockX — All Rights Reserved.
+            <div className="note">
+              <p>
+                Thanks for taking the mock test! Your feedback helps us improve the experience for everyone.
+              </p>
+              <div id="extra" className="extra-links">
+                <a href="https://forms.gle/SHub4HFjEep6adfm9" target="_blank" rel="noreferrer">Feedback</a>
+                <a href="https://telegram.me/KoToNe_0" target="_blank" rel="noreferrer">Contact</a>
+                <a href="https://telegram.me/+PbIXyPZwU6llZGRl" target="_blank" rel="noreferrer">Join</a>
+              </div>
+            </div>
+
+            <div className="footer-section">
+              Powered by MockX — All Rights Reserved.
+            </div>
           </div>
-        </div>
         </div>
 
         <div className="download-wrapper">
@@ -262,12 +262,12 @@ export default function ResultPage() {
           </button> */}
 
           <button
-  onClick={downloadPDF}
-  className="download-btn"
-   disabled={isDownloading}
->
-   {isDownloading ? "Preparing..." : "Download Result"}
-</button>
+            onClick={downloadPDF}
+            className="download-btn"
+            disabled={isDownloading}
+          >
+            {isDownloading ? "Preparing..." : "Download Result"}
+          </button>
 
         </div>
       </div>

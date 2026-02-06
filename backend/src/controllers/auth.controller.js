@@ -7,7 +7,7 @@ import genToken from '../config/token.js';
 const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
 
 export const register = async (req, res) => {
-  const { name, email, password,phone, state, age, exam, imucetOption } = req.body;
+  const { name, email, password, phone, state, age, exam, imucetOption } = req.body;
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -18,19 +18,19 @@ export const register = async (req, res) => {
     return res.status(400).json({ message: "Email already registered" });
   }
 
-  
+
   const hashPassword = await bcrypt.hash(password, 10);
 
   const user = await User.create({
     name,
-  email,
-  phone,
-  state,
-  age,
-  exam,
-  imucetOption,
-  password: hashPassword,
-  isVerified: true,
+    email,
+    phone,
+    state,
+    age,
+    exam,
+    imucetOption,
+    password: hashPassword,
+    isVerified: true,
   });
 
   res.status(201).json({
@@ -46,7 +46,7 @@ export const register = async (req, res) => {
 
 export const signup = async (req, res) => {
   try {
-    const { name, email, password ,phone, state, age, exam, imucetOption} = req.body;
+    const { name, email, password, phone, state, age, exam, imucetOption } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -60,21 +60,21 @@ export const signup = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({ name, email, phone, state, age, exam, imucetOption, password: hashPassword });
-    const token = await genToken(user._id); 
+    const token = await genToken(user._id);
 
 
-const isProd = process.env.NODE_ENV === "production";
+    const isProd = process.env.NODE_ENV === "production";
 
 
-res.cookie("token", token, {
-  httpOnly: true,
-  secure: isProd,      // REQUIRED on Vercel
-  sameSite: isProd ? "none" : "lax",
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-});
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: isProd,      // REQUIRED on Vercel
+      sameSite: isProd ? "none" : "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
     res.status(201).json({
-      user: { id: user._id, name: user.name, email: user.email ,createdAt: user.createdAt, updatedAt: user.updatedAt},
-      
+      user: { id: user._id, name: user.name, email: user.email, createdAt: user.createdAt, updatedAt: user.updatedAt },
+
     });
   } catch (error) {
     console.error('Signup error:', error);
@@ -99,19 +99,19 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = await genToken(user._id); 
-    res.cookie ("token", token,{
+    const token = await genToken(user._id);
+    res.cookie("token", token, {
       httpOnly: true,
       secure: isProd,
       sameSite: isProd ? "none" : "lax",
-       maxAge:7*24*60*60*1000
+      maxAge: 7 * 24 * 60 * 60 * 1000
     })
 
     return res.status(200).json({
       user: { id: user._id, name: user.name, email: user.email }
     })
 
-    
+
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'Login failed' });
@@ -122,10 +122,10 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
-    res.clearCookie("token", { 
-      httpOnly: true, 
-      secure: isProd, 
-      sameSite: isProd ? "none" : "lax" 
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax"
     });
     return res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
