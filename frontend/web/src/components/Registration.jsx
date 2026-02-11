@@ -156,7 +156,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
             <FormInput id="name" label="Full Name" value={formData.name} onChange={handleChange} />
             <div className="grid grid-cols-2 gap-4">
               <FormInput id="age" label="Age" value={formData.age} onChange={handleChange} />
-              <FormInput id="phone" label="Phone" value={formData.phone} onChange={handleChange} error={errors.phone} />
+              <FormInput id="phone" label="Phone - this will be  your password" value={formData.phone} onChange={handleChange} error={errors.phone} />
             </div>
             <FormInput id="email" label="Email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
 
@@ -170,7 +170,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
             <select name="exam" value={formData.exam} onChange={handleChange} className="w-full mb-4 border p-2 rounded">
               <option value="">Select Exam</option>
               <option value="IMUCET">IMUCET</option>
-              <option value="MHTCET">MHTCET</option>
+             
             </select>
 
             {formData.exam === "IMUCET" && (
