@@ -156,7 +156,11 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
             <FormInput id="name" label="Full Name" value={formData.name} onChange={handleChange} />
             <div className="grid grid-cols-2 gap-4">
               <FormInput id="age" label="Age" value={formData.age} onChange={handleChange} />
+<<<<<<< HEAD
               <FormInput id="phone" label="Phone - this will be  your password" value={formData.phone} onChange={handleChange} error={errors.phone} />
+=======
+              <FormInput id="phone" label="Phone - will be your password" value={formData.phone} onChange={handleChange} error={errors.phone} />
+>>>>>>> 6e269fbbb2d11636d2b2b606d137c7c3b79c8312
             </div>
             <FormInput id="email" label="Email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
 

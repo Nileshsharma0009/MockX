@@ -47,13 +47,13 @@ export default function Navbar({ onToggleSidebar }) {
               role="tab"
               aria-selected={state.currentSection === "A"}
               onClick={() => toggleSection("A")}
-              className={`px-3 py-1.5 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${state.currentSection === "A"
+              className={`px-1 py-1.5 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${state.currentSection === "A"
                 ? "bg-[#5c4d7d] text-white shadow-sm"
                 : "bg-white text-gray-700"
                 }`}
               title="Section A"
             >
-              <span className="sm:hidden">Sec A</span>
+              <span className="sm:hidden"> A</span>
               <span className="hidden sm:inline">Section A</span>
             </button>
 
@@ -61,13 +61,13 @@ export default function Navbar({ onToggleSidebar }) {
               role="tab"
               aria-selected={state.currentSection === "B"}
               onClick={() => toggleSection("B")}
-              className={`px-3 py-1.5 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${state.currentSection === "B"
+              className={`px-1 py-1.5 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${state.currentSection === "B"
                 ? "bg-[#5c4d7d] text-white shadow-sm"
                 : "bg-white text-gray-700"
                 }`}
               title="Section B"
             >
-              <span className="sm:hidden">Sec B</span>
+              <span className="sm:hidden"> B</span>
               <span className="hidden sm:inline">Section B</span>
             </button>
 

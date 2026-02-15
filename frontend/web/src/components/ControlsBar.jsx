@@ -11,7 +11,7 @@ export default function ControlsBar({ onSubmit }) {
   const handleForward = () => dispatch({ type: "SAVE_AND_NEXT" });
 
   const handleSubmitClick = async () => {
-    console.log("🟢 SUBMIT BUTTON CLICKED (ControlsBar)");
+    // console.log("🟢 SUBMIT BUTTON CLICKED (ControlsBar)");
     if (submitting) return;
 
     const confirmSubmit = window.confirm(
@@ -68,8 +68,8 @@ export default function ControlsBar({ onSubmit }) {
       {/* Submit button */}
       <button
         className={`px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm font-medium text-white rounded-md transition-all duration-200 ml-2 md:ml-8 ${submitting
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-green-600 hover:bg-green-700"
+          ? "bg-gray-400 cursor-not-allowed"
+          : "bg-green-600 hover:bg-green-700"
           }`}
         onClick={handleSubmitClick}
         disabled={submitting}

@@ -21,7 +21,7 @@ function reloadWebsite() {
       console.log("website reloded");
     })
     .catch((error) => {
-      console.error(`Error : ${error.message}`);
+      // console.error(`Error : ${error.message}`);
     });
 }
 
@@ -64,5 +64,5 @@ app.use("/api/ai", aiRoutes);
 
 app.get("/api/__ping", (req, res) => {
   res.json({ ok: true });
-}); 
+});
 export default app;

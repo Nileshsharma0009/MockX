@@ -385,7 +385,7 @@ export const analyzeQuery = ({ query = "", result }) => {
         return {
             title: "Score Overview",
             blocks: [
-                { label: "Total Score", value: totalScore },
+                { label: "Total Score", value: rawTotalScore },
                 { label: "Accuracy", value: `${Math.round(accuracy)}%` },
             ],
         };
