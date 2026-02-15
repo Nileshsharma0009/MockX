@@ -16,6 +16,7 @@ import {
 import Footer from "./Footer.jsx";
 import MainNavbar from "./MainNavbar.jsx";
 
+
 // --- Typewriter Component (Keep as is) ---
 const Typewriter = ({ words, typingSpeed = 150, deletingSpeed = 100, delay = 1000 }) => {
   const [index, setIndex] = useState(0);
@@ -82,7 +83,7 @@ const First = () => {
 
 
       {/* Main Hero */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 text-center relative z-10">
+      {/* <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 text-center relative z-10">
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 md:mb-8 text-gray-800">
           Ace Your <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
         </h1>
@@ -95,7 +96,85 @@ const First = () => {
             <button onClick={() => navigate("/mock-tests")} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Go to Practice</button>
           )}
         </div>
+      </main> */}
+
+
+      {/* Main Hero */}
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 relative z-10">
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+
+          {/* LEFT SIDE - TEXT */}
+          <div className="md:w-1/2 text-center md:text-left space-y-8">
+
+            {/* Small Badge */}
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-100 to-sky-100 text-indigo-600 text-sm font-medium shadow-sm">
+              🚀 India’s Smartest Mock Platform
+            </div>
+
+            {/* Premium Heading */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight">
+              <span className="text-gray-800">Crack Your </span>
+              <span className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
+              </span>
+              <br />
+              <span className="text-gray-800">With Confidence</span>
+            </h1>
+
+            {/* Premium Subtext */}
+            <p className="text-gray-600 text-base md:text-lg max-w-lg">
+              Smart analytics. Real exam simulation. Personalized insights.
+              Transform your preparation into guaranteed performance growth.
+            </p>
+
+            {/* CTA Section */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+
+              {!user ? (
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="relative group bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+                >
+                  <span className="relative z-10">Start Free Trial</span>
+                  <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition"></div>
+                </button>
+              ) : (
+                <button
+                  onClick={() => navigate("/mock-tests")}
+                  className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+                >
+                  Continue Practice
+                </button>
+              )}
+
+              <button className="border border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-full hover:bg-gray-100 transition">
+                Watch Demo →
+              </button>
+            </div>
+
+            {/* Mini Trust Stats */}
+            {/* <div className="flex gap-6 justify-center md:justify-start text-sm text-gray-500 pt-4">
+    <div><strong className="text-gray-800">50K+</strong> Students</div>
+    <div><strong className="text-gray-800">10M+</strong> Tests Taken</div>
+    <div><strong className="text-gray-800">95%</strong> Success Rate</div>
+  </div> */}
+
+          </div>
+
+
+          {/* RIGHT SIDE - SVG */}
+          <div className="md:w-1/2 flex justify-center">
+            <img
+              src="../../public/test1.svg"
+              alt="MockX Illustration"
+              className="w-72 md:w-full max-w-md"
+            />
+          </div>
+
+        </div>
       </main>
+
 
       {/* Features */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
