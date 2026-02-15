@@ -112,105 +112,114 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className="bg-white rounded-2xl max-w-lg w-[95%] md:w-full shadow-xl max-h-[90vh] flex flex-col"
+        className="bg-white rounded-2xl w-full max-w-lg shadow-xl max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-4 md:p-5 border-b bg-indigo-50 flex justify-between shrink-0">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            <Book className="text-indigo-600" /> Create Account
+        <div className="p-4 md:p-5 border-b bg-indigo-50 flex justify-between items-center shrink-0">
+          <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800">
+            <Book className="text-indigo-600 w-6 h-6" /> Create Account
           </h2>
-          <button onClick={onClose}>
-            <X />
+          <button onClick={onClose} className="p-1 hover:bg-indigo-100 rounded-full transition-colors">
+            <X className="text-gray-600 w-6 h-6" />
           </button>
         </div>
 
         {success ? (
-          <div className="p-8 text-center">
-            <CheckCircle className="w-14 h-14 text-green-500 mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-2">Registration Successful</h3>
-            <p className="mb-4 text-gray-600">
-              Password is your phone number.
+          <div className="p-8 text-center flex flex-col items-center justify-center flex-1">
+            <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+            <h3 className="text-2xl font-bold mb-2 text-gray-800">Registration Successful</h3>
+            <p className="mb-6 text-gray-600 text-lg">
+              Your password is your phone number.
             </p>
             <button
               onClick={() => {
                 onClose();
                 onOpenLogin?.();
               }}
-              className="w-full bg-indigo-600 text-white py-3 rounded-lg"
+              className="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-semibold shadow-lg hover:bg-indigo-700 transition-all"
             >
               Login Now
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-5 md:p-6 overflow-y-auto custom-scrollbar">
+          <form onSubmit={handleSubmit} className="p-5 md:p-6 overflow-y-auto custom-scrollbar flex flex-col gap-4">
             {error && (
-              <div className="mb-3 text-sm bg-red-50 text-red-700 p-2 rounded">
-                {error}
+              <div className="mb-2 text-sm bg-red-50 text-red-700 p-3 rounded-lg border border-red-100 flex items-center gap-2">
+                <span>⚠️</span> {error}
               </div>
             )}
 
             <FormInput id="name" label="Full Name" value={formData.name} onChange={handleChange} />
-            <div className="grid grid-cols-2 gap-4">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <FormInput id="age" label="Age" value={formData.age} onChange={handleChange} />
-<<<<<<< HEAD
-              <FormInput id="phone" label="Phone - this will be  your password" value={formData.phone} onChange={handleChange} error={errors.phone} />
-=======
-              <FormInput id="phone" label="Phone - will be your password" value={formData.phone} onChange={handleChange} error={errors.phone} />
->>>>>>> 6e269fbbb2d11636d2b2b606d137c7c3b79c8312
+              <FormInput id="phone" label="Phone (Your Password)" value={formData.phone} onChange={handleChange} error={errors.phone} />
             </div>
-            <FormInput id="email" label="Email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
 
-            <select name="state" value={formData.state} onChange={handleChange} className="w-full mb-4 border p-2 rounded">
-              <option value="">Select State</option>
-              {indianStates.map((s) => (
-                <option key={s}>{s}</option>
-              ))}
-            </select>
+            <FormInput id="email" label="Email Address" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
 
-            <select name="exam" value={formData.exam} onChange={handleChange} className="w-full mb-4 border p-2 rounded">
-              <option value="">Select Exam</option>
-              <option value="IMUCET">IMUCET</option>
-             
-            </select>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
+                <select name="state" value={formData.state} onChange={handleChange} className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                  <option value="">Select State</option>
+                  {indianStates.map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
 
-            {formData.exam === "IMUCET" && (
-              <select
-                name="imucetOption"
-                value={formData.imucetOption}
-                onChange={handleChange}
-                className="w-full mb-4 border p-2 rounded"
-              >
-                <option value="">Select IMUCET Option</option>
-                <option value="DNS">DNS</option>
-                <option value="BSC-NS">BSC-NS</option>
-                <option value="B.Tech Marine">B.Tech Marine</option>
-                <option value="Naval Architecture">Naval Architecture</option>
-              </select>
-            )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Exam</label>
+                <select name="exam" value={formData.exam} onChange={handleChange} className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                  <option value="">Select Exam</option>
+                  <option value="IMUCET">IMUCET</option>
+                </select>
+              </div>
+
+              {formData.exam === "IMUCET" && (
+                <div className="animate-fade-in">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">IMUCET Course</label>
+                  <select
+                    name="imucetOption"
+                    value={formData.imucetOption}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white"
+                  >
+                    <option value="">Select Option</option>
+                    <option value="DNS">DNS</option>
+                    <option value="BSC-NS">BSC-NS</option>
+                    <option value="B.Tech Marine">B.Tech Marine</option>
+                    <option value="Naval Architecture">Naval Architecture</option>
+                  </select>
+                </div>
+              )}
+            </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-indigo-600 text-white py-3 rounded-lg"
+              className="mt-2 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3.5 rounded-xl font-bold shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {loading ? "Registering..." : "Complete Registration"}
+              {loading ? "Creating Account..." : "Complete Registration"}
             </button>
 
-            <div className="mt-4 text-center text-sm text-gray-600">
+            <div className="mt-2 text-center text-sm text-gray-600">
               Already have an account?{" "}
-              <span
+              <button
+                type="button"
                 onClick={() => {
                   onClose();
                   onOpenLogin?.();
                 }}
-                className="text-indigo-600 font-bold cursor-pointer hover:underline"
+                className="text-indigo-600 font-bold hover:underline bg-transparent border-none cursor-pointer"
               >
                 Login
-              </span>
+              </button>
             </div>
 
           </form>
