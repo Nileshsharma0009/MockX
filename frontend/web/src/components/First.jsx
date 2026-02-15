@@ -70,7 +70,7 @@ const First = () => {
 
 
   return (
-    <div className="min-h-screen font-sans text-gray-900 relative bg-white">
+    <div className="min-h-screen font-sans text-gray-900 relative bg-white overflow-x-hidden">
       {/* Background blobs */}
       <div className="absolute top-[-6rem] -left-24 w-80 h-80 bg-sky-100 rounded-full blur-3xl" />
       <div className="absolute top-[-4rem] -right-24 w-96 h-96 bg-indigo-100 rounded-full blur-3xl" />
@@ -109,7 +109,7 @@ const First = () => {
 
             {/* Small Badge */}
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-100 to-sky-100 text-indigo-600 text-sm font-medium shadow-sm">
-              🚀 India’s Smartest Mock Platform
+              India’s Smartest Mock Platform
             </div>
 
             {/* Premium Heading */}
@@ -118,8 +118,8 @@ const First = () => {
               <span className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
                 <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
               </span>
-              <br />
-              <span className="text-gray-800">With Confidence</span>
+
+
             </h1>
 
             {/* Premium Subtext */}
@@ -154,11 +154,11 @@ const First = () => {
             </div>
 
             {/* Mini Trust Stats */}
-            {/* <div className="flex gap-6 justify-center md:justify-start text-sm text-gray-500 pt-4">
-    <div><strong className="text-gray-800">50K+</strong> Students</div>
-    <div><strong className="text-gray-800">10M+</strong> Tests Taken</div>
-    <div><strong className="text-gray-800">95%</strong> Success Rate</div>
-  </div> */}
+            <div className="flex gap-6 justify-center md:justify-start text-sm text-gray-500 pt-4">
+              <div><strong className="text-gray-800">50K+</strong> Students</div>
+              <div><strong className="text-gray-800">10M+</strong> Tests Taken</div>
+              <div><strong className="text-gray-800">95%</strong> Success Rate</div>
+            </div>
 
           </div>
 
@@ -166,7 +166,7 @@ const First = () => {
           {/* RIGHT SIDE - SVG */}
           <div className="md:w-1/2 flex justify-center">
             <img
-              src="../../public/test1.svg"
+              src="/test1.svg"
               alt="MockX Illustration"
               className="w-72 md:w-full max-w-md"
             />
@@ -191,110 +191,112 @@ const First = () => {
 
       {/* Comparison Section */}
       {/* Comparison Section - The Growth Path */}
-      {/* <section className="mt-32 relative">
-  {/* Background Decorative Element */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-transparent to-transparent -z-10" />
+      <section className="mt-32 relative">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-transparent to-transparent -z-10" />
 
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-900 tracking-tight">
-          Bridging the <span className="text-indigo-600">Preparation Gap</span>
-        </h2>
-        <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-          Exam-like mock tests with real-time tracking, instant results, and deep analytics to help you dominate Exam with confidence
-        </p>
-      </div>
-
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-2xl bg-white">
-
-        {/* Center "VS" Badge (Hidden on mobile) */}
-        <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="h-16 w-16 rounded-full bg-white border-4 border-[#F8FAFC] shadow-xl flex items-center justify-center">
-            <span className="text-gray-400 font-black italic text-xl">VS</span>
-          </div>
-        </div>
-
-        {/* LEFT SIDE: WITHOUT MOCKS */}
-        <div className="p-8 md:p-12 bg-slate-50/50 relative">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="h-12 w-12 rounded-2xl bg-red-100 flex items-center justify-center shadow-sm shadow-red-100">
-              <AlertTriangle className="h-6 w-6 text-red-600" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900">The Hard Way</h3>
-              <p className="text-sm text-red-600 font-medium">Without Mock Tests</p>
-            </div>
-          </div>
-
-          <ul className="space-y-6">
-            {[
-              "No real sense of exam pressure or time constraints",
-              "Difficult to identify weak topics and recurring mistakes",
-              "Overconfidence or underconfidence without feedback",
-              "Poor time management during the actual exam",
-              "Exam day feels unfamiliar and stressful"
-            ].map((item, idx) => (
-              <li key={idx} className="flex items-start gap-4 group">
-                <div className="mt-1 bg-white rounded-full p-0.5 border border-red-100 group-hover:scale-110 transition-transform">
-                  <XCircle className="h-5 w-5 text-red-400" />
-                </div>
-                <span className="text-gray-600 leading-snug">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* RIGHT SIDE: WITH MOCKS */}
-        <div className="p-8 md:p-12 bg-white relative">
-          {/* Subtle Highlight Border for the "Winner" side */}
-          <div className="absolute inset-0 border-l lg:border-l-0 border-t lg:border-t-0 border-indigo-50" />
-
-          <div className="flex items-center gap-4 mb-10">
-            <div className="h-12 w-12 rounded-2xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-100">
-              <TrendingUp className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900">The Smart Way</h3>
-              <p className="text-sm text-green-600 font-medium">With MockX Platform</p>
-            </div>
-          </div>
-
-          <ul className="space-y-6">
-            {[
-              "Experience real exam-level pressure early",
-              "Clear insights with AI-driven performance analysis",
-              "Data-driven confidence based on actual accuracy",
-              "Mastered section-wise time allocation strategy",
-              "Calm, confident, and familiar exam-day experience"
-            ].map((item, idx) => (
-              <li key={idx} className="flex items-start gap-4 group">
-                <div className="mt-1 bg-green-50 rounded-full p-0.5 border border-green-100 group-hover:scale-110 transition-transform">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
-                </div>
-                <span className="text-gray-800 font-medium leading-snug">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* BOTTOM INSIGHT CARD */}
-      {/* <div className="mt-12 max-w-4xl mx-auto">
-    <div className="bg-gradient-to-br from-gray-900 to-indigo-950 rounded-3xl p-1 shadow-xl">
-      <div className="bg-white/5 backdrop-blur-sm rounded-[1.4rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-        <div className="h-14 w-14 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center flex-shrink-0">
-          <Sparkles className="h-7 w-7 text-indigo-300" />
-        </div>
-        <div className="text-center md:text-left">
-          <h4 className="text-white text-lg font-semibold mb-1">Pro Tip for Aspirants</h4>
-          <p className="text-indigo-100/70 text-sm leading-relaxed">
-            Mocks don’t just test your knowledge; they build your <span className="text-indigo-300 font-semibold underline decoration-indigo-500/50 underline-offset-4">test-taking stamina</span>. 
-            Students who take at least 10 mocks are 65% more likely to manage time effectively on the final day.
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 tracking-tight">
+            Bridging the <span className="text-indigo-600">Preparation Gap</span>
+          </h2>
+          <p className="mt-4 text-gray-600 text-lg leading-relaxed">
+            Exam-like mock tests with real-time tracking, instant results, and deep analytics to help you dominate Exam with confidence
           </p>
         </div>
-      </div>
-    </div>
-  </div> */}
-      {/* </section> */}  {/* Commented out for future use */}
+
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-2xl bg-white">
+
+          {/* Center "VS" Badge (Hidden on mobile) */}
+          <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            <div className="h-16 w-16 rounded-full bg-white border-4 border-[#F8FAFC] shadow-xl flex items-center justify-center">
+              <span className="text-gray-400 font-black italic text-xl">VS</span>
+            </div>
+          </div>
+
+          {/* LEFT SIDE: WITHOUT MOCKS */}
+          <div className="p-8 md:p-12 bg-slate-50/50 relative">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-12 w-12 rounded-2xl bg-red-100 flex items-center justify-center shadow-sm shadow-red-100">
+                <AlertTriangle className="h-6 w-6 text-red-600" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">The Hard Way</h3>
+                <p className="text-sm text-red-600 font-medium">Without Mock Tests</p>
+              </div>
+            </div>
+
+            <ul className="space-y-6">
+              {[
+                "No real sense of exam pressure or time constraints",
+                "Difficult to identify weak topics and recurring mistakes",
+                "Overconfidence or underconfidence without feedback",
+                "Poor time management during the actual exam",
+                "Exam day feels unfamiliar and stressful"
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start gap-4 group">
+                  <div className="mt-1 bg-white rounded-full p-0.5 border border-red-100 group-hover:scale-110 transition-transform">
+                    <XCircle className="h-5 w-5 text-red-400" />
+                  </div>
+                  <span className="text-gray-600 leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RIGHT SIDE: WITH MOCKS */}
+          <div className="p-8 md:p-12 bg-white relative">
+            {/* Subtle Highlight Border for the "Winner" side */}
+            <div className="absolute inset-0 border-l lg:border-l-0 border-t lg:border-t-0 border-indigo-50" />
+
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-12 w-12 rounded-2xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-100">
+                <TrendingUp className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">The Smart Way</h3>
+                <p className="text-sm text-green-600 font-medium">With MockX Platform</p>
+              </div>
+            </div>
+
+            <ul className="space-y-6">
+              {[
+                "Experience real exam-level pressure early",
+                "Clear insights with AI-driven performance analysis",
+                "Data-driven confidence based on actual accuracy",
+                "Mastered section-wise time allocation strategy",
+                "Calm, confident, and familiar exam-day experience"
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start gap-4 group">
+                  <div className="mt-1 bg-green-50 rounded-full p-0.5 border border-green-100 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                  </div>
+                  <span className="text-gray-800 font-medium leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* BOTTOM INSIGHT CARD */}
+        <section>
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-gray-900 to-indigo-950 rounded-3xl p-1 shadow-xl">
+              <div className="bg-white/5 backdrop-blur-sm rounded-[1.4rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                <div className="h-14 w-14 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="h-7 w-7 text-indigo-300" />
+                </div>
+                <div className="text-center md:text-left">
+                  <h4 className="text-white text-lg font-semibold mb-1">Pro Tip for Aspirants</h4>
+                  <p className="text-indigo-100/70 text-sm leading-relaxed">
+                    Mocks don’t just test your knowledge; they build your <span className="text-indigo-300 font-semibold underline decoration-indigo-500/50 underline-offset-4">test-taking stamina</span>.
+                    Students who take at least 10 mocks are 65% more likely to manage time effectively on the final day.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
 
 
       {showForm && <RegistrationForm onClose={() => setShowForm(false)} onOpenLogin={() => { setShowForm(false); setShowLogin(true); }} />}
