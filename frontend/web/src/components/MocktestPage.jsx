@@ -36,9 +36,20 @@ const MockTestPage = () => {
       />
 
       <main className="max-w-6xl mx-auto pt-10 px-6 pb-20">
-        <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-6">
-          🚀 Step towards success
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 flex items-center justify-center gap-3">
+
+          <img
+            src="/rocket.svg"
+            alt="rocket"
+            className="w-20 object-contain"
+
+          />
+
+          <span>Step towards success</span>
+
         </h1>
+
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
           {mockTests.map((test) => {
