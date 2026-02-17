@@ -33,30 +33,38 @@ const Typewriter = ({ words, typingSpeed = 150, deletingSpeed = 100, delay = 100
 };
 
 // --- Feature Card Component ---
-const FeatureCard = ({ icon, title, description }) => (
-  <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 h-full flex flex-col items-center text-center">
+// const FeatureCard = ({
+//   icon,
+//   title,
+//   description,
+//   iconSize = 80,
+//   bgColor
+// }) => (
+//   <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 h-full flex flex-col items-center text-center">
 
-    {/* Icon */}
-    <div className="mb-6">
-      <img
-        src={icon}
-        alt={title}
-        className="w-30 h-30 object-contain"
-      />
-    </div>
+//     <div className={`mb-6 p-4 rounded-2xl ${bgColor || ""} flex items-center justify-center`}>
+//       <img
+//         src={icon}
+//         alt={title}
+//         style={{
+//           width: `${iconSize}px`,
+//           height: `${iconSize}px`
+//         }}
+//         className="object-contain"
+//       />
+//     </div>
 
-    {/* Title */}
-    <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
-      {title}
-    </h3>
+//     <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
+//       {title}
+//     </h3>
 
-    {/* Description */}
-    <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-      {description}
-    </p>
+//     <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+//       {description}
+//     </p>
 
-  </div>
-);
+//   </div>
+// );
+
 
 
 
@@ -87,6 +95,33 @@ const First = () => {
   };
 
   // ✅ LOGOUT FUNCTION
+
+  const Counter = ({ end, duration = 2000, suffix = "" }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const increment = end / (duration / 16); // 60fps approx
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [end, duration]);
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
+};
 
 
   return (
@@ -145,15 +180,15 @@ const First = () => {
             {/* 3. Premium Heading */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight">
 
-  <span className="block text-gray-800">
-    Crack Your
-  </span>
+              <span className="block text-gray-800">
+                Crack Your
+              </span>
 
-  <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent mt-2">
-    <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
-  </span>
+              <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent mt-2">
+                <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
+              </span>
 
-</h1>
+            </h1>
 
 
             {/* 4. Premium Subtext */}
@@ -186,12 +221,31 @@ const First = () => {
               </button> */}
             </div>
 
-            {/* 6. Mini Trust Stats */}
-            <div className="flex gap-6 justify-center md:justify-start text-sm text-gray-500 pt-4">
-              <div><strong className="text-gray-800">50K+</strong> Students</div>
-              <div><strong className="text-gray-800">10M+</strong> Tests Taken</div>
-              <div><strong className="text-gray-800">95%</strong> Success Rate</div>
-            </div>
+         <div className="flex gap-10 justify-center md:justify-start text-sm text-gray-500 pt-6">
+
+  <div className="flex flex-col items-center md:items-start">
+    <strong className="text-2xl font-bold text-gray-900">
+      <Counter end={400} suffix="+" />
+    </strong>
+    <span>Students</span>
+  </div>
+
+  <div className="flex flex-col items-center md:items-start">
+    <strong className="text-2xl font-bold text-gray-900">
+      <Counter end={379}  />
+    </strong>
+    <span>Tests Taken</span>
+  </div>
+
+  <div className="flex flex-col items-center md:items-start">
+    <strong className="text-2xl font-bold text-gray-900">
+      <Counter end={95} suffix="%" />
+    </strong>
+    <span>Success Rate</span>
+  </div>
+
+</div>
+
 
           </div>
 
@@ -211,14 +265,103 @@ const First = () => {
 
 
       {/* Features */}
+      {/* <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+    <FeatureCard
+      icon="/clock.svg"
+      title="180-Minute Tests"
+      description="True exam duration to help you build stamina."
+      iconSize={50}
+    />
+
+    <FeatureCard
+      icon="/icons/graduation.svg"
+      title="200 Smart Questions"
+      description="Latest IMUCET patterns & difficulty levels."
+      bgColor="bg-indigo-100"
+      iconSize={70}
+    />
+
+    <FeatureCard
+      icon="/icons/chart.svg"
+      title="Progress Tracking"
+      description="Accuracy, weak areas, improvement charts."
+      bgColor="bg-emerald-100"
+      iconSize={90}
+    />
+
+    <FeatureCard
+      icon="/icons/trophy.svg"
+      title="Instant Results"
+      description="Detailed scorecards within seconds."
+      bgColor="bg-amber-100"
+      iconSize={110}
+    />
+
+  </div>
+</section> */}
+
+      {/* Features */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          <FeatureCard icon="/clock.svg" title="180-Minute Tests" description="True exam duration to help you build stamina." iconColor="text-sky-500" bgColor="bg-sky-100"  className="w-29"/>
-          <FeatureCard icon={GraduationCap} title="200 Smart Questions" description="Latest IMUCET patterns & difficulty levels." iconColor="text-indigo-500" bgColor="bg-indigo-100" />
-          <FeatureCard icon={BarChart3} title="Progress Tracking" description="Accuracy, weak areas, improvement charts." iconColor="text-emerald-500" bgColor="bg-emerald-100" />
-          <FeatureCard icon={Trophy} title="Instant Results" description="Detailed scorecards within seconds." iconColor="text-amber-500" bgColor="bg-amber-100" />
+
+          {/* Card 1 */}
+          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
+           
+              <img src="/clock.svg" alt="Clock" style={{ width: "200px" }}   className="w-24 sm:w-28 md:w-40 object-contain mb-4" />
+          
+            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
+              180-Minute Tests
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+              True exam duration to help you build stamina.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
+
+              <img src="/exam.svg" alt="Graduation" style={{ width: "200px" }} className="object-contain" />
+       
+            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
+              200 Smart Questions
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+              Latest IMUCET patterns & difficulty levels.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
+
+              <img src="/chart.svg" alt="Chart" style={{ width: "200px" }} className="object-contain" />
+           
+            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
+              Progress Tracking
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+              Accuracy, weak areas, improvement charts.
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
+         
+              <img src="/win.svg" alt="Trophy" style={{ width: "200px" }} className="object-contain" />
+     
+            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
+              Instant Results
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+              Detailed scorecards within seconds.
+            </p>
+          </div>
+
         </div>
       </section>
+
+
 
 
 
