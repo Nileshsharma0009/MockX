@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-200 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* TOP SECTION: BRAND & NEWSLETTER */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-5">
@@ -17,7 +17,7 @@ const Footer = () => {
               <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
             </div>
             <p className="text-gray-500 text-base leading-relaxed max-w-sm mb-8">
-              Empowering students to achieve their dreams through high-fidelity 
+              Empowering students to achieve their dreams through high-fidelity
               mock exams and data-driven performance analytics.
             </p>
             <div className="flex gap-4">
@@ -35,9 +35,9 @@ const Footer = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Get exam updates & tips</h3>
                 <p className="text-gray-500 text-sm mb-6">Join 10,000+ students. No spam, just value.</p>
                 <form className="flex flex-col sm:flex-row gap-3">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
                     className="flex-grow px-5 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 bg-white"
                   />
                   <button className="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition-all shadow-lg shadow-gray-200">
@@ -58,7 +58,7 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Exams</h4>
             <ul className="space-y-4">
-              {['MHTCET', 'IMUCET', 'CUET', ].map((link) => (
+              {['MHTCET', 'IMUCET', 'CUET',].map((link) => (
                 <li key={link}><a href="#" className="text-gray-500 hover:text-indigo-600 transition-colors text-sm">{link}</a></li>
               ))}
             </ul>
@@ -89,7 +89,7 @@ const Footer = () => {
                 <Phone className="h-4 w-4 text-indigo-500" /> +91 123-456-7890
               </li>
               <li className="flex items-start gap-3 text-sm text-gray-500">
-                <MapPin className="h-4 w-4 text-indigo-500 mt-1" /> MockX 
+                <MapPin className="h-4 w-4 text-indigo-500 mt-1" /> MockX
               </li>
             </ul>
           </div>

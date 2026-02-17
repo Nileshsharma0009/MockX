@@ -33,13 +33,33 @@ const Typewriter = ({ words, typingSpeed = 150, deletingSpeed = 100, delay = 100
 };
 
 // --- Feature Card Component ---
-const FeatureCard = ({ icon: Icon, title, description, iconColor, bgColor }) => (
-  <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 h-full flex flex-col items-start text-left">
-    <div className={`p-4 rounded-2xl mb-5 ${bgColor} w-fit shadow-sm`}><Icon className={`w-8 h-8 ${iconColor}`} strokeWidth={2.4} /></div>
-    <h3 className="text-xl md:text-2xl font-semibold mb-2 text-gray-900">{title}</h3>
-    <p className="text-gray-600 leading-relaxed text-sm md:text-base">{description}</p>
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 h-full flex flex-col items-center text-center">
+
+    {/* Icon */}
+    <div className="mb-6">
+      <img
+        src={icon}
+        alt={title}
+        className="w-30 h-30 object-contain"
+      />
+    </div>
+
+    {/* Title */}
+    <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
+      {title}
+    </h3>
+
+    {/* Description */}
+    <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+      {description}
+    </p>
+
   </div>
 );
+
+
+
 
 const First = () => {
   const navigate = useNavigate();
@@ -104,33 +124,46 @@ const First = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-10">
 
-          {/* LEFT SIDE - TEXT */}
-          <div className="md:w-1/2 text-center md:text-left space-y-8">
 
-            {/* Small Badge */}
+          {/* LEFT SIDE - TEXT CONTENT */}
+          <div className="md:w-1/2 text-center md:text-left space-y-6 md:space-y-8">
+
+            {/* 1. Small Badge (Visible on both) */}
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-100 to-sky-100 text-indigo-600 text-sm font-medium shadow-sm">
               India’s Smartest Mock Platform
             </div>
 
-            {/* Premium Heading */}
+            {/* 2. MOBILE ONLY IMAGE - Appears after Badge on Mobile */}
+            <div className="flex justify-center md:hidden my-6">
+              <img
+                src="/test1.svg"
+                alt="MockX Illustration"
+                className="w-64 max-w-full drop-shadow-lg"
+              />
+            </div>
+
+            {/* 3. Premium Heading */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight">
-              <span className="text-gray-800">Crack Your </span>
-              <span className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
-                <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
-              </span>
+
+  <span className="block text-gray-800">
+    Crack Your
+  </span>
+
+  <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent mt-2">
+    <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
+  </span>
+
+</h1>
 
 
-            </h1>
-
-            {/* Premium Subtext */}
-            <p className="text-gray-600 text-base md:text-lg max-w-lg">
+            {/* 4. Premium Subtext */}
+            <p className="text-gray-600 text-base md:text-lg max-w-lg mx-auto md:mx-0">
               Smart analytics. Real exam simulation. Personalized insights.
               Transform your preparation into guaranteed performance growth.
             </p>
 
-            {/* CTA Section */}
+            {/* 5. CTA Section */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-
               {!user ? (
                 <button
                   onClick={() => setShowForm(true)}
@@ -148,12 +181,12 @@ const First = () => {
                 </button>
               )}
 
-              <button className="border border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-full hover:bg-gray-100 transition">
+              {/* <button className="border border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-full hover:bg-gray-100 transition">
                 Watch Demo →
-              </button>
+              </button> */}
             </div>
 
-            {/* Mini Trust Stats */}
+            {/* 6. Mini Trust Stats */}
             <div className="flex gap-6 justify-center md:justify-start text-sm text-gray-500 pt-4">
               <div><strong className="text-gray-800">50K+</strong> Students</div>
               <div><strong className="text-gray-800">10M+</strong> Tests Taken</div>
@@ -162,13 +195,14 @@ const First = () => {
 
           </div>
 
-
-          {/* RIGHT SIDE - SVG */}
-          <div className="md:w-1/2 flex justify-center">
+          {/* RIGHT SIDE - DESKTOP IMAGE (Hidden on Mobile) */}
+          <div className="hidden md:flex md:w-1/2 justify-center relative">
+            {/* Background Blob for Desktop Image */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-indigo-50 to-sky-50 rounded-full blur-3xl -z-10 opacity-60"></div>
             <img
               src="/test1.svg"
               alt="MockX Illustration"
-              className="w-72 md:w-full max-w-md"
+              className="w-full max-w-lg drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
             />
           </div>
 
@@ -179,7 +213,7 @@ const First = () => {
       {/* Features */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          <FeatureCard icon={Clock} title="180-Minute Tests" description="True exam duration to help you build stamina." iconColor="text-sky-500" bgColor="bg-sky-100" />
+          <FeatureCard icon="/clock.svg" title="180-Minute Tests" description="True exam duration to help you build stamina." iconColor="text-sky-500" bgColor="bg-sky-100"  className="w-29"/>
           <FeatureCard icon={GraduationCap} title="200 Smart Questions" description="Latest IMUCET patterns & difficulty levels." iconColor="text-indigo-500" bgColor="bg-indigo-100" />
           <FeatureCard icon={BarChart3} title="Progress Tracking" description="Accuracy, weak areas, improvement charts." iconColor="text-emerald-500" bgColor="bg-emerald-100" />
           <FeatureCard icon={Trophy} title="Instant Results" description="Detailed scorecards within seconds." iconColor="text-amber-500" bgColor="bg-amber-100" />
