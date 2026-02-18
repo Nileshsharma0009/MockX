@@ -1,0 +1,64 @@
+                {
+        "id": "imu2-A-eng-001",
+        "mockId": "imu2",
+        "section": "A",
+        "subject": "eng",
+        "groupId": "imu2-A-eng-para1",
+        "paragraph": "Artificial Intelligence is rapidly transforming the maritime industry. Modern merchant ships now use AI-driven navigation systems to predict storms, optimize fuel efficiency, and detect machinery faults before they become dangerous. However, many aspiring seafarers are unaware of both the strengths and limitations of AI. While automation increases safety, excessive reliance on technology may weaken a navigator’s independent judgment. Therefore, maritime training institutes must ensure that cadets learn how to use AI responsibly without ignoring traditional seamanship skills. AI should serve as a supportive tool, not as a substitute for human expertise at sea.",
+        "question": "What is the main concern expressed by the writer regarding AI in merchant ships?",
+        "options": [
+          "AI systems are too expensive.",
+          "AI will eliminate maritime jobs immediately.",
+          "Overreliance on AI may weaken independent judgment.",
+          "AI cannot predict storms accurately."
+        ],
+        "marks": 1
+      },
+      {
+        "id": "imu2-A-eng-002",
+        "mockId": "imu2",
+        "section": "A",
+        "subject": "eng",
+        "groupId": "imu2-A-eng-para1",
+        "paragraph": "Artificial Intelligence is rapidly transforming the maritime industry. Modern merchant ships now use AI-driven navigation systems to predict storms, optimize fuel efficiency, and detect machinery faults before they become dangerous. However, many aspiring seafarers are unaware of both the strengths and limitations of AI. While automation increases safety, excessive reliance on technology may weaken a navigator’s independent judgment. Therefore, maritime training institutes must ensure that cadets learn how to use AI responsibly without ignoring traditional seamanship skills. AI should serve as a supportive tool, not as a substitute for human expertise at sea.",
+        "question": "The central message of the passage is that AI should:",
+        "options": [
+          "Replace traditional seamanship completely.",
+          "Be used responsibly along with human expertise.",
+          "Be avoided in maritime training.",
+          "Only be used for fuel efficiency."
+        ],
+        "marks": 1
+      },
+      {
+        "id": "imu2-A-eng-003",
+        "mockId": "imu2",
+        "section": "A",
+        "subject": "eng",
+        "groupId": "imu2-A-eng-para1",
+        "paragraph": "Artificial Intelligence is rapidly transforming the maritime industry. Modern merchant ships now use AI-driven navigation systems to predict storms, optimize fuel efficiency, and detect machinery faults before they become dangerous. However, many aspiring seafarers are unaware of both the strengths and limitations of AI. While automation increases safety, excessive reliance on technology may weaken a navigator’s independent judgment. Therefore, maritime training institutes must ensure that cadets learn how to use AI responsibly without ignoring traditional seamanship skills. AI should serve as a supportive tool, not as a substitute for human expertise at sea.",
+        "question": "The word 'excessive' in the passage most nearly means:",
+        "options": [
+          "Limited",
+          "Moderate",
+          "Extreme",
+          "Necessary"
+        ],
+        "marks": 1
+      },
+      {
+        "id": "imu2-A-eng-004",
+        "mockId": "imu2",
+        "section": "A",
+        "subject": "eng",
+        "groupId": "imu2-A-eng-para1",
+        "paragraph": "Artificial Intelligence is rapidly transforming the maritime industry. Modern merchant ships now use AI-driven navigation systems to predict storms, optimize fuel efficiency, and detect machinery faults before they become dangerous. However, many aspiring seafarers are unaware of both the strengths and limitations of AI. While automation increases safety, excessive reliance on technology may weaken a navigator’s independent judgment. Therefore, maritime training institutes must ensure that cadets learn how to use AI responsibly without ignoring traditional seamanship skills. AI should serve as a supportive tool, not as a substitute for human expertise at sea.",
+        "question": "Identify the part of the sentence with an error: AI systems helps ships to predict storms efficiently.",
+        "options": [
+          "AI systems",
+          "helps",
+          "ships to predict storms",
+          "efficiently."
+        ],
+        "marks": 1
+      }

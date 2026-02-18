@@ -55,6 +55,7 @@ const Question = new mongoose.Schema(
       default: 0,
     },
 
+    paragraph: String,
     imageUrl: String,
     isActive: {
       type: Boolean,

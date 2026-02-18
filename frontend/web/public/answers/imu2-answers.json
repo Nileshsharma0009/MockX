@@ -41,7 +41,6 @@
   "imu2-A-eng-040": 0,
 
 
-
   "imu2-A-gk-001": 1,
   "imu2-A-gk-002": 1,
   "imu2-A-gk-003": 0,
@@ -61,11 +60,9 @@
   "imu2-A-gk-017": 0,
   "imu2-A-gk-018": 0,
   "imu2-A-gk-019": 0,
-  "imu2-A-gk-020": 0 ,
+  "imu2-A-gk-020": 0,
 
 
-
-  
   "imu2-A-apt-001": 0,
   "imu2-A-apt-002": 1,
   "imu2-A-apt-003": 3,
@@ -106,17 +103,12 @@
   "imu2-A-apt-038": 1,
   "imu2-A-apt-039": 0,
   "imu2-A-apt-040": 0,
+
   "imu2-A-apt-041": 1,
   "imu2-A-apt-042": 1,
   "imu2-A-apt-043": 1,
   "imu2-A-apt-044": 0,
   "imu2-A-apt-045": 3,
-
-
-
-
-
-  
   "imu2-B-phy-001": 2,
   "imu2-B-phy-002": 2,
   "imu2-B-phy-003": 0,
@@ -159,11 +151,6 @@
   "imu2-B-phy-040": 2,
 
 
-
-
-
-
-  
   "imu2-B-chem-001": 0,
   "imu2-B-chem-002": 0,
   "imu2-B-chem-003": 1,
@@ -184,11 +171,6 @@
   "imu2-B-chem-018": 0,
   "imu2-B-chem-019": 0,
   "imu2-B-chem-020": 0,
-
-
-
-
-
   "imu2-B-math-001": 0,
   "imu2-B-math-002": 1,
   "imu2-B-math-003": 3,
@@ -229,11 +211,4 @@
   "imu2-B-math-038": 1,
   "imu2-B-math-039": 0,
   "imu2-B-math-040": 0
-
-
-
-
-
-
-
 }

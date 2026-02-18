@@ -1,6 +1,12 @@
-// 🔑 Load env FIRST
 import dotenv from "dotenv";
-dotenv.config({ path: "../../.env" });
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load .env from backend root (src/seed/../../.env)
+dotenv.config({ path: join(__dirname, "../../.env") });
 
 import fs from "fs";
 import path from "path";
@@ -10,7 +16,9 @@ import { mocks } from "./mocks.config.js";
 
 // ---------- helper ----------
 const loadJSON = (filePath) => {
-  const absolutePath = path.resolve(filePath);
+  // Resolve path relative to THIS file (src/seed/index.js)
+  // ../../../ goes from src/seed -> src -> backend -> MockX root
+  const absolutePath = path.resolve(__dirname, filePath);
   return JSON.parse(fs.readFileSync(absolutePath, "utf-8"));
 };
 
@@ -66,7 +74,8 @@ const seed = async () => {
           options: q.options,
           correctOption: answers[q.id],
           marks: q.marks || 1,
-           imageUrl: q.imageUrl || null,
+          imageUrl: q.imageUrl || null,
+          paragraph: q.paragraph || null,
         };
       });
 

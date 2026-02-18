@@ -39,8 +39,6 @@
   "imu1-A-apt-038": 2,
   "imu1-A-apt-039": 0,
   "imu1-A-apt-040": 3,
-
-
   "imu1-A-gk-001": 2,
   "imu1-A-gk-002": 1,
   "imu1-A-gk-003": 1,
@@ -61,7 +59,6 @@
   "imu1-A-gk-018": 2,
   "imu1-A-gk-019": 1,
   "imu1-A-gk-020": 0,
-
   "imu1-A-eng-001": 3,
   "imu1-A-eng-002": 2,
   "imu1-A-eng-003": 0,
@@ -100,8 +97,10 @@
   "imu1-A-eng-036": 1,
   "imu1-A-eng-037": 2,
   "imu1-A-eng-038": 1,
-  "imu1-A-eng-039": 0,
-  "imu1-A-eng-040": 2,
+  "imu1-A-eng-039": 2,
+  "imu1-A-eng-040": 1,
+
+
 
 
   "imu1-B-phy-001": 0,
@@ -144,11 +143,8 @@
   "imu1-B-phy-038": 1,
   "imu1-B-phy-039": 3,
   "imu1-B-phy-040": 1,
+
   
-
-
-
-
   "imu1-B-chem-001": 1,
   "imu1-B-chem-002": 2,
   "imu1-B-chem-003": 1,
@@ -169,9 +165,6 @@
   "imu1-B-chem-018": 3,
   "imu1-B-chem-019": 1,
   "imu1-B-chem-020": 1,
-
-
-
   "imu1-B-math-001": 0,
   "imu1-B-math-002": 1,
   "imu1-B-math-003": 0,
@@ -212,6 +205,4 @@
   "imu1-B-math-038": 0,
   "imu1-B-math-039": 0,
   "imu1-B-math-040": 0
-
-
 }

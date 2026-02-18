@@ -1,0 +1,1121 @@
+{
+
+"A":{
+"english": [
+  {
+    "question": "Choose the correct form of the verb: 'She ___ to the store every day.'",
+    "options": ["go", "goes", "gone", "going"],
+    "answer": 1
+  },
+  {
+    "question": "Identify the error in the sentence: 'Neither the manager nor the employees ___ aware of the new policy.'",
+    "options": ["is", "are", "am", "be"],
+    "answer": 0
+  },
+  {
+    "question": "Fill in the blank with the correct preposition: 'She is good ___ playing the piano.'",
+    "options": ["at", "in", "on", "with"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct form of the adjective: 'This is the ___ movie I have ever seen.'",
+    "options": ["bad", "worse", "worst", "badly"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct conjunction: 'I will call you ___ I arrive.'",
+    "options": ["although", "until", "because", "when"],
+    "answer": 3
+  },
+  {
+    "question": "Choose the correct synonym for 'abundant':",
+    "options": ["scarce", "plentiful", "little", "insufficient"],
+    "answer": 1
+  },
+  {
+    "question": "Choose the word that means the same as 'ambiguous':",
+    "options": ["clear", "uncertain", "definite", "obvious"],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct antonym for 'disappear':",
+    "options": ["vanish", "fade", "emerge", "erase"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct word to complete the sentence: 'He is known for his ___ work ethic.'",
+    "options": ["admirable", "admiration", "admirably", "admire"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the word that best fits the sentence: 'The movie was a ___; it received rave reviews.'",
+    "options": ["fluke", "catastrophe", "disaster", "success"],
+    "answer": 3
+  },
+  {
+    "question": "What is environmental conservation?",
+    "options": ["Destroying natural resources", "Protecting the natural environment", "Ignoring biodiversity", "Increasing pollution"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following is NOT mentioned as a conservation effort?",
+    "options": ["Reforestation", "Wildlife preservation", "Reducing pollution", "Urban development"],
+    "answer": 3
+  },
+  {
+    "question": "What does biodiversity refer to in the passage?",
+    "options": ["The variety of life in the world", "A single species of plant", "Non-renewable resources", "Environmental laws"],
+    "answer": 0
+  },
+  {
+    "question": "Why is conservation important, according to the passage?",
+    "options": ["For economic growth", "For current and future generations", "To promote urbanization", "To decrease biodiversity"],
+    "answer": 1
+  },
+  {
+    "question": "Which activity is an example of conservation?",
+    "options": ["Building more factories", "Planting trees", "Increasing deforestation", "Polluting rivers"],
+    "answer": 1
+  },
+  {
+    "question": "Identify the error in the sentence: 'Each of the students are responsible for bringing their own lunch.'",
+    "options": ["Each of the students", "are", "for bringing", "their own lunch"],
+    "answer": 1
+  },
+  {
+    "question": "Correct the sentence: 'She don't like pizza.'",
+    "options": ["She doesn't like pizza", "She not like pizza", "She not likes pizza", "She didn't like pizza"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct sentence:",
+    "options": ["Him and I went to the store.", "He and me went to the store.", "He and I went to the store.", "Him and me went to the store."],
+    "answer": 2
+  },
+  {
+    "question": "Identify the error in the sentence: 'The teacher and the students was excited about the project.'",
+    "options": ["The teacher and the students", "was", "excited about", "the project"],
+    "answer": 1
+  },
+  {
+    "question": "Correct the sentence: 'There is many reasons to exercise.'",
+    "options": ["There are many reasons to exercise.", "There be many reasons to exercise.", "There is much reasons to exercise.", "There was many reasons to exercise."],
+    "answer": 0
+  },
+  {
+    "question": "Choose the sentence with the correct punctuation:",
+    "options": ["My favorite colors are blue, green, and red.", "My favorite colors are, blue green, and red.", "My favorite colors are: blue green, and red.", "My favorite colors are blue green and red."],
+    "answer": 0
+  },
+  {
+    "question": "Identify the correct punctuation: 'My favorite colors are blue green and red.'",
+    "options": ["My favorite colors are blue, green, and red.", "My favorite colors are, blue green, and red.", "My favorite colors are: blue green, and red.", "My favorite colors are blue green and red."],
+    "answer": 0
+  },
+  {
+    "question": "Choose the sentence with the correct punctuation:",
+    "options": ["She said I'm coming over now.", "She said, I'm coming over now.", "She said, 'I'm coming over now.'", "She said 'I'm coming over now'."],
+    "answer": 2
+  },
+  {
+    "question": "Identify the correct punctuation: 'Yes I would love to go to the party'",
+    "options": ["Yes, I would love to go to the party.", "Yes I would love, to go to the party.", "Yes I would love to go, to the party.", "Yes, I would love to go to the party!"],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct punctuation: 'Whose book is this'",
+    "options": ["Whose book is this?", "Whose book is this.", "Whose book, is this?", "Whose book, is this."],
+    "answer": 0
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Accomodate", "Accommodate", "Acommodate", "Accomadate"],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Definately", "Definitly", "Definitely", "Definitley"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Resistence", "Resistance", "Resistence", "Resistense"],
+    "answer": 1
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Comitee", "Commitee", "Committee", "Comitte"],
+    "answer": 2
+  },
+  {
+    "question": "Choose the correct spelling:",
+    "options": ["Beneficial", "Benificial", "Benefitial", "Benefitial"],
+    "answer": 0
+  },
+  {
+    "question": "'Bite the bullet' means:",
+    "options": ["To avoid something unpleasant", "To face a difficult situation bravely", "To chew on something hard", "To be quiet"],
+    "answer": 1
+  },
+  {
+    "question": "'Break the ice' means:",
+    "options": ["To begin a conversation", "To shatter glass", "To cause an argument", "To make someone angry"],
+    "answer": 0
+  },
+  {
+    "question": "'Hit the sack' means:",
+    "options": ["To go to bed", "To punch a bag", "To work hard", "To travel"],
+    "answer": 0
+  },
+  {
+    "question": "'Let the cat out of the bag' means:",
+    "options": ["To free a pet", "To reveal a secret", "To make a mistake", "To be surprised"],
+    "answer": 1
+  },
+  {
+    "question": "'Once in a blue moon' means:",
+    "options": ["Rarely", "Frequently", "Annually", "Daily"],
+    "answer": 0
+  },
+  {
+    "question": "Who wrote 'Pride and Prejudice'?",
+    "options": ["Emily Brontë", "Jane Austen", "Charles Dickens", "William Shakespeare"],
+    "answer": 1
+  },
+  {
+    "question": "Who is the author of 'Moby-Dick'?",
+    "options": ["Herman Melville", "Mark Twain", "F. Scott Fitzgerald", "Ernest Hemingway"], 
+    "answer": 0
+  }
+
+],
+
+
+ "apptitude":[
+  {
+    "question": "A man walks 100 m toward a tower. Angle of elevation changes from 30° to 60°. Height of tower?",
+    "options": ["20 m", "20√3 m", "30 m", "40 m"],
+    "answer": 3
+  },
+  {
+    "question": "Towers 150 m apart, one 100 m tall, the other 50 m. What is angle of elevation from top of shorter?",
+    "options": ["10°", "15°", "20°", "30°"],
+    "answer": 3
+  },
+  {
+    "question": "A point sees a building top at 45°. After moving 20 m closer, angle becomes 60°. Height of building?",
+    "options": ["3 m", "4 m", "6 m", "9 m"],
+    "answer": 3
+  },
+  {
+    "question": "Ladder leans on a wall; top reaches 15 m high. Ladder makes 60° angle with ground. Ladder length?",
+    "options": ["10 m", "15 m", "20 m", "30 m"],
+    "answer": 2
+  },
+  {
+    "question": "From points 4 m and 9 m away, angle of elevation are complementary. Height of tower?",
+    "options": ["3 m", "4 m", "6 m", "9 m"],
+    "answer": 2
+  },
+  {
+    "question": "If 'BREAK' is coded as 'ZPMYR', how is 'SHINE' coded?",
+    "options": ["RHQMD", "QGMOC", "QGMOC", "RHLMC"],
+    "answer": 1
+  },
+  {
+    "question": "If 'SUN' = 'UWT', then 'MOON' = ?",
+    "options": ["OQQP", "OPQQ", "OPPQ", "PQOP"],
+    "answer": 1
+  },
+  {
+    "question": "If 'APPLE' = 'ZKOOX', then 'GRAPE' = ?",
+    "options": ["TQZMO", "TQMZO", "TQMZN", "TQZMN"],
+    "answer": 0
+  },
+  {
+    "question": "If 'CIRCLE' = 'GKTGOI', then 'SQUARE' = ?",
+    "options": ["YUVIFW", "YUVJFW", "YUVJFX", "XTVJFW"],
+    "answer": 1
+  },
+  {
+    "question": "If 'CODE' = 'DPEF', then 'DATA' = ?",
+    "options": ["ECUB", "EBUB", "ECUB", "DBUB"],
+    "answer": 1
+  },
+  {
+    "question": "6 people A–F sit in circle: A is between D & F, B is right of D, E left of F. Who is left of B?",
+    "options": ["A", "B", "C", "D"],
+    "answer": 0
+  },
+  {
+    "question": "7 people P–V in line. R at end, P is third right of Q, S is 2nd left of T, etc. Who is at other end?",
+    "options": ["P", "Q", "S", "T"],
+    "answer": 0
+  },
+  {
+    "question": "A–E sit in row. B right of D, C left of E, A left of D but not at end. Who's in middle?",
+    "options": ["A", "B", "C", "D"],
+    "answer": 3
+  },
+  {
+    "question": "8 people around a rectangular table. Info about positions is given. Who is opposite to E?",
+    "options": ["P", "Q", "R", "S"],
+    "answer": 1
+  },
+  {
+    "question": "P–T sit in circle. P second right of Q, R left of Q, etc. Who is immediate left of T?",
+    "options": ["A", "B", "C", "D"],
+    "answer": 2
+  },
+  {
+     "question": " A sum doubles in 5 years at SI. In how many years will it quadruple?",
+     "options": ["10", "15", "20", "25"],
+     "answer": 0
+  },
+  {
+    "question": " $5,000 becomes $6,000 in 3 years at SI. What amount after 6 years?",
+    "options": ["$7,000", "$8,000", "$9,000", "$10,000"],
+    "answer": 0
+  },
+  {
+    "question": " SI: $1,680 in 2 years; $1,920 in 3.5 years. Rate per annum?",
+   " options": ["10%", "12%", "15%", "20%"],
+    "answer": 1
+  },
+  {
+    "question": " CI on $4,000 for 3 years at 6% p.a. compounded annually?",
+    "options": ["$762.48", "$762.24", "$762.00", "$762.72"],
+    "answer": 1
+  },
+  {
+   " question": "$10,000 becomes $12,155.25 in 3 years compounded annually. Rate?",
+    "options": ["6%", "7%", "8%", "9%"],
+    "answer": 1
+  },
+ 
+
+  {
+    "question": "Pointing to a man, a woman said, 'His mother is the only daughter of my mother.' How is the woman related to the man?",
+    "options": ["Aunt", "Sister", "Mother", "Daughter"],
+    "answer": 2
+  },
+  {
+    "question": "If A is the brother of B, B is the sister of C, and C is the father of D, how is A related to D?",
+    "options": ["Brother", "Uncle", "Nephew", "Father"],
+    "answer": 1
+  },
+  {
+    "question": "Pointing to a photograph, a man says, 'Brothers and sisters, I have none. That man's father is my father's son.' Who is the man in the photograph?",
+    "options": ["The man's son", "The man's father", "The man himself", "The man's uncle"],
+    "answer": 0
+  },
+  {
+    "question": "If P is the mother of Q and R, and S is the husband of P, how is Q related to S?",
+    "options": ["Son", "Daughter", "Son or Daughter", "Father"],
+    "answer": 2
+  },
+  {
+    "question": "If X is the brother of Y, Y is the sister of Z, and Z is the father of W, how is X related to W?",
+    "options": ["Brother", "Uncle", "Nephew", "Father"],
+    "answer": 1
+  },
+  {
+    "question": "A person sells two items, each at $240. One item is sold at a profit of 25% and the other at a loss of 20%. What is the overall profit or loss percentage?",
+    "options": ["1%", "2%", "3%", "4%"],
+    "answer": 0
+  },
+  {
+    "question": "A man sells two articles. On one, he gains 20% and on the other, he loses 20%. What is his overall profit or loss percentage?",
+    "options": ["0%", "2%", "4%", "8%"],
+    "answer": 0
+  },
+  {
+    "question": "A trader sold two TVs at $12,000 each. On one, he gained 20% and on the other, he lost 20%. What is his overall profit or loss?",
+    "options": ["$0", "$400", "$800", "$1,200"],
+    "answer": 0
+  },
+  {
+    "question": "In a mixture of milk and water, the ratio of milk to water is 5:2. If 4 liters of water is added, the ratio becomes 5:3. What was the initial quantity of milk?",
+    "options": ["10 liters", "12 liters", "15 liters", "20 liters"],
+    "answer": 2
+  },
+  {
+    "question": "A and B can complete a work together in 10 days. If A works at double efficiency and B at half, work finishes in 8 days. In how many days can A alone complete the work?",
+    "options": ["16 days", "20 days", "24 days", "30 days"],
+    "answer": 0
+  },
+  {
+    "question": "Water is to ice as steam is to ____",
+    "options": ["Gas", "Vapor", "Liquid", "Solid"],
+    "answer": 3
+  },
+  {
+    "question": "Book is to author as painting is to ____",
+    "options": ["Artist", "Brush", "Canvas", "Exhibition"],
+    "answer": 0
+  },
+  {
+    "question": "Oar is to rowboat as paddle is to ____",
+    "options": ["Sailboat", "Canoe", "Raft", "Kayak"],
+    "answer": 1
+  },
+  {
+    "question": "Stethoscope is to doctor as telescope is to ____",
+    "options": ["Astronomy", "Astronomer", "Microscope", "Biology"],
+    "answer": 1
+  },
+  {
+    "question": "Pen is to write as keyboard is to ____",
+    "options": ["Type", "Input", "Mouse", "Click"],
+    "answer": 0
+  },
+  {
+    "question": "Fruit is to tree as leaf is to ____",
+    "options": ["Branch", "Root", "Stem", "Plant"],
+    "answer": 3
+  },
+  {
+    "question": "Tire is to car as battery is to ____",
+    "options": ["Flashlight", "Remote", "Clock", "Torch"],
+    "answer": 0
+  },
+  {
+    "question": "Milk is to dairy as bread is to ____",
+    "options": ["Bakery", "Flour", "Wheat", "Oven"],
+    "answer": 0
+  },
+  {
+    "question": "Scissors is to cut as hammer is to ____",
+    "options": ["Nail", "Hit", "Wood", "Screwdriver"],
+    "answer": 1
+  },
+  {
+    "question": "Sailor is to ship as driver is to ____",
+    "options": ["Truck", "Bus", "Car", "Bicycle"],
+    "answer": 2
+  }
+  ],  
+
+
+
+  "gk":[
+  {
+    "question": "Which is the oldest port in India?",
+    "options": ["Kandla", "Chennai", "Kochi", "Mumbai"],
+    "answer": 1
+  },
+  {
+    "question": "Which is the largest port in India by cargo volume?",
+    "options": ["Mumbai Port", "Paradip Port", "Kandla Port", "Visakhapatnam Port"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian port is known as the 'Gateway of India'?",
+    "options": ["Chennai Port", "Mumbai Port", "Mormugao Port", "Tuticorin Port"],
+    "answer": 1
+  },
+  {
+    "question": "Which is the newest major port in India?",
+    "options": ["Vadhavan Port", "Enayam Port", "Vizhinjam Port", "Port Blair"],
+    "answer": 2
+  },
+  {
+    "question": "Which is the busiest container port in India?",
+    "options": ["JNPT (Navi Mumbai)", "Kochi Port", "Chennai Port", "Kandla Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which port is located in the state of Odisha?",
+    "options": ["Mangalore Port", "Paradip Port", "Tuticorin Port", "Kochi Port"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following ports is a riverine port?",
+    "options": ["Kolkata Port", "Chennai Port", "Mormugao Port", "Kandla Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which major port lies on the east coast of India?",
+    "options": ["Kandla Port", "JNPT", "Visakhapatnam Port", "Mormugao Port"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian port is famous for exporting iron ore?",
+    "options": ["Mormugao Port", "Kolkata Port", "Chennai Port", "Tuticorin Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which is the only port in the Andaman and Nicobar Islands?",
+    "options": ["Port Blair", "Nicobar Port", "Havelock Port", "Minicoy Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which port is known for its proximity to the Western Ghats?",
+    "options": ["Kochi Port", "Kandla Port", "Chennai Port", "Kolkata Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which port is located in Gujarat?",
+    "options": ["Visakhapatnam Port", "Chennai Port", "Kandla Port", "Mangalore Port"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian state has the maximum number of major ports?",
+    "options": ["Maharashtra", "Tamil Nadu", "Gujarat", "Andhra Pradesh"],
+    "answer": 2
+  },
+  {
+    "question": "Which of these ports lies closest to the Western Ghats?",
+    "options": ["Kandla Port", "Mormugao Port", "Tuticorin Port", "Haldia Port"],
+    "answer": 1
+  },
+  {
+    "question": "Which port is famous for ship-breaking activities?",
+    "options": ["Alang", "Mumbai", "Mangalore", "Chennai"],
+    "answer": 0
+  },
+  {
+    "question": "Which port is being developed as India’s first mega transshipment hub?",
+    "options": ["Tuticorin", "Vizhinjam", "Ennore", "Paradip"],
+    "answer": 1
+  },
+  {
+    "question": "Which port in Kerala is a natural port?",
+    "options": ["Kochi Port", "Vizhinjam Port", "Mangalore Port", "Tuticorin Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian port handled the most cargo traffic in 2024?",
+    "options": ["Kandla Port", "JNPT", "Visakhapatnam Port", "Paradip Port"],
+    "answer": 3
+  },
+  {
+    "question": "Which port is associated with coal exports and steel imports?",
+    "options": ["Paradip Port", "Chennai Port", "Tuticorin Port", "Mormugao Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which port lies near the Konkan coast?",
+    "options": ["Mumbai Port", "Tuticorin Port", "Haldia Port", "Chennai Port"],
+    "answer": 0
+  },
+  {
+    "question": "Which Indian port is operated by a private company under PPP?",
+    "options": ["Kandla Port", "JNPT", "Krishnapatnam Port", "Kolkata Port"],
+    "answer": 2
+  },
+  {
+    "question": "Which is the largest private port in India?",
+    "options": ["Hazira", "Dhamra", "Mundra", "Krishnapatnam"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian port is closest to Sri Lanka?",
+    "options": ["Vizhinjam", "Tuticorin", "Chennai", "Mangalore"],
+    "answer": 1
+  },
+  {
+    "question": "Which mountain range runs parallel to India's western coast?",
+    "options": ["Aravalli", "Eastern Ghats", "Western Ghats", "Satpura"],
+    "answer": 2
+  },
+  {
+    "question": "Which Indian port city is also a naval base?",
+    "options": ["Visakhapatnam", "Kandla", "Chennai", "Kochi"],
+    "answer": 0
+  }
+ ]
+},
+
+"B":{
+
+    "physics":[
+
+  {"question": "What is the shape of the path of a projectile under gravity?",
+    "options": ["Circular", "Elliptical", "Parabolic", "Hyperbolic"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is a scalar quantity?",
+    "options": ["Displacement", "Velocity", "Force", "Speed"],
+    "answer": 3
+  },
+  {
+    "question": "The first law of thermodynamics is a statement of conservation of:",
+    "options": ["Mass", "Momentum", "Energy", "Charge"],
+    "answer": 2
+  },
+  {
+    "question": "Which process is isochoric?",
+    "options": ["Constant pressure", "Constant temperature", "Constant volume", "Constant entropy"],
+    "answer": 2
+  },
+  {
+    "question": "The time period of a simple pendulum depends on:",
+    "options": ["Length of pendulum", "Mass of bob", "Amplitude", "Both A and B"],
+    "answer": 0
+  },
+  {
+    "question": "The speed of sound in a medium depends on:",
+    "options": ["Temperature", "Pressure", "Density", "Both A and C"],
+    "answer": 3
+  },
+  {
+    "question": "Electric field lines never:",
+    "options": ["Cross each other", "Start from positive charges", "End on negative charges", "Form closed loops"],
+    "answer": 0
+  },
+  {
+    "question": "Potential difference = 20 V, charge moved = 5 C. Work done?",
+    "options": ["100 J", "50 J", "4 J", "25 J"],
+    "answer": 0
+  },
+  {
+    "question": "Ohm’s law is valid only when:",
+    "options": ["Temperature constant", "Pressure constant", "Volume constant", "Current constant"],
+    "answer": 0
+  },
+  {
+    "question": "Inside a bar magnet, magnetic field lines go:",
+    "options": ["North to South", "South to North", "East to West", "West to East"],
+    "answer": 1
+  },
+  {
+    "question": "A current-carrying conductor in a magnetic field experiences:",
+    "options": ["Coulomb's law", "Faraday's law", "Lorentz force", "Ampere's law"],
+    "answer": 2
+  },
+  {
+    "question": "Electromagnetic induction was discovered by:",
+    "options": ["Faraday", "Newton", "Maxwell", "Einstein"],
+    "answer": 0
+  },
+  {
+    "question": "In a transformer, mutual induction between coils produces:",
+    "options": ["Direct current", "Alternating current", "Eddy currents", "Static electricity"],
+    "answer": 1
+  },
+  {
+    "question": "The refractive index of a medium is defined as:",
+    "options": ["Speed ratio (vacuum to medium)", "Product of light speeds", "Difference in speeds", "Sum of speeds"],
+    "answer": 0
+  },
+  {
+    "question": "Total internal reflection occurs when light travels from:",
+    "options": ["Denser to rarer medium", "Rarer to denser", "Same refractive index", "None of the above"],
+    "answer": 0
+  },
+  {
+    "question": "The power of a lens is measured in:",
+    "options": ["Diopters", "Meters", "Watts", "Joules"],
+    "answer": 0
+  },
+
+  {
+    "question": "The power of a lens is measured in:",
+    "options": ["Diopters", "Meters", "Watts", "Joules"],
+    "answer": 0
+  },
+  {
+    "question": "The photoelectric effect demonstrates the:",
+    "options": ["Particle nature", "Wave nature", "Both", "None"],
+    "answer": 0
+  },
+  {
+    "question": "Energy of a photon is proportional to:",
+    "options": ["Wavelength", "Frequency", "Amplitude²", "Frequency²"],
+    "answer": 1
+  },
+  {
+    "question": "Atomic number is equal to:",
+    "options": ["Number of protons", "Neutrons", "Electrons", "Protons + Neutrons"],
+    "answer": 0
+  },
+  {
+    "question": "Which particle is not in the nucleus of an atom?",
+    "options": ["Proton", "Neutron", "Electron", "None"],
+    "answer": 2
+  },
+
+  {
+    "question": "Nuclear fission is caused by:",
+    "options": ["Splitting of heavy nucleus", "Combining of light nuclei", "Emission of gamma rays", "Emission of beta particles"],
+    "answer": 0
+  },
+  {
+    "question": "In a p-n junction diode, the barrier potential opposes:",
+    "options": ["Electrons in n-region", "Holes in p-region", "Both A and B", "None"],
+    "answer": 2
+  },
+  {
+    "question": "Adding impurities to a semiconductor is called:",
+    "options": ["Doping", "Mixing", "Amplifying", "Rectifying"],
+    "answer": 0
+  },
+  {
+    "question": "In a transistor, the base is:",
+    "options": ["Heavily doped", "Moderately doped", "Lightly doped", "Not doped"],
+    "answer": 2
+  },
+  {
+    "question": "SI unit of electrical resistivity:",
+    "options": ["Ohm", "Ohm meter", "Volt", "Ampere"],
+    "answer": 1
+  },
+  {
+    "question": "A car accelerates from rest to 20 m/s in 5 seconds. Acceleration?",
+    "options": ["0 m/s²", "10 m/s²", "20 m/s²", "4 m/s²"],
+    "answer": 3
+  },
+  {
+    "question": "A ball is thrown up at 30 m/s. Velocity after 3 seconds (g = 10 m/s²)?",
+    "options": ["0 m/s", "10 m/s", "20 m/s", "30 m/s"],
+    "answer": 0
+  },
+  {
+    "question": "A 10 N force moves a 2 kg body 5 m. Work done?",
+    "options": ["10 J", "20 J", "30 J", "50 J"],
+    "answer": 3
+  },
+  {
+    "question": "A 5 kg body raised 10 m. Potential energy? (g = 9.8 m/s²)",
+    "options": ["490 J", "980 J", "245 J", "196 J"],
+    "answer": 1
+  },
+  {
+    "question": "Gravitational force between 1 kg masses 1 m apart is 6.67×10⁻¹¹ N. G = ?",
+    "options": ["6.67×10⁻¹¹ N·m²/kg²", "6.67×10⁻¹⁰ N·m²/kg²", "6.67×10⁻⁹ N·m²/kg²", "6.67×10⁻⁸ N·m²/kg²"],
+    "answer": 0
+  },
+  {
+    "question": "Two charges +5μC and -5μC are 0.1 m apart. Force? (k = 9×10⁹)",
+    "options": ["225 N", "450 N", "675 N", "900 N"],
+    "answer": 0
+  },
+  {
+    "question": "Electric field 0.2 m from 2 μC charge? (k = 9×10⁹)",
+    "options": ["4.5×10⁴ N/C", "9×10⁴ N/C", "4.5×10⁵ N/C", "9×10⁵ N/C"],
+    "answer": 2
+  },
+  {
+    "question": "A wire of 5 Ω is bent into a circle. Resistance across diameter?",
+    "options": ["5 Ω", "10 Ω", "2.5 Ω", "1.25 Ω"],
+    "answer": 2
+  },
+  {
+    "question": "4 Ω and 6 Ω resistors in parallel. Equivalent resistance?",
+    "options": ["2.4 Ω", "3.5 Ω", "4 Ω", "5 Ω"],
+    "answer": 0
+  },
+  {
+    "question": "Current = 5 A in wire. Magnetic field at 0.1 m? (μ₀ = 4π×10⁻⁷)",
+    "options": ["1.0×10⁻⁵ T", "2.0×10⁻⁵ T", "3.0×10⁻⁵ T", "4.0×10⁻⁵ T"],
+    "answer": 0
+  },
+  {
+    "question": "Coil: radius 0.1 m, 100 turns, 1 A. Magnetic field at center?",
+    "options": ["1.26×10⁻³ T", "2.26×10⁻³ T", "3.26×10⁻³ T", "4.26×10⁻³ T"],
+    "answer": 0
+  },
+  {
+    "question": "50-turn coil, B = 0.02 T, area = 0.1 m², angle = 30°. Magnetic flux?",
+    "options": ["0.05 Wb", "0.1 Wb", "0.2 Wb", "0.4 Wb"],
+    "answer": 0
+  },
+  {
+    "question": "Transformer: 200 turns primary, 400 turns secondary, 220 V input. Output voltage?",
+    "options": ["110 V", "220 V", "440 V", "880 V"],
+    "answer": 2
+  },
+  {
+    "question": "Convex lens, f = 20 cm. Where to place object for image 2× size?",
+    "options": ["10 cm", "20 cm", "30 cm", "40 cm"],
+    "answer": 2
+  },
+  {
+    "question": "Light of 600 nm in Young’s experiment. Slit gap = 0.1 mm, screen = 1 m. Fringe width?",
+    "options": ["1.2 mm", "2.4 mm", "3.6 mm", "4.8 mm"],
+    "answer": 0
+  },
+  {
+    "question": "Work function = 4 eV. Threshold frequency? (h = 6.63×10⁻³⁴, 1 eV = 1.6×10⁻¹⁹ J)",
+    "options": ["9.71×10¹⁴ Hz", "8.71×10¹⁴ Hz", "7.71×10¹⁴ Hz", "6.71×10¹⁴ Hz"],
+    "answer": 0
+  },
+  {
+    "question": "De Broglie wavelength of electron with 150 eV kinetic energy?",
+    "options": ["0.1 nm", "0.2 nm", "0.3 nm", "0.4 nm"],
+    "answer": 0
+  },
+  {
+    "question": "Hydrogen atom: Eₙ = –13.6/n² eV. Energy to excite from n=1 to n=2?",
+    "options": ["10.2 eV", "12.1 eV", "13.6 eV", "15.4 eV"],
+    "answer": 0
+  },
+  {
+    "question": "Half-life = 3 hours. What fraction remains after 9 hours?",
+    "options": ["½", "⅓", "¼", "⅛"],
+    "answer": 3
+  },
+  {
+    "question": "Silicon diode: forward drop = 0.7 V, supply = 5 V, series resistor = 1 kΩ. Current?",
+    "options": ["4.3 mA", "5.3 mA", "6.3 mA", "7.3 mA"],
+    "answer": 0
+  },
+  {
+    "question": "Transistor: β = 100, base current = 20 μA. Collector current?",
+    "options": ["1 mA", "2 mA", "3 mA", "4 mA"],
+    "answer": 1
+  },
+  {
+    "question": "Inductor = 5 H, AC freq = 50 Hz. Inductive reactance?",
+    "options": ["157 Ω", "314 Ω", "628 Ω", "942 Ω"],
+    "answer": 1
+  },
+  {
+    "question": "Circuit: R = 3 Ω, Xₗ = 4 Ω. Power factor?",
+    "options": ["0.5", "0.6", "0.7", "0.8"],
+    "answer": 2
+  },
+  {
+    "question": "Capacitor = 5 μF, voltage = 12 V. Charge stored?",
+    "options": ["30 μC", "60 μC", "90 μC", "120 μC"],
+    "answer": 0
+  },
+  {
+    "question": "Resistor = 10 Ω, Capacitor = 100 μF, 50 Hz supply. Impedance?",
+    "options": ["15 Ω", "20 Ω", "25 Ω", "30 Ω"],
+    "answer": 0
+  }
+
+],
+    "chemistry":[
+
+  {
+    "question": "Which of the following is an example of a primary alcohol?",
+    "options": ["Ethanol", "Propanol", "Butanol", "Methanol"],
+    "answer": 3
+  },
+  {
+    "question": "Which functional group is present in an ester?",
+    "options": ["-COOH", "-COO-", "-OH", "-CHO"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following reactions is an example of a substitution reaction?",
+    "options": ["Esterification", "Fermentation", "Hydrolysis of haloalkanes", "Dehydration of alcohols"],
+    "answer": 2
+  },
+  {
+    "question": "What is the product formed when ethanoic acid reacts with methanol in the presence of a catalyst?",
+    "options": ["Ethanol", "Methyl ethanoate", "Ethyl ethanoate", "Acetic acid"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following is a secondary alcohol?",
+    "options": ["Propanol", "Ethanol", "Isopropanol", "Methanol"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is an example of an analgesic drug?",
+    "options": ["Aspirin", "Insulin", "Penicillin", "Paracetamol"],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following is a disinfectant used for water purification?",
+    "options": ["Aspirin", "Penicillin", "Chlorine", "Paracetamol"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is used as an antacid to relieve indigestion and heartburn?",
+    "options": ["Aspirin", "Penicillin", "Sodium bicarbonate", "Paracetamol"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is an example of a condensation polymer?",
+    "options": ["Polyethylene", "Polypropylene", "Nylon-6,6", "PVC"],
+    "answer": 2
+  },
+  {
+    "question": "Which polymer is used in making plastic bottles for storing beverages?",
+    "options": ["Polyethylene", "Polystyrene", "Polypropylene", "PET (Polyethylene terephthalate)"],
+    "answer": 3
+  },
+  {
+    "question": "Which of the following is not a property of an ideal gas?",
+    "options": ["High pressure", "Low pressure", "High temperature", "Low temperature"],
+    "answer": 0
+  },
+  {
+    "question": "What is the standard electrode potential of a hydrogen electrode at 25°C and 1 atm pressure?",
+    "options": ["0 V", "+1.23 V", "-1.23 V", "-0.0591 V"],
+    "answer": 0
+  },
+  {
+    "question": "Which statement is not true for a chemical equilibrium reaction?",
+    "options": ["Rate of forward = rate of backward reaction", "Equilibrium occurs in a closed system", "Concentrations remain constant", "Equilibrium only in isolated systems"],
+    "answer": 3
+  },
+  {
+    "question": "What is the Van't Hoff factor for a NaCl solution?",
+    "options": ["1", "2", "3", "4"],
+    "answer": 1
+  },
+  {
+    "question": "Which is not a colligative property?",
+    "options": ["Freezing point depression", "Boiling point elevation", "Osmotic pressure", "Vapor pressure of the solvent"],
+    "answer": 3
+  },
+  {
+    "question": "Which of the following is not a metalloid?",
+    "options": ["Silicon", "Boron", "Arsenic", "Sodium"],
+    "answer": 3
+  },
+  {
+    "question": "Most abundant element in Earth's crust?",
+    "options": ["Oxygen", "Silicon", "Aluminum", "Iron"],
+    "answer": 0
+  },
+  {
+    "question": "Hybridization of sulfur in SF₆ molecule?",
+    "options": ["sp", "sp²", "sp³", "dsp³"],
+    "answer": 3
+  },
+  {
+    "question": "Which is not a transition metal?",
+    "options": ["Iron", "Zinc", "Copper", "Titanium"],
+    "answer": 1
+  },
+  {
+    "question": "Oxidation state of chlorine in ClO₃⁻?",
+    "options": ["+1", "+3", "+5", "-1"],
+    "answer": 2
+  }
+ ], 
+
+ "maths":[
+     {
+    "question": "In a fruit basket of 20 apples and 10 oranges, 5 apples and 3 oranges are defective. Out of the basket, 2 fruits are chosen. Find the probability that both are apples or both are defective.",
+    "options": ["½", "⅓", "¼", "⅕"],
+    "answer": 1
+  },
+  {
+    "question": "Two dice are rolled. Find the probability that the number three appears at least once, given that the sum is seven.",
+    "options": ["4/7", "3/7", "-3/7", "None of the above"],
+    "answer": 0
+  },
+  {
+    "question": "Three coins are tossed. Find the probability that at least two heads occur, given that at most two heads occur.",
+    "options": ["½", "¼", "⅙", "⅛"],
+    "answer": 0
+  },
+  {
+    "question": "Three bags: 1st has 2 gold and 1 silver coin, 2nd has 1 gold and 2 silver, 3rd has 3 silver coins. A bag is chosen and a coin is picked. Find the probability the other two coins are silver.",
+    "options": ["1/3", "2/9", "1/9", "2/3"],
+    "answer": 2
+  },
+  {
+    "question": "If two dice are rolled, what is the probability that the sum is at least 9?",
+    "options": ["1/4", "5/18", "1/6", "1/3"],
+    "answer": 1
+  },
+  {
+    "question": "A card is drawn from a pack of 52. What is the probability it is a face card or a red card?",
+    "options": ["7/13", "8/13", "9/13", "10/13"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following differential equations has the solution y = log x?",
+    "options": ["dy/dx = 1/x", "dy/dx = x", "dy/dx = e^x", "dy/dx = log x"],
+    "answer": 0
+  },
+  {
+    "question": "If the radius of a circle changes at 6 cm/s, find the rate of change of area when r = 2 cm.",
+    "options": ["24π cm²/s", "12π cm²/s", "6π cm²/s", "36π cm²/s"],
+    "answer": 0
+  },
+  {
+    "question": "The function f(x) = 2x³ – 9x² – 24x + 5 decreases in the interval:",
+    "options": ["-1 < x < 4", "1 < x < 4", "-1 ≤ x < 4", "-1 < x ≤ 4"],
+    "answer": 0
+  },
+  {
+    "question": "Given f(x) = x³ – 12x² + 45x + 8, at which point does f(x) have its minimum?",
+    "options": ["x = 1", "x = 3", "x = 5", "x = 7"],
+    "answer": 2
+  },
+  {
+    "question": "Find the equation of the circle passing through (5,9) and centered at (2,5).",
+    "options": [
+      "x² + y² + 4x - 10y + 4 = 0",
+      "x² + y² - 4x - 10y + 4 = 0",
+      "x² + y² + 4x + 10y + 4 = 0",
+      "x² + y² + 4x - 10y - 4 = 0"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The point (1, 4) lies __________ the circle x² + y² - 2x - 4y + 2 = 0.",
+    "options": [
+      "inside the circle",
+      "outside the circle",
+      "on the circle",
+      "either inside or outside"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "If f(x) = 2x + 3 and g(x) = x² + 7, find x such that gof(x) = 8.",
+    "options": ["1", "-2", "3", "2"],
+    "answer": 1
+  },
+  {
+    "question": "If f(x) = 2x + 3 and g(x) = x² + 7, find x such that fog(x) = 25.",
+    "options": ["±1", "±2", "±3", "±4"],
+    "answer": 1
+  },
+  {
+    "question": "The maximum number of equivalence relations on the set A = {1, 2, 3} is:",
+    "options": ["1", "0", "4", "5"],
+    "answer": 3
+  },
+  {
+    "question": "If f(x) is an odd function, then f(-x) = ?",
+    "options": ["x", "-x", "f(x)", "-f(x)"],
+    "answer": 3
+  },
+  {
+    "question": "In a group of 70 people, 52 like soft drink and 37 like alcohol. Each person likes at least one. How many like both?",
+    "options": ["19", "15", "20", "10"],
+    "answer": 0
+  },
+  {
+    "question": "A matrix with non-zero entries only on the diagonal is called:",
+    "options": [
+      "Diagonal matrix",
+      "Symmetric matrix",
+      "Skew-symmetric matrix",
+      "Identity matrix"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If A is an m×n matrix and AB and BA are defined, what is the order of matrix B?",
+    "options": ["m×m", "n×m", "n×n", "m×n"],
+    "answer": 1
+  },
+  {
+    "question": "What is the determinant of a matrix with two equal rows?",
+    "options": ["0", "1", "Undefined", "Non-zero"],
+    "answer": 0
+  },
+  {
+    "question": "The rank of a zero matrix is:",
+    "options": ["0", "1", "Not defined", "Equal to order"],
+    "answer": 0
+  },
+  {
+    "question": "The value of i² is:",
+    "options": ["0", "-1", "1", "i"],
+    "answer": 1
+  },
+  {
+    "question": "The imaginary part of 3 + 4i is:",
+    "options": ["3", "4", "4i", "i"],
+    "answer": 1
+  },
+  {
+    "question": "The value of i × i =",
+    "options": ["i", "-i", "-1", "1"],
+    "answer": 2
+  },
+  {
+    "question": "The modulus of 1 + i is:",
+    "options": ["0", "1", "√2", "2"],
+    "answer": 2
+  },
+  {
+    "question": "A quadratic equation has how many roots?",
+    "options": ["0", "1", "2", "3"],
+    "answer": 2
+  },
+  {
+    "question": "If the discriminant of a quadratic is zero, the roots are:",
+    "options": ["Real and equal", "Real and unequal", "Imaginary", "Complex conjugates"],
+    "answer": 0
+  },
+  {
+    "question": "If α and β are roots of x² - 5x + 6 = 0, what is α + β?",
+    "options": ["5", "6", "-5", "0"],
+    "answer": 0
+  },
+  {
+    "question": "Find the roots of the equation x² + 4x + 4 = 0.",
+    "options": ["-2, -2", "2, 2", "0, -4", "-1, -3"],
+    "answer": 0
+  },
+  {
+    "question": "A quadratic equation has roots 3 and -5. Form the equation.",
+    "options": [
+      "x² + 2x - 15 = 0",
+      "x² - 2x - 15 = 0",
+      "x² + 2x + 15 = 0",
+      "x² - 2x + 15 = 0"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Find the value of sin²45° + cos²45°.",
+    "options": ["1", "0", "2", "½"],
+    "answer": 0
+  },
+
+  {
+    "question": "The value of sin 30° is:",
+    "options": ["½", "√3/2", "1", "0"],
+    "answer": 0
+  },
+  {
+    "question": "The value of cos 60° is:",
+    "options": ["½", "√3/2", "1", "0"],
+    "answer": 0
+  },
+  {
+    "question": "tan 45° equals:",
+    "options": ["1", "0", "√3", "½"],
+    "answer": 0
+  },
+  {
+    "question": "sin²θ + cos²θ equals:",
+    "options": ["sin θ", "cos θ", "1", "0"],
+    "answer": 2
+  },
+  {
+    "question": "cot θ is equal to:",
+    "options": ["sin θ / cos θ", "cos θ / sin θ", "1 / tan θ", "Both B and C"],
+    "answer": 3
+  },
+  {
+    "question": "The angle whose cosine is 0 is:",
+    "options": ["0°", "30°", "90°", "180°"],
+    "answer": 2
+  },
+  {
+    "question": "If sin A = 3/5, then cos A = ? (A in first quadrant)",
+    "options": ["4/5", "3/4", "5/3", "1/2"],
+    "answer": 0
+  },
+  {
+    "question": "sec²θ – tan²θ =",
+    "options": ["1", "0", "sin²θ", "cos²θ"],
+    "answer": 0
+  },
+  {
+    "question": "If cot θ = 1/√3, then θ = ?",
+    "options": ["30°", "45°", "60°", "90°"],
+    "answer": 0
+  }
+]
+
+} 
+}

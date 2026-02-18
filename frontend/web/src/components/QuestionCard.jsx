@@ -9,10 +9,10 @@ const QuestionCard = ({ question, onOptionSelect }) => {
       </p>
 
       {/* Optional image */}
-      {question.image && (
+      {(question.imageUrl || question.image) && (
         <div className="my-4 flex justify-center">
           <img
-            src={question.image}
+            src={question.imageUrl || question.image}
             alt="Question diagram"
             className="max-h-64 w-auto rounded-lg shadow-md border border-gray-200 object-contain"
           />
