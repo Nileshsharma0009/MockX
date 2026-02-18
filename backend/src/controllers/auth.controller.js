@@ -133,6 +133,8 @@ export const logout = async (req, res) => {
     return res.status(500).json({ message: "Logout failed" });
   }
 };
+
+
 export const getMe = (req, res) => {
   res.status(200).json({ user: req.user });
 };
