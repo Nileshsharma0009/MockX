@@ -54,7 +54,7 @@ export default function Navbar({ onToggleSidebar }) {
               title="Section A"
             >
               <span className="sm:hidden"> A</span>
-              <span className="hidden sm:inline">Section A</span>
+              <span className="hidden sm:inline"> A</span>
             </button>
 
             <button
