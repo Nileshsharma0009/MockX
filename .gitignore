@@ -71,3 +71,9 @@ frontend/.env
 
 # Node
 node_modules/
+
+MANAGE_PAYMENTS.md
+
+DEPLOYMENT_GUIDE.md
+
+PRODUCTION_GUIDE.md
