@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { 
   User, LogOut, Shield, BookOpen, CheckCircle, 
@@ -116,13 +117,13 @@ const ExamCatalogPage = () => {
 
       const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
       if (!razorpayKey) {
-        alert("Payment configuration error. Key missing.");
+        toast.error("Payment configuration error. Key missing.");
         return;
       }
 
       const res = await createOrder({ examId });
       if (!res?.data?.id) {
-        alert("Failed to create payment order");
+        toast.error("Failed to create payment order");
         return;
       }
 
@@ -144,7 +145,7 @@ const ExamCatalogPage = () => {
       rzp.open();
     } catch (err) {
       console.error("Payment error:", err);
-      alert("Payment failed. Please try again.");
+      toast.error("Payment failed. Please try again.");
     }
   };
 

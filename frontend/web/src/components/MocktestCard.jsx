@@ -1,93 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const MockTestCard = ({ id, emoji, code, level, title, description, available, date, isFree, user }) => {
   const navigate = useNavigate();
 
-  // const handleStartTest = async () => {
-  //   const userData = localStorage.getItem("userData");
-  //   if (!userData) {
-  //     alert("Please register first to start the test");
-  //     return;
-  //   }
-
-  //   if (!available) {
-  //     alert(`⏳ ${title} will be available on ${date}`);
-  //     return;
-  //   }
-
-  //   try {
-  //     // 🔒 CHECK WITH BACKEND BEFORE ENTERING TEST
-  //  const API_BASE = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
-
-  // const res = await fetch(
-  //   `${API_BASE}/api/mocks/${id}/questions`,
-  //   {
-  //     credentials: "include", // 🔥 cookie auth
-  //   }
-  // );
-
-
-  //     if (res.status === 403) {
-  //       const data = await res.json();
-  //       alert("❌ You have already attempted this test.");
-  //       return; // 🚫 STOP navigation
-  //     }
-
-  //     if (!res.ok) {
-  //       throw new Error("Failed to start test");
-  //     }
-
-  //     // ✅ SAFE TO ENTER TEST
-  //     navigate(`/test?mock=${id}`);
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert("Unable to start test. Please try again.");
-  //   }
-  // };
-
-  // const handleStartTest = async () => {
-  //   if (!available) {
-  //     alert(`⏳ ${title} will be available on ${date}`);
-  //     return;
-  //   }
-
-  //   try {
-  //     const API_BASE =
-  //       import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
-
-  //     const res = await fetch(
-  //       `${API_BASE}/api/mocks/${id}/questions`,
-  //       {
-  //         credentials: "include", // 🔥 cookie auth
-  //       }
-  //     );
-
-  //     if (res.status === 401) {
-  //       alert("Please login or register first");
-  //       return;
-  //     }
-
-  //     if (res.status === 403) {
-  //       alert("❌ You have already attempted this test.");
-  //       return;
-  //     }
-
-  //     if (!res.ok) {
-  //       throw new Error("Failed to start test");
-  //     }
-
-  //     navigate(`/test?mock=${id}`);
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert("Unable to start test. Please try again.");
-  //   }
-  // }; 
 
 
   const handleStartTest = async () => {
     if (!available) {
-      alert(`⏳ ${title} will be available on ${date}`);
+      toast(`⏳ ${title} will be available on ${date}`);
       return;
     }
 
@@ -95,7 +17,7 @@ const MockTestCard = ({ id, emoji, code, level, title, description, available, d
     const paymentsEnabled = import.meta.env.VITE_PAYMENTS_ENABLED === "true";
 
     if (!isFree && !user && paymentsEnabled) {
-      alert("Please login or register to access paid mocks");
+      toast.error("Please login or register to access paid mocks");
       return;
     }
 
@@ -111,7 +33,7 @@ const MockTestCard = ({ id, emoji, code, level, title, description, available, d
       );
 
       if (res.status === 403) {
-        alert("🔒 Please purchase the bundle to unlock this mock");
+        toast.error("🔒 Please purchase the bundle to unlock this mock");
         return;
       }
 
@@ -122,7 +44,7 @@ const MockTestCard = ({ id, emoji, code, level, title, description, available, d
       navigate(`/test?mock=${id}`);
     } catch (err) {
       console.error(err);
-      alert("Unable to start test. Please try again.");
+      toast.error("Unable to start test. Please try again.");
     }
   };
 

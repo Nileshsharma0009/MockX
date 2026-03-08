@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import AIChatPanel, { createWelcomeMessage } from "./AIChatPanel";
 import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
 import { analyzeQuery } from "../analysis/analysisEngine";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
-
+import { FiHelpCircle } from "react-icons/fi";
 const API_BASE =
   import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
 
@@ -37,7 +38,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         else navigate("/result-history");
         break;
       case "Help":
-        alert("Help page coming soon");
+        toast("Help page coming soon", { icon: 'ℹ️' });
         break;
       default:
         break;

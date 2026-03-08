@@ -89,6 +89,7 @@ import "./index.css";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import AuthModals from "./pages/AuthModals.jsx";
+import { Toaster } from "react-hot-toast";
 
 /* ---------------- LAZY LOADED PAGES ---------------- */
 
@@ -124,6 +125,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <AuthProvider>
 
+        <Toaster position="top-right" />
         {/* 🔐 Auth modals should stay global */}
         <AuthModals />
 

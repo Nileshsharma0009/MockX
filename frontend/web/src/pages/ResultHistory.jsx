@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { Lock, ArrowRight, User, LogOut, Shield, Menu, X } from "lucide-react";
 
@@ -28,7 +29,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         else navigate("/result-history");
         break;
       case "Help":
-        alert("Help page coming soon");
+        toast("Help page coming soon", { icon: 'ℹ️' });
         break;
       default:
         break;
