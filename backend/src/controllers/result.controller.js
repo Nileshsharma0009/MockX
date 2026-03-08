@@ -18,25 +18,7 @@ export const getMyResults = async (req, res) => {
 
 
 
-// export const getResultByMockId = async (req, res) => {
-//   try {
-//     const { mockId } = req.params;
 
-//     const result = await Result.findOne({
-//       userId: req.user._id,
-//       mockId,
-//     }).populate("userId", "name email");
-
-//     if (!result) {
-//       return res.status(404).json({ message: "Result not found" });
-//     }
-
-//     res.json(result);
-//   } catch (err) {
-//     console.error("GET RESULT ERROR:", err);
-//     res.status(500).json({ message: "Server error" });
-//   }
-// };
 
 export const getResultByMock = async (req, res) => {
   try {
@@ -79,20 +61,4 @@ export const getResultById = async (req, res) => {
 };
 
 
-// export const getResultByAttempt = async (req, res) => {
-//   try {
-//     const { attemptId } = req.params;
 
-//     const attempt = await TestAttempt.findById(attemptId)
-//       .populate("user", "name email");
-
-//     if (!attempt) {
-//       return res.status(404).json({ message: "Result not found" });
-//     }
-
-//     return res.status(200).json(attempt);
-//   } catch (error) {
-//     console.error("getResult error:", error);
-//     res.status(500).json({ message: "Failed to load result" });
-//   }
-// };
