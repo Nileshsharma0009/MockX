@@ -50,7 +50,7 @@ export const getResultByMock = async (req, res) => {
       "name email phone age state exam imucetOption"
     );
 
-    if (!result) {
+    if (!result) {z
       return res.status(404).json({ message: "Result not found" });
     }
 
@@ -63,49 +63,9 @@ export const getResultByMock = async (req, res) => {
 
 
 
-/* ----------------------------------
-   GET BEST RESULT OF A MOCK
------------------------------------ */
-// export const getBestResult = async (req, res) => {
-//   try {
-//     const { mockId } = req.params;
-
-//     const result = await Result.findOne({
-//       userId: req.user._id,
-//       mockId,
-//       isBest: true, // optional if single attempt
-//     });
-
-//     if (!result) {
-//       return res.status(404).json({ message: "No result found" });
-//     }
-
-//     res.json(result);
-//   } catch (err) {
-//     console.error("getBestResult error:", err);
-//     res.status(500).json({ message: "Failed to fetch best result" });
-//   }
-// };
 
 
 
-// export const getResultByAttempt = async (req, res) => {
-//   const { attemptId } = req.params;
-
-//   const attempt = await Result.findById(attemptId)
-//     .populate("userId", "name email phone age state exam imucetOption");
-
-//   if (!attempt) {
-//     return res.status(404).json({ message: "Result not found" });
-//   }
-
-//   res.json({
-//     mockId: attempt.mockId,
-//     score: attempt.score,
-//     user: attempt.userId, // populated user
-//     createdAt: attempt.createdAt,
-//   });
-// }; 
 
 export const getResultById = async (req, res) => {
   const result = await Result.findById(req.params.resultId)
