@@ -5,12 +5,13 @@ export const submitAttempt = async (req, res) => {
 
   const questions = await Question.find({
     mockId,
-    questionCode: { $in: responses.map(r => r.questionCode) }
+    questionCode: { $in: responses.map(r => r.questionCode) } //har response se questionCode extract karo
   }).select("+correctOption");
 
   let score = 0, correct = 0, wrong = 0;
 
-  const map = new Map(questions.map(q => [q.questionCode, q]));
+  const map = new Map(questions.map(q => [q.questionCode, q])); // questions array ke har question object ko lo
+                                                                 //aur usko [questionCode , question] pair me convert karo
 
   for (const r of responses) {
     const q = map.get(r.questionCode);
