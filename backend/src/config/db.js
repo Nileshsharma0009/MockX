@@ -1,26 +1,4 @@
-// import mongoose from "mongoose";
 
-// const connectDB = async () => {
-//   const uri = process.env.MONGODB_URL;
-
-//   if (!uri) {
-//     console.error("❌ Missing MONGODB_URL in .env");
-//     process.exit(1);
-//   }
-
-//   try {
-//     await mongoose.connect(uri, {
-//       serverSelectionTimeoutMS: 5000,
-//     });
-//     console.log("✅ MongoDB connected");
-//   } catch (error) {
-//     console.error("❌ MongoDB connection error:");
-//     console.error(error.message);
-//     process.exit(1);
-//   }
-// };
-
-// export default connectDB;
 
 
 import mongoose from "mongoose";
