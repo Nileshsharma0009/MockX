@@ -1,6 +1,6 @@
-# 🚀 Production Deployment Checklist
+#  Production Deployment Checklist
 
-## ✅ Pre-Deployment Verification
+## Pre-Deployment Verification
 
 ### Security
 - [x] `.env` files are in `.gitignore` (verified)
@@ -56,7 +56,7 @@ VITE_SHEET_URL=your_google_sheet_url (if using)
 
 ---
 
-## 🧪 Testing Before Push
+##  Testing Before Push
 
 1. ✅ All routes working locally
 2. ✅ CORS working with environment variables
@@ -66,7 +66,7 @@ VITE_SHEET_URL=your_google_sheet_url (if using)
 
 ---
 
-## 📝 Git Push Checklist
+## Git Push Checklist
 
 - [x] `.env` files are NOT committed (in .gitignore)
 - [x] No secrets in code
@@ -74,5 +74,5 @@ VITE_SHEET_URL=your_google_sheet_url (if using)
 - [x] CORS configured for production
 - [x] Routes verified
 
-**You're good to push! 🚀**
+**You're good to push! **
 

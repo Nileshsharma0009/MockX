@@ -4,12 +4,12 @@ Welcome to the **MockX** project! This document serves as a complete guide for j
 
 ---
 
-## 🚀 Project Overview
+##  Project Overview
 **MockX** is a full-stack web application designed as an advanced Mock Testing Platform (similar to those used for IMU CET, and other competitive exams). It features user authentication, a live test-taking interface with an accurate timer, automatic background saving, real-time grading, payment gateway integration, and result analysis.
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### **Frontend** (in `/frontend/web/`)
 - **React.js (Vite)**: For building the fast, reactive UI.
@@ -29,7 +29,7 @@ Welcome to the **MockX** project! This document serves as a complete guide for j
 
 ---
 
-## 📂 Project Structure & Key Files
+##  Project Structure & Key Files
 
 ### Backend Directory structure (`/backend/src/`)
 Our backend is structured into clear MVC (Model-View-Controller) layers.
@@ -60,7 +60,7 @@ Our backend is structured into clear MVC (Model-View-Controller) layers.
 
 ---
 
-## 🔗 How Frontend and Backend Talk (Request Flow)
+## How Frontend and Backend Talk (Request Flow)
 
 Let's break down how we fetch the test questions when a user clicks 'Start Test'.
 
@@ -84,7 +84,7 @@ Let's break down how we fetch the test questions when a user clicks 'Start Test'
 
 ---
 
-## 🔄 Auto-Save Flow (Real-Time Saving)
+##  Auto-Save Flow (Real-Time Saving)
 Because internet connections can drop out, we implement an **Auto-Save feature**.
 
 1. As the user clicks options, `TestContext` state updates.
@@ -95,7 +95,7 @@ Because internet connections can drop out, we implement an **Auto-Save feature**
 
 ---
 
-## 🏃‍♂️ How to Run the Project Locally
+##  How to Run the Project Locally
 
 To run the project for development:
 
@@ -119,7 +119,7 @@ npm run dev
 
 ---
 
-## 💡 Best Practices for Junior Devs
+##  Best Practices for Junior Devs
 
 1. **Do not put secure tokens or answers in Frontend**: Always use backend models properly. Passwords must go through `bcryptjs`. We also never send the `correctOption` field from `question.model` explicitly back to the frontend until result generation time.
 2. **Adding a new endpoint:**
@@ -130,4 +130,4 @@ npm run dev
 3. **Styling Components:** Try to use Tailwind utility classes directly on components instead of making new CSS files to avoid stylesheet conflicts (except for complex parts like `ResultPage.css`).
 4. **Cookies/Axios Setting**: Keep `{ withCredentials: true }` in your axios functions, otherwise routing protective paths (via `auth.middleware.js`) will block the user as `Unauthorized`.
 
-Welcome aboard and happy coding! 🚀
+Welcome aboard and happy coding! 
