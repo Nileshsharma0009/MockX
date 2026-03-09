@@ -6,6 +6,7 @@ import AIChatPanel, { createWelcomeMessage } from "./AIChatPanel";
 import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
 import { analyzeQuery } from "../analysis/analysisEngine";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
+import Loader from "../components/Loader";
 
 const API_BASE =
   import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
@@ -38,7 +39,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         else navigate("/result-history");
         break;
       case "Help":
-        toast("Help page coming soon", { icon: 'ℹ️' });
+        toast("Help page coming soon", { icon: '😊' });
         break;
       default:
         break;
@@ -239,7 +240,7 @@ const ResultStat = () => {
     }, 500);
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center text-slate-400">Loading analysis…</div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="min-h-screen bg-slate-50 relative">

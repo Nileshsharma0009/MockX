@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { Lock, ArrowRight, User, LogOut, Shield, Menu, X } from "lucide-react";
+import Loader from "../components/Loader";
 
 const API_BASE =
   import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
@@ -127,11 +128,7 @@ const ResultHistory = () => {
   }, [user, navigate]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-slate-400">
-        Loading your progress…
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

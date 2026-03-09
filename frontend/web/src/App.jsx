@@ -17,6 +17,7 @@ import {
 
 import { submitAttempt, saveProgress } from "./api/api";
 import { shuffleWithGroups } from "./utils/shuffle";
+import Loader from "./components/Loader";
 
 /* ---------- LAZY LOAD HEAVY UI ---------- */
 const Navbar = lazy(() => import("./components/Navbar"));
@@ -188,20 +189,12 @@ function TestPageInner() {
   }, [state.timer, state.isSubmitted, loading, handleSubmit]);
 
   return (
-    <Suspense
-      fallback={
-        <div className="mt-32 text-center text-gray-500">
-          Loading test interface...
-        </div>
-      }
-    >
+    <Suspense fallback={<Loader />}>
       <Navbar />
       <Timer />
 
       {loading ? (
-        <div className="mt-32 text-center text-gray-500">
-          Loading questions...
-        </div>
+        <Loader />
       ) : (
         <>
           <QuestionPanel />
