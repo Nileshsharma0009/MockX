@@ -30,12 +30,36 @@ const mockTests = [
   {
     id: 5,
     title: "Mock Test 5",
-    releaseDate: "2026-04-19T11:00:00+05:30",
+    releaseDate: "2026-03-29T11:00:00+05:30",
     isFree: false,
   },
   {
-    id: 6,
+    id:6 ,
     title: "Mock Test 6",
+    releaseDate: "2026-04-13T11:00:00+05:30",
+    isFree: false,
+  },
+  {
+    id:7 ,
+    title: "Physics",
+    releaseDate: "2026-0-23T11:00:00+05:30",
+    isFree: false,
+  },
+  {
+    id:8 ,
+    title: "chemistry",
+    releaseDate: "2026-05-23T11:00:00+05:30",
+    isFree: false,
+  },
+  {
+    id:9 ,
+    title: "maths ",
+    releaseDate: "2026-05-23T11:00:00+05:30",
+    isFree: false,
+  },
+  {
+    id:10 ,
+    title: "english",
     releaseDate: "2026-05-23T11:00:00+05:30",
     isFree: false,
   },
