@@ -42,7 +42,7 @@ export default function Sidebar({ visible = true }) {
           const base =
             "w-9 h-9 flex items-center justify-center rounded-md m-0.5 text-sm font-semibold cursor-pointer select-none border transition-all duration-150";
 
-          // 🎨 Custom color mapping
+      
           const stateClasses = isActive
             ? "bg-[#6c5ce7] text-white border-[#6c5ce7] scale-105 shadow-md"
             : s === "answered"
