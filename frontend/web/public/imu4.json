@@ -667,13 +667,13 @@
 
 
         ],
-        "aptitude": [
+        "apt": [
            
   {
     "id": "imu4-A-apt-001",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find the HCF of 144 and 180.",
     "options": ["12", "18", "36", "24"],
     "marks": 1
@@ -682,7 +682,7 @@
     "id": "imu4-A-apt-002",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find the LCM of 15, 20 and 30.",
     "options": ["60", "120", "90", "30"],
     "marks": 1
@@ -691,7 +691,7 @@
     "id": "imu4-A-apt-003",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "The ratio of two numbers is 3:5 and their sum is 64. Find the larger number.",
     "options": ["40", "24", "35", "30"],
     "marks": 1
@@ -700,7 +700,7 @@
     "id": "imu4-A-apt-004",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "A sum of ₹5000 amounts to ₹6000 in 2 years at simple interest. Find the rate of interest.",
     "options": ["10%", "8%", "12%", "5%"],
     "marks": 1
@@ -709,7 +709,7 @@
     "id": "imu4-A-apt-005",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "A boat's speed in still water is 12 km/h and stream speed is 3 km/h. Find downstream speed.",
     "options": ["15 km/h", "9 km/h", "12 km/h", "6 km/h"],
     "marks": 1
@@ -719,7 +719,7 @@
     "id": "imu4-A-apt-006",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "A train 150 m long crosses a pole in 10 seconds. Find speed.",
     "options": ["54 km/h", "36 km/h", "45 km/h", "60 km/h"],
     "marks": 1
@@ -728,7 +728,7 @@
     "id": "imu4-A-apt-007",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "If sin θ = 3/5, find cos θ.",
     "options": ["4/5", "5/4", "3/4", "1/5"],
     "marks": 1
@@ -737,7 +737,7 @@
     "id": "imu4-A-apt-008",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "A is 4 years older than B. After 6 years, sum of their ages will be 40. Find present age of B.",
     "options": ["12", "14", "10", "16"],
     "marks": 1
@@ -747,7 +747,7 @@
     "id": "imu4-A-apt-009",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find the next term: 2, 6, 12, 20, ?",
     "options": ["30", "28", "26", "32"],
     "marks": 1
@@ -756,7 +756,7 @@
     "id": "imu4-A-apt-010",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "If CAT = 24, DOG = 26, then BAT = ?",
     "options": ["23", "21", "22", "24"],
     "marks": 1
@@ -766,7 +766,7 @@
     "id": "imu4-A-apt-011",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Car : Petrol :: Human : ?",
     "options": ["Water", "Food", "Air", "Clothes"],
     "marks": 1
@@ -775,7 +775,7 @@
     "id": "imu4-A-apt-012",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Mirror image question (Image will be provided). Choose correct mirror image of the figure.",
     "options": ["A", "B", "C", "D"],
     "marks": 1
@@ -785,7 +785,7 @@
     "id": "imu4-A-apt-013",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para1",
     "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
     "question": "Who sits immediate left of D?",
@@ -796,7 +796,7 @@
     "id": "imu4-A-apt-014",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para1",
     "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
     "question": "Who sits at the extreme right?",
@@ -807,7 +807,7 @@
     "id": "imu4-A-apt-015",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para1",
     "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
     "question": "How many persons sit between A and D?",
@@ -818,7 +818,7 @@
     "id": "imu4-A-apt-016",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para1",
     "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
     "question": "Who sits second from left?",
@@ -830,7 +830,7 @@
     "id": "imu4-A-apt-017",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para2",
     "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
     "question": "How is P related to R?",
@@ -841,7 +841,7 @@
     "id": "imu4-A-apt-018",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para2",
     "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
     "question": "How is S related to Q?",
@@ -852,7 +852,7 @@
     "id": "imu4-A-apt-019",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para2",
     "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
     "question": "How is T related to R?",
@@ -863,7 +863,7 @@
     "id": "imu4-A-apt-020",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "groupId": "imu4-A-apt-para2",
     "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
     "question": "How many females are there in the family?",
@@ -875,7 +875,7 @@
     "id": "imu4-A-apt-021",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find the compound interest on ₹1000 at 10% for 2 years.",
     "options": ["₹210", "₹200", "₹220", "₹240"],
     "marks": 1
@@ -885,7 +885,7 @@
     "id": "imu4-A-apt-022",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "If 5 men can do a work in 10 days, how many days will 10 men take?",
     "options": ["5", "10", "15", "20"],
     "marks": 1
@@ -895,7 +895,7 @@
     "id": "imu4-A-apt-023",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find the missing number: 3, 9, 27, ?, 243",
     "options": ["54", "72", "81", "108"],
     "marks": 1
@@ -905,7 +905,7 @@
     "id": "imu4-A-apt-024",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find similarity: Wheel : Car :: Propeller : ?",
     "options": ["Ship", "Engine", "Boat", "Water"],
     "marks": 1
@@ -915,7 +915,7 @@
     "id": "imu4-A-apt-025",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "In a code, SEA is written as TFB. How is SHIP written?",
     "options": ["TIJQ", "TIHO", "TJKQ", "SGIP"],
     "marks": 1
@@ -925,7 +925,7 @@
     "id": "imu4-A-apt-026",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find odd one out: 8, 27, 64, 125, 150",
     "options": ["8", "27", "125", "150"],
     "marks": 1
@@ -935,7 +935,7 @@
     "id": "imu4-A-apt-027",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "A person walks 5 km North, then 5 km East. What is shortest distance from starting point?",
     "options": ["10 km", "5√2 km", "25 km", "7 km"],
     "marks": 1
@@ -945,7 +945,7 @@
     "id": "imu4-A-apt-028",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find average of first 20 natural numbers.",
     "options": ["10", "10.5", "11", "9.5"],
     "marks": 1
@@ -955,7 +955,7 @@
     "id": "imu4-A-apt-029",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "If A:B = 4:5 and B:C = 3:2, find A:B:C.",
     "options": ["12:15:10", "4:5:2", "8:10:6", "6:8:5"],
     "marks": 1
@@ -965,7 +965,7 @@
     "id": "imu4-A-apt-030",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find number of triangles in given figure (Image will be provided).",
     "options": ["10", "12", "14", "16"],
     "marks": 1
@@ -975,7 +975,7 @@
     "id": "imu4-A-apt-031",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Which is related: Captain : Ship :: Pilot : ?",
     "options": ["Car", "Plane", "Bus", "Train"],
     "marks": 1
@@ -985,7 +985,7 @@
     "id": "imu4-A-apt-032",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find next term: 1, 4, 9, 16, ?",
     "options": ["20", "25", "24", "30"],
     "marks": 1
@@ -995,7 +995,7 @@
     "id": "imu4-A-apt-033",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find HCF of 96 and 144.",
     "options": ["24", "48", "12", "36"],
     "marks": 1
@@ -1005,7 +1005,7 @@
     "id": "imu4-A-apt-034",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Boat goes 30 km upstream in 5 hours. Stream speed is 2 km/h. Find speed in still water.",
     "options": ["8 km/h", "10 km/h", "12 km/h", "6 km/h"],
     "marks": 1
@@ -1015,7 +1015,7 @@
     "id": "imu4-A-apt-035",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find next: 5, 11, 23, 47, ?",
     "options": ["95", "96", "90", "100"],
     "marks": 1
@@ -1025,7 +1025,7 @@
     "id": "imu4-A-apt-036",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "A and B together can do a work in 6 days. A alone in 10 days. How long will B alone take?",
     "options": ["12 days", "15 days", "8 days", "9 days"],
     "marks": 1
@@ -1035,7 +1035,7 @@
     "id": "imu4-A-apt-037",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Which number replaces question mark? 2, 5, 11, 23, 47, ?",
     "options": ["95", "96", "92", "90"],
     "marks": 1
@@ -1045,7 +1045,7 @@
     "id": "imu4-A-apt-038",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "If NORTH is coded as 56321 and EAST as 8742, then NEAR is?",
     "options": ["5874", "5674", "5834", "5748"],
     "marks": 1
@@ -1055,7 +1055,7 @@
     "id": "imu4-A-apt-039",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "Find similarity: Anchor : Ship :: Helmet : ?",
     "options": ["Head", "Soldier", "Bike", "Safety"],
     "marks": 1
@@ -1065,7 +1065,7 @@
     "id": "imu4-A-apt-040",
     "mockId": "imu4",
     "section": "A",
-    "subject": "aptitude",
+    "subject": "apt",
     "question": "If a mirror is placed on right side, which option shows correct image? (Image will be provided)",
     "options": ["A", "B", "C", "D"],
     "marks": 1
@@ -1081,7 +1081,7 @@
     "id": "imu4-B-phy-001",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A ship increases its speed from 10 m/s to 20 m/s in 5 s. Find acceleration.",
     "options": ["2 m/s²", "4 m/s²", "3 m/s²", "5 m/s²"],
     "marks": 1
@@ -1090,7 +1090,7 @@
     "id": "imu4-B-phy-002",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A 2000 kg lifeboat moves at 5 m/s. Find its momentum.",
     "options": ["10000 kg·m/s", "5000 kg·m/s", "15000 kg·m/s", "20000 kg·m/s"],
     "marks": 1
@@ -1099,7 +1099,7 @@
     "id": "imu4-B-phy-003",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A cargo of mass 500 kg is lifted 10 m vertically. Find work done (g = 10 m/s²).",
     "options": ["50000 J", "5000 J", "10000 J", "25000 J"],
     "marks": 1
@@ -1108,7 +1108,7 @@
     "id": "imu4-B-phy-004",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Kinetic energy of a ship moving at 10 m/s and mass 1000 kg is:",
     "options": ["50000 J", "100000 J", "25000 J", "75000 J"],
     "marks": 1
@@ -1117,7 +1117,7 @@
     "id": "imu4-B-phy-005",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If engine power is doubled, speed of ship (ignoring resistance) becomes:",
     "options": ["Double", "Half", "√2 times", "Same"],
     "marks": 1
@@ -1127,7 +1127,7 @@
     "id": "imu4-B-phy-006",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A body of mass 2 kg moving at 4 m/s collides with 3 kg at rest. Total momentum before collision:",
     "options": ["8", "10", "6", "12"],
     "marks": 1
@@ -1137,7 +1137,7 @@
     "id": "imu4-B-phy-007",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Force required to stop 1000 kg boat moving at 5 m/s in 5 s is:",
     "options": ["1000 N", "5000 N", "2000 N", "2500 N"],
     "marks": 1
@@ -1147,7 +1147,7 @@
     "id": "imu4-B-phy-008",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "When a ship floats, buoyant force equals:",
     "options": ["Weight of ship", "Volume", "Mass", "Density"],
     "marks": 1
@@ -1157,7 +1157,7 @@
     "id": "imu4-B-phy-009",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Pressure at depth 10 m in sea water (ρ=1000 kg/m³, g=10) is:",
     "options": ["100000 Pa", "10000 Pa", "50000 Pa", "200000 Pa"],
     "marks": 1
@@ -1167,7 +1167,7 @@
     "id": "imu4-B-phy-010",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Moment of inertia of a ring is:",
     "options": ["MR²", "1/2 MR²", "2MR²", "1/4 MR²"],
     "marks": 1
@@ -1177,7 +1177,7 @@
     "id": "imu4-B-phy-011",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Angular momentum is conserved when:",
     "options": ["No torque acts", "Force acts", "Velocity increases", "Mass decreases"],
     "marks": 1
@@ -1187,7 +1187,7 @@
     "id": "imu4-B-phy-012",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Escape velocity depends on:",
     "options": ["Mass only", "Radius only", "Mass and radius", "Time"],
     "marks": 1
@@ -1197,7 +1197,7 @@
     "id": "imu4-B-phy-013",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If radius of Earth becomes half, escape velocity becomes:",
     "options": ["√2 times", "Half", "Double", "Same"],
     "marks": 1
@@ -1207,7 +1207,7 @@
     "id": "imu4-B-phy-014",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A projectile is fired at 45°. Range is maximum because:",
     "options": ["sin 90 =1", "cos 45 =1", "tan 45=1", "Velocity max"],
     "marks": 1
@@ -1217,7 +1217,7 @@
     "id": "imu4-B-phy-015",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A 2Ω and 3Ω resistor in series across 10V. Current is:",
     "options": ["2A", "5A", "1A", "3A"],
     "marks": 1
@@ -1227,7 +1227,7 @@
     "id": "imu4-B-phy-016",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Energy stored in capacitor is proportional to:",
     "options": ["V²", "V", "1/V", "R"],
     "marks": 1
@@ -1237,7 +1237,7 @@
     "id": "imu4-B-phy-017",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Magnetic force on moving charge is maximum when angle is:",
     "options": ["0°", "45°", "90°", "180°"],
     "marks": 1
@@ -1247,7 +1247,7 @@
     "id": "imu4-B-phy-018",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If magnetic flux changes rapidly, induced EMF:",
     "options": ["Increases", "Decreases", "Zero", "Constant"],
     "marks": 1
@@ -1257,7 +1257,7 @@
     "id": "imu4-B-phy-019",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Photoelectric current depends on:",
     "options": ["Intensity", "Frequency", "Metal only", "Voltage only"],
     "marks": 1
@@ -1267,7 +1267,7 @@
     "id": "imu4-B-phy-020",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A ship radar works on principle of:",
     "options": ["Reflection of EM waves", "Refraction", "Diffraction", "Polarization"],
     "marks": 1
@@ -1277,7 +1277,7 @@
     "id": "imu4-B-phy-021",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "A 1000 kg ship moving at 4 m/s collides elastically. Momentum is conserved because:",
     "options": ["Newton's 3rd law", "Gravity", "Friction", "Energy loss"],
     "marks": 1
@@ -1287,7 +1287,7 @@
     "id": "imu4-B-phy-022",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If speed doubles, kinetic energy becomes:",
     "options": ["Double", "4 times", "Half", "8 times"],
     "marks": 1
@@ -1297,7 +1297,7 @@
     "id": "imu4-B-phy-023",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Torque is product of:",
     "options": ["Force & distance", "Mass & velocity", "Force & mass", "Distance & time"],
     "marks": 1
@@ -1307,7 +1307,7 @@
     "id": "imu4-B-phy-024",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Efficiency of engine is ratio of:",
     "options": ["Output/Input", "Input/Output", "Heat/Work", "Mass/Time"],
     "marks": 1
@@ -1317,7 +1317,7 @@
     "id": "imu4-B-phy-025",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If ship moves against wind, work done increases because:",
     "options": ["Friction increases", "Mass increases", "Gravity increases", "Time decreases"],
     "marks": 1
@@ -1327,7 +1327,7 @@
     "id": "imu4-B-phy-026",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "In SHM, restoring force is proportional to:",
     "options": ["Displacement", "Velocity", "Time", "Mass"],
     "marks": 1
@@ -1337,7 +1337,7 @@
     "id": "imu4-B-phy-027",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Wave speed =",
     "options": ["fλ", "f/λ", "λ/f", "1/fλ"],
     "marks": 1
@@ -1347,7 +1347,7 @@
     "id": "imu4-B-phy-028",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Refractive index =",
     "options": ["c/v", "v/c", "cv", "c+v"],
     "marks": 1
@@ -1357,7 +1357,7 @@
     "id": "imu4-B-phy-029",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If frequency increases, wavelength:",
     "options": ["Decreases", "Increases", "Same", "Zero"],
     "marks": 1
@@ -1367,7 +1367,7 @@
     "id": "imu4-B-phy-030",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Binding energy per nucleon is maximum for:",
     "options": ["Iron", "Uranium", "Hydrogen", "Gold"],
     "marks": 1
@@ -1377,7 +1377,7 @@
     "id": "imu4-B-phy-031",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Half life depends on:",
     "options": ["Temperature", "Pressure", "Nature of substance", "Mass"],
     "marks": 1
@@ -1387,7 +1387,7 @@
     "id": "imu4-B-phy-032",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Current in AC changes:",
     "options": ["Sinusoidally", "Linearly", "Exponentially", "Constant"],
     "marks": 1
@@ -1397,7 +1397,7 @@
     "id": "imu4-B-phy-033",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If two waves meet in phase, amplitude:",
     "options": ["Increases", "Decreases", "Zero", "Half"],
     "marks": 1
@@ -1407,7 +1407,7 @@
     "id": "imu4-B-phy-034",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Ship engine converts:",
     "options": ["Chemical to mechanical", "Electrical to heat", "Mechanical to chemical", "Heat to light"],
     "marks": 1
@@ -1417,7 +1417,7 @@
     "id": "imu4-B-phy-035",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Centripetal force formula:",
     "options": ["mv²/r", "mr²/v", "mv/r", "mr/v²"],
     "marks": 1
@@ -1427,7 +1427,7 @@
     "id": "imu4-B-phy-036",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If mass doubles, gravitational force becomes:",
     "options": ["Double", "4 times", "Half", "Same"],
     "marks": 1
@@ -1437,7 +1437,7 @@
     "id": "imu4-B-phy-037",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Electric power formula:",
     "options": ["VI", "V/I", "I/V", "R/I"],
     "marks": 1
@@ -1447,7 +1447,7 @@
     "id": "imu4-B-phy-038",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "If resistance increases, heating effect:",
     "options": ["Increases", "Decreases", "Zero", "Constant"],
     "marks": 1
@@ -1457,7 +1457,7 @@
     "id": "imu4-B-phy-039",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Photon has:",
     "options": ["Mass", "Charge", "Momentum", "Rest mass"],
     "marks": 1
@@ -1467,7 +1467,7 @@
     "id": "imu4-B-phy-040",
     "mockId": "imu4",
     "section": "B",
-    "subject": "physics",
+    "subject": "phy",
     "question": "Semiconductor conductivity increases with:",
     "options": ["Temperature", "Pressure", "Mass", "Volume"],
     "marks": 1
@@ -1481,7 +1481,7 @@
     "id": "imu4-B-chem-001",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "The IUPAC name of CH3-CH(CH3)-CH2-CH3 is:",
     "options": ["2-methylbutane", "3-methylbutane", "Pentane", "2-methylpropane"],
     "marks": 1
@@ -1490,7 +1490,7 @@
     "id": "imu4-B-chem-002",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Hybridization of carbon in CH2=CH2 is:",
     "options": ["sp3", "sp2", "sp", "dsp2"],
     "marks": 1
@@ -1499,7 +1499,7 @@
     "id": "imu4-B-chem-003",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which reagent converts primary alcohol to aldehyde without further oxidation?",
     "options": ["PCC", "KMnO4 (hot)", "K2Cr2O7/H+", "NaOH"],
     "marks": 1
@@ -1508,7 +1508,7 @@
     "id": "imu4-B-chem-004",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Markovnikov’s rule predicts formation of:",
     "options": ["More substituted product", "Less substituted product", "Radical product", "Cis product"],
     "marks": 1
@@ -1517,7 +1517,7 @@
     "id": "imu4-B-chem-005",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which compound gives positive Tollen’s test?",
     "options": ["Acetaldehyde", "Acetone", "Ethanol", "Benzene"],
     "marks": 1
@@ -1527,7 +1527,7 @@
     "id": "imu4-B-chem-006",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Rate law for reaction A → Products, if rate doubles when [A] doubles, is:",
     "options": ["k[A]", "k[A]²", "k", "k[A]³"],
     "marks": 1
@@ -1536,7 +1536,7 @@
     "id": "imu4-B-chem-007",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Half-life of first order reaction is given by:",
     "options": ["0.693/k", "1/k", "k/0.693", "2.303/k"],
     "marks": 1
@@ -1545,7 +1545,7 @@
     "id": "imu4-B-chem-008",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "If ΔG is negative, reaction is:",
     "options": ["Spontaneous", "Non-spontaneous", "Equilibrium", "Reversible only"],
     "marks": 1
@@ -1555,7 +1555,7 @@
     "id": "imu4-B-chem-009",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Calculate molarity of solution containing 5 moles solute in 2 L solution.",
     "options": ["2.5 M", "5 M", "10 M", "0.4 M"],
     "marks": 1
@@ -1564,7 +1564,7 @@
     "id": "imu4-B-chem-010",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Faraday constant is approximately:",
     "options": ["96500 C/mol", "965 C/mol", "965000 C/mol", "96 C/mol"],
     "marks": 1
@@ -1574,7 +1574,7 @@
     "id": "imu4-B-chem-011",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Electrode potential of standard hydrogen electrode is:",
     "options": ["0 V", "1 V", "-1 V", "0.76 V"],
     "marks": 1
@@ -1583,7 +1583,7 @@
     "id": "imu4-B-chem-012",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Oxidation number of Mn in KMnO4 is:",
     "options": ["+7", "+4", "+6", "+2"],
     "marks": 1
@@ -1593,7 +1593,7 @@
     "id": "imu4-B-chem-013",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which reaction forms ester from alcohol and acid?",
     "options": ["Esterification", "Hydrolysis", "Oxidation", "Substitution"],
     "marks": 1
@@ -1602,7 +1602,7 @@
     "id": "imu4-B-chem-014",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which catalyst is used in hydrogenation of vegetable oils?",
     "options": ["Ni", "PtCl2", "FeCl3", "Zn"],
     "marks": 1
@@ -1612,7 +1612,7 @@
     "id": "imu4-B-chem-015",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Product of addition of HBr to propene (without peroxide) is:",
     "options": ["2-bromopropane", "1-bromopropane", "Propane", "Bromobenzene"],
     "marks": 1
@@ -1622,7 +1622,7 @@
     "id": "imu4-B-chem-016",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "pH of neutral solution at 25°C is:",
     "options": ["7", "0", "14", "1"],
     "marks": 1
@@ -1632,7 +1632,7 @@
     "id": "imu4-B-chem-017",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "If concentration of H+ is 10^-3 M, pH is:",
     "options": ["3", "11", "7", "1"],
     "marks": 1
@@ -1642,7 +1642,7 @@
     "id": "imu4-B-chem-018",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which compound shows geometrical isomerism?",
     "options": ["But-2-ene", "Butane", "Propane", "Ethane"],
     "marks": 1
@@ -1652,7 +1652,7 @@
     "id": "imu4-B-chem-019",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which is example of condensation polymer?",
     "options": ["Nylon-6,6", "PVC", "Polythene", "Teflon"],
     "marks": 1
@@ -1662,7 +1662,7 @@
     "id": "imu4-B-chem-020",
     "mockId": "imu4",
     "section": "B",
-    "subject": "chemistry",
+    "subject": "chem",
     "question": "Which functional group is present in carboxylic acids?",
     "options": ["–COOH", "–OH", "–CHO", "–NH2"],
     "marks": 1
@@ -1675,7 +1675,7 @@
     "id": "imu4-B-math-001",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Evaluate: lim (x→0) (sinx/x)",
     "options": ["0", "1", "∞", "-1"],
     "marks": 1
@@ -1684,7 +1684,7 @@
     "id": "imu4-B-math-002",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "lim (x→0) (1 - cosx)/x² equals:",
     "options": ["1", "1/2", "0", "2"],
     "marks": 1
@@ -1693,7 +1693,7 @@
     "id": "imu4-B-math-003",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Derivative of e^(3x) is:",
     "options": ["3e^(3x)", "e^(3x)", "3x e^(3x)", "e^x"],
     "marks": 1
@@ -1702,7 +1702,7 @@
     "id": "imu4-B-math-004",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If y = x³ - 3x² + 2, find dy/dx.",
     "options": ["3x² - 6x", "3x² - 3x", "x² - 6x", "6x - 3"],
     "marks": 1
@@ -1711,7 +1711,7 @@
     "id": "imu4-B-math-005",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Find maximum value of f(x)= -x² + 4x +1.",
     "options": ["5", "3", "4", "6"],
     "marks": 1
@@ -1721,7 +1721,7 @@
     "id": "imu4-B-math-006",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "∫ x² dx equals:",
     "options": ["x³/3 + C", "2x + C", "x²/2 + C", "3x² + C"],
     "marks": 1
@@ -1730,7 +1730,7 @@
     "id": "imu4-B-math-007",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Evaluate ∫₀¹ 2x dx.",
     "options": ["1", "2", "0", "1/2"],
     "marks": 1
@@ -1739,7 +1739,7 @@
     "id": "imu4-B-math-008",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Area under curve y = x between 0 and 2 is:",
     "options": ["2", "4", "1", "3"],
     "marks": 1
@@ -1749,7 +1749,7 @@
     "id": "imu4-B-math-009",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Solve: dy/dx = 2x",
     "options": ["x² + C", "2x² + C", "x + C", "2x + C"],
     "marks": 1
@@ -1759,7 +1759,7 @@
     "id": "imu4-B-math-010",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If z = 1 + i, then |z| equals:",
     "options": ["√2", "1", "2", "0"],
     "marks": 1
@@ -1769,7 +1769,7 @@
     "id": "imu4-B-math-011",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Sum of first 10 terms of AP: 2,4,6,... is:",
     "options": ["110", "100", "90", "120"],
     "marks": 1
@@ -1779,7 +1779,7 @@
     "id": "imu4-B-math-012",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Find term independent of x in expansion of (x + 1/x)^4.",
     "options": ["6", "4", "1", "0"],
     "marks": 1
@@ -1789,7 +1789,7 @@
     "id": "imu4-B-math-013",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Probability of getting head in a single coin toss is:",
     "options": ["1/2", "1", "0", "2"],
     "marks": 1
@@ -1799,7 +1799,7 @@
     "id": "imu4-B-math-014",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If sinθ = 1/2, θ equals:",
     "options": ["30°", "45°", "60°", "90°"],
     "marks": 1
@@ -1809,7 +1809,7 @@
     "id": "imu4-B-math-015",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Value of tan⁻¹(1) equals:",
     "options": ["π/4", "π/2", "π/6", "π/3"],
     "marks": 1
@@ -1819,7 +1819,7 @@
     "id": "imu4-B-math-016",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Distance between (1,2) and (4,6) is:",
     "options": ["5", "4", "3", "6"],
     "marks": 1
@@ -1829,7 +1829,7 @@
     "id": "imu4-B-math-017",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Equation of circle with center (0,0) and radius 3 is:",
     "options": ["x²+y²=9", "x²+y²=3", "x²+y²=6", "x+y=3"],
     "marks": 1
@@ -1839,7 +1839,7 @@
     "id": "imu4-B-math-018",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Area of circle radius 2 is:",
     "options": ["4π", "2π", "8π", "π"],
     "marks": 1
@@ -1849,7 +1849,7 @@
     "id": "imu4-B-math-019",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Dot product of i and j is:",
     "options": ["0", "1", "-1", "2"],
     "marks": 1
@@ -1859,7 +1859,7 @@
     "id": "imu4-B-math-020",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Vector magnitude of 2i + 3j is:",
     "options": ["√13", "5", "13", "√5"],
     "marks": 1
@@ -1869,7 +1869,7 @@
     "id": "imu4-B-math-021",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Equation of line in 3D passing through (1,2,3) parallel to (2,1,1) is:",
     "options": ["(x-1)/2=(y-2)/1=(z-3)/1", "x=1+2t", "y=2+t", "z=3+t"],
     "marks": 1
@@ -1879,7 +1879,7 @@
     "id": "imu4-B-math-022",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If A = [[1,2],[3,4]], det(A) equals:",
     "options": ["-2", "2", "5", "1"],
     "marks": 1
@@ -1889,7 +1889,7 @@
     "id": "imu4-B-math-023",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If f(x)=|x|, function is:",
     "options": ["Continuous", "Discontinuous", "Differentiable everywhere", "Constant"],
     "marks": 1
@@ -1899,7 +1899,7 @@
     "id": "imu4-B-math-024",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "∫ sinx dx equals:",
     "options": ["-cosx + C", "cosx + C", "sinx + C", "-sinx + C"],
     "marks": 1
@@ -1909,7 +1909,7 @@
     "id": "imu4-B-math-025",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If A∩B=∅, then events are:",
     "options": ["Mutually exclusive", "Independent", "Certain", "Equal"],
     "marks": 1
@@ -1919,7 +1919,7 @@
     "id": "imu4-B-math-026",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Variance of constant is:",
     "options": ["0", "1", "-1", "Constant"],
     "marks": 1
@@ -1929,7 +1929,7 @@
     "id": "imu4-B-math-027",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "lim (x→∞) (1/x) equals:",
     "options": ["0", "1", "∞", "-1"],
     "marks": 1
@@ -1939,7 +1939,7 @@
     "id": "imu4-B-math-028",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Find derivative of ln x.",
     "options": ["1/x", "ln x", "x", "e^x"],
     "marks": 1
@@ -1949,7 +1949,7 @@
     "id": "imu4-B-math-029",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If cosθ=√3/2, θ equals:",
     "options": ["30°", "45°", "60°", "90°"],
     "marks": 1
@@ -1959,7 +1959,7 @@
     "id": "imu4-B-math-030",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Sum of infinite GP with a=1,r=1/2:",
     "options": ["2", "1", "1/2", "∞"],
     "marks": 1
@@ -1969,7 +1969,7 @@
     "id": "imu4-B-math-031",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If roots of quadratic are equal, discriminant is:",
     "options": ["0", "1", "-1", "Positive"],
     "marks": 1
@@ -1979,7 +1979,7 @@
     "id": "imu4-B-math-032",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Area under x² from 0 to 2 is:",
     "options": ["8/3", "4", "2", "16/3"],
     "marks": 1
@@ -1989,7 +1989,7 @@
     "id": "imu4-B-math-033",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Angle between i and i+j is:",
     "options": ["45°", "30°", "60°", "90°"],
     "marks": 1
@@ -1999,7 +1999,7 @@
     "id": "imu4-B-math-034",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "∫₀^π sinx dx equals:",
     "options": ["2", "1", "0", "π"],
     "marks": 1
@@ -2009,7 +2009,7 @@
     "id": "imu4-B-math-035",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Equation of tangent to y=x² at x=1:",
     "options": ["y=2x-1", "y=x+1", "y=2x+1", "y=x-1"],
     "marks": 1
@@ -2019,7 +2019,7 @@
     "id": "imu4-B-math-036",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If |A|=5 and |B|=2, then |AB| equals:",
     "options": ["10", "7", "5", "2"],
     "marks": 1
@@ -2029,7 +2029,7 @@
     "id": "imu4-B-math-037",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Derivative of tanx is:",
     "options": ["sec²x", "tanx", "cotx", "cosecx"],
     "marks": 1
@@ -2039,7 +2039,7 @@
     "id": "imu4-B-math-038",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If sin(A+B)=1, possible value is:",
     "options": ["90°", "45°", "0°", "180°"],
     "marks": 1
@@ -2049,7 +2049,7 @@
     "id": "imu4-B-math-039",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "Find slope of line 2x+3y=6.",
     "options": ["-2/3", "2/3", "3/2", "-3/2"],
     "marks": 1
@@ -2059,7 +2059,7 @@
     "id": "imu4-B-math-040",
     "mockId": "imu4",
     "section": "B",
-    "subject": "maths",
+    "subject": "math",
     "question": "If vector a·b=0, vectors are:",
     "options": ["Perpendicular", "Parallel", "Equal", "Opposite"],
     "marks": 1

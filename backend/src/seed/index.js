@@ -45,7 +45,7 @@ const seed = async () => {
       const questions = Object.values(rawQuestions) // A, B
         .flatMap((section) =>
           Object.values(section) // english, gk, aptitude...
-            .flat()
+            .flat(Infinity)
         );
 
       if (!Array.isArray(questions) || questions.length === 0) {
