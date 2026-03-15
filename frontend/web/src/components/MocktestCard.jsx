@@ -124,7 +124,7 @@ const MockTestCard = ({
               disabled
               className="w-full py-3.5 bg-slate-50 text-slate-400 border border-slate-100 rounded-xl font-bold text-sm cursor-not-allowed"
             >
-              Waitlist Active
+              Waitlist 
             </button>
           )}
         </div>
