@@ -42,25 +42,25 @@ const mockTests = [
   {
     id:7 ,
     title: "Physics",
-    releaseDate: "2026-0-23T11:00:00+05:30",
+    releaseDate: "Soon...",
     isFree: false,
   },
   {
     id:8 ,
     title: "chemistry",
-    releaseDate: "2026-05-23T11:00:00+05:30",
+    releaseDate: "Soon...",
     isFree: false,
   },
   {
     id:9 ,
     title: "maths ",
-    releaseDate: "2026-05-23T11:00:00+05:30",
+    releaseDate: "Soon...",
     isFree: false,
   },
   {
     id:10 ,
     title: "english",
-    releaseDate: "2026-05-23T11:00:00+05:30",
+    releaseDate: "Soon....",
     isFree: false,
   },
 ];
