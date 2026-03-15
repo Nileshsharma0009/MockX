@@ -25,7 +25,7 @@ const mockTests = [
     id: 4,
     title: "Mock Test 4",
     releaseDate: "2026-03-15T11:00:00+05:30",
-    isFree: false,
+    isFree: true,
   },
   {
     id: 5,
