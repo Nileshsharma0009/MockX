@@ -1,1237 +1,2071 @@
 {
-    "A":{  
 
-   "english": [
+    "A": {
+        "english": [
+          
   {
-    "question": "[Error Detection] He is senior than me in service, so I obey his advice.",
+    "id": "imu4-A-eng-001",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the synonym of 'Diligent':",
+    "options": ["Lazy", "Industrious", "Careless", "Passive"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-eng-002",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the antonym of 'Scarce':",
+    "options": ["Rare", "Limited", "Abundant", "Insufficient"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-eng-003",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the tense: 'The officers have completed the inspection.'",
+    "options": ["Simple Past", "Present Perfect", "Past Perfect", "Future Perfect"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-eng-004",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct question tag: The engine is functioning properly, ____?",
+    "options": ["isn't it", "doesn't it", "wasn't it", "aren't they"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-eng-005",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the correct passive voice: 'They will launch the vessel tomorrow.'",
     "options": [
-      "He is senior than me",
-      "so I obey",
-      "his advice",
-      "No error"
+      "The vessel will be launched tomorrow.",
+      "The vessel is launched tomorrow.",
+      "The vessel has been launched tomorrow.",
+      "The vessel will launched tomorrow."
     ],
-    "answer": 0
+    "marks": 1
   },
+
   {
-    "question": "[Error Detection] Neither the boy nor his parents was willing to go to the village.",
+    "id": "imu4-A-eng-006",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "groupId": "imu4-A-eng-para1",
+    "paragraph": "Working aboard a cargo ship requires adaptability and quick decision-making. Crew members often operate under strict schedules and challenging weather conditions. Efficient coordination ensures safety and timely delivery.",
+    "question": "What is the primary focus of the paragraph?",
     "options": [
-      "Neither the boy",
-      "nor his parents",
-      "was willing",
-      "No error"
+      "Luxury life at sea",
+      "Challenges and coordination in maritime work",
+      "Weather forecasting methods",
+      "International trade laws"
     ],
-    "answer": 2
-  },
-   {
-    "question": "Select the synonym for 'Pernicious':",
-    "options": ["Harmless", "Harmful", "Benign", "Innocuous"],
-    "answer": 1
+    "marks": 1
   },
   {
-    "question": "Which sentence is correctly arranged?",
-    "options": [
-      "Rapidly he efficiently finished the complex assignment.",
-      "He rapidly finished the complex assignment efficiently.",
-      "Efficiently rapidly he finished the complex assignment.",
-      "The complex assignment rapidly efficiently he finished."
-    ],
-    "answer": 1
+    "id": "imu4-A-eng-007",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "groupId": "imu4-A-eng-para1",
+    "paragraph": "Working aboard a cargo ship requires adaptability and quick decision-making. Crew members often operate under strict schedules and challenging weather conditions. Efficient coordination ensures safety and timely delivery.",
+    "question": "The word 'adaptability' most nearly means:",
+    "options": ["Resistance", "Flexibility", "Weakness", "Confusion"],
+    "marks": 1
   },
+
   {
-    "question": "[Idiom and Phrases] The soldier was ready to lay down his life for the country.",
+    "id": "imu4-A-eng-008",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the error: Each cadet were instructed to report at dawn.",
     "options": [
-      "resign",
-      "surrender",
-      "sacrifice life",
-      "kneel down"
-    ],
-    "answer": 2
-  },
-  {
-    "question": "[Idiom and Phrases] He always speaks his mind.",
-    "options": [
-      "shouts loudly",
-      "says what he thinks",
-      "speaks in dream",
-      "thinks too much"
-    ],
-    "answer": 1
-  },
-  {
-    "question": "[Synonym] Choose the synonym of: Eloquent",
-    "options": [
-      "Silent",
-      "Fluent",
-      "Irritating",
-      "Lazy"
-    ],
-    "answer": 1
-  },
-  {
-    "question": "[Antonym] Choose the antonym of: Generous",
-    "options": [
-      "Greedy",
-      "Kind",
-      "Thoughtful",
-      "Liberal"
-    ],
-    "answer": 0
-  },
-  {
-    "question": "[Synonym] Choose the synonym of: Rapid",
-    "options": [
-      "Slow",
-      "Quick",
-      "Dull",
-      "Rough"
-    ],
-    "answer": 1
-  },
-  {
-    "question": "[Antonym] Choose the antonym of: Frequent",
-    "options": [
-      "Repeated",
-      "Regular",
-      "Rare",
-      "Quick"
-    ],
-    "answer": 2
-  },
-  {
-    "question": "[Active and Passive Voice] She writes a letter.",
-    "options": [
-      "A letter has been written by her.",
-      "A letter was being written by her.",
-      "A letter is written by her.",
-      "A letter is being written by her."
-    ],
-    "answer": 2
-  },
-  {
-    "question": "[Active and Passive Voice] They will build a house next year.",
-    "options": [
-      "A house will be built next year.",
-      "A house is built next year.",
-      "A house has been built next year.",
-      "A house was being built next year."
-    ],
-    "answer": 0
-  },
-  {
-    "question": "[Question Tag] She can drive well, ______?",
-    "options": [
-      "can she?",
-      "can't she?",
-      "doesn't she?",
-      "isn't she?"
-    ],
-    "answer": 1
-  },
-  {
-    "question": "[Question Tag] He rarely speaks, ______?",
-    "options": [
-      "does he?",
-      "doesn't he?",
-      "did he?",
-      "is he?"
-    ],
-    "answer": 0
-  },
-  {
-    "question": "[Direct and Indirect Speech] He said, “I will go to school tomorrow.”",
-    "options": [
-      "He said that he will go to school tomorrow.",
-      "He said that he would go to school the next day.",
-      "He said that he goes to school the next day.",
-      "He said he would have gone to school tomorrow."
-    ],
-    "answer": 1
-  },
-  {
-    "question": "[Direct and Indirect Speech] She said, “I am cooking dinner.”",
-    "options": [
-      "She said that she is cooking dinner.",
-      "She said that she had cooked dinner.",
-      "She said that she was cooking dinner.",
-      "She said she has been cooking dinner."
-    ],
-    "answer": 2
-  },
-  {
-    "question": "[Correct Spelling] Choose the correctly spelled word:",
-    "options": [
-      "Occurence",
-      "Occurrence",
-      "Ocurance",
-      "Occurance"
-    ],
-    "answer": 1
-  },
-  {
-    "question": "[Correct Spelling] Choose the correct spelling:",
-    "options": [
-      "Accomodate",
-      "Acommodate",
-      "Accommodate",
-      "Accoomodate"
-    ],
-    "answer": 2
-  },
-  {
-    "question": "[Fill in the Blanks - Preposition] She is afraid ____ dogs.",
-    "options": [
-      "about",
-      "from",
-      "with",
-      "of"
-    ],
-    "answer": 3
-  },
-  {
-    "question": "[Fill in the Blanks - Adjective] He is a _____ student.",
-    "options": [
-      "intelligent",
-      "intelligence",
-      "intellect",
-      "intellectuals"
-    ],
-    "answer": 0
-  },
-  {
-    "question": "[Fill in the Blanks - Verb Form] They _____ playing when it rained.",
-    "options": [
-      "was",
-      "are",
+      "Each cadet",
       "were",
-      "be"
+      "instructed",
+      "to report at dawn"
     ],
-    "answer": 2
+    "marks": 1
   },
   {
-    "question": "[Fill in the Blanks - Preposition] He has been absent _____ Monday.",
+    "id": "imu4-A-eng-009",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct indirect speech: He said, 'I am preparing the chart.'",
     "options": [
-      "for",
-      "since",
-      "at",
-      "by"
+      "He said that he was preparing the chart.",
+      "He said that he is preparing the chart.",
+      "He says that he was preparing the chart.",
+      "He said he prepare the chart."
     ],
-    "answer": 1
+    "marks": 1
   },
   {
-    "question": "[Fill in the Blanks - Article] It is _____ honor to meet you.",
-    "options": [
-      "a",
-      "an",
-      "the",
-      "no article"
-    ],
-    "answer": 1
+    "id": "imu4-A-eng-010",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the figure of speech: 'The wind whispered through the sails.'",
+    "options": ["Simile", "Metaphor", "Personification", "Alliteration"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-011",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct preposition: The captain insisted ____ strict discipline.",
+    "options": ["on", "in", "at", "for"],
+    "marks": 1
   },
   {
-    "question": "[Sentence Arrangement] Rearrange: always / punctual / he / is",
+    "id": "imu4-A-eng-012",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the clause type: 'When the signal was received, the ship altered its course.'",
+    "options": ["Noun Clause", "Adjective Clause", "Adverbial Clause", "Independent Clause"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-013",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "groupId": "imu4-A-eng-para2",
+    "paragraph": "Maritime education combines theoretical knowledge with practical exposure. Simulators provide realistic training, yet real-life sea experience builds confidence and competence.",
+    "question": "Which statement best reflects the paragraph?",
     "options": [
-      "He is always punctual.",
-      "Always he is punctual.",
-      "Is he punctual always.",
-      "He punctual is always."
+      "Simulators are unnecessary.",
+      "Practical exposure complements theory.",
+      "Theory alone is sufficient.",
+      "Sea experience is irrelevant."
     ],
-    "answer": 0
+    "marks": 1
   },
   {
-    "question": "[Sentence Arrangement] Rearrange: doctor / the / good / is / a / she",
-    "options": [
-      "She is the doctor a good.",
-      "She is a good doctor.",
-      "She the doctor is good.",
-      "Is she a good doctor."
-    ],
-    "answer": 1
+    "id": "imu4-A-eng-014",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the antonym of 'Transparent':",
+    "options": ["Clear", "Opaque", "Visible", "Obvious"],
+    "marks": 1
   },
   {
-    "question": "[Error Detection] Each of the boys have completed the task.",
-    "options": [
-      "Each of the boys",
-      "have completed",
-      "the task",
-      "No error"
-    ],
-    "answer": 1
+    "id": "imu4-A-eng-015",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the part of speech of 'efficiently': The crew efficiently managed the crisis.",
+    "options": ["Adjective", "Adverb", "Noun", "Preposition"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-016",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct conditional: If the radar ____ earlier, the collision might have been avoided.",
+    "options": ["was detected", "had detected", "had been detected", "detects"],
+    "marks": 1
   },
   {
-    "question": "[Antonym] Choose the antonym of: Abundant",
-    "options": [
-      "Plentiful",
-      "Scarce",
-      "Huge",
-      "Overflowing"
-    ],
-    "answer": 1
+    "id": "imu4-A-eng-017",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the voice: 'The cargo has been loaded.'",
+    "options": ["Active", "Passive", "Imperative", "Interrogative"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-018",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the synonym of 'Impartial':",
+    "options": ["Biased", "Neutral", "Emotional", "Partial"],
+    "marks": 1
   },
   {
-    "question": "[Synonym] Choose the synonym of: Brave",
+    "id": "imu4-A-eng-019",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the error: The crew discussed about the safety protocol.",
     "options": [
-      "Cowardly",
-      "Fearful",
-      "Courageous",
-      "Weak"
+      "The crew",
+      "discussed",
+      "about",
+      "the safety protocol"
     ],
-    "answer": 2
+    "marks": 1
   },
   {
-    "question": "[Direct and Indirect Speech] He said, “Do you like coffee?”",
+    "id": "imu4-A-eng-020",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct transformation: 'Too tired to continue, the sailor rested.'",
     "options": [
-      "He asked if you like coffee.",
-      "He said if you liked coffee.",
-      "He asked if I liked coffee.",
-      "He told I liked coffee."
+      "The sailor was so tired that he rested.",
+      "The sailor rested because he was too tired to continue.",
+      "The sailor was tired but continued.",
+      "The sailor rested and continued."
     ],
-    "answer": 2
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-021",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the tense: 'They will have reached the port by sunrise.'",
+    "options": ["Future Continuous", "Future Perfect", "Present Perfect", "Past Perfect"],
+    "marks": 1
   },
   {
-    "question": "[Active and Passive Voice] Do they sell books here?",
+    "id": "imu4-A-eng-022",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the antonym of 'Benevolent':",
+    "options": ["Kind", "Generous", "Cruel", "Compassionate"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-023",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "groupId": "imu4-A-eng-para3",
+    "paragraph": "Global shipping routes connect economies across continents. Disruptions in one region can influence supply chains worldwide, demonstrating the interdependence of international trade.",
+    "question": "The passage mainly highlights:",
     "options": [
-      "Are books sold here?",
-      "Do books sell here?",
-      "Have books been sold here?",
-      "Are books being sold here?"
+      "Local business growth",
+      "Interconnected global trade",
+      "Weather impact",
+      "Port infrastructure"
     ],
-    "answer": 0
+    "marks": 1
   },
   {
-    "question": "[Question Tag] We shouldn’t waste water, _____?",
+    "id": "imu4-A-eng-024",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the error: One of the cadets have forgotten his identity card.",
     "options": [
-      "should we?",
-      "shalt we?",
-      "shouldn’t we?",
-      "will we?"
+      "One of the cadets",
+      "have",
+      "forgotten",
+      "his identity card"
     ],
-    "answer": 0
+    "marks": 1
   },
   {
-    "question": "[Correct Spelling] Choose the correct spelling:",
-    "options": [
-      "Realy",
-      "Ralley",
-      "Really",
-      "Reiley"
-    ],
-    "answer": 2
+    "id": "imu4-A-eng-025",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct question tag: Let us review the checklist, ____?",
+    "options": ["shall we", "will we", "aren't we", "should we"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-026",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the figure of speech: 'The horizon stretched endlessly.'",
+    "options": ["Hyperbole", "Irony", "Simile", "Oxymoron"],
+    "marks": 1
   },
   {
-    "question": "[Idiom and Phrases] He is a man of letters.",
-    "options": [
-      "A teacher",
-      "A postman",
-      "A lawyer",
-      "A learned person"
-    ],
-    "answer": 3
+    "id": "imu4-A-eng-027",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the synonym of 'Reluctant':",
+    "options": ["Eager", "Unwilling", "Excited", "Ready"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-028",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the part of speech of 'swift': The swift response prevented damage.",
+    "options": ["Noun", "Adverb", "Adjective", "Verb"],
+    "marks": 1
   },
   {
-    "question": "[Fill in the Blanks - Adjective] This is the _____ night I’ve ever had.",
-    "options": [
-      "bad",
-      "worse",
-      "worst",
-      "baddest"
-    ],
-    "answer": 2
+    "id": "imu4-A-eng-029",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct form: It is high time we ____ strict measures.",
+    "options": ["take", "took", "taken", "taking"],
+    "marks": 1
   },
   {
-    "question": "[Sentence Arrangement] Rearrange: book / the / table / kept / was / on",
+    "id": "imu4-A-eng-030",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the error: The captain as well as the officers are attending the meeting.",
     "options": [
-      "The book was kept on the table.",
-      "Was the book on kept the table.",
-      "The table was on kept the book.",
-      "On the book kept was the table."
+      "The captain as well as the officers",
+      "are",
+      "attending",
+      "the meeting"
     ],
-    "answer": 0
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-031",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct reported speech: He said, 'Close the hatch immediately.'",
+    "options": [
+      "He ordered to close the hatch immediately.",
+      "He ordered that the hatch be closed immediately.",
+      "He said close the hatch immediately.",
+      "He said that close the hatch."
+    ],
+    "marks": 1
   },
   {
-    "question": "[Error Detection] He prefers tea than coffee.",
+    "id": "imu4-A-eng-032",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the antonym of 'Expand':",
+    "options": ["Increase", "Contract", "Enlarge", "Grow"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-033",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "groupId": "imu4-A-eng-para4",
+    "paragraph": "Navigation requires precision and constant vigilance. Minor miscalculations can escalate into serious maritime incidents, underscoring the importance of continuous monitoring.",
+    "question": "The paragraph stresses the need for:",
     "options": [
-      "He prefers",
-      "tea than",
-      "coffee",
-      "No error"
+      "Speed over accuracy",
+      "Constant alertness",
+      "Automation only",
+      "Relaxed supervision"
     ],
-    "answer": 1
+    "marks": 1
   },
   {
-    "question": "[Antonym] Choose the antonym of: Polite",
-    "options": [
-      "Harsh",
-      "Rude",
-      "Smart",
-      "Kind"
-    ],
-    "answer": 1
+    "id": "imu4-A-eng-034",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the tense: 'The crew was repairing the deck when the alarm sounded.'",
+    "options": ["Past Continuous", "Past Perfect", "Present Continuous", "Future Continuous"],
+    "marks": 1
   },
   {
-    "question": "[Synonym] Choose the synonym of: Authentic",
+    "id": "imu4-A-eng-035",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the synonym of 'Mandatory':",
+    "options": ["Optional", "Compulsory", "Flexible", "Casual"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-eng-036",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the error: Hardly the ship had left the port when the storm began.",
     "options": [
-      "False",
-      "Genuine",
-      "Copied",
-      "Fake"
+      "Hardly",
+      "the ship had left",
+      "the port",
+      "when the storm began"
     ],
-    "answer": 1
+    "marks": 1
   },
   {
-    "question": "[Direct and Indirect Speech] He said to me, “Open the window.”",
+    "id": "imu4-A-eng-037",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct passive form: 'Someone has stolen the documents.'",
     "options": [
-      "He said me to open the window.",
-      "He told me to open the window.",
-      "He asked me if to open the window.",
-      "He asked me open the window."
+      "The documents have been stolen.",
+      "The documents are stolen.",
+      "The documents were stolen.",
+      "The documents had stolen."
     ],
-    "answer": 1
+    "marks": 1
   },
   {
-    "question": "[Active and Passive Voice] She had completed the report.",
-    "options": [
-      "The report had been completed by her.",
-      "The report has been completed by her.",
-      "The report is completed by her.",
-      "The report will be completed by her."
-    ],
-    "answer": 0
+    "id": "imu4-A-eng-038",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Identify the clause type: 'What he explained was difficult to understand.'",
+    "options": ["Noun Clause", "Adjective Clause", "Adverbial Clause", "Independent Clause"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-eng-039",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Select the synonym of 'Oblige':",
+    "options": ["Force", "Compel", "Refuse", "Delay"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-eng-040",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "eng",
+    "question": "Choose the correct question tag: Nobody understood the warning, ____?",
+    "options": ["did they", "didn't they", "does he", "is it"],
+    "marks": 1
   }
-],
-"gk":[
+
+
+        ],
+        "gk": [
+            
   {
-    "question": "Which port serves as India’s largest container port?",
-    "options": ["Kolkata Port", "Jawaharlal Nehru Port (Nhava Sheva)", "Chennai Port", "Paradip Port"],
-    "answer": 1
+    "id": "imu4-A-gk-001",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which Indian river has the largest basin area?",
+    "options": ["Godavari", "Ganga", "Brahmaputra", "Indus"],
+    "marks": 1
   },
   {
-    "question": "Which is the only major riverine port of India?",
-    "options": ["Mumbai Port", "Kolkata Port", "Kochi Port", "Tuticorin Port"],
-    "answer": 1
+    "id": "imu4-A-gk-002",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which pass connects Leh with Srinagar?",
+    "options": ["Shipki La", "Zoji La", "Nathu La", "Rohtang Pass"],
+    "marks": 1
   },
   {
-    "question": "The Ministry overseeing India's major ports is:",
+    "id": "imu4-A-gk-003",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which Indian port handles the highest volume of cargo?",
+    "options": ["Mumbai Port", "Jawaharlal Nehru Port", "Paradip Port", "Kolkata Port"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-gk-004",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "The Malacca Strait connects which two water bodies?",
+    "options": ["Andaman Sea and South China Sea", "Arabian Sea and Bay of Bengal", "Red Sea and Arabian Sea", "Pacific Ocean and Arctic Ocean"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-A-gk-005",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which dam is the tallest in India?",
+    "options": ["Bhakra Dam", "Tehri Dam", "Sardar Sarovar", "Hirakud Dam"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-gk-006",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "The Inland Waterways Authority of India (IWAI) functions under which ministry?",
     "options": [
-      "Ministry of Home Affairs",
-      "Ministry of Transport",
+      "Ministry of Defence",
       "Ministry of Ports, Shipping and Waterways",
-      "Ministry of Commerce"
+      "Ministry of Railways",
+      "Ministry of Environment"
     ],
-    "answer": 2
+    "marks": 1
   },
   {
-    "question": "Which Indian state has the largest number of seaports?",
-    "options": ["Kerala", "Gujarat", "Maharashtra", "Odisha"],
-    "answer": 1
+    "id": "imu4-A-gk-007",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which Indian river forms an estuary instead of a delta?",
+    "options": ["Godavari", "Krishna", "Narmada", "Mahanadi"],
+    "marks": 1
   },
   {
-    "question": "Which port is called a 'Tidal port' and is known as the Trade Free Zone?",
-    "options": ["Chennai Port", "Kandla Port", "Ennore Port", "Vizag Port"],
-    "answer": 1
+    "id": "imu4-A-gk-008",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which major port is located on the Hooghly River?",
+    "options": ["Chennai Port", "Kolkata Port", "Cochin Port", "Paradip Port"],
+    "marks": 1
   },
   {
-    "question": "Port Blair, a major port, is located in which Union Territory?",
-    "options": ["Lakshadweep", "Andaman and Nicobar Islands", "Daman and Diu", "Puducherry"],
-    "answer": 1
+    "id": "imu4-A-gk-009",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which strait is considered a critical chokepoint for global oil transport?",
+    "options": ["Palk Strait", "Bering Strait", "Strait of Hormuz", "Cook Strait"],
+    "marks": 1
   },
   {
-    "question": "India’s only port providing direct weekly container service to the United States is:",
-    "options": ["Kolkata Port", "JNP Mumbai", "Tuticorin Port", "Paradip Port"],
-    "answer": 2
+    "id": "imu4-A-gk-010",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "The Tropic of Cancer does NOT pass through which Indian state?",
+    "options": ["Rajasthan", "Chhattisgarh", "Odisha", "Gujarat"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-gk-011",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which canal significantly reduces travel time between Europe and Asia?",
+    "options": ["Panama Canal", "Suez Canal", "Kiel Canal", "Volga Canal"],
+    "marks": 1
   },
   {
-    "question": "Which is the deepest port in India?",
-    "options": ["Chennai", "Cochin", "Visakhapatnam", "Mormugao"],
-    "answer": 2
+    "id": "imu4-A-gk-012",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which river originates from the Amarkantak Plateau?",
+    "options": ["Mahanadi", "Godavari", "Krishna", "Tapti"],
+    "marks": 1
   },
   {
-    "question": "Which Indian port was constructed after the partition due to Karachi going to Pakistan?",
-    "options": ["Kandla Port", "Tuticorin Port", "Ennore Port", "Mumbai Port"],
-    "answer": 0
+    "id": "imu4-A-gk-013",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "India's first container terminal was established at which port?",
+    "options": ["Chennai", "Mumbai", "Kandla", "JNPT"],
+    "marks": 1
   },
   {
-    "question": "The new major port project in Maharashtra approved in 2024 is:",
-    "options": ["Paradip", "Vadhavan", "Dhamra", "Dahej"],
-    "answer": 1
+    "id": "imu4-A-gk-014",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which Indian state has the longest coastline?",
+    "options": ["Andhra Pradesh", "Gujarat", "Tamil Nadu", "Maharashtra"],
+    "marks": 1
   },
   {
-    "question": "Which is India’s oldest known maritime port, dating to Harappan civilization?",
-    "options": ["Lothal", "Mandvi", "Veraval", "Porbandar"],
-    "answer": 0
+    "id": "imu4-A-gk-015",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which waterway is designated as National Waterway-1?",
+    "options": [
+      "Brahmaputra River",
+      "Ganga-Bhagirathi-Hooghly River",
+      "West Coast Canal",
+      "Krishna River"
+    ],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-gk-016",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which maritime organization regulates international shipping safety standards?",
+    "options": [
+      "UNESCO",
+      "IMO",
+      "WHO",
+      "WTO"
+    ],
+    "marks": 1
   },
   {
-    "question": "Which port is situated at the confluence of river Mahanadi and Bay of Bengal?",
-    "options": ["Paradip Port", "Mumbai Port", "Kochi Port", "Tuticorin Port"],
-    "answer": 0
+    "id": "imu4-A-gk-017",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which Indian port is known as a natural harbor?",
+    "options": ["Mumbai Port", "Chennai Port", "Paradip Port", "Tuticorin Port"],
+    "marks": 1
   },
   {
-    "question": "Which of the following is NOT a major port in India?",
-    "options": ["Mumbai Port", "Cochin Port", "Haldia Port", "Porbandar Port"],
-    "answer": 3
+    "id": "imu4-A-gk-018",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "The Doldrums region is associated with which oceanic feature?",
+    "options": ["Cold currents", "High pressure belts", "Equatorial low pressure zone", "Tsunami activity"],
+    "marks": 1
   },
   {
-    "question": "Which Indian state hosts both Mumbai and JNPT ports?",
-    "options": ["Goa", "Maharashtra", "Gujarat", "Kerala"],
-    "answer": 1
+    "id": "imu4-A-gk-019",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which river flows through the capital city of India?",
+    "options": ["Ganga", "Yamuna", "Sutlej", "Chambal"],
+    "marks": 1
   },
   {
-    "question": "Which port is the leading iron ore exporter in India?",
-    "options": ["Mormugao Port", "New Mangalore", "Paradip", "Kochi Port"],
-    "answer": 0
-  },
-  {
-    "question": "The headquarters of the Indian Ministry of Ports, Shipping, and Waterways is located at:",
-    "options": ["Kolkata", "Mumbai", "Chennai", "New Delhi"],
-    "answer": 3
-  },
-  {
-    "question": "Which of the following is a natural harbor and one of the largest port complexes on India’s west coast?",
-    "options": ["Kandla Port", "Mumbai Port", "Paradeep Port", "Chennai Port"],
-    "answer": 1
-  },
-  {
-    "question": "India’s longest coastline belongs to which state?",
-    "options": ["Maharashtra", "Gujarat", "Andhra Pradesh", "Odisha"],
-    "answer": 1
-  },
-  {
-    "question": "What percentage of India’s trade by volume is transported by sea?",
-    "options": ["60%", "74%", "85%", "95%"],
-    "answer": 3
-  },
-  {
-    "question": "Which eastern port is the largest in the Bay of Bengal?",
-    "options": ["Visakhapatnam", "Kolkata", "Chennai", "Paradip"],
-    "answer": 2
+    "id": "imu4-A-gk-020",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "gk",
+    "question": "Which day is observed as World Maritime Day (as designated by IMO)?",
+    "options": [
+      "First Monday of April",
+      "Last Thursday of September",
+      "15 August",
+      "5 June"
+    ],
+    "marks": 1
   }
-],
-"apptitude":[
+
+
+        ],
+        "aptitude": [
+           
   {
-    "question": "A person walks 20 m north, then turns right and walks 30 m, then turns right again and walks 20 m. Where is he now with respect to his starting point?",
-    "options": ["30 m East", "30 m West", "10 m East", "10 m West"],
-    "answer": 0
+    "id": "imu4-A-apt-001",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find the HCF of 144 and 180.",
+    "options": ["12", "18", "36", "24"],
+    "marks": 1
   },
   {
-    "question": "In a certain code, FLOWER is written as GMQXFS. How is GARDEN written in that code?",
-    "options": ["HBSEFO", "HBSEFM", "HBSEGO", "HBSEFO"],
-    "answer": 1
+    "id": "imu4-A-apt-002",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find the LCM of 15, 20 and 30.",
+    "options": ["60", "120", "90", "30"],
+    "marks": 1
   },
   {
-    "question": "Pointing to a photograph, Rekha said, 'He is the son of the only son of my grandfather.' How is the man in the photograph related to Rekha?",
-    "options": ["Brother", "Cousin", "Nephew", "Uncle"],
-    "answer": 0
+    "id": "imu4-A-apt-003",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "The ratio of two numbers is 3:5 and their sum is 64. Find the larger number.",
+    "options": ["40", "24", "35", "30"],
+    "marks": 1
   },
   {
-    "question": "Arrange the words in the logical order: 1. College 2. Job 3. School 4. Interview 5. Degree",
-    "options": ["3,1,5,4,2", "3,1,4,5,2", "3,1,5,2,4", "1,3,5,4,2"],
-    "answer": 0
+    "id": "imu4-A-apt-004",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "A sum of ₹5000 amounts to ₹6000 in 2 years at simple interest. Find the rate of interest.",
+    "options": ["10%", "8%", "12%", "5%"],
+    "marks": 1
   },
   {
-    "question": "If in a certain language, STRONG is coded as UVTQPI, how is WEAK coded?",
-    "options": ["YGCM", "YGAL", "YGAK", "YGCL"],
-    "answer": 2
+    "id": "imu4-A-apt-005",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "A boat's speed in still water is 12 km/h and stream speed is 3 km/h. Find downstream speed.",
+    "options": ["15 km/h", "9 km/h", "12 km/h", "6 km/h"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-006",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "A train 150 m long crosses a pole in 10 seconds. Find speed.",
+    "options": ["54 km/h", "36 km/h", "45 km/h", "60 km/h"],
+    "marks": 1
   },
   {
-    "question": "In a row of boys, Rajan is 10th from the right and Ramesh is 12th from the left. If there are 20 boys in the row, how many boys are there between Rajan and Ramesh?",
-    "options": ["2", "3", "4", "5"],
-    "answer": 1
+    "id": "imu4-A-apt-007",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "If sin θ = 3/5, find cos θ.",
+    "options": ["4/5", "5/4", "3/4", "1/5"],
+    "marks": 1
   },
   {
-    "question": "If DAY is coded as EBZ, then what is NIGHT?",
-    "options": ["OJHIU", "OHIFU", "OIJGU", "OIJHS"],
-    "answer": 2
+    "id": "imu4-A-apt-008",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "A is 4 years older than B. After 6 years, sum of their ages will be 40. Find present age of B.",
+    "options": ["12", "14", "10", "16"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-009",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find the next term: 2, 6, 12, 20, ?",
+    "options": ["30", "28", "26", "32"],
+    "marks": 1
   },
   {
-    "question": "Pen is to Write as Knife is to ______?",
-    "options": ["Eat", "Cut", "Sharpen", "Peel"],
-    "answer": 1
+    "id": "imu4-A-apt-010",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "If CAT = 24, DOG = 26, then BAT = ?",
+    "options": ["23", "21", "22", "24"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-011",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Car : Petrol :: Human : ?",
+    "options": ["Water", "Food", "Air", "Clothes"],
+    "marks": 1
   },
   {
-    "question": "Which number will come next in the series? 2, 6, 12, 20, 30, ?",
-    "options": ["38", "40", "42", "44"],
-    "answer": 2
-  },
-  {
-    "question": "A is the mother of B. B is the sister of C. How is A related to C?",
-    "options": ["Mother", "Grandmother", "Sister", "Can't be determined"],
-    "answer": 0
-  },
-  {
-    "question": "If TABLE is coded as GZYOV, then CHAIR is coded as:",
-    "options": ["XSZRW", "XZSRW", "XZQTV", "XZSQW"],
-    "answer": 1
-  },
-  {
-    "question": "How many triangles are there in a pentagon divided into segments by all diagonals?",
-    "options": ["35", "30", "25", "20"],
-    "answer": 0
-  },
-  {
-    "question": "A cube is painted on all faces and then cut into 64 small equal cubes. How many cubes have only one face painted?",
-    "options": ["8", "16", "24", "36"],
-    "answer": 24
-  },
-  {
-    "question": "Find the odd one out: Circle, Square, Rectangle, Triangle, Sphere",
-    "options": ["Circle", "Square", "Rectangle", "Sphere"],
-    "answer": 4
-  },
-  {
-    "question": "In a family of six, A is the father of B, C is the mother of B. D is the sister of A. E is the daughter of C. How is E related to D?",
-    "options": ["Niece", "Daughter", "Cousin", "Sister"],
-    "answer": 0
-  },
-  {
-    "question": "In a certain code language, 2468 is written as 8642. How will 1357 be written?",
-    "options": ["7531", "3571", "5317", "7135"],
-    "answer": 0
-  },
-  {
-    "question": "Complete the analogy: Success : Failure :: Joy : ?",
-    "options": ["Anger", "Happiness", "Sorrow", "Pain"],
-    "answer": 2
-  },
-  {
-    "question": "If ‘+’ means ‘×’, ‘–’ means ‘+’, ‘×’ means ‘÷’ and ‘÷’ means ‘–’, then what is the value of 8 + 6 × 3 – 12 ÷ 4?",
-    "options": ["6", "10", "18", "14"],
-    "answer": 1
-  },
-  {
-    "question": "Find the missing number: 3, 9, 27, ?, 243",
-    "options": ["81", "72", "90", "60"],
-    "answer": 0
-  },
-  {
-    "question": "A man is facing north. He turns 90 degrees clockwise, then 180 degrees anticlockwise, and then 90 degrees clockwise. Which direction is he facing now?",
-    "options": ["East", "West", "South", "North"],
-    "answer": 1
-  },
-  {
-    "question": "What comes next in the sequence: Z, X, V, T, ?",
-    "options": ["R", "Q", "S", "P"],
-    "answer": 0
-  },
-  {
-    "question": "Rani is taller than Pooja but shorter than Geeta. Sheetal is taller than Rani but shorter than Geeta. Who is the tallest?",
-    "options": ["Pooja", "Geeta", "Rani", "Sheetal"],
-    "answer": 1
-  },
-  {
-    "question": "Five persons are sitting in a row. A is to the right of B but to the left of C. D is to the left of E but to the right of C. Who is at the center?",
+    "id": "imu4-A-apt-012",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Mirror image question (Image will be provided). Choose correct mirror image of the figure.",
     "options": ["A", "B", "C", "D"],
-    "answer": 0
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-013",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para1",
+    "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
+    "question": "Who sits immediate left of D?",
+    "options": ["A", "C", "E", "F"],
+    "marks": 1
   },
   {
-    "question": "Choose the odd one out: Apple, Banana, Carrot, Mango",
-    "options": ["Apple", "Banana", "Carrot", "Mango"],
-    "answer": 2
+    "id": "imu4-A-apt-014",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para1",
+    "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
+    "question": "Who sits at the extreme right?",
+    "options": ["B", "F", "E", "C"],
+    "marks": 1
   },
   {
-    "question": "1, 1, 2, 3, 5, 8, 13, ?",
-    "options": ["18", "21", "20", "24"],
-    "answer": 1
+    "id": "imu4-A-apt-015",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para1",
+    "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
+    "question": "How many persons sit between A and D?",
+    "options": ["1", "2", "3", "None"],
+    "marks": 1
   },
   {
-    "question": "7 men can complete a job in 12 days. How many men are needed to complete the same job in 4 days?",
-    "options": ["21", "20", "22", "24"],
-    "answer": 0
+    "id": "imu4-A-apt-016",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para1",
+    "paragraph": "Six cadets A, B, C, D, E and F are sitting in a row facing north. A sits third to the left of C. B sits at one of the ends. D is immediate right of C. F is not adjacent to B.",
+    "question": "Who sits second from left?",
+    "options": ["A", "E", "F", "C"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-017",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para2",
+    "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
+    "question": "How is P related to R?",
+    "options": ["Uncle", "Brother", "Father", "Cousin"],
+    "marks": 1
   },
   {
-    "question": "Which diagram represents the relation among animals, tigers, and mammals?",
-    "options": ["Three concentric circles", "Three intersecting circles", "One circle inside another", "Separate circles"],
-    "answer": 2
+    "id": "imu4-A-apt-018",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para2",
+    "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
+    "question": "How is S related to Q?",
+    "options": ["Son", "Grandson", "Nephew", "Brother"],
+    "marks": 1
   },
   {
-    "question": "If Monday falls on 1st March, what day of the week will it be on 31st March?",
-    "options": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-    "answer": 2
+    "id": "imu4-A-apt-019",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para2",
+    "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
+    "question": "How is T related to R?",
+    "options": ["Father", "Mother", "Grandparent", "Uncle"],
+    "marks": 1
   },
   {
-    "question": "If you rearrange the letters 'LNGEDNA', you would have the name of a:",
-    "options": ["Country", "City", "River", "Animal"],
-    "answer": 1
-  },
-  {
-    "question": "How many 9s are there in the following series which are immediately preceded and followed by an even number? 2 9 4 6 9 8 1 9 6 9 2",
+    "id": "imu4-A-apt-020",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "groupId": "imu4-A-apt-para2",
+    "paragraph": "P is the brother of Q. Q is the mother of R. R is the sister of S. S is the son of T.",
+    "question": "How many females are there in the family?",
     "options": ["1", "2", "3", "4"],
-    "answer": 2
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-021",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find the compound interest on ₹1000 at 10% for 2 years.",
+    "options": ["₹210", "₹200", "₹220", "₹240"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-022",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "If 5 men can do a work in 10 days, how many days will 10 men take?",
+    "options": ["5", "10", "15", "20"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-023",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find the missing number: 3, 9, 27, ?, 243",
+    "options": ["54", "72", "81", "108"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-024",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find similarity: Wheel : Car :: Propeller : ?",
+    "options": ["Ship", "Engine", "Boat", "Water"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-025",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "In a code, SEA is written as TFB. How is SHIP written?",
+    "options": ["TIJQ", "TIHO", "TJKQ", "SGIP"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-026",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find odd one out: 8, 27, 64, 125, 150",
+    "options": ["8", "27", "125", "150"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-027",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "A person walks 5 km North, then 5 km East. What is shortest distance from starting point?",
+    "options": ["10 km", "5√2 km", "25 km", "7 km"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-028",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find average of first 20 natural numbers.",
+    "options": ["10", "10.5", "11", "9.5"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-029",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "If A:B = 4:5 and B:C = 3:2, find A:B:C.",
+    "options": ["12:15:10", "4:5:2", "8:10:6", "6:8:5"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-030",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find number of triangles in given figure (Image will be provided).",
+    "options": ["10", "12", "14", "16"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-031",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Which is related: Captain : Ship :: Pilot : ?",
+    "options": ["Car", "Plane", "Bus", "Train"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-032",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find next term: 1, 4, 9, 16, ?",
+    "options": ["20", "25", "24", "30"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-033",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find HCF of 96 and 144.",
+    "options": ["24", "48", "12", "36"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-034",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Boat goes 30 km upstream in 5 hours. Stream speed is 2 km/h. Find speed in still water.",
+    "options": ["8 km/h", "10 km/h", "12 km/h", "6 km/h"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-035",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find next: 5, 11, 23, 47, ?",
+    "options": ["95", "96", "90", "100"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-036",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "A and B together can do a work in 6 days. A alone in 10 days. How long will B alone take?",
+    "options": ["12 days", "15 days", "8 days", "9 days"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-037",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Which number replaces question mark? 2, 5, 11, 23, 47, ?",
+    "options": ["95", "96", "92", "90"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-038",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "If NORTH is coded as 56321 and EAST as 8742, then NEAR is?",
+    "options": ["5874", "5674", "5834", "5748"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-039",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "Find similarity: Anchor : Ship :: Helmet : ?",
+    "options": ["Head", "Soldier", "Bike", "Safety"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-A-apt-040",
+    "mockId": "imu4",
+    "section": "A",
+    "subject": "aptitude",
+    "question": "If a mirror is placed on right side, which option shows correct image? (Image will be provided)",
+    "options": ["A", "B", "C", "D"],
+    "marks": 1
+  }
+
+
+        ]
+    },
+    "B": {
+        "physics": [
+          [
+  {
+    "id": "imu4-B-phy-001",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A ship increases its speed from 10 m/s to 20 m/s in 5 s. Find acceleration.",
+    "options": ["2 m/s²", "4 m/s²", "3 m/s²", "5 m/s²"],
+    "marks": 1
   },
   {
-    "question": "If A = 1, B = 3, C = 5, ..., what is the value of J?",
-    "options": ["17", "19", "21", "23"],
-    "answer": 1
+    "id": "imu4-B-phy-002",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A 2000 kg lifeboat moves at 5 m/s. Find its momentum.",
+    "options": ["10000 kg·m/s", "5000 kg·m/s", "15000 kg·m/s", "20000 kg·m/s"],
+    "marks": 1
   },
   {
-    "question": "A group of 1200 people are surveyed. 60% like cricket, 50% like football, and 30% like both. How many like either cricket or football?",
-    "options": ["960", "1080", "1200", "1140"],
-    "answer": 1
+    "id": "imu4-B-phy-003",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A cargo of mass 500 kg is lifted 10 m vertically. Find work done (g = 10 m/s²).",
+    "options": ["50000 J", "5000 J", "10000 J", "25000 J"],
+    "marks": 1
   },
   {
-    "question": "Statements: All cats are dogs. All dogs are sheep. Conclusions: I. All cats are sheep. II. Some sheep are cats.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
-    "answer": 2
+    "id": "imu4-B-phy-004",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Kinetic energy of a ship moving at 10 m/s and mass 1000 kg is:",
+    "options": ["50000 J", "100000 J", "25000 J", "75000 J"],
+    "marks": 1
   },
   {
-    "question": "Choose the figure which is different from the rest.",
-    "options": ["Figure A", "Figure B", "Figure C", "Figure D"],
-    "answer": 3
+    "id": "imu4-B-phy-005",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If engine power is doubled, speed of ship (ignoring resistance) becomes:",
+    "options": ["Double", "Half", "√2 times", "Same"],
+    "marks": 1
   },
+
   {
-    "question": "If SOUTH is coded as NRQRG, then NORTH is coded as:",
-    "options": ["KRPQG", "KRPQH", "KROQG", "KRPQF"],
-    "answer": 1
+    "id": "imu4-B-phy-006",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A body of mass 2 kg moving at 4 m/s collides with 3 kg at rest. Total momentum before collision:",
+    "options": ["8", "10", "6", "12"],
+    "marks": 1
   },
+
   {
-    "question": "Which one does not belong to the group?",
-    "options": ["Iron", "Copper", "Aluminium", "Graphite"],
-    "answer": 3
+    "id": "imu4-B-phy-007",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Force required to stop 1000 kg boat moving at 5 m/s in 5 s is:",
+    "options": ["1000 N", "5000 N", "2000 N", "2500 N"],
+    "marks": 1
   },
+
   {
-    "question": "Complete the series: 31, 29, 24, 22, 17, ?",
-    "options": ["14", "12", "15", "10"],
-    "answer": 2
+    "id": "imu4-B-phy-008",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "When a ship floats, buoyant force equals:",
+    "options": ["Weight of ship", "Volume", "Mass", "Density"],
+    "marks": 1
   },
+
   {
-    "question": "A man is 24 years older than his son. In two years, the man will be twice as old as his son. What is the present age of the son?",
-    "options": ["20", "22", "24", "26"],
-    "answer": 0
+    "id": "imu4-B-phy-009",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Pressure at depth 10 m in sea water (ρ=1000 kg/m³, g=10) is:",
+    "options": ["100000 Pa", "10000 Pa", "50000 Pa", "200000 Pa"],
+    "marks": 1
   },
+
   {
-    "question": "Which word cannot be formed from the letters of 'ARCHITECTURE'?",
-    "options": ["TEACHER", "CURE", "REACT", "THREAT"],
-    "answer": 3
+    "id": "imu4-B-phy-010",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Moment of inertia of a ring is:",
+    "options": ["MR²", "1/2 MR²", "2MR²", "1/4 MR²"],
+    "marks": 1
   },
+
   {
-    "question": "What is the next number in the pattern: 121, 144, 169, 196, ?",
-    "options": ["221", "225", "236", "230"],
-    "answer": 1
+    "id": "imu4-B-phy-011",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Angular momentum is conserved when:",
+    "options": ["No torque acts", "Force acts", "Velocity increases", "Mass decreases"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-012",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Escape velocity depends on:",
+    "options": ["Mass only", "Radius only", "Mass and radius", "Time"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-013",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If radius of Earth becomes half, escape velocity becomes:",
+    "options": ["√2 times", "Half", "Double", "Same"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-014",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A projectile is fired at 45°. Range is maximum because:",
+    "options": ["sin 90 =1", "cos 45 =1", "tan 45=1", "Velocity max"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-015",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A 2Ω and 3Ω resistor in series across 10V. Current is:",
+    "options": ["2A", "5A", "1A", "3A"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-016",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Energy stored in capacitor is proportional to:",
+    "options": ["V²", "V", "1/V", "R"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-017",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Magnetic force on moving charge is maximum when angle is:",
+    "options": ["0°", "45°", "90°", "180°"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-018",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If magnetic flux changes rapidly, induced EMF:",
+    "options": ["Increases", "Decreases", "Zero", "Constant"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-019",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Photoelectric current depends on:",
+    "options": ["Intensity", "Frequency", "Metal only", "Voltage only"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-020",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A ship radar works on principle of:",
+    "options": ["Reflection of EM waves", "Refraction", "Diffraction", "Polarization"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-021",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "A 1000 kg ship moving at 4 m/s collides elastically. Momentum is conserved because:",
+    "options": ["Newton's 3rd law", "Gravity", "Friction", "Energy loss"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-022",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If speed doubles, kinetic energy becomes:",
+    "options": ["Double", "4 times", "Half", "8 times"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-023",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Torque is product of:",
+    "options": ["Force & distance", "Mass & velocity", "Force & mass", "Distance & time"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-024",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Efficiency of engine is ratio of:",
+    "options": ["Output/Input", "Input/Output", "Heat/Work", "Mass/Time"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-025",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If ship moves against wind, work done increases because:",
+    "options": ["Friction increases", "Mass increases", "Gravity increases", "Time decreases"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-026",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "In SHM, restoring force is proportional to:",
+    "options": ["Displacement", "Velocity", "Time", "Mass"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-027",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Wave speed =",
+    "options": ["fλ", "f/λ", "λ/f", "1/fλ"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-028",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Refractive index =",
+    "options": ["c/v", "v/c", "cv", "c+v"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-029",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If frequency increases, wavelength:",
+    "options": ["Decreases", "Increases", "Same", "Zero"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-030",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Binding energy per nucleon is maximum for:",
+    "options": ["Iron", "Uranium", "Hydrogen", "Gold"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-031",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Half life depends on:",
+    "options": ["Temperature", "Pressure", "Nature of substance", "Mass"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-032",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Current in AC changes:",
+    "options": ["Sinusoidally", "Linearly", "Exponentially", "Constant"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-033",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If two waves meet in phase, amplitude:",
+    "options": ["Increases", "Decreases", "Zero", "Half"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-034",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Ship engine converts:",
+    "options": ["Chemical to mechanical", "Electrical to heat", "Mechanical to chemical", "Heat to light"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-035",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Centripetal force formula:",
+    "options": ["mv²/r", "mr²/v", "mv/r", "mr/v²"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-036",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If mass doubles, gravitational force becomes:",
+    "options": ["Double", "4 times", "Half", "Same"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-037",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Electric power formula:",
+    "options": ["VI", "V/I", "I/V", "R/I"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-038",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "If resistance increases, heating effect:",
+    "options": ["Increases", "Decreases", "Zero", "Constant"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-039",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Photon has:",
+    "options": ["Mass", "Charge", "Momentum", "Rest mass"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-phy-040",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "physics",
+    "question": "Semiconductor conductivity increases with:",
+    "options": ["Temperature", "Pressure", "Mass", "Volume"],
+    "marks": 1
   }
 ]
 
+        ],
+        "chemistry": [
+           
+  {
+    "id": "imu4-B-chem-001",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "The IUPAC name of CH3-CH(CH3)-CH2-CH3 is:",
+    "options": ["2-methylbutane", "3-methylbutane", "Pentane", "2-methylpropane"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-002",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Hybridization of carbon in CH2=CH2 is:",
+    "options": ["sp3", "sp2", "sp", "dsp2"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-003",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which reagent converts primary alcohol to aldehyde without further oxidation?",
+    "options": ["PCC", "KMnO4 (hot)", "K2Cr2O7/H+", "NaOH"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-004",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Markovnikov’s rule predicts formation of:",
+    "options": ["More substituted product", "Less substituted product", "Radical product", "Cis product"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-005",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which compound gives positive Tollen’s test?",
+    "options": ["Acetaldehyde", "Acetone", "Ethanol", "Benzene"],
+    "marks": 1
+  },
 
+  {
+    "id": "imu4-B-chem-006",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Rate law for reaction A → Products, if rate doubles when [A] doubles, is:",
+    "options": ["k[A]", "k[A]²", "k", "k[A]³"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-007",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Half-life of first order reaction is given by:",
+    "options": ["0.693/k", "1/k", "k/0.693", "2.303/k"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-008",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "If ΔG is negative, reaction is:",
+    "options": ["Spontaneous", "Non-spontaneous", "Equilibrium", "Reversible only"],
+    "marks": 1
+  },
 
- },
+  {
+    "id": "imu4-B-chem-009",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Calculate molarity of solution containing 5 moles solute in 2 L solution.",
+    "options": ["2.5 M", "5 M", "10 M", "0.4 M"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-010",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Faraday constant is approximately:",
+    "options": ["96500 C/mol", "965 C/mol", "965000 C/mol", "96 C/mol"],
+    "marks": 1
+  },
 
-    "B":{ 
+  {
+    "id": "imu4-B-chem-011",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Electrode potential of standard hydrogen electrode is:",
+    "options": ["0 V", "1 V", "-1 V", "0.76 V"],
+    "marks": 1
+  },
+  {
+    "id": "imu4-B-chem-012",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Oxidation number of Mn in KMnO4 is:",
+    "options": ["+7", "+4", "+6", "+2"],
+    "marks": 1
+  },
 
-    "physics":[
   {
-    "question": "Two point charges +3 μC and –2 μC are placed 10 cm apart in air. What is the magnitude of the force between them?",
-    "options": ["5.4 N", "54 N", "0.54 N", "0.054 N"],
-    "answer": 2
+    "id": "imu4-B-chem-013",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which reaction forms ester from alcohol and acid?",
+    "options": ["Esterification", "Hydrolysis", "Oxidation", "Substitution"],
+    "marks": 1
   },
   {
-    "question": "The electric field inside a conductor in electrostatic equilibrium is:",
-    "options": ["Zero", "Infinite", "Depends on shape", "Equal to applied field"],
-    "answer": 0
+    "id": "imu4-B-chem-014",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which catalyst is used in hydrogenation of vegetable oils?",
+    "options": ["Ni", "PtCl2", "FeCl3", "Zn"],
+    "marks": 1
   },
+
   {
-    "question": "A parallel plate capacitor is charged and disconnected from the battery. If the plates are then separated further, what happens to the voltage across the plates?",
-    "options": ["Increases", "Decreases", "Remains same", "Becomes zero"],
-    "answer": 0
+    "id": "imu4-B-chem-015",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Product of addition of HBr to propene (without peroxide) is:",
+    "options": ["2-bromopropane", "1-bromopropane", "Propane", "Bromobenzene"],
+    "marks": 1
   },
+
   {
-    "question": "At what distance from a 10 μC charge does the potential become 900 V? (k = 9 × 10^9 Nm²/C²)",
-    "options": ["100 m", "10 m", "0.1 m", "1 m"],
-    "answer": 3
+    "id": "imu4-B-chem-016",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "pH of neutral solution at 25°C is:",
+    "options": ["7", "0", "14", "1"],
+    "marks": 1
   },
+
   {
-    "question": "A current of 5 A flows for 2 minutes through a wire. How many electrons have passed through the cross section? (e = 1.6×10^–19 C)",
-    "options": ["3.75×10^{21}", "6.25×10^{20}", "8.25×10^{22}", "4.7×10^{23}"],
-    "answer": 0
+    "id": "imu4-B-chem-017",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "If concentration of H+ is 10^-3 M, pH is:",
+    "options": ["3", "11", "7", "1"],
+    "marks": 1
   },
+
   {
-    "question": "The potential difference across a 2Ω resistor carrying 3 A current is:",
-    "options": ["6 V", "1.5 V", "0.67 V", "9 V"],
-    "answer": 0
+    "id": "imu4-B-chem-018",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which compound shows geometrical isomerism?",
+    "options": ["But-2-ene", "Butane", "Propane", "Ethane"],
+    "marks": 1
   },
+
   {
-    "question": "A battery of emf 12 V and internal resistance 1Ω is connected to a 5Ω resistor. The terminal voltage is:",
-    "options": ["10 V", "9.2 V", "11 V", "12 V"],
-    "answer": 2
+    "id": "imu4-B-chem-019",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which is example of condensation polymer?",
+    "options": ["Nylon-6,6", "PVC", "Polythene", "Teflon"],
+    "marks": 1
   },
+
   {
-    "question": "Which of these is NOT a state function?",
-    "options": ["Internal energy", "Enthalpy", "Work", "Entropy"],
-    "answer": 2
-  },
-  {
-    "question": "The efficiency of a Carnot engine operating between 400K and 300K is:",
-    "options": ["0.25", "0.133", "0.75", "0.67"],
-    "answer": 0
-  },
-  {
-    "question": "When a gas undergoes an isothermal expansion, what happens to its internal energy?",
-    "options": ["Increases", "Decreases", "Remains same", "Becomes zero"],
-    "answer": 2
-  },
-  {
-    "question": "A projectile is fired at an angle θ to the horizontal. For maximum range, θ should be:",
-    "options": ["30°", "90°", "45°", "60°"],
-    "answer": 2
-  },
-  {
-    "question": "A river flows east at 3 m/s. A swimmer swims at 4 m/s north (relative to water). What is the magnitude of the resultant velocity?",
-    "options": ["3 m/s", "4 m/s", "5 m/s", "7 m/s"],
-    "answer": 2
-  },
-  {
-    "question": "What is the angular speed for 1 revolution completed in 2 s?",
-    "options": ["2π rad/s", "π rad/s", "4π rad/s", "π/2 rad/s"],
-    "answer": 1
-  },
-  {
-    "question": "A solid cylinder of mass 5 kg and radius 0.2 m rotates at 10 rad/s. Its rotational kinetic energy is:",
-    "options": ["1 J", "2 J", "10 J", "1.0 J"],
-    "answer": 2
-  },
-  {
-    "question": "Moment of inertia of a ring of mass M and radius R, about its central axis is:",
-    "options": ["MR^2", "1/2 MR^2", "1/3 MR^2", "2MR^2"],
-    "answer": 0
-  },
-  {
-    "question": "Work done by a force of 10 N acting through a displacement of 2 m at 60° to the direction of force is:",
-    "options": ["10 J", "20 J", "5 J", "15 J"],
-    "answer": 0
-  },
-  {
-    "question": "A 2 kg block is lifted up by 10 m. Taking g = 9.8 m/s², change in potential energy is:",
-    "options": ["196 J", "980 J", "20 J", "19.6 J"],
-    "answer": 0
-  },
-  {
-    "question": "A person of mass 60 kg runs up a staircase of 5 m in 4 s. What is average power developed? (g = 10 m/s²)",
-    "options": ["750 W", "600 W", "800 W", "1200 W"],
-    "answer": 0
-  },
-  {
-    "question": "A bullet of mass 10g moving at 100 m/s penetrates a wooden block and stops. What is the loss in KE?",
-    "options": ["50 J", "10 J", "100 J", "5 J"],
-    "answer": 1
-  },
-  {
-    "question": "A 1 kg object suspended from a spring executes SHM with amplitude 5 cm and maximum speed of 31.4 cm/s. Its period is:",
-    "options": ["1 s", "2 s", "0.5 s", "4 s"],
-    "answer": 0
-  },
-  {
-    "question": "For a simple pendulum, the time period depends on:",
-    "options": ["Amplitude", "Length", "Mass", "Material"],
-    "answer": 1
-  },
-  {
-    "question": "For a mass-spring system in SHM, maximum acceleration occurs at:",
-    "options": ["Mean position", "Extreme position", "Quarter position", "Any position"],
-    "answer": 1
-  },
-  {
-    "question": "The potential energy in SHM is maximum at:",
-    "options": ["Mean position", "Extreme position", "Quarter position", "Equilibrium position"],
-    "answer": 1
-  },
-  {
-    "question": "A tuning fork of frequency 256 Hz produces 4 beats/s with another tuning fork. The frequency of the second fork is:",
-    "options": ["252 Hz", "260 Hz", "256 Hz", "Either 252 or 260 Hz"],
-    "answer": 3
-  },
-  {
-    "question": "The frequency of oscillation of a LC circuit is given by:",
-    "options": ["1/(2π√LC)", "2π√LC", "LC/2π", "1/LC"],
-    "answer": 0
-  },
-  {
-    "question": "The focal length of a convex lens is 20 cm. The power is:",
-    "options": ["5 D", "0.2 D", "2 D", "10 D"],
-    "answer": 0
-  },
-  {
-    "question": "A real image is formed by a convex lens when the object is placed:",
-    "options": ["At 2F", "Between F and 2F", "At F", "At infinity"],
-    "answer": 1
-  },
-  {
-    "question": "Dispersion of light by a prism is due to:",
-    "options": ["Variable speed of light in glass", "Reflection", "Polarization", "Diffraction"],
-    "answer": 0
-  },
-  {
-    "question": "Which of the following devices uses total internal reflection?",
-    "options": ["Binoculars", "Optical fibers", "Convex mirror", "Prism spectrometer"],
-    "answer": 1
-  },
-  {
-    "question": "If a semiconductor is doped with phosphorus, it becomes:",
-    "options": ["p-type", "n-type", "Metallic", "Insulator"],
-    "answer": 1
-  },
-  {
-    "question": "The forward voltage for conduction in a silicon diode is approximately:",
-    "options": ["0.7 V", "5 V", "2.2 V", "1.5 V"],
-    "answer": 0
-  },
-  {
-    "question": "Which phenomenon does a solar cell use?",
-    "options": ["Photoelectric effect", "Joule heating", "Electrolysis", "Diffraction"],
-    "answer": 0
-  },
-  {
-    "question": "The energy of a photon is given by:",
-    "options": ["hf", "h/f", "hcλ", "λ/h"],
-    "answer": 0
-  },
-  {
-    "question": "The half-life of a radioactive element is the time at which:",
-    "options": ["Half nuclei decay", "Rate of decay doubles", "No decay occurs", "Activity becomes zero"],
-    "answer": 0
-  },
-  {
-    "question": "When a β-particle is emitted, the mass number of the nucleus:",
-    "options": ["Increases by 1", "Decreases by 1", "Remains unchanged", "Doubles"],
-    "answer": 2
-  },
-  {
-    "question": "Which one has highest stopping power for α-particles?",
-    "options": ["Air", "Lead", "Glass", "Water"],
-    "answer": 1
-  },
-  {
-    "question": "If the normal force is doubled, the frictional force (limiting friction) will:",
-    "options": ["Increase two times", "Decrease two times", "Remain same", "Increase four times"],
-    "answer": 0
-  },
-  {
-    "question": "A 10 kg block is placed on a rough horizontal surface (μ = 0.4). Minimum force required to just move it is (g=10 m/s^2):",
-    "options": ["40 N", "100 N", "10 N", "4 N"],
-    "answer": 0
-  },
-  {
-    "question": "A ladder leans against a frictionless wall. The friction which prevents slipping is provided by:",
-    "options": ["Floor", "Wall", "Air", "Ladder mass"],
-    "answer": 0
-  },
-  {
-    "question": "A car of mass 800 kg moves in a circle of radius 50 m at 10 m/s. The minimum friction coefficient required is:",
-    "options": ["0.2", "0.4", "0.5", "0.1"],
-    "answer": 0
+    "id": "imu4-B-chem-020",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "chemistry",
+    "question": "Which functional group is present in carboxylic acids?",
+    "options": ["–COOH", "–OH", "–CHO", "–NH2"],
+    "marks": 1
   }
-],
 
-"maths":[
+        ],
+        "maths": [
+           
   {
-    "question": "If A = {2, 4, 6, 8, 10, 12} and B = {3, 6, 9, 12}, then |A ∪ B| is:",
-    "options": ["7", "8", "9", "10"],
-    "answer": 1
+    "id": "imu4-B-math-001",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Evaluate: lim (x→0) (sinx/x)",
+    "options": ["0", "1", "∞", "-1"],
+    "marks": 1
   },
   {
-    "question": "Number of subsets of the set S = {a, b, c, d, e} which contain ‘a’ but not ‘b’ is:",
-    "options": ["16", "8", "12", "24"],
-    "answer": 0
+    "id": "imu4-B-math-002",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "lim (x→0) (1 - cosx)/x² equals:",
+    "options": ["1", "1/2", "0", "2"],
+    "marks": 1
   },
   {
-    "question": "If A and B are two sets such that n(A) = 10, n(B) = 15, and n(A ∩ B) = 7, then n(A ∪ B) is:",
-    "options": ["18", "15", "22", "17"],
-    "answer": 3
+    "id": "imu4-B-math-003",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Derivative of e^(3x) is:",
+    "options": ["3e^(3x)", "e^(3x)", "3x e^(3x)", "e^x"],
+    "marks": 1
   },
   {
-    "question": "Ten different books are arranged on a shelf. Number of ways to arrange such that two particular books are together is:",
-    "options": ["9!", "2 × 9!", "8!", "10!"],
-    "answer": 1
+    "id": "imu4-B-math-004",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If y = x³ - 3x² + 2, find dy/dx.",
+    "options": ["3x² - 6x", "3x² - 3x", "x² - 6x", "6x - 3"],
+    "marks": 1
   },
   {
-    "question": "From 7 men and 5 women, a committee of 5 is to be formed with at least 3 women. The number of ways is:",
-    "options": ["210", "315", "252", "350"],
-    "answer": 3
+    "id": "imu4-B-math-005",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Find maximum value of f(x)= -x² + 4x +1.",
+    "options": ["5", "3", "4", "6"],
+    "marks": 1
+  },
+
+  {
+    "id": "imu4-B-math-006",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "∫ x² dx equals:",
+    "options": ["x³/3 + C", "2x + C", "x²/2 + C", "3x² + C"],
+    "marks": 1
   },
   {
-    "question": "Number of ways to arrange letters of “INFINITE” so that all I’s are together:",
-    "options": ["840", "1680", "6720", "5040"],
-    "answer": 0
+    "id": "imu4-B-math-007",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Evaluate ∫₀¹ 2x dx.",
+    "options": ["1", "2", "0", "1/2"],
+    "marks": 1
   },
   {
-    "question": "If the probability of winning a game is p, losing is q, and draw is r, then which is correct?",
-    "options": ["p + q = 1", "p + q + r = 1", "p × q × r = 1", "p + r = 1"],
-    "answer": 1
+    "id": "imu4-B-math-008",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Area under curve y = x between 0 and 2 is:",
+    "options": ["2", "4", "1", "3"],
+    "marks": 1
   },
+
   {
-    "question": "A bag contains 5 red and 7 green balls. Probability that two balls drawn one after another without replacement are both red, is:",
-    "options": ["5/66", "5/22", "10/66", "5/33"],
-    "answer": 3
+    "id": "imu4-B-math-009",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Solve: dy/dx = 2x",
+    "options": ["x² + C", "2x² + C", "x + C", "2x + C"],
+    "marks": 1
   },
+
   {
-    "question": "Two dice are thrown. Probability that the sum is at least 10 is:",
-    "options": ["1/6", "5/36", "1/12", "1/9"],
-    "answer": 0
+    "id": "imu4-B-math-010",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If z = 1 + i, then |z| equals:",
+    "options": ["√2", "1", "2", "0"],
+    "marks": 1
   },
+
   {
-    "question": "If sin A + sin B = a, cos A + cos B = b, then (sin A + sin B)^2 + (cos A + cos B)^2 =",
-    "options": ["a^2 + b^2", "2 + 2cos(A-B)", "2 + 2cos(A+B)", "2 + 2sin(A-B)"],
-    "answer": 1
+    "id": "imu4-B-math-011",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Sum of first 10 terms of AP: 2,4,6,... is:",
+    "options": ["110", "100", "90", "120"],
+    "marks": 1
   },
+
   {
-    "question": "Value of tan⁻¹ 1 + tan⁻¹ 2 + tan⁻¹ 3 is:",
-    "options": ["π", "π/2", "2π", "π/4"],
-    "answer": 0
+    "id": "imu4-B-math-012",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Find term independent of x in expansion of (x + 1/x)^4.",
+    "options": ["6", "4", "1", "0"],
+    "marks": 1
   },
+
   {
-    "question": "If sin θ = 3/5 and θ is acute, then cot θ =",
-    "options": ["3/4", "4/3", "5/3", "5/4"],
-    "answer": 1
+    "id": "imu4-B-math-013",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Probability of getting head in a single coin toss is:",
+    "options": ["1/2", "1", "0", "2"],
+    "marks": 1
   },
+
   {
-    "question": "The angle of elevation of a tower is 30°. On moving 100m closer, the angle becomes 60°. The height of the tower (in m) is:",
-    "options": ["50", "100", "50√3", "25√3"],
-    "answer": 2
+    "id": "imu4-B-math-014",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If sinθ = 1/2, θ equals:",
+    "options": ["30°", "45°", "60°", "90°"],
+    "marks": 1
   },
+
   {
-    "question": "A balloon is observed at a height of 120m. If the angle of elevation is 30°, the distance of observer from balloon (in m) is:",
-    "options": ["120", "60", "120√3", "120/√3"],
-    "answer": 2
+    "id": "imu4-B-math-015",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Value of tan⁻¹(1) equals:",
+    "options": ["π/4", "π/2", "π/6", "π/3"],
+    "marks": 1
   },
+
   {
-    "question": "If y = e^{x^2}, then dy/dx at x=1 is:",
-    "options": ["2e", "2e^2", "e^2", "e"],
-    "answer": 1
+    "id": "imu4-B-math-016",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Distance between (1,2) and (4,6) is:",
+    "options": ["5", "4", "3", "6"],
+    "marks": 1
   },
+
   {
-    "question": "The equation of the tangent to the curve y = x^2 at the point (1,1):",
-    "options": ["y = x + 1", "y = 2x - 1", "y = 2x + 1", "y = x - 1"],
-    "answer": 1
+    "id": "imu4-B-math-017",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Equation of circle with center (0,0) and radius 3 is:",
+    "options": ["x²+y²=9", "x²+y²=3", "x²+y²=6", "x+y=3"],
+    "marks": 1
   },
+
   {
-    "question": "The function f(x) = x^3 + 3x^2 + 3x + 1 has a minimum at:",
-    "options": ["x = -1", "x = 0", "x = 1", "x = 2"],
-    "answer": 0
+    "id": "imu4-B-math-018",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Area of circle radius 2 is:",
+    "options": ["4π", "2π", "8π", "π"],
+    "marks": 1
   },
+
   {
-    "question": "The maximum value of f(x) = sin x + cos x is:",
-    "options": ["1", "2", "√2", "-√2"],
-    "answer": 2
+    "id": "imu4-B-math-019",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Dot product of i and j is:",
+    "options": ["0", "1", "-1", "2"],
+    "marks": 1
   },
+
   {
-    "question": "If f(x) = |x - 3|, then f(f(5)) is:",
-    "options": ["2", "0", "1", "4"],
-    "answer": 0
+    "id": "imu4-B-math-020",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Vector magnitude of 2i + 3j is:",
+    "options": ["√13", "5", "13", "√5"],
+    "marks": 1
   },
+
   {
-    "question": "If f(x) = x^2 - 2x + 3, then f(-1) is:",
-    "options": ["6", "0", "4", "3"],
-    "answer": 0
+    "id": "imu4-B-math-021",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Equation of line in 3D passing through (1,2,3) parallel to (2,1,1) is:",
+    "options": ["(x-1)/2=(y-2)/1=(z-3)/1", "x=1+2t", "y=2+t", "z=3+t"],
+    "marks": 1
   },
+
   {
-    "question": "If f(x) = 2x + 3, g(x) = x - 1, find (f ∘ g)(2):",
-    "options": ["5", "7", "6", "9"],
-    "answer": 0
+    "id": "imu4-B-math-022",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If A = [[1,2],[3,4]], det(A) equals:",
+    "options": ["-2", "2", "5", "1"],
+    "marks": 1
   },
+
   {
-    "question": "Maximum value of the function f(x) = 6x - x^2 is:",
-    "options": ["0", "9", "6", "18"],
-    "answer": 1
+    "id": "imu4-B-math-023",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If f(x)=|x|, function is:",
+    "options": ["Continuous", "Discontinuous", "Differentiable everywhere", "Constant"],
+    "marks": 1
   },
+
   {
-    "question": "Minimum value of f(x) = x^2 - 6x + 11 is:",
-    "options": ["1", "2", "3", "4"],
-    "answer": 1
+    "id": "imu4-B-math-024",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "∫ sinx dx equals:",
+    "options": ["-cosx + C", "cosx + C", "sinx + C", "-sinx + C"],
+    "marks": 1
   },
+
   {
-    "question": "∫₀^{π} sin²x dx equals:",
-    "options": ["π/2", "π", "0", "2π"],
-    "answer": 0
+    "id": "imu4-B-math-025",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If A∩B=∅, then events are:",
+    "options": ["Mutually exclusive", "Independent", "Certain", "Equal"],
+    "marks": 1
   },
+
   {
-    "question": "If I = ∫₀¹ (3x² + 2x + 1) dx, then I is:",
-    "options": ["3", "2", "7/3", "5/3"],
-    "answer": 1
+    "id": "imu4-B-math-026",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Variance of constant is:",
+    "options": ["0", "1", "-1", "Constant"],
+    "marks": 1
   },
+
   {
-    "question": "∫ x/(x²+1) dx equals:",
-    "options": ["(1/2)ln(x²+1) + C", "tan⁻¹x + C", "ln|x| + C", "(1/2)x² + C"],
-    "answer": 0
+    "id": "imu4-B-math-027",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "lim (x→∞) (1/x) equals:",
+    "options": ["0", "1", "∞", "-1"],
+    "marks": 1
   },
+
   {
-    "question": "Equation of the line passing through (2,3) and perpendicular to x + y = 5:",
-    "options": ["x - y = -1", "x + y = 5", "x - y = 1", "x + y = 2"],
-    "answer": 0
+    "id": "imu4-B-math-028",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Find derivative of ln x.",
+    "options": ["1/x", "ln x", "x", "e^x"],
+    "marks": 1
   },
+
   {
-    "question": "The coordinates of the centroid of triangle with vertices (2,3), (4,7), (6,1) are:",
-    "options": ["(4,4)", "(2,2)", "(4,3.66)", "(2,3)"],
-    "answer": 2
+    "id": "imu4-B-math-029",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If cosθ=√3/2, θ equals:",
+    "options": ["30°", "45°", "60°", "90°"],
+    "marks": 1
   },
+
   {
-    "question": "The distance between points (3, -4) and (-1, 2) is:",
-    "options": ["6", "10", "2√10", "2√7"],
-    "answer": 2
+    "id": "imu4-B-math-030",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Sum of infinite GP with a=1,r=1/2:",
+    "options": ["2", "1", "1/2", "∞"],
+    "marks": 1
   },
+
   {
-    "question": "Equation of the plane passing through the origin and perpendicular to vector 2i + j + 2k:",
-    "options": ["2x + y + 2z = 0", "x + 2y + 2z = 0", "2x - y + 2z = 0", "2x + 2y + z = 0"],
-    "answer": 0
+    "id": "imu4-B-math-031",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If roots of quadratic are equal, discriminant is:",
+    "options": ["0", "1", "-1", "Positive"],
+    "marks": 1
   },
+
   {
-    "question": "The cosine of angle between lines r₁ = (2i + 2j - k) and r₂ = (3i - 6j + 2k) is:",
-    "options": ["1/7", "2/7", "3/7", "2/9"],
-    "answer": 1
+    "id": "imu4-B-math-032",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Area under x² from 0 to 2 is:",
+    "options": ["8/3", "4", "2", "16/3"],
+    "marks": 1
   },
+
   {
-    "question": "The length of the perpendicular from point (1,2,3) to the plane 2x - y + 2z = 5:",
-    "options": ["2", "1", "10/3", "4/3"],
-    "answer": 3
+    "id": "imu4-B-math-033",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Angle between i and i+j is:",
+    "options": ["45°", "30°", "60°", "90°"],
+    "marks": 1
   },
+
   {
-    "question": "If a, b, c are in A.P. and a+b+c=15, and b=5, find a:",
-    "options": ["2.5", "8", "3", "10"],
-    "answer": 2
+    "id": "imu4-B-math-034",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "∫₀^π sinx dx equals:",
+    "options": ["2", "1", "0", "π"],
+    "marks": 1
   },
+
   {
-    "question": "Sum of first 20 terms of the sequence 1, 5, 9, 13, ... is:",
-    "options": ["820", "760", "1640", "400"],
-    "answer": 0
+    "id": "imu4-B-math-035",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Equation of tangent to y=x² at x=1:",
+    "options": ["y=2x-1", "y=x+1", "y=2x+1", "y=x-1"],
+    "marks": 1
   },
+
   {
-    "question": "The sum of the series 2+4+8+...+2^{10} is:",
-    "options": ["2^{11}-1", "2^{11}-2", "2^{12}-2", "2^{12}-1"],
-    "answer": 1
+    "id": "imu4-B-math-036",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If |A|=5 and |B|=2, then |AB| equals:",
+    "options": ["10", "7", "5", "2"],
+    "marks": 1
   },
+
   {
-    "question": "The modulus of 3 + 4i is:",
-    "options": ["5", "7", "1", "2"],
-    "answer": 0
+    "id": "imu4-B-math-037",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Derivative of tanx is:",
+    "options": ["sec²x", "tanx", "cotx", "cosecx"],
+    "marks": 1
   },
+
   {
-    "question": "If z = 1 + i, the value of z^4 is:",
-    "options": ["4i", "4", "-4", "-4i"],
-    "answer": 2
+    "id": "imu4-B-math-038",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If sin(A+B)=1, possible value is:",
+    "options": ["90°", "45°", "0°", "180°"],
+    "marks": 1
   },
+
   {
-    "question": "If z₁ = a + ib, z₂ = a - ib, then z₁ ⋅ z₂ =",
-    "options": ["a² + b²", "a² - b²", "2ab", "a² + 2ab - b²"],
-    "answer": 0
+    "id": "imu4-B-math-039",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "Find slope of line 2x+3y=6.",
+    "options": ["-2/3", "2/3", "3/2", "-3/2"],
+    "marks": 1
   },
+
   {
-    "question": "limₓ→₀ (sin 7x)/x is:",
-    "options": ["1", "7", "0", "Infinite"],
-    "answer": 1
-  },
-  {
-    "question": "The function f(x) = {x²+3x, x<1 ; 4x-3, x≥1 } is continuous at x=1 if:",
-    "options": [
-      "Value at left and right are equal at x=1",
-      "Not continuous at x=1",
-      "Limit does not exist at x=1",
-      "The function is continuous for all x"
-    ],
-    "answer": 0
+    "id": "imu4-B-math-040",
+    "mockId": "imu4",
+    "section": "B",
+    "subject": "maths",
+    "question": "If vector a·b=0, vectors are:",
+    "options": ["Perpendicular", "Parallel", "Equal", "Opposite"],
+    "marks": 1
   }
-],
 
-"chemistry":[
-  {
-    "question": "What is the major product formed when ethanol is heated with concentrated H2SO4 at 170°C?",
-    "options": ["Ethene", "Diethyl ether", "Acetaldehyde", "Ethanoic acid"],
-    "answer": 0
-  },
-  {
-    "question": "Which reagent can be used to convert benzene to nitrobenzene?",
-    "options": ["Conc. HNO3 and conc. H2SO4", "Br2/Fe", "NaOH", "KMnO4"],
-    "answer": 0
-  },
-  {
-    "question": "What is the IUPAC name of CH3-CH2-COOH?",
-    "options": ["Ethanoic acid", "Propanoic acid", "Butanoic acid", "Formic acid"],
-    "answer": 1
-  },
-  {
-    "question": "Bromination of ethene in the presence of CCl4 gives:",
-    "options": ["1,2-dibromoethene", "Vinyl bromide", "1,2-dibromoethane", "Ethyl bromide"],
-    "answer": 2
-  },
-  {
-    "question": "The product of aldol condensation between two molecules of acetaldehyde is:",
-    "options": ["Acetone", "But-2-enal", "Butanone", "2-methylpropene"],
-    "answer": 1
-  },
-  {
-    "question": "What is the product when phenol reacts with bromine water?",
-    "options": ["2-Bromophenol", "3-Bromophenol", "2,4,6-Tribromophenol", "Bromobenzene"],
-    "answer": 2
-  },
-  {
-    "question": "A salt gives violet color to flame and turns flame light purple. The cation present is most likely:",
-    "options": ["Sodium", "Potassium", "Calcium", "Copper"],
-    "answer": 1
-  },
-  {
-    "question": "What is the product formed when propanal is reduced with LiAlH4?",
-    "options": ["Propan-2-ol", "Butanol", "Propan-1-ol", "Propanoic acid"],
-    "answer": 2
-  },
-  {
-    "question": "Which compound gives a positive Tollens’ test?",
-    "options": ["Ethanol", "Methanoic acid", "Acetone", "Acetic acid"],
-    "answer": 1
-  },
-  {
-    "question": "The brown ring test is used to detect which ion?",
-    "options": ["Chloride", "Sulfate", "Nitrate", "Phosphate"],
-    "answer": 2
-  },
-  {
-    "question": "The compound with molecular formula C2H4O that gives silver mirror test could be:",
-    "options": ["Acetone", "Ethanol", "Ethanal", "Acetic acid"],
-    "answer": 2
-  },
-  {
-    "question": "Which reagent is used to convert an alcohol to alkyl chloride?",
-    "options": ["Lucas reagent", "KMnO4", "HNO3", "NaBH4"],
-    "answer": 0
-  },
-  {
-    "question": "When ethene reacts with cold alkaline KMnO4, the product is:",
-    "options": ["Ethanol", "Ethane", "Ethylene glycol", "Acetic acid"],
-    "answer": 2
-  },
-  {
-    "question": "Name the compound: CH3–CH2–O–CH3",
-    "options": ["Methoxyethane", "Ethyl methyl ether", "Dimethyl ether", "Ethanol"],
-    "answer": 0
-  },
-  {
-    "question": "Ethanoic acid reacts with ethanol in presence of concentrated H2SO4 to form:",
-    "options": ["Acetone", "Ethyl ethanoate", "Acetic anhydride", "Acetaldehyde"],
-    "answer": 1
-  },
-  {
-    "question": "Which of the following oxides is amphoteric in nature?",
-    "options": ["Na2O", "MgO", "Al2O3", "CO2"],
-    "answer": 2
-  },
-  {
-    "question": "Which is the major product when 2-bromopentane is heated with alcoholic KOH?",
-    "options": ["Pent-2-ene", "Pentane", "Pent-1-ene", "Pentanol"],
-    "answer": 0
-  },
-  {
-    "question": "Which compound contains both –OH and –CHO groups?",
-    "options": ["Methanol", "Glycol", "Ethanal", "Glycolaldehyde"],
-    "answer": 3
-  },
-  {
-    "question": "How can phenol be converted to salicylic acid?",
-    "options": [
-      "By heating with CO2 and NaOH (Kolbe reaction)",
-      "With conc. H2SO4",
-      "Boiling with acetic acid",
-      "Reaction with COCl2"
-    ],
-    "answer": 0
-  },
-  {
-    "question": "The oxidation state of Fe in [Fe(CN)6]^4− is:",
-    "options": ["+2", "+3", "–2", "0"],
-    "answer": 0
-  }
-]
 
- }
+        ]
+    }
 }
