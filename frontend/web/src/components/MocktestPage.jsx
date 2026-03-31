@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Ensure path is correct
 import { User, LogOut, Shield, Menu, X } from "lucide-react";
 import MainNavbar from "./MainNavbar.jsx";
+import { motion } from "framer-motion";
 
 
 import MocktestCard from "./MocktestCard.jsx";
