@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Ensure path is correct
 import { User, LogOut, Shield, Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
 import MainNavbar from "./MainNavbar.jsx";
+
 
 import MocktestCard from "./MocktestCard.jsx";
 import mockTests from "../data/mocktest.js";
@@ -52,26 +52,20 @@ const MockTestPage = () => {
 
 
 
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {mockTests.map((test, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
+          {mockTests.map((test) => {
             const releaseTime = new Date(test.releaseDate);
             const available = now >= releaseTime;
             return (
               <MocktestCard
                 key={test.id}
-                index={index}
                 {...test}
                 available={available}
                 date={releaseTime.toLocaleDateString("en-IN")}
               />
             );
           })}
-        </motion.div>
+        </div>
       </main>
 
       {showLogin && (

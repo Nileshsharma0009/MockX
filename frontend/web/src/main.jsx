@@ -185,6 +185,9 @@ const AppRoutes = () => {
 
           {/* 🛑 SECRET ROUTE TO TRIGGER ERROR BOUNDARY */}
           <Route path="/test-error" element={<TestError />} />
+
+          {/* ⏳ ROUTE TO VIEW LOADER DIRECTLY */}
+          <Route path="/loader" element={<Loader />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>
