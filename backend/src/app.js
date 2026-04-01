@@ -14,7 +14,7 @@ const app = express();
 
 
 
-const url = `https://mockx-r65t.onrender.com/`;
+const url = `https://mockx-m631.onrender.com/`;
 const interval = 30000;
 
 function reloadWebsite() {
