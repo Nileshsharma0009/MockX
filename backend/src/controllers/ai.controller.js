@@ -1,6 +1,7 @@
 // src/controllers/ai.controller.js
 import { runGemini } from "../services/gemini.service.js";
 import { examConfig } from "../config/examConfig.js";
+import { answerRagChat } from "../services/ragChat.service.js";
 
 export const analyzeAI = async (req, res) => {
 
@@ -69,5 +70,28 @@ User Question: "${question}"
   } catch (err) {
     console.error("AI ANALYSIS ERROR:", err);
     res.status(500).json({ message: " on maintenance" });
+  }
+};
+
+export const chatWithRag = async (req, res) => {
+  try {
+    const { question, resultId } = req.body;
+
+    if (!question || !resultId) {
+      return res.status(400).json({ message: "Missing question or resultId" });
+    }
+
+    const response = await answerRagChat({
+      userId: req.user._id,
+      resultId,
+      question,
+    });
+
+    return res.json(response);
+  } catch (error) {
+    console.error("RAG CHAT ERROR:", error);
+    return res
+      .status(error.statusCode || 500)
+      .json({ message: error.message || "RAG chat failed" });
   }
 };

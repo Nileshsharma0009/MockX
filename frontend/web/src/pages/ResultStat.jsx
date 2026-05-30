@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import AIChatPanel, { createWelcomeMessage } from "./AIChatPanel";
 import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
-import { analyzeQuery } from "../analysis/analysisEngine";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
 import Loader from "../components/Loader";
 
@@ -115,10 +114,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
 /* ---------------- HARD SAFETY NORMALIZER ---------------- */
 const normalizeAssistantContent = (content) => {
   if (typeof content === "string") {
-    return {
-      title: "Assistant Response",
-      points: [content.replace(/\*\*/g, "").replace(/\n+/g, " ").trim()],
-    };
+    return content.trim();
   }
   return content;
 };
@@ -138,6 +134,7 @@ const ResultStat = () => {
   /* ---------------- CHAT STATE ---------------- */
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
+  const [isSendingChat, setIsSendingChat] = useState(false);
 
   /* ---------------- CHAT CONFIG ---------------- */
   const getWelcomeMsg = () => createWelcomeMessage(user?.name);
@@ -203,9 +200,13 @@ const ResultStat = () => {
   }, [selected]);
 
   /* ---------------- LOCAL AI ENGINE (Integrated) ---------------- */
-  const handleSendMessage = (textOverride = null) => {
+  const handleSendMessage = async (textOverride = null) => {
     const text = typeof textOverride === "string" ? textOverride : chatInput;
-    if (!text || !text.trim()) return;
+    if (!text || !text.trim() || isSendingChat) return;
+    if (!selected?._id) {
+      toast.error("Select a mock result first");
+      return;
+    }
 
     // Add User Message
     const userMsg = { id: Date.now(), role: "user", content: text, ts: new Date().toISOString() };
@@ -215,16 +216,32 @@ const ResultStat = () => {
       return next;
     });
     setChatInput("");
+    setIsSendingChat(true);
 
-    // Generate Analysis (Instant)
-    setTimeout(() => {
-      const rawResponse = analyzeQuery({
-        query: text,
-        result: selected,
-        subjectsMap: SUBJECTS,
+    try {
+      const response = await fetch(`${API_BASE}/api/ai/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          question: text,
+          resultId: selected._id,
+        }),
       });
 
-      const safeResponse = normalizeAssistantContent(rawResponse);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Failed to get chat response");
+      }
+
+      const answerText = [data.answer, data.citations?.length ? `Sources: ${data.citations.join(", ")}` : ""]
+        .filter(Boolean)
+        .join("\n\n");
+
+      const safeResponse = normalizeAssistantContent(answerText);
 
       setChatMessages((prev) => {
         const assistantMsg = {
@@ -237,7 +254,23 @@ const ResultStat = () => {
         saveChatHistory(next);
         return next;
       });
-    }, 500);
+    } catch (error) {
+      console.error("Chat send failed", error);
+      const assistantMsg = {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: "I could not fetch the RAG response right now. Please try again.",
+        ts: new Date().toISOString(),
+      };
+
+      setChatMessages((prev) => {
+        const next = [...prev, assistantMsg];
+        saveChatHistory(next);
+        return next;
+      });
+    } finally {
+      setIsSendingChat(false);
+    }
   };
 
   if (loading) return <Loader />;
