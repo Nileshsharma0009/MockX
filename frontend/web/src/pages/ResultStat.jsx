@@ -2,9 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
-import AIChatPanel, { createWelcomeMessage } from "./AIChatPanel";
+import AIChatPanel from "./AIChatPanel";
 import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
-import { analyzeQuery } from "../analysis/analysisEngine";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
 import Loader from "../components/Loader";
 
@@ -112,17 +111,6 @@ const Navbar = ({ user, logout, setShowLogin }) => {
   );
 };
 
-/* ---------------- HARD SAFETY NORMALIZER ---------------- */
-const normalizeAssistantContent = (content) => {
-  if (typeof content === "string") {
-    return {
-      title: "Assistant Response",
-      points: [content.replace(/\*\*/g, "").replace(/\n+/g, " ").trim()],
-    };
-  }
-  return content;
-};
-
 /* ---------------- PAGE ---------------- */
 const ResultStat = () => {
   const navigate = useNavigate();
@@ -133,15 +121,6 @@ const ResultStat = () => {
   const [loading, setLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
   const [isAiOpen, setIsAiOpen] = useState(false);
-  const [isInputFocused, setIsInputFocused] = useState(false);
-
-  /* ---------------- CHAT STATE ---------------- */
-  const [chatMessages, setChatMessages] = useState([]);
-  const [chatInput, setChatInput] = useState("");
-
-  /* ---------------- CHAT CONFIG ---------------- */
-  const getWelcomeMsg = () => createWelcomeMessage(user?.name);
-
 
   // Fetch Results
   useEffect(() => {
@@ -157,88 +136,10 @@ const ResultStat = () => {
       .catch(() => setLoading(false));
   }, [user, navigate]);
 
-  // Load Chat History for Selected Mock
-  useEffect(() => {
-    console.log("ChatHistory Effect Triggered", { userId: user?.id, mockId: selected?.mockId });
-    // If no user, can't load history
-    if (!user) return;
-
-    const userId = user.id || user._id || "user";
-    // Determine key based on selected mock or general
-    const contextId = selected?.mockId || "general";
-    const key = `chat_history_${userId}_${contextId}`;
-
-    const saved = localStorage.getItem(key);
-
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        // Only use saved history if it has messages, otherwise show welcome
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setChatMessages(parsed);
-        } else {
-          setChatMessages([getWelcomeMsg()]);
-        }
-      } catch (e) {
-        console.error("Failed to parse chat history", e);
-        setChatMessages([getWelcomeMsg()]);
-      }
-    } else {
-      setChatMessages([getWelcomeMsg()]);
-    }
-  }, [selected?.mockId, user]);
-
-  const saveChatHistory = (msgs) => {
-    if (!user) return;
-    const userId = user.id || user._id || "user";
-    const contextId = selected?.mockId || "general";
-    const key = `chat_history_${userId}_${contextId}`;
-    localStorage.setItem(key, JSON.stringify(msgs));
-  };
-
-
   const subjectStats = useMemo(() => {
     if (!selected?.subjectStats) return null;
     return selected.subjectStats;
   }, [selected]);
-
-  /* ---------------- LOCAL AI ENGINE (Integrated) ---------------- */
-  const handleSendMessage = (textOverride = null) => {
-    const text = typeof textOverride === "string" ? textOverride : chatInput;
-    if (!text || !text.trim()) return;
-
-    // Add User Message
-    const userMsg = { id: Date.now(), role: "user", content: text, ts: new Date().toISOString() };
-    setChatMessages((prev) => {
-      const next = [...prev, userMsg];
-      saveChatHistory(next);
-      return next;
-    });
-    setChatInput("");
-
-    // Generate Analysis (Instant)
-    setTimeout(() => {
-      const rawResponse = analyzeQuery({
-        query: text,
-        result: selected,
-        subjectsMap: SUBJECTS,
-      });
-
-      const safeResponse = normalizeAssistantContent(rawResponse);
-
-      setChatMessages((prev) => {
-        const assistantMsg = {
-          id: Date.now() + 1,
-          role: "assistant",
-          content: safeResponse,
-          ts: new Date().toISOString(),
-        };
-        const next = [...prev, assistantMsg];
-        saveChatHistory(next);
-        return next;
-      });
-    }, 500);
-  };
 
   if (loading) return <Loader />;
 
@@ -312,7 +213,7 @@ const ResultStat = () => {
             </div>
           </div>
           <aside className="hidden lg:block lg:col-span-5">
-            <AIChatPanel messages={chatMessages} input={chatInput} setInput={setChatInput} onSend={handleSendMessage} />
+            <AIChatPanel selected={selected} subjectsMap={SUBJECTS} />
           </aside>
         </div>
       </main>
@@ -325,19 +226,16 @@ const ResultStat = () => {
         <div
           className="fixed inset-0 z-50 lg:hidden pointer-events-none flex flex-col justify-end"
         >
-          {/* Backdrop passes clicks due to pointer-events-none */}
-
           <div
-            className={`w-full pointer-events-auto bg-white rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] border-t border-gray-100 flex flex-col transition-all duration-300 ease-out ${isInputFocused ? "h-[90vh] pb-8" : "h-[60vh]"
-              }`}
+            className="w-full pointer-events-auto bg-white rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] border-t border-gray-100 flex flex-col transition-all duration-300 ease-out h-[60vh]"
           >
-            <div className={`flex items-center justify-between p-3 border-b border-gray-100 bg-white rounded-t-3xl transition-opacity duration-200 ${isInputFocused ? "opacity-0 h-0 p-0 overflow-hidden" : "opacity-100"}`}>
+            <div className="flex items-center justify-between p-3 border-b border-gray-100 bg-white rounded-t-3xl">
               <div className="flex items-center gap-3">
                 <div className="h-8 w-8 rounded-2xl bg-indigo-600 flex items-center justify-center text-white">
                   <Bot size={18} />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-800">MockX Assistant</div>
+                  <div className="text-sm font-semibold text-gray-800">Performance Summary</div>
                   <div className="text-xs text-slate-400">Context: {selected?.mockId || "General"}</div>
                 </div>
               </div>
@@ -350,28 +248,13 @@ const ResultStat = () => {
               </button>
             </div>
 
-            {/* Chat Content */}
             <div className="flex-1 min-h-0 bg-white">
               <AIChatPanel
                 isOpenDesktop={false}
-                messages={chatMessages}
-                input={chatInput}
-                setInput={setChatInput}
-                onSend={handleSendMessage}
-                onFocus={() => setIsInputFocused(true)}
-                onBlur={() => setIsInputFocused(false)}
+                selected={selected}
+                subjectsMap={SUBJECTS}
               />
             </div>
-
-            {/* Minimal close btn when focused */}
-            {isInputFocused && (
-              <button
-                onClick={() => setIsInputFocused(false)}
-                className="absolute top-2 right-2 bg-slate-100 text-slate-400 p-1 rounded-full z-50 shadow-sm"
-              >
-                <X size={14} />
-              </button>
-            )}
           </div>
         </div>
       )}

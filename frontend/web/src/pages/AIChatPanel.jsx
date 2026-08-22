@@ -1,130 +1,115 @@
-import React, { useRef, useEffect } from "react";
-import { Send, Bot } from "lucide-react";
-import AnalysisMessage from "./AnalysisMessage";
+import React from "react";
+import { Bot } from "lucide-react";
 
-const AIChatPanel = ({
-  isOpenDesktop = true,
-  messages,
-  input,
-  setInput,
-  onSend,
-  onFocus,
-  onBlur,
-}) => {
-  const textareaRef = useRef(null);
+const getWeakestSubject = (subjectStats = {}, subjectsMap = {}) => {
+  const entries = Object.entries(subjectStats).filter(
+    ([, stats]) => (stats?.attempted || 0) > 0
+  );
 
-  useEffect(() => {
-    const el = textareaRef.current;
-    if (!el) return;
-    el.style.height = "0px";
-    el.style.height = Math.min(el.scrollHeight, 120) + "px";
-  }, [input]);
+  if (!entries.length) return null;
+
+  const [key, stats] = entries.sort((a, b) => {
+    const aAccuracy = a[1].attempted
+      ? Math.round((a[1].correct / a[1].attempted) * 100)
+      : 0;
+    const bAccuracy = b[1].attempted
+      ? Math.round((b[1].correct / b[1].attempted) * 100)
+      : 0;
+
+    return aAccuracy - bAccuracy;
+  })[0];
+
+  const accuracy = stats.attempted
+    ? Math.round((stats.correct / stats.attempted) * 100)
+    : 0;
+
+  return {
+    name: subjectsMap[key]?.name || key.toUpperCase(),
+    accuracy,
+    attempted: stats.attempted || 0,
+    correct: stats.correct || 0,
+  };
+};
+
+const AIChatPanel = ({ isOpenDesktop = true, selected, subjectsMap = {} }) => {
+  const weakestSubject = getWeakestSubject(selected?.subjectStats, subjectsMap);
+
+  const summaryRows = [
+    {
+      label: "Mock",
+      value: selected?.mockId || "Not available",
+    },
+    {
+      label: "Score",
+      value:
+        selected?.score != null && selected?.total != null
+          ? `${selected.score}/${selected.total}`
+          : "Not available",
+    },
+    {
+      label: "Weakest subject",
+      value: weakestSubject
+        ? `${weakestSubject.name} (${weakestSubject.accuracy}%)`
+        : "Not available",
+    },
+  ];
 
   return (
     <div
-      className={`flex flex-col bg-white ${isOpenDesktop ? "rounded-3xl border shadow-sm h-[560px]" : "flex-1 h-full"
-        }`}
+      className={`flex flex-col bg-white ${
+        isOpenDesktop ? "rounded-3xl border shadow-sm h-[560px]" : "flex-1 h-full"
+      }`}
     >
-      {/* Header */}
       <div className="px-5 py-4 border-b flex gap-3 items-center">
         <div className="h-9 w-9 rounded-2xl bg-indigo-600 flex items-center justify-center">
           <Bot className="w-5 h-5 text-white" />
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-wider text-slate-400">
-            MockX Assistant
+            Performance Summary
           </p>
           <p className="text-xs text-slate-500">
-            Performance analysis & guidance
+            RAG bot logic has been removed from this panel
           </p>
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-3 space-y-4" style={{ scrollBehavior: 'smooth' }}>
-        {messages.map((m) => {
-          const isUser = m.role === "user";
-
-          return (
-            <div
-              key={m.id}
-              className={`flex ${isUser ? "justify-end" : "justify-start"}`}
-            >
+      <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+        <div className="rounded-2xl border bg-slate-50 px-4 py-3">
+          <p className="text-sm font-semibold text-slate-900">
+            Current result snapshot
+          </p>
+          <div className="mt-3 space-y-2">
+            {summaryRows.map((row) => (
               <div
-                className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${isUser
-                  ? "bg-slate-900 text-white"
-                  : "bg-slate-50 border text-slate-800"
-                  }`}
+                key={row.label}
+                className="flex items-center justify-between gap-3 text-sm"
               >
-                {/* 🔥 FIX HERE */}
-                {isUser ? (
-                  m.content
-                ) : (
-                  <AnalysisMessage data={m.content} />
-                )}
-
-                <div className="mt-1 text-[10px] text-slate-400 text-right">
-                  {new Date(m.ts).toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
-                </div>
+                <span className="text-slate-500">{row.label}</span>
+                <span className="font-medium text-slate-900">{row.value}</span>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            ))}
+          </div>
+        </div>
 
-      {/* Input */}
-      <div className="border-t px-4 py-3 bg-white" style={{ flexShrink: 0 }}>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            onSend();
-          }}
-          className="flex gap-2 items-end"
-        >
-          <textarea
-            ref={textareaRef}
-            rows={1}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                onSend();
-              }
-            }}
-            placeholder="Ask about weak areas or next plan..."
-            className="flex-1 resize-none rounded-xl border px-3 py-2 text-xs min-h-[44px] max-h-[120px] h-auto focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
-          />
-          <button
-            type="submit"
-            className="h-9 w-9 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:bg-indigo-600 transition-colors shadow-sm"
-          >
-            <Send className="w-4 h-4" />
-          </button>
-        </form>
+        <div className="rounded-2xl border px-4 py-3">
+          <p className="text-sm font-semibold text-slate-900">
+            What is still shown
+          </p>
+          <ul className="mt-3 space-y-2 text-sm text-slate-600 list-disc list-inside">
+            <li>Your mock selection and subject cards</li>
+            <li>The current score and weakest visible subject</li>
+            <li>The mobile and desktop sidebar layout</li>
+          </ul>
+        </div>
+
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          AI chat, local analysis responses, and RAG-style assistant logic are no
+          longer active here.
+        </div>
       </div>
     </div>
   );
 };
-
-export const createWelcomeMessage = (userName) => ({
-  id: "welcome",
-  role: "assistant",
-  content: {
-    title: `Hey ${userName || "Student"}`,
-    points: [
-      "I am here to help you boost your score!",
-      "Analyze your mock test performance",
-      "Generate a structured improvement plan",
-    ],
-    hint: "Try asking: Weakest subject or Next 14-day plan",
-  },
-  ts: new Date().toISOString(),
-});
 
 export default AIChatPanel;
