@@ -32,10 +32,18 @@ const Navbar = ({ user, logout, setShowLogin }) => {
       case "Help":
         toast("Help page coming soon", { icon: 'ℹ️' });
         break;
+      case "Dashboard":
+        navigate("/admin/transactions");
+        break;
       default:
         break;
     }
   };
+
+  const navItems = ["Home", "Practice", "Results", "Help"];
+  if (user && user.role === "admin") {
+    navItems.push("Dashboard");
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-20 bg-white/95">
@@ -57,7 +65,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         </div>
 
         <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-          {["Home", "Practice", "Results", "Help"].map((item) => (
+          {navItems.map((item) => (
             <button key={item} onClick={() => handleNavClick(item)} className="hover:text-sky-600 transition duration-200">
               {item}
             </button>
@@ -86,7 +94,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden px-4 mt-4 w-full">
           <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2">
-            {["Home", "Practice", "Results", "Help"].map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => { handleNavClick(item); setIsMobileMenuOpen(false); }}

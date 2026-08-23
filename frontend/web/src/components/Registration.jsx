@@ -188,6 +188,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
                     name="imucetOption"
                     value={formData.imucetOption}
                     onChange={handleChange}
+                    
                     className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white"
                   >
                     <option value="">Select Option</option>

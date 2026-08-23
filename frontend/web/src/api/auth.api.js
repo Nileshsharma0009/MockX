@@ -19,3 +19,8 @@ export const logoutUser = () => {
 export const getMe = () => {
   return api.get("/auth/me"); // ✅ FIXED
 };
+
+// get all users (Admin only)
+export const fetchUsers = () => {
+  return api.get("/auth/users");
+};

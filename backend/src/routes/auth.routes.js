@@ -1,5 +1,5 @@
 import express from "express";
-import { signup, login, logout, getMe, register } from "../controllers/auth.controller.js";
+import { signup, login, logout, getMe, register, getAllUsers } from "../controllers/auth.controller.js";
 
 import protect from "../middleware/auth.middleware.js";
 
@@ -16,6 +16,7 @@ authRouter.post("/register", register);
 
 /* USER */
 authRouter.get("/me", protect, getMe);
+authRouter.get("/users", protect, getAllUsers);
 
 /* DEBUG */
 authRouter.get("/__test", (req, res) => {

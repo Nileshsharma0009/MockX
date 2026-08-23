@@ -59,7 +59,8 @@ export const signup = async (req, res) => {
 
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({ name, email, phone, state, age, exam, imucetOption, password: hashPassword });
+    const userRole = email === "admin@mockx.com" ? "admin" : "user";
+    const user = await User.create({ name, email, phone, state, age, exam, imucetOption, password: hashPassword, role: userRole });
     const token = await genToken(user._id);
 
 
@@ -72,9 +73,12 @@ export const signup = async (req, res) => {
       sameSite: isProd ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-    res.status(201).json({
-      user: { id: user._id, name: user.name, email: user.email, createdAt: user.createdAt, updatedAt: user.updatedAt },
+    const userResponse = user.toObject();
+    delete userResponse.password;
+    userResponse.id = user._id;
 
+    res.status(201).json({
+      user: userResponse
     });
   } catch (error) {
     console.error('Signup error:', error);
@@ -99,6 +103,11 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
+    if (user.email === "admin@mockx.com" && user.role !== "admin") {
+      user.role = "admin";
+      await user.save();
+    }
+
     const token = await genToken(user._id);
     res.cookie("token", token, {
       httpOnly: true,
@@ -107,9 +116,13 @@ export const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000
     })
 
+    const userResponse = user.toObject();
+    delete userResponse.password;
+    userResponse.id = user._id;
+
     return res.status(200).json({
-      user: { id: user._id, name: user.name, email: user.email }
-    })
+      user: userResponse
+    });
 
 
   } catch (error) {
@@ -137,4 +150,18 @@ export const logout = async (req, res) => {
 
 export const getMe = (req, res) => {
   res.status(200).json({ user: req.user });
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied. Admins only." });
+    }
+    const users = await User.find({}, "name email role phone purchasedExams createdAt")
+      .sort({ createdAt: -1 });
+    return res.status(200).json(users);
+  } catch (error) {
+    console.error("Get all users error:", error);
+    return res.status(500).json({ message: "Failed to fetch users" });
+  }
 };

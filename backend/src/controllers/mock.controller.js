@@ -107,3 +107,18 @@ export const getMockQuestions = async (req, res) => {
     res.status(500).json({ message: "Failed to load questions" });
   }
 };
+
+export const getMocks = async (req, res) => {
+  try {
+    const { exam } = req.query;
+    const query = { isActive: true };
+    if (exam) {
+      query.exam = { $regex: new RegExp(`^${exam}$`, "i") };
+    }
+    const mocks = await Mock.find(query);
+    return res.status(200).json(mocks);
+  } catch (error) {
+    console.error("getMocks error:", error);
+    return res.status(500).json({ message: "Failed to load mocks" });
+  }
+};

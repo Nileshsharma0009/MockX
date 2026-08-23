@@ -2,14 +2,24 @@ import React, { useState } from "react";
 import { User, LogOut, Shield, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import NotificationBell from "./NotificationInbox";
 
 const MainNavbar = ({ desktopLinks, setShowLogin }) => {
     const navigate = useNavigate();
     const { user, logout } = useAuth();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    // Unified list of all possible links for Mobile View
+    // Dynamic lists to include Dashboard for admin users
+    const finalDesktopLinks = [...desktopLinks];
+    if (user && user.role === "admin" && !finalDesktopLinks.includes("Dashboard")) {
+        finalDesktopLinks.push("Dashboard");
+    }
+
     const mobileLinks = ["Home", "Practice", "Ai-Analyzer", "Results", "Help"];
+    const finalMobileLinks = [...mobileLinks];
+    if (user && user.role === "admin" && !finalMobileLinks.includes("Dashboard")) {
+        finalMobileLinks.push("Dashboard");
+    }
 
     const handleNavClick = (item) => {
         setIsMobileMenuOpen(false); // Close menu on click
@@ -41,6 +51,9 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
             case "Help":
                 navigate("/review-faq");
                 break;
+            case "Dashboard":
+                navigate("/admin");
+                break;
             default:
                 break;
         }
@@ -68,7 +81,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
 
                 {/* CENTER: Desktop Navigation (Specific to Page) */}
                 <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-                    {desktopLinks.map((item) => (
+                    {finalDesktopLinks.map((item) => (
                         <button
                             key={item}
                             onClick={() => handleNavClick(item)}
@@ -90,6 +103,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
                         </button>
                     ) : (
                         <div className="flex items-center gap-3">
+                            <NotificationBell />
                             {user.role === "admin" && <Shield className="w-4 h-4 text-indigo-600" />}
                             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100">
                                 <User className="w-4 h-4 text-gray-600" />
@@ -111,7 +125,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
                     {/* Backdrop to close when clicking outside could be added here if needed, 
                but for now relying on menu item click or toggle button */}
                     <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2 mt-2">
-                        {mobileLinks.map((item) => (
+                        {finalMobileLinks.map((item) => (
                             <button
                                 key={item}
                                 onClick={() => handleNavClick(item)}

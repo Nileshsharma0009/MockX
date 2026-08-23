@@ -21,10 +21,14 @@ const MockTestCard = ({
   available,
   date,
   isFree,
+  exam,
   user,
   index = 0,
 }) => {
   const navigate = useNavigate();
+  const paymentsEnabled = import.meta.env.VITE_PAYMENTS_ENABLED === "true";
+  const examId = exam || "imucet";
+  const hasAccess = isFree || !paymentsEnabled || user?.purchasedExams?.includes(examId) || user?.hasPaid;
 
   const handleStartTest = async () => {
     if (!available) {
@@ -32,9 +36,13 @@ const MockTestCard = ({
       return;
     }
 
-    const paymentsEnabled = import.meta.env.VITE_PAYMENTS_ENABLED === "true";
     if (!isFree && !user && paymentsEnabled) {
       toast.error("Please login to access premium mocks");
+      return;
+    }
+
+    if (!hasAccess) {
+      toast.error("Please purchase the bundle to unlock");
       return;
     }
 
@@ -268,7 +276,7 @@ const MockTestCard = ({
           <motion.div className="mt-8" variants={itemVariants}>
             <AnimatePresence mode="wait">
               {available ? (
-                isFree || user?.hasPurchasedBundle ? (
+                hasAccess ? (
                   <motion.button
                     key="start"
                     onClick={handleStartTest}

@@ -54,7 +54,7 @@ class ErrorBoundary extends React.Component {
 
             {/* Error message */}
             <div className="bg-slate-100 text-slate-600 text-xs font-mono px-3 py-2 rounded-lg mb-10 max-w-md break-words">
-              {this.state.error?.message || "Unknown rendering error"}
+              {/* {this.state.error?.message || "Unknown rendering error"} */}
             </div>
 
             {/* Buttons */}

@@ -80,6 +80,17 @@
 //       </BrowserRouter>
 //   </StrictMode>
 // );
+
+// Programmatic service worker unregistration to prevent old cached assets/scripts blocking Razorpay
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    for (const registration of registrations) {
+      registration.unregister();
+      console.log("Unregistered service worker:", registration);
+    }
+  });
+}
+
 import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -105,6 +116,7 @@ const ResultHistory = lazy(() => import("./pages/ResultHistory.jsx"));
 const ResultStat = lazy(() => import("./pages/ResultStat.jsx"));
 const ResultPage = lazy(() => import("./components/ResultPage.jsx"));
 const ResultDetail = lazy(() => import("./pages/ResultDetail.jsx"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard.jsx"));
 
 // Test Components (For debugging)
 const TestError = lazy(() => import("./pages/TestError.jsx"));
@@ -132,7 +144,7 @@ const AppRoutes = () => {
           <Route path="/mock-tests" element={<ExamCatalogPage />} />
 
           {/* 🧪 SPECIFIC EXAM PAGE */}
-          <Route path="/mock-tests/imucet" element={<MockTestPage />} />
+          <Route path="/mock-tests/:examId" element={<MockTestPage />} />
 
           {/* 📝 TEST ENGINE (VERY HEAVY) */}
           <Route
@@ -177,6 +189,15 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute>
                 <ResultStat />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
               </ProtectedRoute>
             }
           />

@@ -10,6 +10,14 @@ const mockSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        description: {
+            type: String,
+            default: "Full syllabus coverage | 180 minutes | 200 questions",
+        },
+        releaseDate: {
+            type: String,
+            default: () => new Date().toISOString(),
+        },
         exam: {
             type: String,
             required: true, // "imucet", "mht-cet", etc.

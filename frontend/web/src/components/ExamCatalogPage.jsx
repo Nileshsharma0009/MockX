@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
@@ -9,8 +9,9 @@ import {
 } from "lucide-react";
 import LoginModal from "./LoginModal";
 import exams from "../data/SelectExam";
-import { createOrder } from "../api/payment";
+import { createOrder, verifyPayment, reportPaymentFailure, fetchPrices } from "../api/payment";
 import Footer from "./Footer.jsx";
+import NotificationBell from "./NotificationInbox.jsx";
 
 /* ---------------- NAVBAR COMPONENT ---------------- */
 const Navbar = ({ user, logout, setShowLogin }) => {
@@ -26,9 +27,18 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         break;
       case "Help": 
         navigate("/review-faq");
+        break;
+      case "Dashboard":
+        navigate("/admin");
+        break;
       default: break;
     }
   };
+
+  const navItems = ["Home", "Results", "Help"];
+  if (user && user.role === "admin") {
+    navItems.push("Dashboard");
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50">
@@ -51,7 +61,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
         </div>
 
         <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-          {["Home", "Results", "Help"].map((item) => (
+          {navItems.map((item) => (
             <button key={item} onClick={() => handleNavClick(item)} className="hover:text-sky-600 transition-colors">
               {item}
             </button>
@@ -68,6 +78,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
             </button>
           ) : (
             <div className="flex items-center gap-3">
+              <NotificationBell />
               {user.role === "admin" && <Shield className="w-4 h-4 text-indigo-600" />}
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200">
                 <div className="h-6 w-6 rounded-full bg-sky-100 flex items-center justify-center">
@@ -87,7 +98,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden px-4 mt-4 w-full absolute left-0 right-0">
           <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2 mx-4">
-            {["Home", "Results", "Help"].map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => { handleNavClick(item); setIsMobileMenuOpen(false); }}
@@ -110,6 +121,21 @@ const ExamCatalogPage = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const { user, logout, refreshUser } = useAuth();
   const navigate = useNavigate();
+  const [prices, setPrices] = useState({});
+
+  useEffect(() => {
+    const getPrices = async () => {
+      try {
+        const res = await fetchPrices();
+        if (res?.data) {
+          setPrices(res.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch dynamic prices:", err);
+      }
+    };
+    getPrices();
+  }, []);
 
   const handleBuyExam = async (examId) => {
     try {
@@ -134,14 +160,50 @@ const ExamCatalogPage = () => {
         order_id: res.data.id,
         name: "MockX",
         description: "Exam Test Series",
-        handler: async function () {
-          setPaymentSuccess(true);
-          setTimeout(async () => { await refreshUser(); }, 2000);
+        handler: async function (response) {
+          try {
+            // Cryptographically verify payment on backend
+            await verifyPayment({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            });
+            toast.success("Payment verified successfully! Access granted.");
+            setPaymentSuccess(true);
+            await refreshUser();
+          } catch (verifyErr) {
+            console.error("Payment verification failed:", verifyErr);
+            toast.error("Verification failed, but we saved your transaction. Please contact support.");
+          }
         },
         theme: { color: "#4f46e5" },
       };
 
       const rzp = new window.Razorpay(options);
+
+      rzp.on("payment.failed", async function (response) {
+        try {
+          await reportPaymentFailure({
+            orderId: response.error.metadata.order_id,
+            paymentId: response.error.metadata.payment_id || null,
+            mockId: examId,
+            amount: res.data.amount / 100,
+            error: {
+              code: response.error.code || null,
+              description: response.error.description || null,
+              source: response.error.source || null,
+              step: response.error.step || null,
+              reason: response.error.reason || null,
+              metadata: response.error.metadata || null,
+            },
+          });
+          // Dispatch custom event to notify the notification inbox to refresh
+          window.dispatchEvent(new Event("check_notifications"));
+        } catch (failLogErr) {
+          console.error("Failed to report payment failure to server:", failLogErr);
+        }
+      });
+
       rzp.open();
     } catch (err) {
       console.error("Payment error:", err);
@@ -187,7 +249,7 @@ const ExamCatalogPage = () => {
                     {exam.name}
                   </span>
                   <div className="text-right">
-                    <span className="text-2xl font-bold text-slate-900">₹{exam.price}</span>
+                    <span className="text-2xl font-bold text-slate-900">₹{prices[exam.id] ?? exam.price}</span>
                     <p className="text-[10px] text-slate-400 font-medium">LIFETIME ACCESS</p>
                   </div>
                 </div>
