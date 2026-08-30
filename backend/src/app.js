@@ -23,9 +23,9 @@ const morganStream = {
 app.use(morgan("combined", { stream: morganStream }));
 
 
+const url = process.env.WEBSITE_URL;
+const interval = Number(process.env.RELOAD_INTERVAL) || 30000;
 
-const url = `https://mockx-iv3w.onrender.com`;
-const interval = 30000;
 
 function reloadWebsite() {
   axios
