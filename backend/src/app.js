@@ -24,7 +24,7 @@ app.use(morgan("combined", { stream: morganStream }));
 
 
 
-const url = `https://mockx-m631.onrender.com/`;
+const url = `https://mockx-iv3w.onrender.com`;
 const interval = 30000;
 
 function reloadWebsite() {
