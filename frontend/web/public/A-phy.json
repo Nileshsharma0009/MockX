@@ -1,0 +1,335 @@
+{
+    "phy": {
+        "physics": [
+            {
+                "id": "demo-B-phy-001",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "Three identical capacitors, each of 6 μF, are connected so that their effective capacitance is 9 μF. How are they connected?",
+                "options": [
+                    "All in parallel",
+                    "All in series",
+                    "Two in parallel, then series with third",
+                    "Two in series, then parallel with third"
+                ],
+                "marks": 2,
+                "imageUrl": "https://www.google.com/imgres?q=Three%20identical%20capacitors%2C%20each%20of%206%20%CE%BCF%2C%20are%20connected%20so%20that%20their%20effective%20capacitance%20is%209%20%CE%BCF.%20How%20are%20they%20connected%3F%22%2C&imgurl=https%3A%2F%2Fwww.sarthaks.com%2F%3Fqa%3Dblob%26qa_blobid%3D16815458841627749701&imgrefurl=https%3A%2F%2Fwww.sarthaks.com%2F54213%2Fthree-identical-capacitors-c1-c2-and-c3-capacitance-each-are-connected-12v-battery-shown&docid=MKklwiz1VXFt7M&tbnid=6si6qiB5T04-VM&vet=12ahUKEwj5vIfiwYGXAxU9jeEIHbATBBIQnPAOegQIPhAA..i&w=196&h=126&hcb=2&ved=2ahUKEwj5vIfiwYGXAxU9jeEIHbATBBIQnPAOegQIPhAA",
+                "paragraph": "For three identical capacitors, each having a capacitance of 6 μF, an effective capacitance of 9 μF can be obtained by connecting two capacitors in series and then connecting this series combination in parallel with the third capacitor. The equivalent capacitance of two 6 μF capacitors connected in series is 3 μF. This is calculated using the series capacitance formula, where the reciprocal of the equivalent capacitance is equal to the sum of the reciprocals of the individual capacitances. The 3 μF series combination is then connected in parallel with the remaining 6 μF capacitor. Therefore, the total effective capacitance is 3 μF plus 6 μF, which equals 9 μF. Hence, the correct arrangement is two capacitors in series, with their combination connected in parallel with the third capacitor."
+            },
+            {
+                "id": "demo-B-phy-002",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A point charge q is placed at the center of a cube. What is the flux through one face?",
+                "options": [
+                    "q/ε₀",
+                    "q/(2ε₀)",
+                    "q/(6ε₀)",
+                    "zero"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-003",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A potentiometer wire is 5 m long. What is the potential gradient if a cell of emf 10 V is connected across it?",
+                "options": [
+                    "2 V/m",
+                    "0.5 V/m",
+                    "1 V/m",
+                    "5 V/m"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-004",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "In a Wheatstone bridge, if P = 10Ω, Q = 20Ω, R = 25Ω, what must S be for balance?",
+                "options": [
+                    "20Ω",
+                    "40Ω",
+                    "12.5Ω",
+                    "50Ω"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-005",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "Current flows east to west in a conductor. What is the direction of the magnetic field above it?",
+                "options": [
+                    "North",
+                    "East",
+                    "West",
+                    "Out of the page"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-006",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A circular coil of radius r carries current I. The magnetic field at the center is doubled if:",
+                "options": [
+                    "r is doubled",
+                    "I is halved",
+                    "I is doubled",
+                    "r is halved"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-007",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A solenoid of length 1 m has 2000 turns and carries 5 A. Its internal magnetic field is:",
+                "options": [
+                    "4π×10⁻³ T",
+                    "2π×10⁻³ T",
+                    "2π×10⁻² T",
+                    "4π×10⁻⁴ T"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-008",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "When an inductor and a capacitor (each 1 H and 1 F) are connected in series, what is the angular frequency of resonance?",
+                "options": [
+                    "1 rad/s",
+                    "0.5 rad/s",
+                    "2 rad/s",
+                    "π rad/s"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-009",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "Two wires of same length and area but different materials are connected in series across a voltage. Which statement is true?",
+                "options": [
+                    "Both carry same current but may have different voltage drops",
+                    "Both have the same resistance",
+                    "Both develop the same electric field",
+                    "Current is different in both"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-010",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A rod of length l rotates with angular velocity ω about a fixed axis perpendicular to one end. What is the linear velocity at the free end?",
+                "options": [
+                    "ωl/2",
+                    "ωl",
+                    "2ωl",
+                    "ω/l"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-011",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "If a block slides down an inclined plane making an angle θ with horizontal with coefficient of friction μ, its acceleration is:",
+                "options": [
+                    "g(sinθ−μcosθ)",
+                    "g(cosθ−μsinθ)",
+                    "g(sinθ+μcosθ)",
+                    "gμsinθ"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-012",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "When a body falls freely from height h under gravity, potential energy lost equals:",
+                "options": [
+                    "Kinetic energy gained",
+                    "Half kinetic energy gained",
+                    "Kinetic energy lost",
+                    "Potential energy gained"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-013",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A disc and a ring of equal mass and radius roll down the same incline without slipping. Who reaches first?",
+                "options": [
+                    "Disc",
+                    "Ring",
+                    "Both together",
+                    "Need more data"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-014",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A car follows a circular track of radius 100 m at speed 10 m/s. What is the required friction coefficient?",
+                "options": [
+                    "1.0",
+                    "0.1",
+                    "0.05",
+                    "0.01"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-015",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "Two masses m and 2m are attached to a string passing over a pulley. Acceleration of m is:",
+                "options": [
+                    "g/3 upward",
+                    "g/2 downward",
+                    "g/3 downward",
+                    "g/2 upward"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-016",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A particle moves in a circle at constant speed. Its acceleration:",
+                "options": [
+                    "Is always tangent to the circle",
+                    "Is zero",
+                    "Is constant",
+                    "Points towards the center"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-017",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "In an adiabatic expansion of an ideal gas, which of the following is true?",
+                "options": [
+                    "Heat supplied equals work done",
+                    "No heat is exchanged",
+                    "Temperature remains constant",
+                    "Pressure remains constant"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-018",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "Work done in an isobaric process at pressure P if volume changes from V₁ to V₂:",
+                "options": [
+                    "P(V₂ − V₁)",
+                    "V₂ − V₁",
+                    "PV₁ − PV₂",
+                    "P/V₁"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-019",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A gas undergoes isothermal compression. The internal energy:",
+                "options": [
+                    "Increases",
+                    "Decreases",
+                    "Does not change",
+                    "Depends on initial temperature"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            },
+            {
+                "id": "demo-B-phy-020",
+                "mockId": "custom-phy-01",
+                "section": "phy",
+                "subject": "phy",
+                "question": "A spring of k = 100 N/m is compressed by 0.2 m. Energy stored is:",
+                "options": [
+                    "4 J",
+                    "2 J",
+                    "0.5 J",
+                    "1 J"
+                ],
+                "marks": 2,
+                "imageUrl": null,
+                "paragraph": null
+            }
+        ]
+    }
+}
+
+
+ {
+    "maths": {
+        "mathematics": [
+            {}
+        ]
+    }
+}

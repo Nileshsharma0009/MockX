@@ -27,21 +27,21 @@ const Navbar = ({ user, logout, setShowLogin }) => {
   const handleNavClick = (item) => {
     switch (item) {
       case "Home":
-        navigate("/");
+        navigate("/v2");
         break;
       case "Practice":
         if (!user) setShowLogin(true);
-        else navigate("/mock-tests");
+        else navigate("/v2/mock-tests");
         break;
       case "Results":
         if (!user) setShowLogin(true);
-        else navigate("/result-history");
+        else navigate("/v2/result-history");
         break;
       case "Help":
         toast("Help page coming soon", { icon: '😊' });
         break;
       case "Dashboard":
-        navigate("/admin/transactions");
+        navigate("/v2/admin");
         break;
       default:
         break;
@@ -65,7 +65,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/v2")}>
           <div>
             <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
             <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
@@ -132,7 +132,7 @@ const ResultStat = () => {
 
   // Fetch Results
   useEffect(() => {
-    if (!user) { navigate("/"); return; }
+    if (!user) { navigate("/v2"); return; }
     fetch(`${API_BASE}/api/results/my`, { credentials: "include" })
       .then((r) => r.json())
       .then((data) => {

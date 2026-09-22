@@ -35,8 +35,7 @@ const API_BASE =
 function resolveMockId() {
   const param = new URLSearchParams(window.location.search).get("mock");
   if (!param) return "imu1";
-  if (param.startsWith("imu")) return param;
-  return `imu${param}`;
+  return param;
 }
 
 /* ---------- PAGE ---------- */
@@ -53,12 +52,7 @@ function TestPageInner() {
   const lastSavedData = React.useRef({}); // Tracks what's in DB
   const isSavingRef = React.useRef(false); // Prevents overlapping saves
 
-  /* ⏱ Init timer (ONCE) */
-  useEffect(() => {
-    dispatch({ type: "SET_TIMER", payload: 180 * 60 });
-  }, [dispatch]);
-
-  /* 📥 Load questions */
+  /* 📥 Load questions & exam config */
   useEffect(() => {
     const resolvedMock = resolveMockId();
     setMockId(resolvedMock);
@@ -73,7 +67,7 @@ function TestPageInner() {
         if (r.status === 403) {
           const data = await r.json();
           toast.error(data.message || "Access denied.");
-          navigate("/mock-tests");
+          navigate("/v2/mock-tests");
           return null;
         }
         if (!r.ok) throw new Error("Failed to load questions");
@@ -82,35 +76,54 @@ function TestPageInner() {
       .then((data) => {
         if (!data) return;
 
+        const exam = data.exam || null;
+        const rawQuestions = data.questions || {
+          A: data.A || [],
+          B: data.B || [],
+        };
+
+        const shuffledQuestions = {};
+        for (const secKey of Object.keys(rawQuestions)) {
+          shuffledQuestions[secKey] = shuffleWithGroups(rawQuestions[secKey] || []);
+        }
+
         dispatch({
           type: "SET_QUESTIONS",
           payload: {
-            A: shuffleWithGroups(data.A || []),
-            B: shuffleWithGroups(data.B || []),
+            exam,
+            questions: shuffledQuestions,
+            A: shuffledQuestions["A"] || [],
+            B: shuffledQuestions["B"] || [],
           },
         });
 
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Load questions error:", err);
         toast.error("Failed to load questions");
         setLoading(false);
       });
   }, [dispatch, navigate]);
 
-  /* 💾 Helper: Get Current Answers Object */
+  /* 💾 Helper: Get Current Answers Object across all sections */
   const computeCurrentAnswers = useCallback(() => {
     const answers = {};
-    state.fullSetA.forEach((q, i) => {
-      const sel = state.selectedOptionsA[i];
-      if (sel != null) answers[q.questionCode] = sel;
-    });
-    state.fullSetB.forEach((q, i) => {
-      const sel = state.selectedOptionsB[i];
-      if (sel != null) answers[q.questionCode] = sel;
-    });
+    const questionsBySection = state.questionsBySection || {};
+    const selectedOptionsBySection = state.selectedOptionsBySection || {};
+
+    for (const sec of Object.keys(questionsBySection)) {
+      const qList = questionsBySection[sec] || [];
+      const selList = selectedOptionsBySection[sec] || [];
+      qList.forEach((q, i) => {
+        const sel = selList[i];
+        if (sel != null && q?.questionCode) {
+          answers[q.questionCode] = sel;
+        }
+      });
+    }
     return answers;
-  }, [state.fullSetA, state.fullSetB, state.selectedOptionsA, state.selectedOptionsB]);
+  }, [state.questionsBySection, state.selectedOptionsBySection]);
 
   /* 💾 Auto-Save Logic */
   useEffect(() => {
@@ -121,11 +134,6 @@ function TestPageInner() {
 
       const currentAnswers = computeCurrentAnswers();
       const currentKeys = Object.keys(currentAnswers);
-      const savedKeys = Object.keys(lastSavedData.current);
-
-      // Check for changes (Simple count check + basic diff)
-      // We only care if user has answered MORE questions or changed something
-      // Simple heuristic: If count difference > 20 OR just periodically every 20 answers
 
       // Calculate Delta (Answers that are NEW or CHANGED)
       const delta = {};
@@ -138,55 +146,38 @@ function TestPageInner() {
         }
       }
 
-      // THRESHOLD: Save if user made > 25 changes (Optimized for multiple concurrent users)
-      if (changesCount >= 25) {
+      // THRESHOLD: Save if user made >= 20 changes
+      if (changesCount >= 20) {
         isSavingRef.current = true;
-        // console.log("💾 Auto-saving progress...", changesCount, "changes");
-
         try {
           await saveProgress({ mockId, answers: delta });
-
-          // On success, update lastSavedData with what we sent
-          // We assume merge was successful on server
           lastSavedData.current = { ...lastSavedData.current, ...delta };
-
-          // console.log("✅ Auto-save complete");
         } catch (err) {
           console.error("❌ Auto-save failed (background)", err);
         } finally {
           isSavingRef.current = false;
         }
       }
-    }, 5000); // Check every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [computeCurrentAnswers, loading, mockId, state.isSubmitted]);
-
 
   /* 📝 Submit */
   const handleSubmit = useCallback(async () => {
     if (!window.confirm("Are you sure you want to submit the test?")) return;
 
-    // Send FULL answers just to be safe & consistent (backend will merge)
-    // Or send Delta if we want to be super optimized? 
-    // Backend handles merge, so sending FULL is fine unless it's huge. 
-    // 200 items is tiny, so let's send FULL to ensure integrity.
     const answers = computeCurrentAnswers();
-
     const res = await submitAttempt({ mockId, answers });
     navigate(`/result/${res.data.resultId}`, { replace: true });
-  }, [
-    computeCurrentAnswers,
-    mockId,
-    navigate,
-  ]);
+  }, [computeCurrentAnswers, mockId, navigate]);
 
-  /* ⏰ Auto submit */
+  /* ⏰ Auto submit when timer reaches 0 */
   useEffect(() => {
-    if (state.timer === 0 && !state.isSubmitted && !loading) {
+    if (state.totalSeconds === 0 && !state.isSubmitted && !loading) {
       handleSubmit();
     }
-  }, [state.timer, state.isSubmitted, loading, handleSubmit]);
+  }, [state.totalSeconds, state.isSubmitted, loading, handleSubmit]);
 
   return (
     <Suspense fallback={<Loader />}>

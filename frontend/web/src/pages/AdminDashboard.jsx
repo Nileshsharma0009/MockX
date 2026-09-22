@@ -673,7 +673,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     if (!user || user.role !== "admin") {
       toast.error("Access denied. Admins only.");
-      navigate("/");
+      navigate("/v2");
       return;
     }
 
@@ -865,7 +865,7 @@ const AdminDashboard = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
             <button
-              onClick={() => navigate("/mock-tests")}
+              onClick={() => navigate("/v2/mock-tests")}
               className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500 hover:text-slate-700"
               title="Back to Catalog"
             >
@@ -879,7 +879,14 @@ const AdminDashboard = () => {
               <p className="text-xs text-slate-500 font-medium">Manage transactions, payments, and notifications</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              onClick={() => navigate("/v2/admin/institutes")}
+              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-semibold transition-all shadow-sm active:scale-95"
+            >
+              <Shield className="w-4 h-4" />
+              Institute Directory
+            </button>
             <button
               onClick={() => {
                 if (activeTab === "transactions") loadTransactions(true);

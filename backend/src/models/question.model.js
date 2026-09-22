@@ -16,14 +16,14 @@ const Question = new mongoose.Schema(
 
     section: {
       type: String,
-      enum: ["A", "B"],
       required: true,
+      index: true,
     },
 
     subject: {
       type: String,
-      enum: ["apt", "eng", "gk", "phy", "chem", "math"],
       required: true,
+      index: true,
     },
 
     question: {
@@ -34,14 +34,13 @@ const Question = new mongoose.Schema(
     options: {
       type: [String],
       required: true,
-      validate: v => v.length === 4,
+      validate: v => Array.isArray(v) && v.length >= 2,
     },
 
     correctOption: {
       type: Number,
       required: true,
       min: 0,
-      max: 3,
       select: false,
     },
 
@@ -60,6 +59,24 @@ const Question = new mongoose.Schema(
     isActive: {
       type: Boolean,
       default: true,
+    },
+
+    /* ---------- INSTITUTE ISOLATION ---------- */
+    instituteId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Institute",
+      default: null,
+      index: true,
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
+    isPrivate: {
+      type: Boolean,
+      default: false,
+      index: true,
     },
   },
   { timestamps: true }

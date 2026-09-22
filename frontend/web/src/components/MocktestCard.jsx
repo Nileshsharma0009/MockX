@@ -304,7 +304,7 @@ const MockTestCard = ({
                 ) : (
                   <motion.button
                     key="unlock"
-                    onClick={() => navigate("/mock-tests")}
+                    onClick={() => navigate("/v2/mock-tests")}
                     className="group/btn relative w-full py-4 border-2 border-slate-900/80 text-slate-900 hover:text-white rounded-2xl font-bold text-sm transition-all overflow-hidden bg-white hover:bg-slate-900 shadow-lg hover:shadow-2xl active:scale-[0.97]"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

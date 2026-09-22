@@ -34,52 +34,37 @@ export default function Navbar({ onToggleSidebar }) {
               <span className="text-2xl"></span>
               <div className="flex flex-col leading-tight">
                 <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gray-500 hidden sm:block">
-                  IMUCET • Mock Test
+                <span className="text-[10px] uppercase tracking-[0.18em] text-gray-500 hidden sm:block truncate max-w-[200px]">
+                  {state.exam?.title || (state.exam?.exam ? `${state.exam.exam.toUpperCase()} • Mock Test` : "IMUCET • Mock Test")}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* CENTER: section toggles + dark mode */}
-          <div className="flex items-center gap-2 sm:gap-3 bg-slate-100/80 rounded-full px-2 py-1 shadow-sm">
-            <button
-              role="tab"
-              aria-selected={state.currentSection === "A"}
-              onClick={() => toggleSection("A")}
-              className={`px-4 py-2 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${state.currentSection === "A"
-                ? "bg-[#5c4d7d] text-white shadow-sm"
-                : "bg-white text-gray-700"
+          {/* CENTER: dynamic section toggles */}
+          <div className="flex items-center gap-2 sm:gap-3 bg-slate-100/80 rounded-full px-2 py-1 shadow-sm overflow-x-auto max-w-[50vw]">
+            {(state.sections && state.sections.length > 0
+              ? state.sections
+              : [
+                  { id: "A", name: "Section A" },
+                  { id: "B", name: "Section B" },
+                ]
+            ).map((sec) => (
+              <button
+                key={sec.id}
+                role="tab"
+                aria-selected={state.currentSection === sec.id}
+                onClick={() => toggleSection(sec.id)}
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium whitespace-nowrap ${
+                  state.currentSection === sec.id
+                    ? "bg-[#5c4d7d] text-white shadow-sm"
+                    : "bg-white text-gray-700 hover:bg-slate-200/60"
                 }`}
-              title="Section A"
-            >
-              <span className="sm:hidden"> A</span>
-              <span className="hidden sm:inline"> A</span>
-            </button>
-
-            <button
-              role="tab"
-              aria-selected={state.currentSection === "B"}
-              onClick={() => toggleSection("B")}
-              className={`px-4 py-2 rounded-full transition-colors duration-150 text-xs md:text-sm font-medium ${state.currentSection === "B"
-                ? "bg-[#5c4d7d] text-white shadow-sm"
-                : "bg-white text-gray-700"
-                }`}
-              title="Section B"
-            >
-              <span className="sm:hidden"> B</span>
-              <span className="hidden sm:inline"> B</span>
-            </button>
-
-            {/* <button
-              id="darkModeToggle"
-              onClick={() => document.body.classList.toggle("dark-mode")}
-              className="ml-1 px-3 py-1.5 rounded-full bg-[#5c4d7d] text-white text-xs md:text-sm"
-              aria-pressed={document.body.classList.contains("dark-mode")}
-              title="Toggle dark mode"
-            >
-              🌙
-            </button> */}
+                title={sec.name || `Section ${sec.id}`}
+              >
+                <span>{sec.name || `Section ${sec.id}`}</span>
+              </button>
+            ))}
           </div>
 
           {/* RIGHT: fullscreen + timer */}

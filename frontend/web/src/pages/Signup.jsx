@@ -43,7 +43,7 @@ function Signup() {
 
       const { user } = response.data;
       localStorage.setItem('user', JSON.stringify(user));
-      navigate('/');
+      navigate('/v2');
     } catch (err) {
       const message = err.response?.data?.message || err.message || 'Signup failed';
       setError(message);
@@ -64,7 +64,7 @@ function Signup() {
          
           <button
             type="button"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/v2')}
             className="p-2 rounded-full hover:bg-gray-100 text-gray-600"
             aria-label="Go back"
           > <ArrowLeft size={20} /></button>

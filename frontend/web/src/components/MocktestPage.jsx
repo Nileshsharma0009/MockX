@@ -109,7 +109,7 @@ const MockTestPage = () => {
               We are curating premium mocks for the {examId.toUpperCase()} exam series. They will be added here shortly!
             </p>
             <button
-              onClick={() => navigate("/mock-tests")}
+              onClick={() => navigate("/v2/mock-tests")}
               className="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-800 transition"
             >
               Back to Catalog

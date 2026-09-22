@@ -75,10 +75,12 @@ node_modules/
 MANAGE_PAYMENTS.md
 
 DEPLOYMENT_GUIDE.md
-
+final version2.md
 PRODUCTION_GUIDE.md
 SETUP_GUIDE.md
+CUSTOM_MOCK_GUIDE.md
 
 ./frontend/web/public
 
 ./backend/seedAdmin.js
+version2.md

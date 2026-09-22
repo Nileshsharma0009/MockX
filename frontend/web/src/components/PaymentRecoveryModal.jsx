@@ -65,7 +65,7 @@ export default function PaymentRecoveryModal({ notification, onClose }) {
     try {
       await markNotificationsRead(notification._id);
       toast.success("Welcome back! Loading your unlocked mock tests.");
-      navigate("/mock-tests");
+      navigate("/v2/mock-tests");
       onClose();
     } catch (err) {
       console.error("Failed to dismiss notification:", err);

@@ -27,50 +27,16 @@ const ResultSchema = new mongoose.Schema(
       required: true,
     },
 
-    // 🧩 section-wise (already used by you)
+    // 🧩 section-wise scores (dynamic: { [sectionId]: score })
     sectionScores: {
-      A: { type: Number, default: 0 },
-      B: { type: Number, default: 0 },
+      type: mongoose.Schema.Types.Mixed,
+      default: {},
     },
 
-    // 📊 SUBJECT-WISE STATS (🔥 NEW – IMPORTANT)
+    // 📊 Subject-wise stats (dynamic: { [subjectKey]: { attempted, correct, wrong, accuracy } })
     subjectStats: {
-      math: {
-        attempted: { type: Number, default: 0 },
-        correct: { type: Number, default: 0 },
-        wrong: { type: Number, default: 0 },
-        accuracy: { type: Number, default: 0 },
-      },
-      phy: {
-        attempted: { type: Number, default: 0 },
-        correct: { type: Number, default: 0 },
-        wrong: { type: Number, default: 0 },
-        accuracy: { type: Number, default: 0 },
-      },
-      chem: {
-        attempted: { type: Number, default: 0 },
-        correct: { type: Number, default: 0 },
-        wrong: { type: Number, default: 0 },
-        accuracy: { type: Number, default: 0 },
-      },
-      eng: {
-        attempted: { type: Number, default: 0 },
-        correct: { type: Number, default: 0 },
-        wrong: { type: Number, default: 0 },
-        accuracy: { type: Number, default: 0 },
-      },
-      gk: {
-        attempted: { type: Number, default: 0 },
-        correct: { type: Number, default: 0 },
-        wrong: { type: Number, default: 0 },
-        accuracy: { type: Number, default: 0 },
-      },
-      apt: {
-        attempted: { type: Number, default: 0 },
-        correct: { type: Number, default: 0 },
-        wrong: { type: Number, default: 0 },
-        accuracy: { type: Number, default: 0 },
-      },
+      type: mongoose.Schema.Types.Mixed,
+      default: {},
     },
 
     // 📝 raw answers (already used)
@@ -92,6 +58,20 @@ const ResultSchema = new mongoose.Schema(
     isSubmitted: {
       type: Boolean,
       default: true, // Default true for backward compatibility
+    },
+
+    /* ---------- INSTITUTE ISOLATION ---------- */
+    instituteId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Institute",
+      default: null,
+      index: true,
+    },
+    assignmentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TestAssignment",
+      default: null,
+      index: true,
     },
   },
   { timestamps: true }

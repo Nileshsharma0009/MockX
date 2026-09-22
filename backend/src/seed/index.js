@@ -12,6 +12,7 @@ import fs from "fs";
 import path from "path";
 import connectDB from "../config/db.js";
 import Question from "../models/question.model.js";
+import Mock from "../models/mock.model.js";
 import { mocks } from "./mocks.config.js";
 
 // ---------- helper ----------
@@ -33,18 +34,10 @@ const seed = async () => {
       // 1️⃣ Load raw grouped questions
       const rawQuestions = loadJSON(mock.questionsFile);
 
-      /**
-       * rawQuestions structure:
-       * {
-       *   A: { english: [...], gk: [...], aptitude: [...] },
-       *   B: { physics: [...], chemistry: [...], maths: [...] }
-       * }
-       */
-
       // 2️⃣ Deep flatten → final questions array
-      const questions = Object.values(rawQuestions) // A, B
+      const questions = Object.values(rawQuestions)
         .flatMap((section) =>
-          Object.values(section) // english, gk, aptitude...
+          Object.values(section)
             .flat(Infinity)
         );
 
@@ -67,13 +60,13 @@ const seed = async () => {
 
         return {
           questionCode: q.id,
-          mockId: q.mockId,
+          mockId: q.mockId || mock.mockId,
           section: q.section,
           subject: q.subject,
           question: q.question,
           options: q.options,
           correctOption: answers[q.id],
-          marks: q.marks || 1,
+          marks: q.marks || (mock.marking?.correct || 1),
           imageUrl: q.imageUrl || null,
           paragraph: q.paragraph || null,
         };
@@ -83,8 +76,30 @@ const seed = async () => {
       await Question.deleteMany({ mockId: mock.mockId });
       await Question.insertMany(prepared);
 
+      // 6️⃣ Upsert Mock Configuration
+      await Mock.findByIdAndUpdate(
+        mock.mockId,
+        {
+          _id: mock.mockId,
+          title: mock.title || `Mock Test ${mock.mockId}`,
+          description: mock.description || "",
+          exam: mock.exam || "imucet",
+          isFree: mock.isFree !== undefined ? mock.isFree : true,
+          isActive: true,
+          duration: mock.duration || 180,
+          totalQuestions: mock.totalQuestions || prepared.length,
+          totalMarks: mock.totalMarks || (prepared.length * (mock.marking?.correct || 1)),
+          marking: mock.marking || { correct: 1, incorrect: 0.25 },
+          sections: mock.sections || [
+            { id: "A", name: "Section A" },
+            { id: "B", name: "Section B" },
+          ],
+        },
+        { upsert: true, new: true }
+      );
+
       console.log(
-        `✅ ${mock.mockId} seeded successfully (${prepared.length} questions)`
+        `✅ ${mock.mockId} seeded successfully (${prepared.length} questions, duration: ${mock.duration || 180}m)`
       );
     }
 

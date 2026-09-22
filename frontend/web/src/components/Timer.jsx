@@ -10,6 +10,9 @@ export default function Timer() {
   // Start timer only when question sets are present
   useEffect(() => {
     const questionsLoaded =
+      Object.values(state.questionsBySection || {}).some(
+        (list) => Array.isArray(list) && list.length > 0
+      ) ||
       (state.fullSetA && state.fullSetA.length > 0) ||
       (state.fullSetB && state.fullSetB.length > 0);
 
@@ -33,7 +36,7 @@ export default function Timer() {
       window.dispatchEvent(new CustomEvent("test-progress", { detail: { inProgress: false } }));
       window.__TEST_IN_PROGRESS = false;
     };
-  }, [state.fullSetA, state.fullSetB, dispatch]);
+  }, [state.questionsBySection, state.fullSetA, state.fullSetB, dispatch]);
 
   // update timer DOM and auto-submit when zero
   useEffect(() => {

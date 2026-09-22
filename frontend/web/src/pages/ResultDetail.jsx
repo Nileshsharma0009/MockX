@@ -25,7 +25,7 @@ const ResultDetail = () => {
   /* ---------------- FETCH RESULT ---------------- */
   useEffect(() => {
     if (!user) {
-      navigate("/");
+      navigate("/v2");
       return;
     }
 
@@ -76,7 +76,7 @@ const ResultDetail = () => {
       <div className="min-h-screen flex flex-col items-center justify-center text-slate-500">
         <p>No result found for this mock.</p>
         <button
-          onClick={() => navigate("/result-history")}
+          onClick={() => navigate("/v2/result-history")}
           className="mt-4 text-indigo-600 underline"
         >
           Go back
@@ -102,7 +102,7 @@ const ResultDetail = () => {
           </div>
 
           <button
-            onClick={() => navigate("/result-history")}
+            onClick={() => navigate("/v2/result-history")}
             className="text-sm text-slate-500 hover:text-slate-700"
           >
             ← Back
@@ -175,7 +175,7 @@ const ResultDetail = () => {
           </button>
 
           <button
-            onClick={() => navigate("/result-stat")}
+            onClick={() => navigate("/v2/result-stat")}
             className="px-5 py-2 rounded-full border text-sm font-medium"
           >
             Open AI Analyzer

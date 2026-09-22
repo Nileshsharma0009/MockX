@@ -8,6 +8,8 @@ import resultRoutes from "./routes/result.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import notificationRoutes from "./routes/notification.routes.js";
 import paymentRecoveryRoutes from "./routes/paymentRecovery.routes.js";
+import instituteRoutes from "./routes/institute.routes.js";
+import instituteStudentRoutes from "./routes/instituteStudent.routes.js";
 import axios from "axios";
 import morgan from "morgan";
 import { httpLogger } from "./utils/logger.js";
@@ -71,6 +73,8 @@ app.use("/api/results", resultRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/payment-recovery", paymentRecoveryRoutes);
+app.use("/api/institutes", instituteRoutes);
+app.use("/api/institute-student", instituteStudentRoutes);
 
 
 app.get("/api/__ping", (req, res) => {

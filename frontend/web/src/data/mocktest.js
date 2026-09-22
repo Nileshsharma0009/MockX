@@ -40,10 +40,11 @@ const mockTests = [
     isFree: false,
   },
   {
-    id:7 ,
-    title: "Physics",
-    releaseDate: "Soon...",
-    isFree: false,
+    id: "custom-phy-01",
+    title: "Physics Practice Test",
+    description: "25 Questions | 30 Minutes | +2 / -0.5 Marking",
+    releaseDate: "2026-01-01T00:00:00+05:30",
+    isFree: true,
   },
   {
     id:8 ,

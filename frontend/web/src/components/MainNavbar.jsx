@@ -9,15 +9,18 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
     const { user, logout } = useAuth();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    // Dynamic lists to include Dashboard for admin users
+    // Dynamic lists to include Dashboard for admin users and Institutes link
     const finalDesktopLinks = [...desktopLinks];
-    if (user && user.role === "admin" && !finalDesktopLinks.includes("Dashboard")) {
+    if (user && (user.role === "admin" || user.role === "SUPER_ADMIN") && !finalDesktopLinks.includes("Dashboard")) {
         finalDesktopLinks.push("Dashboard");
     }
+    if (!finalDesktopLinks.includes("Institutes")) {
+        finalDesktopLinks.push("Institutes");
+    }
 
-    const mobileLinks = ["Home", "Practice", "Ai-Analyzer", "Results", "Help"];
+    const mobileLinks = ["Home", "Practice", "Institutes", "Ai-Analyzer", "Results", "Help"];
     const finalMobileLinks = [...mobileLinks];
-    if (user && user.role === "admin" && !finalMobileLinks.includes("Dashboard")) {
+    if (user && (user.role === "admin" || user.role === "SUPER_ADMIN") && !finalMobileLinks.includes("Dashboard")) {
         finalMobileLinks.push("Dashboard");
     }
 
@@ -25,34 +28,45 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
         setIsMobileMenuOpen(false); // Close menu on click
         switch (item) {
             case "Home":
-                navigate("/");
+                navigate("/v2");
                 break;
             case "Practice":
                 if (!user) {
                     if (setShowLogin) setShowLogin(true);
                 } else {
-                    navigate("/mock-tests");
+                    navigate("/v2/mock-tests");
+                }
+                break;
+            case "Institutes":
+                if (user?.role === "INSTITUTE_ADMIN") {
+                    navigate("/v2/institute/dashboard");
+                } else if (user?.role === "STUDENT") {
+                    navigate("/v2/institute/student/dashboard");
+                } else if (user?.role === "SUPER_ADMIN" || (user?.role === "admin" && user?.email === "admin@mockx.com")) {
+                    navigate("/v2/admin/institutes");
+                } else {
+                    navigate("/v2/institute/login");
                 }
                 break;
             case "Ai-Analyzer":
                 if (!user) {
                     if (setShowLogin) setShowLogin(true);
                 } else {
-                    navigate("/result-stat");
+                    navigate("/v2/result-stat");
                 }
                 break;
             case "Results":
                 if (!user) {
                     if (setShowLogin) setShowLogin(true);
                 } else {
-                    navigate("/result-history");
+                    navigate("/v2/result-history");
                 }
                 break;
             case "Help":
-                navigate("/review-faq");
+                navigate("/v2/review-faq");
                 break;
             case "Dashboard":
-                navigate("/admin");
+                navigate("/v2/admin");
                 break;
             default:
                 break;
@@ -73,7 +87,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
 
-                    <div className="cursor-pointer" onClick={() => navigate("/")}>
+                    <div className="cursor-pointer" onClick={() => navigate("/v2")}>
                         <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
                         <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
                     </div>

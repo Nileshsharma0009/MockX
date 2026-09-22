@@ -4,49 +4,84 @@ const TestStateContext = createContext();
 const TestDispatchContext = createContext();
 
 const initialState = {
+  exam: null,
+  sections: [],
   currentSection: "A",
   currentIndex: 0,
   totalSeconds: 180 * 60,
   timerRunning: false,
 
-  // dynamic – filled after fetch
+  // dynamic stores keyed by section id
+  questionsBySection: {},
+  questionStatusBySection: {},
+  selectedOptionsBySection: {},
+
+  // backward compatibility fields
   fullSetA: [],
   fullSetB: [],
-
   questionStatusA: [],
   questionStatusB: [],
-  questionLockA: [],
-  questionLockB: [],
   selectedOptionsA: [],
   selectedOptionsB: [],
 };
 
 function getSectionLength(state) {
-  return state.currentSection === "A"
-    ? state.fullSetA.length
-    : state.fullSetB.length;
+  const currentSet = state.questionsBySection[state.currentSection] || [];
+  return currentSet.length;
 }
 
 function reducer(state, action) {
   switch (action.type) {
     case "SET_QUESTIONS": {
-      const lenA = action.payload.A.length;
-      const lenB = action.payload.B.length;
+      const payload = action.payload;
+      const exam = payload.exam || null;
+      const questionsMap = payload.questions || {
+        A: payload.A || [],
+        B: payload.B || [],
+      };
+
+      const sections =
+        exam?.sections && exam.sections.length > 0
+          ? exam.sections
+          : Object.keys(questionsMap).map((key) => ({
+              id: key,
+              name: `Section ${key}`,
+            }));
+
+      const firstSectionId = sections[0]?.id || "A";
+
+      const questionStatusBySection = {};
+      const selectedOptionsBySection = {};
+
+      for (const sec of sections) {
+        const count = (questionsMap[sec.id] || []).length;
+        questionStatusBySection[sec.id] = Array(count).fill("unseen");
+        selectedOptionsBySection[sec.id] = Array(count).fill(null);
+      }
+
+      const durationSeconds = (exam?.duration ? exam.duration * 60 : 180 * 60);
+
+      const fullSetA = questionsMap["A"] || [];
+      const fullSetB = questionsMap["B"] || [];
 
       return {
         ...state,
-        fullSetA: action.payload.A,
-        fullSetB: action.payload.B,
-
-        currentSection: "A",
+        exam,
+        sections,
+        currentSection: firstSectionId,
         currentIndex: 0,
+        totalSeconds: durationSeconds,
+        questionsBySection: questionsMap,
+        questionStatusBySection,
+        selectedOptionsBySection,
 
-        questionStatusA: Array(lenA).fill("unseen"),
-        questionStatusB: Array(lenB).fill("unseen"),
-        questionLockA: Array(lenA).fill(false),
-        questionLockB: Array(lenB).fill(false),
-        selectedOptionsA: Array(lenA).fill(null),
-        selectedOptionsB: Array(lenB).fill(null),
+        // backward compatibility
+        fullSetA,
+        fullSetB,
+        questionStatusA: questionStatusBySection["A"] || Array(fullSetA.length).fill("unseen"),
+        questionStatusB: questionStatusBySection["B"] || Array(fullSetB.length).fill("unseen"),
+        selectedOptionsA: selectedOptionsBySection["A"] || Array(fullSetA.length).fill(null),
+        selectedOptionsB: selectedOptionsBySection["B"] || Array(fullSetB.length).fill(null),
       };
     }
 
@@ -57,58 +92,58 @@ function reducer(state, action) {
       return { ...state, currentIndex: action.payload };
 
     case "SET_SELECTED": {
+      const sec = state.currentSection;
       const idx = state.currentIndex;
+      const currentSelected = state.selectedOptionsBySection[sec] || [];
+      const currentStatus = state.questionStatusBySection[sec] || [];
 
-      if (state.currentSection === "A") {
-        const selected = [...state.selectedOptionsA];
-        const status = [...state.questionStatusA];
+      const selected = [...currentSelected];
+      const status = [...currentStatus];
 
-        selected[idx] = action.payload;
-        status[idx] = "answered";
+      selected[idx] = action.payload;
+      status[idx] = "answered";
 
-        return {
-          ...state,
-          selectedOptionsA: selected,
-          questionStatusA: status,
-        };
-      } else {
-        const selected = [...state.selectedOptionsB];
-        const status = [...state.questionStatusB];
+      const nextSelectedBySection = {
+        ...state.selectedOptionsBySection,
+        [sec]: selected,
+      };
+      const nextStatusBySection = {
+        ...state.questionStatusBySection,
+        [sec]: status,
+      };
 
-        selected[idx] = action.payload;
-        status[idx] = "answered";
-
-        return {
-          ...state,
-          selectedOptionsB: selected,
-          questionStatusB: status,
-        };
-      }
+      return {
+        ...state,
+        selectedOptionsBySection: nextSelectedBySection,
+        questionStatusBySection: nextStatusBySection,
+        selectedOptionsA: nextSelectedBySection["A"] || state.selectedOptionsA,
+        selectedOptionsB: nextSelectedBySection["B"] || state.selectedOptionsB,
+        questionStatusA: nextStatusBySection["A"] || state.questionStatusA,
+        questionStatusB: nextStatusBySection["B"] || state.questionStatusB,
+      };
     }
 
     case "MARK_REVIEW": {
+      const sec = state.currentSection;
       const len = getSectionLength(state);
       if (len === 0) return state;
 
-      if (state.currentSection === "A") {
-        const status = [...state.questionStatusA];
-        status[state.currentIndex] = "review";
+      const currentStatus = state.questionStatusBySection[sec] || [];
+      const status = [...currentStatus];
+      status[state.currentIndex] = "review";
 
-        return {
-          ...state,
-          questionStatusA: status,
-          currentIndex: (state.currentIndex + 1) % len,
-        };
-      } else {
-        const status = [...state.questionStatusB];
-        status[state.currentIndex] = "review";
+      const nextStatusBySection = {
+        ...state.questionStatusBySection,
+        [sec]: status,
+      };
 
-        return {
-          ...state,
-          questionStatusB: status,
-          currentIndex: (state.currentIndex + 1) % len,
-        };
-      }
+      return {
+        ...state,
+        questionStatusBySection: nextStatusBySection,
+        currentIndex: (state.currentIndex + 1) % len,
+        questionStatusA: nextStatusBySection["A"] || state.questionStatusA,
+        questionStatusB: nextStatusBySection["B"] || state.questionStatusB,
+      };
     }
 
     case "SAVE_AND_NEXT": {
@@ -128,39 +163,35 @@ function reducer(state, action) {
       };
 
     case "SKIP": {
+      const sec = state.currentSection;
       const len = getSectionLength(state);
       if (len === 0) return state;
 
-      if (state.currentSection === "A") {
-        const status = [...state.questionStatusA];
-        if (status[state.currentIndex] === "unseen") {
-          status[state.currentIndex] = "skipped";
-        }
-
-        return {
-          ...state,
-          questionStatusA: status,
-          currentIndex: (state.currentIndex + 1) % len,
-        };
-      } else {
-        const status = [...state.questionStatusB];
-        if (status[state.currentIndex] === "unseen") {
-          status[state.currentIndex] = "skipped";
-        }
-
-        return {
-          ...state,
-          questionStatusB: status,
-          currentIndex: (state.currentIndex + 1) % len,
-        };
+      const currentStatus = state.questionStatusBySection[sec] || [];
+      const status = [...currentStatus];
+      if (status[state.currentIndex] === "unseen") {
+        status[state.currentIndex] = "skipped";
       }
+
+      const nextStatusBySection = {
+        ...state.questionStatusBySection,
+        [sec]: status,
+      };
+
+      return {
+        ...state,
+        questionStatusBySection: nextStatusBySection,
+        currentIndex: (state.currentIndex + 1) % len,
+        questionStatusA: nextStatusBySection["A"] || state.questionStatusA,
+        questionStatusB: nextStatusBySection["B"] || state.questionStatusB,
+      };
     }
 
     case "SET_TIMER":
       return { ...state, totalSeconds: action.payload };
 
     case "DECREMENT_TIMER":
-      return { ...state, totalSeconds: state.totalSeconds - 1 };
+      return { ...state, totalSeconds: Math.max(0, state.totalSeconds - 1) };
 
     default:
       return state;
@@ -170,11 +201,13 @@ function reducer(state, action) {
 export function TestProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // persist progress (NOT questions)
+  // Persist progress
   useEffect(() => {
     localStorage.setItem(
       "testState_v1",
       JSON.stringify({
+        selectedOptionsBySection: state.selectedOptionsBySection,
+        questionStatusBySection: state.questionStatusBySection,
         selectedOptionsA: state.selectedOptionsA,
         selectedOptionsB: state.selectedOptionsB,
         questionStatusA: state.questionStatusA,
@@ -183,6 +216,8 @@ export function TestProvider({ children }) {
       })
     );
   }, [
+    state.selectedOptionsBySection,
+    state.questionStatusBySection,
     state.selectedOptionsA,
     state.selectedOptionsB,
     state.questionStatusA,

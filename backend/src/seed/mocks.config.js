@@ -1,8 +1,60 @@
 export const mocks = [
-
+  // {
+  //   mockId: "imu1",
+  //   title: "IMUCET Mock Test 01",
+  //   description: "Full syllabus coverage | 180 minutes | 200 questions",
+  //   exam: "imucet",
+  //   isFree: true,
+  //   duration: 180,
+  //   totalQuestions: 200,
+  //   totalMarks: 200,
+  //   marking: {
+  //     correct: 1,
+  //     incorrect: 0.25,
+  //   },
+  //   sections: [
+  //     { id: "A", name: "Section A", questionCount: 100 },
+  //     { id: "B", name: "Section B", questionCount: 100 },
+  //   ],
+  //   questionsFile: "../../../frontend/web/public/imu1.json",
+  //   answersFile: "../../../frontend/web/public/answers/imu1-answers.json",
+  // },
   {
-    mockId: "imu4",
-    questionsFile: "../../../frontend/web/public/imu1.json",
-    answersFile: "../../../frontend/web/public/answers/imu1-answers.json",
+    mockId: "demo",
+    title: "mathematics Practice Test",
+    description: "High-yield mathematics concepts | 60 minutes | 40 questions",
+    exam: "maths",
+    isFree: true,
+    duration: 60,
+    totalQuestions: 40,
+    totalMarks: 80,
+    marking: {
+      correct: 2,
+      incorrect: 0.5,
+    },
+    sections: [
+      { id: "B", name: "Mathematics", questionCount: 40 },
+    ],
+    questionsFile: "../../../frontend/web/public/A-maths.json",
+    answersFile: "../../../frontend/web/public/answers/A-maths-answer.json",
   },
+  // {
+  //   mockId: "custom-phy-01",
+  //   title: "Physics Practice Test",
+  //   description: "High-yield physics concepts | 30 minutes | 20 questions",
+  //   exam: "physics",
+  //   isFree: true,
+  //   duration: 30,
+  //   totalQuestions: 20,
+  //   totalMarks: 40,
+  //   marking: {
+  //     correct: 2,
+  //     incorrect: 0.5,
+  //   },
+  //   sections: [
+  //     { id: "phy", name: "Physics", questionCount: 20 },
+  //   ],
+  //   questionsFile: "../../../frontend/web/public/A-phy.json",
+  //   answersFile: "../../../frontend/web/public/answers/A-phy-answer.json",
+  // },
 ];

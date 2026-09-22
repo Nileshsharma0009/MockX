@@ -118,7 +118,7 @@ const ReviewsFaqPage = () => {
         </p>
 
         <button
-          onClick={() => navigate("/mock-tests")}
+          onClick={() => navigate("/v2/mock-tests")}
           className="mt-6 px-8 py-3 rounded-full bg-gray-900 text-white font-medium hover:bg-black transition"
         >
           Explore Mock Tests →
