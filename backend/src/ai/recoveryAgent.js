@@ -11,6 +11,7 @@ import {
   getPreviousFailedAttempts,
   getRecoveryHistory
 } from "./dbTools.js";
+import { sendRecoveryEmail } from "../services/emailService.js";
 
 // 1. Define State Graph Channels using Annotation.Root
 const RecoveryState = Annotation.Root({
@@ -279,11 +280,32 @@ Example output:
       }
       messageSent = cleanLlmResponse(parsedMessage);
       
+      const emailResult = await sendRecoveryEmail({
+        to: state.customerDetails?.email,
+        name: state.customerDetails?.name || 'Customer',
+        subject: `Complete your ${state.mockId.toUpperCase()} payment`,
+        html: `
+          <div style="font-family:Arial, sans-serif; max-width:600px; margin:auto; padding:24px;">
+            <h2>Hello ${state.customerDetails?.name || 'there'},</h2>
+            <p>${messageSent}</p>
+            <p><strong>Exam:</strong> ${state.mockId.toUpperCase()}</p>
+            <p><strong>Amount:</strong> ₹${state.amount}</p>
+            <p><strong>Order ID:</strong> ${txn.orderId}</p>
+          </div>
+        `,
+        text: messageSent,
+        purpose: 'payment_recovery',
+        mockId: state.mockId,
+        orderId: txn.orderId,
+      });
+
       // Update transaction status
       txn.recovery.status = "CONTACTED";
       txn.recovery.attempts += 1;
       txn.recovery.lastAction = "SEND_NOTIFICATION";
       txn.recovery.lastActionAt = new Date();
+      txn.recovery.lastEmailAt = new Date();
+      txn.recovery.emailMode = emailResult?.mode || 'local-mock';
       await txn.save();
 
       // Create Notification
@@ -296,7 +318,9 @@ Example output:
           mockId: state.mockId,
           amount: state.amount,
           orderId: txn.orderId,
-          transactionId: txn._id.toString()
+          transactionId: txn._id.toString(),
+          emailMode: emailResult?.mode || 'local-mock',
+          emailSent: !!emailResult?.ok,
         }
       });
       await notif.save();
@@ -310,7 +334,9 @@ Example output:
         details: {
           reason,
           message: messageSent,
-          attempts: txn.recovery.attempts
+          attempts: txn.recovery.attempts,
+          emailMode: emailResult?.mode || 'local-mock',
+          emailSent: !!emailResult?.ok,
         }
       }).save();
 

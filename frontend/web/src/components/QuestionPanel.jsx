@@ -168,7 +168,7 @@ export default function QuestionPanel() {
                   }`}
               >
                 <span className="font-semibold">
-                  {String.fromCharCode(65 + idx)})
+                  {String.fromCharCode(65 + idx)}
                 </span>
                 <span>{opt}</span>
               </button>
