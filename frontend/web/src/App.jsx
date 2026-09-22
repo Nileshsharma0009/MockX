@@ -67,7 +67,7 @@ function TestPageInner() {
         if (r.status === 403) {
           const data = await r.json();
           toast.error(data.message || "Access denied.");
-          navigate("/mock-tests");
+          navigate("/v2/mock-tests");
           return null;
         }
         if (!r.ok) throw new Error("Failed to load questions");

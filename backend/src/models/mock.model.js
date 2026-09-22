@@ -59,6 +59,23 @@ const mockSchema = new mongoose.Schema(
                 { id: "B", name: "Section B" },
             ],
         },
+        /* ---------- INSTITUTE ISOLATION ---------- */
+        instituteId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Institute",
+            default: null,
+            index: true,
+        },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            default: null,
+        },
+        isInstituteCustom: {
+            type: Boolean,
+            default: false,
+            index: true,
+        },
     },
     { _id: false, timestamps: true } // _id is explicitly defined above
 );

@@ -27,7 +27,7 @@ export default function ResultPage() {
     const loadResult = async () => {
       try {
         if (!resultId) {
-          navigate("/mock-tests", { replace: true });
+          navigate("/v2/mock-tests", { replace: true });
           return;
         }
 
@@ -47,7 +47,7 @@ export default function ResultPage() {
         setCreatedAt(data.createdAt);
       } catch (err) {
         console.error("Result load failed:", err.message);
-        navigate("/mock-tests", { replace: true });
+        navigate("/v2/mock-tests", { replace: true });
       } finally {
         setLoading(false);
       }
@@ -59,13 +59,66 @@ export default function ResultPage() {
   /* =========================
       PERFORMANCE LABEL
       ========================= */
+  // const performance = useMemo(() => {
+  //   if (score == null) return { text: "No Data", cls: "needs-improvement" };
+  //   if (score >= 160) return { text: "Excellent", cls: "excellent" };
+  //   if (score >= 120) return { text: "Good", cls: "good" };
+  //   if (score >= 80) return { text: "Average", cls: "average" };
+  //   return { text: "Needs Improvement", cls: "needs-improvement" };
+  // }, [score]);
+
+  const percentage = useMemo(() => {
+    if (score == null || total == null || total === 0) return 0;
+    return Math.max(0, (score / total) * 100);
+  }, [score, total]);
+
   const performance = useMemo(() => {
-    if (score == null) return { text: "No Data", cls: "needs-improvement" };
-    if (score >= 160) return { text: "Excellent", cls: "excellent" };
-    if (score >= 120) return { text: "Good", cls: "good" };
-    if (score >= 80) return { text: "Average", cls: "average" };
-    return { text: "Needs Improvement", cls: "needs-improvement" };
-  }, [score]);
+    if (score == null || total == null || total === 0) {
+      return {
+        text: "No Data",
+        message: "No performance data available.",
+        cls: "needs-improvement",
+      };
+    }
+
+    if (percentage < 60) {
+      return {
+        text: "Needs Improvement",
+        message: "Focus on weak areas.",
+        cls: "needs-improvement",
+      };
+    }
+
+    if (percentage <80) {
+      return {
+        text: "Good",
+        message: "Solid attempt.",
+        cls: "good",
+      };
+    }
+
+    if (percentage < 90) {
+      return {
+        text: "Very Good",
+        message: "Strong effort.",
+        cls: "very-good",
+      };
+    }
+
+    if (percentage < 100) {
+      return {
+        text: "Excellent",
+        message: "Great score!",
+        cls: "excellent",
+      };
+    }
+
+    return {
+      text: "Outstanding",
+      message: "Perfect score!",
+      cls: "outstanding",
+    };
+  }, [score, total, percentage]);
 
   /* =========================
       DOWNLOAD RESULT AS IMAGE
@@ -129,13 +182,21 @@ export default function ResultPage() {
       <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50 bg-white/95 border-b border-gray-200">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => {
+              if (userData?.role === "STUDENT" || userData?.instituteId) {
+                navigate("/v2/institute/student/dashboard");
+              } else {
+                navigate(-1);
+              }
+            }}
             className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="text-sm font-medium">Back</span>
+            <span className="text-sm font-medium">
+              {userData?.role === "STUDENT" || userData?.instituteId ? "Back to Student Portal" : "Back"}
+            </span>
           </button>
-          <h1 className="text-2xl font-extrabold text-gray-900">MockX Result</h1>
+          {/* <h1 className="text-2xl font-extrabold text-gray-900">MockX Result</h1> */}
           <div className="w-20" /> {/* Spacer for alignment */}
         </div>
       </header>
@@ -150,7 +211,7 @@ export default function ResultPage() {
           />
 
           <div className="header-top">
-            <h1>MockX Mock Test</h1>
+            <h1>MockX  Test</h1>
           </div>
 
           <div className="header-section">
@@ -204,6 +265,7 @@ export default function ResultPage() {
           </div>
 
           {/* Score Section */}
+          
           <div className="score">
             <h3>Your Test Results</h3>
             <div className="main-score">
@@ -219,18 +281,26 @@ export default function ResultPage() {
               </div>
               <div className="score-item">
                 <div className="score-number">
-                  {total
-                    ? `${Math.max(0, (score / total) * 100).toFixed(1)}%`
-                    : "-"}
+                  {total ? `${percentage.toFixed(1)}%` : "-"}
                 </div>
-
                 <div className="score-label">Percentage</div>
-
               </div>
+
+
+               <div className="performance-badge-row">
               <div className={`performance-badge ${performance.cls}`}>
                 {performance.text}
               </div>
+              {/* <div className="performance-message">{performance.message}</div> */}
             </div>
+            </div>
+
+            {/* <div className="performance-badge-row">
+              <div className={`performance-badge ${performance.cls}`}>
+                {performance.text}
+              </div>
+              <div className="performance-message">{performance.message}</div>
+            </div> */}
           </div>
 
 
@@ -261,13 +331,13 @@ export default function ResultPage() {
             {isDownloading ? "Preparing..." : "Download Result"}
           </button> */}
 
-          <button
-            onClick={downloadPDF}
-            className="download-btn"
-            disabled={isDownloading}
-          >
-            {isDownloading ? "Preparing..." : "Download Result"}
-          </button>
+        <button
+  onClick={downloadPDF}
+  disabled={isDownloading}
+  className="download-btn mx-auto mt-6 block rounded-lg px-6 py-3 font-semibold shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
+>
+  {isDownloading ? "Preparing..." : "Download Result"}
+</button>
 
         </div>
       </div>

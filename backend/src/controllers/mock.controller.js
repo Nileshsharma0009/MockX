@@ -1,6 +1,8 @@
 import Question from "../models/question.model.js";
 import Result from "../models/result.model.js";
 import Mock from "../models/mock.model.js";
+import Institute from "../models/institute.model.js";
+import TestAssignment from "../models/testAssignment.model.js";
 import { isPaymentEnabled } from "../utils/paymentToggle.js";
 export const getMockQuestions = async (req, res) => {
   try {
@@ -64,8 +66,80 @@ export const getMockQuestions = async (req, res) => {
     ----------------------------- */
     let hasAccess = false;
 
-    // ✅ Case A: It's free
-    if (isFree) {
+    // 🏫 Case 0: Institute Custom Mock (Strict Private Access)
+    if (mock.instituteId) {
+      if (!user) {
+        return res.status(401).json({
+          message: "Please log in to access this institute mock test",
+        });
+      }
+
+      if (user.status === "SUSPENDED") {
+        return res.status(403).json({
+          message: "Your student account is suspended",
+        });
+      }
+
+      if (!user.instituteId || user.instituteId.toString() !== mock.instituteId.toString()) {
+        return res.status(403).json({
+          message: "You do not belong to the institute offering this mock test",
+        });
+      }
+
+      const institute = await Institute.findById(mock.instituteId);
+      if (!institute || institute.status === "SUSPENDED") {
+        return res.status(403).json({
+          message: "This institute is currently suspended or inactive",
+        });
+      }
+
+      const assignment = await TestAssignment.findOne({
+        instituteId: mock.instituteId,
+        mockId: mock._id,
+        status: "ACTIVE",
+        $or: [
+          { assignToType: "ALL" },
+          { assignToType: "BATCH", batch: user.batch },
+          { assignToType: "STUDENTS", studentIds: user._id },
+        ],
+      });
+
+      if (!assignment) {
+        return res.status(403).json({
+          message: "This mock test is not currently assigned to you",
+        });
+      }
+
+      const now = new Date();
+      if (assignment.availableFrom && now < new Date(assignment.availableFrom)) {
+        return res.status(403).json({
+          message: "This test is not yet available to attempt",
+        });
+      }
+      if (assignment.availableUntil && now > new Date(assignment.availableUntil)) {
+        return res.status(403).json({
+          message: "The window to attempt this test has expired",
+        });
+      }
+
+      // Check already submitted
+      const alreadyAttempted = await Result.findOne({
+        userId: user._id,
+        mockId,
+        isSubmitted: true,
+      });
+
+      if (alreadyAttempted) {
+        return res.status(403).json({
+          message: "Test already attempted",
+          redirectTo: `/result/${alreadyAttempted._id}`,
+        });
+      }
+
+      hasAccess = true;
+    }
+    // ✅ Case A: It's free (public mock)
+    else if (isFree) {
       hasAccess = true;
     }
     // ✅ Case B: Payments are disabled globally
@@ -84,18 +158,21 @@ export const getMockQuestions = async (req, res) => {
     }
 
     /* -----------------------------
-       3️⃣ BLOCK RE-ATTEMPT
+       3️⃣ BLOCK RE-ATTEMPT (For public non-institute mocks)
     ----------------------------- */
-    const alreadyAttempted = await Result.findOne({
-      userId: user._id,
-      mockId,
-    });
-
-    if (alreadyAttempted) {
-      return res.status(403).json({
-        message: "Test already attempted",
-        redirectTo: "/mock-tests",
+    if (!mock.instituteId && user) {
+      const alreadyAttempted = await Result.findOne({
+        userId: user._id,
+        mockId,
+        isSubmitted: true,
       });
+
+      if (alreadyAttempted) {
+        return res.status(403).json({
+          message: "Test already attempted",
+          redirectTo: "/mock-tests",
+        });
+      }
     }
 
 
@@ -162,7 +239,10 @@ export const getMockQuestions = async (req, res) => {
 export const getMocks = async (req, res) => {
   try {
     const { exam } = req.query;
-    const query = { isActive: true };
+    const query = {
+      isActive: true,
+      isInstituteCustom: { $ne: true }, // Do not leak private institute mocks to public catalog
+    };
     if (exam) {
       query.exam = { $regex: new RegExp(`^${exam}$`, "i") };
     }

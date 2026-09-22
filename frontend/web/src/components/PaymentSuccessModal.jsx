@@ -17,7 +17,7 @@ export default function PaymentSuccessModal({ notification, onClose }) {
       // Mark notification as read
       await markNotificationsRead(notification._id);
       toast.success("Good luck with your tests!");
-      navigate("/mock-tests");
+      navigate("/v2/mock-tests");
       onClose();
     } catch (err) {
       console.error("Failed to dismiss success notification:", err);

@@ -20,16 +20,16 @@ const Navbar = ({ user, logout, setShowLogin }) => {
 
   const handleNavClick = (item) => {
     switch (item) {
-      case "Home": navigate("/"); break;
+      case "Home": navigate("/v2"); break;
       case "Results": 
         if (!user) setShowLogin(true);
-        else navigate("/result-history");
+        else navigate("/v2/result-history");
         break;
       case "Help": 
-        navigate("/review-faq");
+        navigate("/v2/review-faq");
         break;
       case "Dashboard":
-        navigate("/admin");
+        navigate("/v2/admin");
         break;
       default: break;
     }
@@ -52,7 +52,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/v2")}>
           
           <div>
             <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>

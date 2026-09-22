@@ -1,5 +1,6 @@
 import express from "express";
 import protect from "../middleware/auth.middleware.js";
+import optionalAuth from "../middleware/optionalAuth.middleware.js";
 import {
   getMyResults,
   getResultById,
@@ -17,7 +18,7 @@ router.get("/my", protect, getMyResults);
  * 🌍 Public / shareable result page
  * GET /api/results/public/:resultId
  */
-router.get("/public/:resultId", getResultById);
+router.get("/public/:resultId", optionalAuth, getResultById);
 
 /**
  * 🔐 Private single result (owner only)

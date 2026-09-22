@@ -22,7 +22,7 @@ export default function ProtectedRoute({ children }) {
   }
 
   if (!allowed) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/v2" replace />;
   }
 
   return children;

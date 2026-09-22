@@ -79,17 +79,17 @@ const First = () => {
   const handleNavClick = (item) => {
     setIsMobileMenuOpen(false);
     switch (item) {
-      case "Home": navigate("/"); break;
+      case "Home": navigate("/v2"); break;
       case "Practice":
         if (!user) setShowLogin(true);
-        else navigate("/mock-tests");
+        else navigate("/v2/mock-tests");
         break;
       case "Results":
         if (!user) setShowLogin(true);
-        else navigate("/result-history");
+        else navigate("/v2/result-history");
         break;
       case "Help":
-        navigate("/review-faq");
+        navigate("/v2/review-faq");
       default: break;
     }
   };
@@ -148,7 +148,7 @@ const First = () => {
           {!user ? (
             <button onClick={() => setShowForm(true)} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Register Now</button>
           ) : (
-            <button onClick={() => navigate("/mock-tests")} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Go to Practice</button>
+            <button onClick={() => navigate("/v2/mock-tests")} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Go to Practice</button>
           )}
         </div>
       </main> */}
@@ -209,7 +209,7 @@ const First = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => navigate("/mock-tests")}
+                  onClick={() => navigate("/v2/mock-tests")}
                   className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
                 >
                   Continue Practice

@@ -86,6 +86,9 @@ export const submitTest = async (req, res) => {
       result.subjectStats = subjectStats;
       result.sectionScores = sectionScores;
       result.isSubmitted = true; // FINAL SUBMIT
+      if (mock?.instituteId) {
+        result.instituteId = mock.instituteId;
+      }
       await result.save();
     } else {
       result = await Result.create({
@@ -97,6 +100,7 @@ export const submitTest = async (req, res) => {
         subjectStats,
         sectionScores,
         isSubmitted: true,
+        instituteId: mock?.instituteId || null,
       });
     }
 
@@ -119,9 +123,7 @@ export const saveProgress = async (req, res) => {
     const { mockId, answers } = req.body;
     const userId = req.user._id;
 
-    // Upsert Result
-    // We don't calc score here, just save answers
-    // But schema requires score... so we set 0 or keep existing
+    const mock = await Mock.findById(mockId);
 
     let result = await Result.findOne({ userId, mockId });
 
@@ -132,6 +134,9 @@ export const saveProgress = async (req, res) => {
     if (result) {
       // Merge new answers
       result.answers = { ...result.answers, ...answers };
+      if (mock?.instituteId) {
+        result.instituteId = mock.instituteId;
+      }
       await result.save();
     } else {
       // Create new draft
@@ -142,6 +147,7 @@ export const saveProgress = async (req, res) => {
         total: 0,
         answers,
         isSubmitted: false, // DRAFT
+        instituteId: mock?.instituteId || null,
       });
     }
 

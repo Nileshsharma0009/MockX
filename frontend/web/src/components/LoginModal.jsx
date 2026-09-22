@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Mail, Eye, EyeOff, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Mail, Eye, EyeOff, X, Building2 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 export default function LoginModal({ onClose, onOpenRegister }) {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,8 +24,17 @@ export default function LoginModal({ onClose, onOpenRegister }) {
 
     try {
       setLoading(true);
-      await login(email, password); // 🔥 updates UI instantly
+      const loggedUser = await login(email, password); // 🔥 updates UI instantly
       onClose(); // close modal
+
+      const role = (loggedUser?.role || "").toUpperCase();
+      if (role === "INSTITUTE_ADMIN") {
+        navigate("/v2/institute/dashboard");
+      } else if (role === "STUDENT") {
+        navigate("/v2/institute/student/dashboard");
+      } else if (role === "SUPER_ADMIN" || (role === "ADMIN" && loggedUser.email === "admin@mockx.com")) {
+        navigate("/v2/admin/institutes");
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
@@ -128,6 +139,32 @@ export default function LoginModal({ onClose, onOpenRegister }) {
             >
               Register
             </span>
+          </div>
+
+          <div className="pt-3 border-t border-gray-100 space-y-3 text-center">
+            {/* <button
+              type="button"
+              onClick={() => {
+                onClose();
+                navigate("/institute/login");
+              }}
+              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 border border-indigo-100/80 text-xs font-bold text-indigo-700 flex items-center justify-center gap-2 transition-all shadow-sm"
+            >
+              <Building2 className="w-3.5 h-3.5 text-indigo-600" />
+              <span>Coaching Institute & Student Login →</span>
+            </button> */}
+
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                navigate("/v2/institute/login");
+              }}
+              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-sky-50 to-cyan-50 hover:from-sky-100 hover:to-cyan-100 border border-sky-100/80 text-xs font-bold text-sky-700 flex items-center justify-center gap-2 transition-all shadow-sm"
+            >
+              <Building2 className="w-3.5 h-3.5 text-sky-600" />
+              <span>Institutes Login</span>
+            </button>
           </div>
         </form>
       </div>

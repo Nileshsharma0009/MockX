@@ -60,6 +60,24 @@ const Question = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+    /* ---------- INSTITUTE ISOLATION ---------- */
+    instituteId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Institute",
+      default: null,
+      index: true,
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
+    isPrivate: {
+      type: Boolean,
+      default: false,
+      index: true,
+    },
   },
   { timestamps: true }
 );

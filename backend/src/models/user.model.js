@@ -29,11 +29,36 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
-    /* ---------- ROLE (ADMIN / USER) ---------- */
+    /* ---------- ROLE (ADMIN / USER / INSTITUTE) ---------- */
     role: {
       type: String,
-      enum: ["user", "admin"],
+      enum: ["user", "admin", "SUPER_ADMIN", "INSTITUTE_ADMIN", "STUDENT"],
       default: "user",
+    },
+
+    /* ---------- INSTITUTE ISOLATION ---------- */
+    instituteId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Institute",
+      default: null,
+      index: true,
+    },
+    batch: {
+      type: String,
+      default: null,
+      trim: true,
+      index: true,
+    },
+    studentRollNo: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+    status: {
+      type: String,
+      enum: ["ACTIVE", "SUSPENDED"],
+      default: "ACTIVE",
+      index: true,
     },
 
     /* ---------- PAYMENT ACCESS ---------- */

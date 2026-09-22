@@ -59,6 +59,20 @@ const ResultSchema = new mongoose.Schema(
       type: Boolean,
       default: true, // Default true for backward compatibility
     },
+
+    /* ---------- INSTITUTE ISOLATION ---------- */
+    instituteId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Institute",
+      default: null,
+      index: true,
+    },
+    assignmentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TestAssignment",
+      default: null,
+      index: true,
+    },
   },
   { timestamps: true }
 );
