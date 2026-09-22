@@ -207,7 +207,7 @@ export default function ResultPage() {
           <div className="score">
             <h3>Your Test Results</h3>
             <div className="main-score">
-              {score}/200
+              {score}/{total || 200}
             </div>
             {/* <div className={`performance-badge ${performance.cls}`}>
               {performance.text}

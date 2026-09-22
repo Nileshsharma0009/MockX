@@ -1,0 +1,231 @@
+{
+  "phy": {
+    "physics": [
+      {
+        "id": "phy-01",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "What is the SI unit of electric potential difference?",
+        "options": ["Ampere", "Volt", "Ohm", "Coulomb"],
+        "marks": 2
+      },
+      {
+        "id": "phy-02",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "A body moves in a circular path with constant speed. Its acceleration is:",
+        "options": ["Zero", "Constant in direction", "Directed towards the center", "Directed away from the center"],
+        "marks": 2
+      },
+      {
+        "id": "phy-03",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The dimensional formula for Planck's constant is:",
+        "options": ["[M L^2 T^-1]", "[M L T^-1]", "[M L^2 T^-2]", "[M L^-1 T^-2]"],
+        "marks": 2
+      },
+      {
+        "id": "phy-04",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The escape velocity from the surface of Earth is approximately:",
+        "options": ["9.8 km/s", "11.2 km/s", "15.0 km/s", "7.9 km/s"],
+        "marks": 2
+      },
+      {
+        "id": "phy-05",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Bernoulli's principle is based on the conservation of:",
+        "options": ["Mass", "Momentum", "Energy", "Angular momentum"],
+        "marks": 2
+      },
+      {
+        "id": "phy-06",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The time period of a simple pendulum depends upon:",
+        "options": ["Mass of the bob", "Length of the pendulum", "Amplitude of oscillation", "Material of the bob"],
+        "marks": 2
+      },
+      {
+        "id": "phy-07",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Light year is a unit of:",
+        "options": ["Time", "Distance", "Speed", "Intensity of light"],
+        "marks": 2
+      },
+      {
+        "id": "phy-08",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Which mirror is commonly used as a rear-view mirror in vehicles?",
+        "options": ["Plane mirror", "Concave mirror", "Convex mirror", "Cylindrical mirror"],
+        "marks": 2
+      },
+      {
+        "id": "phy-09",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The phenomenon of total internal reflection occurs when light travels from:",
+        "options": ["Rarer to denser medium at any angle", "Denser to rarer medium beyond critical angle", "Rarer to denser medium beyond critical angle", "Any medium at 90 degrees"],
+        "marks": 2
+      },
+      {
+        "id": "phy-10",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Ohm's Law is valid for:",
+        "options": ["Metallic conductors at constant temperature", "Semiconductors", "Vacuum tubes", "Electrolytes only"],
+        "marks": 2
+      },
+      {
+        "id": "phy-11",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Two resistors of 6 ohms and 3 ohms are connected in parallel. Their equivalent resistance is:",
+        "options": ["9 ohms", "2 ohms", "4.5 ohms", "18 ohms"],
+        "marks": 2
+      },
+      {
+        "id": "phy-12",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The magnetic field inside a long straight solenoid carrying current is:",
+        "options": ["Zero", "Uniform throughout", "Decreases towards center", "Increases towards ends"],
+        "marks": 2
+      },
+      {
+        "id": "phy-13",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Lenz's Law is a consequence of the law of conservation of:",
+        "options": ["Charge", "Energy", "Magnetic field", "Linear momentum"],
+        "marks": 2
+      },
+      {
+        "id": "phy-14",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Which of the following electromagnetic waves has the highest frequency?",
+        "options": ["Radio waves", "Microwaves", "X-rays", "Gamma rays"],
+        "marks": 2
+      },
+      {
+        "id": "phy-15",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The work done by a centripetal force on an object in uniform circular motion is:",
+        "options": ["Always positive", "Always negative", "Zero", "Dependent on radius"],
+        "marks": 2
+      },
+      {
+        "id": "phy-16",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "When ice melts into water at 0 degrees Celsius, its entropy:",
+        "options": ["Increases", "Decreases", "Remains constant", "Becomes zero"],
+        "marks": 2
+      },
+      {
+        "id": "phy-17",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "A transformer works on the principle of:",
+        "options": ["Self induction", "Mutual induction", "Seebeck effect", "Peltier effect"],
+        "marks": 2
+      },
+      {
+        "id": "phy-18",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The photoelectric effect demonstrates the:",
+        "options": ["Wave nature of light", "Particle nature of light", "Transverse nature of light", "Electromagnetic nature of light"],
+        "marks": 2
+      },
+      {
+        "id": "phy-19",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "In an adiabatic process, which of the following remains constant?",
+        "options": ["Temperature", "Pressure", "Heat content", "Volume"],
+        "marks": 2
+      },
+      {
+        "id": "phy-20",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The SI unit of capacitance is:",
+        "options": ["Henry", "Farad", "Tesla", "Weber"],
+        "marks": 2
+      },
+      {
+        "id": "phy-21",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Which of the following is a scalar quantity?",
+        "options": ["Electric field", "Current density", "Electric potential", "Magnetic force"],
+        "marks": 2
+      },
+      {
+        "id": "phy-22",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The acceleration due to gravity at the center of the Earth is:",
+        "options": ["9.8 m/s^2", "Infinity", "Zero", "4.9 m/s^2"],
+        "marks": 2
+      },
+      {
+        "id": "phy-23",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "Young's modulus is a property of:",
+        "options": ["Gas", "Liquid", "Solid", "Both Liquid and Solid"],
+        "marks": 2
+      },
+      {
+        "id": "phy-24",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "The speed of sound in air is independent of:",
+        "options": ["Temperature", "Pressure", "Humidity", "Wind speed"],
+        "marks": 2
+      },
+      {
+        "id": "phy-25",
+        "mockId": "custom-phy-01",
+        "section": "phy",
+        "subject": "phy",
+        "question": "A p-type semiconductor has majority charge carriers as:",
+        "options": ["Electrons", "Holes", "Protons", "Neutrons"],
+        "marks": 2
+      }
+    ]
+  }
+}

@@ -26,6 +26,22 @@ const SelectExam = [
     price: 499,
     comingSoon: true,
   },
+  {
+    id: "physics",
+    name: "Physics Test",
+    fullName: "Physics Dynamic Practice",
+    description: "25 questions | 30 minutes | +2 / -0.5 marking (Dynamic Engine Demo)",
+    route: "/test?mock=custom-phy-01",
+    price: 0,
+  },
+  {
+    id: "maths",
+    name: "math Test",
+    fullName: "Mathematics Dynamic Practice",
+    description: "25 questions | 30 minutes | +2 / -0.5 marking (Dynamic Engine Demo)",
+    route: "/test?mock=demo",
+    price: 0,
+  },
 ];
 
 export default SelectExam;

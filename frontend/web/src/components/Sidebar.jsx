@@ -4,7 +4,13 @@ import { useTestState, useTestDispatch } from "../context/TestContext.jsx";
 export default function Sidebar({ visible = true }) {
   const state = useTestState();
   const dispatch = useTestDispatch();
-  const questionStatus = state.currentSection === "A" ? state.questionStatusA : state.questionStatusB;
+  const currentSectionConfig = state.sections?.find((s) => s.id === state.currentSection);
+  const currentSectionName = currentSectionConfig?.name || `Section ${state.currentSection}`;
+
+  const questionStatus =
+    state.questionStatusBySection?.[state.currentSection] ||
+    (state.currentSection === "A" ? state.questionStatusA : state.questionStatusB) ||
+    [];
 
   const scrollRef = useRef(null);
 
@@ -27,7 +33,7 @@ export default function Sidebar({ visible = true }) {
     >
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-semibold">Question Palette</h3>
-        <span className="text-sm text-gray-400">Section {state.currentSection}</span>
+        <span className="text-sm text-gray-500 font-medium truncate max-w-[100px]">{currentSectionName}</span>
       </div>
 
       {/* Scrollable question grid */}

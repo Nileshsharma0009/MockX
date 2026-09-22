@@ -2,6 +2,7 @@
 
 import Question from "../models/question.model.js";
 import Result from "../models/result.model.js";
+import Mock from "../models/mock.model.js";
 
 export const submitTest = async (req, res) => {
   try {
@@ -18,60 +19,72 @@ export const submitTest = async (req, res) => {
       });
     }
 
-    // 2️⃣ MERGE ANSWERS (If partial save existed)
-    // If we have saved answers before, merge new ones on top
+    // 2️⃣ FETCH MOCK CONFIGURATION
+    const mock = await Mock.findById(mockId);
+    const correctMarks = mock?.marking?.correct !== undefined ? mock.marking.correct : 1;
+    const negativeMarks = mock?.marking?.incorrect !== undefined ? mock.marking.incorrect : 0.25;
+    const totalExamMarks = mock?.totalMarks || (mock?.totalQuestions ? mock.totalQuestions * correctMarks : 200);
+
+    // 3️⃣ MERGE ANSWERS (If partial save existed)
     const finalAnswers = result ? { ...result.answers, ...answers } : answers;
 
-    // 3️⃣ FETCH ALL QUESTIONS IN ONE BATCH (Optimization)
+    // 4️⃣ FETCH ALL QUESTIONS IN ONE BATCH
     const questionCodes = Object.keys(finalAnswers);
     const questions = await Question.find({
       questionCode: { $in: questionCodes },
-    }).select("+correctOption +marks +negativeMarks");
+    }).select("+correctOption +marks +negativeMarks +subject +section");
 
     // Map for fast lookup
     const questionMap = new Map();
     questions.forEach((q) => questionMap.set(q.questionCode, q));
 
-    // 4️⃣ CALCULATE SCORE
-    const CORRECT_MARKS = 1;
-    const NEGATIVE_MARKS = 0.25;
-
+    // 5️⃣ CALCULATE DYNAMIC SCORE & STATS
     let score = 0;
-    let total = 0; // Total potential marks of ATTEMPTED questions? Or total exam marks? 
-    // Usually total is Fixed from Exam, but here it seems calculated.
-    // Let's stick to previous logic: Total = Sum of marks of attempted questions? 
-    // Previous code: total += q.marks (from DB, or fallback to 1)
-
     const subjectStats = {};
+    const sectionScores = {};
 
     for (const [code, selected] of Object.entries(finalAnswers)) {
       const q = questionMap.get(code);
       if (!q) continue;
 
-      const subject = code.split("-")[2] || "gen"; // fallback subject
+      const subject = q.subject || code.split("-")[2] || "general";
+      const section = q.section || "A";
 
       if (!subjectStats[subject]) {
-        subjectStats[subject] = { attempted: 0, correct: 0, wrong: 0 };
+        subjectStats[subject] = { attempted: 0, correct: 0, wrong: 0, accuracy: 0 };
+      }
+      if (sectionScores[section] === undefined) {
+        sectionScores[section] = 0;
       }
 
       subjectStats[subject].attempted++;
-      total += CORRECT_MARKS; // Assuming all 1 mark per frontend logic
 
       if (Number(selected) === q.correctOption) {
-        score += CORRECT_MARKS;
+        score += correctMarks;
+        sectionScores[section] += correctMarks;
         subjectStats[subject].correct++;
       } else {
-        score -= NEGATIVE_MARKS;
+        score -= negativeMarks;
+        sectionScores[section] -= negativeMarks;
         subjectStats[subject].wrong++;
       }
     }
 
-    // 5️⃣ SAVE / UPDATE RESULT
+    // Round score to 2 decimal places to avoid floating point drift
+    score = Math.round(score * 100) / 100;
+
+    for (const subj of Object.keys(subjectStats)) {
+      const s = subjectStats[subj];
+      s.accuracy = s.attempted > 0 ? Math.round((s.correct / s.attempted) * 100) : 0;
+    }
+
+    // 6️⃣ SAVE / UPDATE RESULT
     if (result) {
       result.answers = finalAnswers;
       result.score = score;
-      result.total = total;
+      result.total = totalExamMarks;
       result.subjectStats = subjectStats;
+      result.sectionScores = sectionScores;
       result.isSubmitted = true; // FINAL SUBMIT
       await result.save();
     } else {
@@ -79,9 +92,10 @@ export const submitTest = async (req, res) => {
         userId,
         mockId,
         score,
-        total,
+        total: totalExamMarks,
         answers: finalAnswers,
         subjectStats,
+        sectionScores,
         isSubmitted: true,
       });
     }
@@ -89,8 +103,9 @@ export const submitTest = async (req, res) => {
     return res.status(201).json({
       resultId: result._id,
       score,
-      total,
+      total: totalExamMarks,
       subjectStats,
+      sectionScores,
     });
 
   } catch (err) {

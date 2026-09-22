@@ -11,16 +11,20 @@ export default function QuestionPanel() {
   const setSelected = (i) =>
     dispatch({ type: "SET_SELECTED", payload: i });
 
-  // Current question set by section
+  // Current question set by active section
   const currentSet =
-    state.currentSection === "A" ? state.fullSetA : state.fullSetB;
+    state.questionsBySection?.[state.currentSection] ||
+    (state.currentSection === "A" ? state.fullSetA : state.fullSetB) ||
+    [];
 
   const totalQuestions = currentSet.length;
 
-  const sel =
-    state.currentSection === "A"
-      ? state.selectedOptionsA[state.currentIndex]
-      : state.selectedOptionsB[state.currentIndex];
+  const currentSelections =
+    state.selectedOptionsBySection?.[state.currentSection] ||
+    (state.currentSection === "A" ? state.selectedOptionsA : state.selectedOptionsB) ||
+    [];
+
+  const sel = currentSelections[state.currentIndex] ?? null;
 
   const q = currentSet[state.currentIndex] || null;
 
@@ -70,9 +74,17 @@ export default function QuestionPanel() {
       <div className="w-full max-w-4xl text-left">
 
         {/* ================= Header ================= */}
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-          Question {state.currentIndex + 1} of {totalQuestions}
-        </h2>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            Question {state.currentIndex + 1} of {totalQuestions}
+          </h2>
+          {state.exam?.marking && (
+            <div className="text-xs font-semibold text-slate-500 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full flex items-center gap-2">
+              <span className="text-emerald-600">+{state.exam.marking.correct}</span>
+              <span className="text-rose-600">-{state.exam.marking.incorrect}</span>
+            </div>
+          )}
+        </div>
 
         {/* ================= Paragraph ================= */}
         {q.paragraph && (
