@@ -94,9 +94,9 @@ test("platform SUPER_ADMIN can access results across institutes", async () => {
   assert.equal(response.status, 200);
 });
 
-test("legacy platform admin can access results across institutes", async () => {
+test("legacy admin identity alone cannot access results across institutes", async () => {
   const response = await getResult("institute-b", "legacy-admin");
-  assert.equal(response.status, 200);
+  assert.equal(response.status, 403);
 });
 
 test("unauthenticated users cannot access a private result, including through the public alias", async () => {

@@ -35,24 +35,28 @@ async function seedInstitute() {
     await Institute.deleteOne({ _id: existingInst._id });
   }
 
-  // Ensure super admin user exists
-  const superAdminEmail = "admin@mockx.com";
-  let superAdmin = await User.findOne({ email: superAdminEmail });
-  if (!superAdmin) {
-    const hash = await bcrypt.hash("admin123", 10);
-    superAdmin = await User.create({
-      name: "MockX Super Admin",
-      email: superAdminEmail,
-      password: hash,
-      role: "SUPER_ADMIN",
-      status: "ACTIVE",
-      isVerified: true,
-    });
-    console.log("✅ Created Super Admin: admin@mockx.com / admin123");
-  } else if (superAdmin.role !== "SUPER_ADMIN") {
-    superAdmin.role = "SUPER_ADMIN";
-    await superAdmin.save();
-    console.log("✅ Updated admin@mockx.com role to SUPER_ADMIN");
+  // Seed a platform admin only when explicit local seed credentials are configured.
+  const superAdminEmail = process.env.SEED_SUPER_ADMIN_EMAIL?.trim().toLowerCase();
+  const superAdminPassword = process.env.SEED_SUPER_ADMIN_PASSWORD;
+  if (Boolean(superAdminEmail) !== Boolean(superAdminPassword)) {
+    throw new Error("Set both SEED_SUPER_ADMIN_EMAIL and SEED_SUPER_ADMIN_PASSWORD to seed a platform admin.");
+  }
+  if (superAdminEmail && superAdminPassword) {
+    const existingSuperAdmin = await User.findOne({ email: superAdminEmail });
+    if (!existingSuperAdmin) {
+      const hash = await bcrypt.hash(superAdminPassword, 10);
+      await User.create({
+        name: "MockX Super Admin",
+        email: superAdminEmail,
+        password: hash,
+        role: "SUPER_ADMIN",
+        status: "ACTIVE",
+        isVerified: false,
+      });
+      console.log("Created configured seed Super Admin account.");
+    } else if (existingSuperAdmin.role !== "SUPER_ADMIN") {
+      throw new Error("Configured seed admin already exists without the SUPER_ADMIN role; it was not promoted.");
+    }
   }
 
   // 1. Create Institute
@@ -290,7 +294,7 @@ async function seedInstitute() {
   console.log("✅ Seeded completed attempt for Priya Sharma (Score: 19/24, 79%)");
   console.log("\n🎉 Seed completed successfully!");
   console.log("-----------------------------------------");
-  console.log("Super Admin:      admin@mockx.com   / admin123");
+  console.log(superAdminEmail ? "Super Admin:      configured seed credentials" : "Super Admin:      skipped (no seed credentials configured)");
   console.log("Institute Admin:  admin@apex.edu    / apex123");
   console.log("Student (Active): aryan@apex.edu    / student123");
   console.log("Student (Done):   priya@apex.edu    / student123");

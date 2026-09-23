@@ -32,7 +32,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
         navigate("/v2/institute/dashboard");
       } else if (role === "STUDENT") {
         navigate("/v2/institute/student/dashboard");
-      } else if (role === "SUPER_ADMIN" || (role === "ADMIN" && loggedUser.email === "admin@mockx.com")) {
+      } else if (role === "SUPER_ADMIN") {
         navigate("/v2/admin/institutes");
       }
     } catch (err) {

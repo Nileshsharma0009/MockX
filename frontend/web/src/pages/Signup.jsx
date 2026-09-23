@@ -35,14 +35,11 @@ function Signup() {
     setLoading(true);
     setError('');
     try {
-      const response = await signupUser({
+      await signupUser({
         name: formData.name,
         email: formData.email,
         password: formData.password,
       });
-
-      const { user } = response.data;
-      localStorage.setItem('user', JSON.stringify(user));
       navigate('/v2');
     } catch (err) {
       const message = err.response?.data?.message || err.message || 'Signup failed';

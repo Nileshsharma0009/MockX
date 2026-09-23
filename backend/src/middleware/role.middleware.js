@@ -2,20 +2,12 @@ import Institute from "../models/institute.model.js";
 
 /**
  * Check if the authenticated user has one of the allowed roles.
- * Super Admin (SUPER_ADMIN or admin@mockx.com with admin role) is granted SUPER_ADMIN access.
+ * SUPER_ADMIN access is granted only to users with the SUPER_ADMIN role.
  */
 export const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({ message: "Authentication required" });
-    }
-
-    const isMockXSuperAdmin =
-      req.user.role === "SUPER_ADMIN" ||
-      (req.user.role === "admin" && req.user.email === "admin@mockx.com");
-
-    if (allowedRoles.includes("SUPER_ADMIN") && isMockXSuperAdmin) {
-      return next();
     }
 
     const normalizedAllowed = allowedRoles.map((r) => r.toUpperCase());

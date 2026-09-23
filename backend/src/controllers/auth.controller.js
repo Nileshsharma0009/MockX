@@ -6,6 +6,26 @@ import genToken from '../config/token.js';
 
 const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
 
+const toSafeUser = (user) => ({
+  id: String(user._id),
+  name: user.name,
+  email: user.email,
+  role: user.role,
+  instituteId: user.instituteId ?? null,
+  batch: user.batch ?? null,
+  studentRollNo: user.studentRollNo ?? null,
+  status: user.status ?? "ACTIVE",
+  hasPaid: Boolean(user.hasPaid),
+  purchasedExams: Array.isArray(user.purchasedExams) ? user.purchasedExams : [],
+  age: user.age,
+  phone: user.phone,
+  state: user.state,
+  exam: user.exam,
+  imucetOption: user.imucetOption,
+  createdAt: user.createdAt,
+  updatedAt: user.updatedAt,
+});
+
 export const register = async (req, res) => {
   const { name, email, password, phone, state, age, exam, imucetOption } = req.body;
 
@@ -30,16 +50,13 @@ export const register = async (req, res) => {
     exam,
     imucetOption,
     password: hashPassword,
-    isVerified: true,
+    role: "user",
+    isVerified: false,
   });
 
   res.status(201).json({
     message: "Registration successful",
-    user: {
-      id: user._id,
-      name: user.name,
-      email: user.email,
-    },
+    user: toSafeUser(user),
   });
 };
 
@@ -59,8 +76,7 @@ export const signup = async (req, res) => {
 
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const userRole = email === "admin@mockx.com" ? "admin" : "user";
-    const user = await User.create({ name, email, phone, state, age, exam, imucetOption, password: hashPassword, role: userRole });
+    const user = await User.create({ name, email, phone, state, age, exam, imucetOption, password: hashPassword, role: "user", isVerified: false });
     const token = await genToken(user._id);
 
 
@@ -73,9 +89,7 @@ export const signup = async (req, res) => {
       sameSite: isProd ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-    const userResponse = user.toObject();
-    delete userResponse.password;
-    userResponse.id = user._id;
+    const userResponse = toSafeUser(user);
 
     res.status(201).json({
       user: userResponse
@@ -103,9 +117,8 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    if (user.email === "admin@mockx.com" && user.role !== "admin") {
-      user.role = "admin";
-      await user.save();
+    if (user.status === "SUSPENDED" || user.status === "DISABLED") {
+      return res.status(403).json({ message: "Your account is disabled. Please contact your administrator." });
     }
 
     const token = await genToken(user._id);
@@ -116,9 +129,7 @@ export const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000
     })
 
-    const userResponse = user.toObject();
-    delete userResponse.password;
-    userResponse.id = user._id;
+    const userResponse = toSafeUser(user);
 
     return res.status(200).json({
       user: userResponse
@@ -149,7 +160,7 @@ export const logout = async (req, res) => {
 
 
 export const getMe = (req, res) => {
-  res.status(200).json({ user: req.user });
+  res.status(200).json({ user: toSafeUser(req.user) });
 };
 
 export const getAllUsers = async (req, res) => {

@@ -68,7 +68,7 @@ export default function SuperAdminInstitutes() {
 
   useEffect(() => {
     const role = (user?.role || "").toUpperCase();
-    if (!user || (role !== "SUPER_ADMIN" && !(role === "ADMIN" && user.email === "admin@mockx.com"))) {
+    if (!user || role !== "SUPER_ADMIN") {
       toast.error("Access denied. Super Admin privileges required.");
       navigate("/v2/institute/login");
       return;

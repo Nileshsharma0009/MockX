@@ -58,9 +58,7 @@ export const getResultById = async (req, res) => {
     const ownerId = owner?._id?.toString?.() || owner?.toString?.();
     const requesterId = user?._id?.toString?.();
     const isOwner = Boolean(requesterId && ownerId && requesterId === ownerId);
-    const isPlatformAdmin =
-      user?.role === "SUPER_ADMIN" ||
-      (user?.role === "admin" && user?.email === "admin@mockx.com");
+    const isPlatformAdmin = user?.role === "SUPER_ADMIN";
 
     const instituteId = user?.instituteId?.toString?.();
     const ownerInstituteId = owner?.instituteId?.toString?.();

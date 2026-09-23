@@ -42,7 +42,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
                     navigate("/v2/institute/dashboard");
                 } else if (user?.role === "STUDENT") {
                     navigate("/v2/institute/student/dashboard");
-                } else if (user?.role === "SUPER_ADMIN" || (user?.role === "admin" && user?.email === "admin@mockx.com")) {
+                } else if (user?.role === "SUPER_ADMIN") {
                     navigate("/v2/admin/institutes");
                 } else {
                     navigate("/v2/institute/login");

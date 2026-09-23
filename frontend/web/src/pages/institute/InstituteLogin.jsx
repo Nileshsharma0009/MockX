@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Building2, GraduationCap, ShieldCheck, Mail, Lock, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { Building2, GraduationCap, Mail, Lock, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
 
@@ -25,7 +25,7 @@ export default function InstituteLogin() {
       toast.success(`Welcome back, ${loggedUser.name || "User"}!`);
 
       const role = (loggedUser.role || "").toUpperCase();
-      if (role === "SUPER_ADMIN" || (role === "ADMIN" && loggedUser.email === "admin@mockx.com")) {
+      if (role === "SUPER_ADMIN") {
         navigate("/v2/admin/institutes");
       } else if (role === "INSTITUTE_ADMIN") {
         navigate("/v2/institute/dashboard");
@@ -141,19 +141,6 @@ export default function InstituteLogin() {
                 </div>
                 <div className="text-[10px] text-slate-500 truncate mt-0.5">aryan@apex.edu</div>
               </button>
-
-              <button
-                type="button"
-                onClick={() => fillDemoCreds("admin@mockx.com", "admin123")}
-                className="p-2.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 text-left transition-all"
-              >
-                <div className="flex items-center gap-1.5 text-xs font-bold text-amber-800">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Super Admin</span>
-                </div>
-                <div className="text-[10px] text-slate-500 truncate mt-0.5">admin@mockx.com</div>
-              </button>
-
               <button
                 type="button"
                 onClick={() => fillDemoCreds("priya@apex.edu", "student123")}
