@@ -7,6 +7,10 @@ import http from "http";
 import connectDB from "./config/db.js";
 import { checkStalledCheckouts } from "./ai/recoveryAgent.js";
 import { initSocket } from "./services/socketService.js";
+import { getValidatedJwtSecret } from "./config/token.js";
+
+// Validate auth secrets after dotenv loads, before binding the server.
+getValidatedJwtSecret();
 
 // Load application environment before constructing CORS and optional ping behavior.
 const { default: app } = await import("./app.js");

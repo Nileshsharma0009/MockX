@@ -1,10 +1,9 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/user.model.js';
 import genToken from '../config/token.js';
+import { getAuthCookieOptions, getClearAuthCookieOptions } from "../config/authCookie.js";
 
 
-
-const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
 
 const toSafeUser = (user) => ({
   id: String(user._id),
@@ -80,15 +79,7 @@ export const signup = async (req, res) => {
     const token = await genToken(user._id);
 
 
-    const isProd = process.env.NODE_ENV === "production";
-
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: isProd,      // REQUIRED on Vercel
-      sameSite: isProd ? "none" : "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    res.cookie("token", token, getAuthCookieOptions());
     const userResponse = toSafeUser(user);
 
     res.status(201).json({
@@ -122,12 +113,7 @@ export const login = async (req, res) => {
     }
 
     const token = await genToken(user._id);
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: isProd ? "none" : "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000
-    })
+    res.cookie("token", token, getAuthCookieOptions())
 
     const userResponse = toSafeUser(user);
 
@@ -145,12 +131,7 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENVIRONMENT === 'production';
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: isProd ? "none" : "lax"
-    });
+    res.clearCookie("token", getClearAuthCookieOptions());
     return res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     console.error('Logout error:', error);

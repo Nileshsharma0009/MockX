@@ -13,8 +13,15 @@ import instituteStudentRoutes from "./routes/instituteStudent.routes.js";
 import morgan from "morgan";
 import { httpLogger } from "./utils/logger.js";
 import { createCorsOptions, startWebsitePing } from "./config/runtimeConfig.js";
+import createCsrfProtection from "./middleware/csrf.middleware.js";
 
 const app = express();
+
+const trustProxyHops = Number(process.env.TRUST_PROXY_HOPS || 0);
+if (!Number.isInteger(trustProxyHops) || trustProxyHops < 0) {
+  throw new Error("TRUST_PROXY_HOPS must be a non-negative integer.");
+}
+app.set("trust proxy", trustProxyHops);
 
 // Wire up Morgan HTTP Logger
 const morganStream = {
@@ -36,6 +43,7 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use(createCsrfProtection());
 
 app.get("/api/health", (req, res) => {
   res.json({ ok: true });

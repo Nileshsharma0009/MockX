@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
+import { getValidatedJwtSecret, JWT_ALGORITHM } from "../config/token.js";
 
 const optionalAuth = async (req, res, next) => {
   try {
@@ -14,7 +15,7 @@ const optionalAuth = async (req, res, next) => {
       return next();
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, getValidatedJwtSecret(), { algorithms: [JWT_ALGORITHM] });
     const user = await User.findById(decoded.id);
 
     req.user = user || null;

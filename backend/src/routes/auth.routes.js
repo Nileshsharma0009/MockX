@@ -2,14 +2,15 @@ import express from "express";
 import { signup, login, logout, getMe, register, getAllUsers } from "../controllers/auth.controller.js";
 
 import protect from "../middleware/auth.middleware.js";
+import { loginRateLimit, signupRateLimit } from "../middleware/authRateLimit.middleware.js";
 
 const authRouter = express.Router();
 
 /* AUTH */
-authRouter.post("/signup", signup);
-authRouter.post("/login", login);
+authRouter.post("/signup", signupRateLimit, signup);
+authRouter.post("/login", loginRateLimit, login);
 authRouter.post("/logout", logout);
-authRouter.post("/register", register);
+authRouter.post("/register", signupRateLimit, register);
 
 /* OTP */
 
