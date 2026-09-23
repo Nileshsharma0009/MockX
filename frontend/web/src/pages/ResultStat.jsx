@@ -7,8 +7,7 @@ import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
 import Loader from "../components/Loader";
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+import { API_BASE } from "../api/apiBase.js";
 
 const SUBJECTS = {
   eng: { name: "English" },

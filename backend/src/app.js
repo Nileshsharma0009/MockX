@@ -10,9 +10,9 @@ import notificationRoutes from "./routes/notification.routes.js";
 import paymentRecoveryRoutes from "./routes/paymentRecovery.routes.js";
 import instituteRoutes from "./routes/institute.routes.js";
 import instituteStudentRoutes from "./routes/instituteStudent.routes.js";
-import axios from "axios";
 import morgan from "morgan";
 import { httpLogger } from "./utils/logger.js";
+import { createCorsOptions, startWebsitePing } from "./config/runtimeConfig.js";
 
 const app = express();
 
@@ -20,38 +20,13 @@ const app = express();
 const morganStream = {
   write: (message) => {
     httpLogger.info(message.trim());
-  }
+  },
 };
 app.use(morgan("combined", { stream: morganStream }));
 
+startWebsitePing();
 
-const url = process.env.WEBSITE_URL;
-const interval = Number(process.env.RELOAD_INTERVAL) || 30000;
-
-
-function reloadWebsite() {
-  axios
-    .get(url)
-    .then((response) => {
-      console.log("website reloded");
-    })
-    .catch((error) => {
-      // console.error(`Error : ${error.message}`);
-    });
-}
-
-setInterval(reloadWebsite, interval);
-
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://mock-x.vercel.app",
-    ],
-    credentials: true,
-  })
-);
-
+app.use(cors(createCorsOptions()));
 
 app.use(
   express.json({
@@ -76,8 +51,8 @@ app.use("/api/payment-recovery", paymentRecoveryRoutes);
 app.use("/api/institutes", instituteRoutes);
 app.use("/api/institute-student", instituteStudentRoutes);
 
-
 app.get("/api/__ping", (req, res) => {
   res.json({ ok: true });
 });
+
 export default app;

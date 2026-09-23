@@ -1,3 +1,4 @@
+import { API_BASE } from "../api/apiBase.js";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import html2pdf from "html2pdf.js";
@@ -32,7 +33,7 @@ export default function ResultPage() {
         }
 
         const res = await fetch(
-          `${import.meta.env.VITE_API_BASE}/api/results/${resultId}`,
+          `${API_BASE}/api/results/${resultId}`,
           { credentials: "include" }
         );
 

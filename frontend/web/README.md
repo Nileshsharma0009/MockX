@@ -15,39 +15,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## Deployment & Production Notes
 
-Follow these steps to prepare and deploy the app to production.
+The frontend is a Vite static site. For Vercel, set the root directory to this folder, build command to `npm run build`, and output directory to `dist`; `vercel.json` contains the SPA route rewrite.
 
-1. Install dependencies and build
+Set `VITE_API_BASE` to the backend's public base URL and `VITE_SITE_URL` to the frontend's public origin for every production build. Neither value should include a trailing slash. The frontend adds `/api` for HTTP requests and uses the API base for Socket.IO; the site URL drives canonical/social metadata, `robots.txt`, and `sitemap.xml`. Production builds fail if either variable is missing. For local development, the shared API configuration defaults to `http://localhost:10000` and site metadata uses `http://localhost:5173`.
 
-```powershell
-cd web
-npm install
-npm run build
-```
-
-2. Environment variables
-
-Create a local file named `.env.local` (do NOT commit this file) with any secrets or production URLs. Example:
-
-```
-VITE_SHEET_URL=https://your-google-sheet-url-here
-```
-
-Add `VITE_SHEET_URL` (and any other secrets) to your hosting platform's environment variables for production.
-
-3. Preview production build
-
-```powershell
-npm run preview
-```
-
-4. Deploying
-
-- Vercel: set Build Command = `npm run build`, Output Directory = `dist`. Add environment variables in project settings.
-- Netlify: set Build Command = `npm run build`, Publish directory = `dist`. Add environment variables in Site settings.
-
-5. Optional CI/CD
-
-If you want automated deploys, add a GitHub Actions workflow or use your hosting provider's integration. Make sure secrets are stored in the provider's secret manager (Vercel, Netlify, GitHub Secrets, etc.).
-
-If you'd like I can add an example GitHub Actions workflow for building and deploying to Netlify or a Vercel configuration.
+Only public URLs/configuration belong in `VITE_*` variables because Vite embeds those values in client-side code. Never put credentials or private API keys in frontend environment variables. See the repository [deployment guide](../../DEPLOYMENT_GUIDE.md) for backend setup.

@@ -1,3 +1,4 @@
+import { API_BASE } from "../api/apiBase.js";
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { 
@@ -48,7 +49,7 @@ export default function NotificationBell() {
     // Initial fetch
     getNotifications();
 
-    const socketUrl = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+    const socketUrl = API_BASE;
     const socket = io(socketUrl, {
       withCredentials: true
     });

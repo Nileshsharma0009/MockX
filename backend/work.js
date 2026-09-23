@@ -20,11 +20,9 @@
 //         "http://localhost:5173",
 //         "http://localhost:5174",
 //         "http://localhost:5175",
-//         "https://mock-x.vercel.app",
-//       ]
+// //       ]
 //     : [
-//         "https://mock-x.vercel.app",
-//       ]
+// //       ]
 // ).map(o => o.trim().replace(/\/$/, ""));
 
 // app.use((req, res, next) => {

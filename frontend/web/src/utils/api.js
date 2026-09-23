@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://mockx-backend.vercel.app';
+import { API_URL } from "../api/apiBase.js";
 
 const api = axios.create({
-  baseURL: `${API_BASE}/api`,
+  baseURL: API_URL,
   withCredentials: true, // Include cookies with requests
   headers: {
     'Content-Type': 'application/json',

@@ -3,10 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import http from "http";
-import app from "./app.js";
+
 import connectDB from "./config/db.js";
 import { checkStalledCheckouts } from "./ai/recoveryAgent.js";
 import { initSocket } from "./services/socketService.js";
+
+// Load application environment before constructing CORS and optional ping behavior.
+const { default: app } = await import("./app.js");
 
 const PORT = process.env.PORT || 10000;
 

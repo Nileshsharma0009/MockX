@@ -1,16 +1,11 @@
 import { Server } from "socket.io";
+import { createCorsOptions } from "../config/runtimeConfig.js";
 
 let io = null;
 
 export const initSocket = (server) => {
   io = new Server(server, {
-    cors: {
-      origin: [
-        "http://localhost:5173",
-        "https://mock-x.vercel.app"
-      ],
-      credentials: true
-    }
+    cors: createCorsOptions()
   });
 
   io.on("connection", (socket) => {

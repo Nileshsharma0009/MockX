@@ -145,11 +145,11 @@ Open the `.env` file and customize the following environment keys:
 
 ```ini
 # Application Configurations
-PORT=5000
+PORT=10000
 NODE_ENV=development
 
 # Database Configurations
-MONGO_URI=mongodb://localhost:27017/mockx
+MONGODB_URL=mongodb://localhost:27017/mockx
 
 # Cryptographic Tokens
 JWT_SECRET=your_jwt_strong_secret_key
@@ -191,7 +191,7 @@ To run your API server in watch-mode:
 
 ```bash
 npm run dev
-# Server initiates on http://localhost:5000
+# Server initiates on http://localhost:10000
 ```
 
 ---

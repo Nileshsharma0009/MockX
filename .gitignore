@@ -84,3 +84,5 @@ CUSTOM_MOCK_GUIDE.md
 
 ./backend/seedAdmin.js
 version2.md
+
+./backend/test

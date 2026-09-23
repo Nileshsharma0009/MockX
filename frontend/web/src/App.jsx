@@ -28,8 +28,7 @@ const ControlsBar = lazy(() => import("./components/ControlsBar"));
 const StatsToggleFab = lazy(() => import("./components/StatsToggleFab"));
 
 /* ---------- API Base URL ---------- */
-const API_BASE =
-  import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+import { API_BASE } from "./api/apiBase.js";
 
 /* ---------- helper: normalize mock id ---------- */
 function resolveMockId() {

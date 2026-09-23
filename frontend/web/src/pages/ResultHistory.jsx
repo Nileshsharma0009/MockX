@@ -5,8 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { Lock, ArrowRight, User, LogOut, Shield, Menu, X } from "lucide-react";
 import Loader from "../components/Loader";
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+import { API_BASE } from "../api/apiBase.js";
 
 const TOTAL_MOCKS = 10;
 

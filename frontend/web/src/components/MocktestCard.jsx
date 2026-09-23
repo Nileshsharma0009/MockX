@@ -1,3 +1,4 @@
+import { API_BASE } from "../api/apiBase.js";
 
 
 import React from "react";
@@ -47,7 +48,6 @@ const MockTestCard = ({
     }
 
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE;
       const res = await fetch(`${API_BASE}/api/mocks/${id}/questions`, {
         credentials: "include",
       });

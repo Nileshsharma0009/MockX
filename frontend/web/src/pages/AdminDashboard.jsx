@@ -1,3 +1,4 @@
+import { API_BASE } from "../api/apiBase.js";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
@@ -690,7 +691,7 @@ const AdminDashboard = () => {
 
   // Real-time socket listener for database updates
   useEffect(() => {
-    const socketUrl = import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+    const socketUrl = API_BASE;
     const socket = io(socketUrl, {
       withCredentials: true
     });

@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE || "https://mockx-backend.vercel.app";
+import { API_URL } from "./apiBase.js";
 
 const publicApi = axios.create({
-  baseURL: `${API_BASE}/api`,
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
