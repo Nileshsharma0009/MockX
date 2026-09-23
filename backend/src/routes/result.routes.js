@@ -15,10 +15,10 @@ const router = express.Router();
 router.get("/my", protect, getMyResults);
 
 /**
- * 🌍 Public / shareable result page
+ * Authenticated result lookup (legacy public URL)
  * GET /api/results/public/:resultId
  */
-router.get("/public/:resultId", optionalAuth, getResultById);
+router.get("/public/:resultId", protect, getResultById);
 
 /**
  * 🔐 Private single result (owner only)

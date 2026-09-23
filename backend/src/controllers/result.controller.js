@@ -52,16 +52,27 @@ export const getResultById = async (req, res) => {
       return res.status(404).json({ message: "Result not found" });
     }
 
-    // 🔒 If this is an institute-owned result, check access permissions
-    if (result.instituteId) {
-      const user = req.user;
-      const isSuperAdmin = user?.role === "SUPER_ADMIN" || (user?.role === "admin" && user?.email === "admin@mockx.com");
-      const isOwnerStudent = user && user._id.toString() === result.userId?._id?.toString();
-      const isInstAdmin = user && user.instituteId && user.instituteId.toString() === result.instituteId.toString();
+    // Enforce owner, same-institute admin, or platform-admin access for every result.
+    const user = req.user;
+    const owner = result.userId;
+    const ownerId = owner?._id?.toString?.() || owner?.toString?.();
+    const requesterId = user?._id?.toString?.();
+    const isOwner = Boolean(requesterId && ownerId && requesterId === ownerId);
+    const isPlatformAdmin =
+      user?.role === "SUPER_ADMIN" ||
+      (user?.role === "admin" && user?.email === "admin@mockx.com");
 
-      if (!isSuperAdmin && !isOwnerStudent && !isInstAdmin) {
-        return res.status(403).json({ message: "Access denied to this institute test result." });
-      }
+    const instituteId = user?.instituteId?.toString?.();
+    const ownerInstituteId = owner?.instituteId?.toString?.();
+    const resultInstituteId = result.instituteId?.toString?.();
+    const isInstituteAdmin =
+      user?.role === "INSTITUTE_ADMIN" &&
+      instituteId &&
+      ownerInstituteId === instituteId &&
+      (!resultInstituteId || resultInstituteId === instituteId);
+
+    if (!isOwner && !isInstituteAdmin && !isPlatformAdmin) {
+      return res.status(403).json({ message: "Access denied to this test result." });
     }
 
     res.json(result);

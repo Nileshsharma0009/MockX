@@ -32,7 +32,7 @@ export default function ResultPage() {
         }
 
         const res = await fetch(
-          `${import.meta.env.VITE_API_BASE}/api/results/public/${resultId}`,
+          `${import.meta.env.VITE_API_BASE}/api/results/${resultId}`,
           { credentials: "include" }
         );
 
