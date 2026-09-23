@@ -77,4 +77,6 @@ const ResultSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+ResultSchema.index({ userId: 1, mockId: 1 }, { unique: true, partialFilterExpression: { isSubmitted: true } });
+
 export default mongoose.model("Result", ResultSchema);
