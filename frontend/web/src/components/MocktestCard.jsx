@@ -1,4 +1,4 @@
-import { API_BASE } from "../api/apiBase.js";
+﻿import { API_BASE } from "../api/apiBase.js";
 
 
 import React from "react";
@@ -27,9 +27,8 @@ const MockTestCard = ({
   index = 0,
 }) => {
   const navigate = useNavigate();
-  const paymentsEnabled = import.meta.env.VITE_PAYMENTS_ENABLED === "true";
-  const examId = exam || "imucet";
-  const hasAccess = isFree || !paymentsEnabled || user?.purchasedExams?.includes(examId) || user?.hasPaid;
+  const examId = exam;
+  const hasAccess = Boolean(isFree || (examId && user?.purchasedExams?.includes(examId)));
 
   const handleStartTest = async () => {
     if (!available) {
@@ -37,7 +36,7 @@ const MockTestCard = ({
       return;
     }
 
-    if (!isFree && !user && paymentsEnabled) {
+    if (!isFree && !user) {
       toast.error("Please login to access premium mocks");
       return;
     }

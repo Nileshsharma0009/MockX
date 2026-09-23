@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertTriangle, X, CreditCard, ChevronRight, Loader2, BellRing, UserMinus, Sparkles, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ export default function PaymentRecoveryModal({ notification, onClose }) {
       "verification during",
       "output matches",
       "constraints met",
-      "✅",
+      "âœ…",
       "proceed. output"
     ];
     let lowestIndex = cleaned.length;
@@ -58,6 +58,10 @@ export default function PaymentRecoveryModal({ notification, onClose }) {
 
   const mockId = notification.metadata.mockId || notification.metadata.examId || "unknown";
   const { amount } = notification.metadata;
+  const currency = notification.metadata.currency;
+  const amountLabel = currency && Number.isFinite(Number(amount))
+    ? new Intl.NumberFormat(undefined, { style: "currency", currency }).format(Number(amount))
+    : String(amount ?? "");
   const isAlreadyPurchased = user?.purchasedExams?.includes(mockId);
 
   const handleStartMocks = async () => {
@@ -98,10 +102,10 @@ export default function PaymentRecoveryModal({ notification, onClose }) {
       const options = {
         key: razorpayKey,
         amount: res.data.amount,
-        currency: "INR",
+        currency: res.data.currency,
         order_id: res.data.id,
-        name: "MockX",
-        description: `${examName} Test Series`,
+        name: res.data.notes?.productName || "Payment",
+        description: res.data.notes?.productName || "",
         handler: async function (response) {
           try {
             // Verify payment on backend
@@ -220,7 +224,7 @@ export default function PaymentRecoveryModal({ notification, onClose }) {
           {/* Heading */}
           <div className="space-y-1">
             <h3 className="text-lg font-extrabold text-slate-900 leading-tight">
-              {notification.title?.replace("⚡", "") || "Complete Your Checkout"}
+              {notification.title?.replace("âš¡", "") || "Complete Your Checkout"}
             </h3>
             <p className="text-[10px] text-slate-400 font-extrabold uppercase tracking-wider">
               Razor -AI
@@ -255,7 +259,7 @@ export default function PaymentRecoveryModal({ notification, onClose }) {
                 <p className="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">{mockId.toUpperCase()} exam bundle</p>
               </div>
               <div className="text-right">
-                <span className="text-lg font-black text-slate-900">₹{amount}</span>
+                <span className="text-lg font-black text-slate-900">{amountLabel}</span>
                 <p className="text-[8px] text-emerald-600 font-bold">Unlocks immediately</p>
               </div>
             </div>

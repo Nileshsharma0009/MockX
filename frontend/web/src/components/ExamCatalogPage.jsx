@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
@@ -36,7 +36,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
   };
 
   const navItems = ["Home", "Results", "Help"];
-  if (user && user.role === "admin") {
+  if (user && user.role === "SUPER_ADMIN") {
     navItems.push("Dashboard");
   }
 
@@ -79,7 +79,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
           ) : (
             <div className="flex items-center gap-3">
               <NotificationBell />
-              {user.role === "admin" && <Shield className="w-4 h-4 text-indigo-600" />}
+              {user.role === "SUPER_ADMIN" && <Shield className="w-4 h-4 text-indigo-600" />}
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200">
                 <div className="h-6 w-6 rounded-full bg-sky-100 flex items-center justify-center">
                   <User className="w-3.5 h-3.5 text-sky-600" />
@@ -105,7 +105,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
                 className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition duration-200 flex items-center justify-between group"
               >
                 <span>{item}</span>
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">→</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">â†’</span>
               </button>
             ))}
           </div>
@@ -121,14 +121,16 @@ const ExamCatalogPage = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const { user, logout, refreshUser } = useAuth();
   const navigate = useNavigate();
-  const [prices, setPrices] = useState({});
+  const [paymentProduct, setPaymentProduct] = useState(null);
+  const [paymentsEnabled, setPaymentsEnabled] = useState(false);
 
   useEffect(() => {
     const getPrices = async () => {
       try {
         const res = await fetchPrices();
         if (res?.data) {
-          setPrices(res.data);
+          setPaymentProduct(res.data.product || null);
+          setPaymentsEnabled(Boolean(res.data.paymentsEnabled));
         }
       } catch (err) {
         console.error("Failed to fetch dynamic prices:", err);
@@ -156,10 +158,10 @@ const ExamCatalogPage = () => {
       const options = {
         key: razorpayKey,
         amount: res.data.amount,
-        currency: "INR",
+        currency: res.data.currency,
         order_id: res.data.id,
-        name: "MockX",
-        description: "Exam Test Series",
+        name: res.data.notes?.productName || "Payment",
+        description: res.data.notes?.productName || "",
         handler: async function (response) {
           try {
             // Cryptographically verify payment on backend
@@ -210,11 +212,7 @@ const ExamCatalogPage = () => {
       toast.error("Payment failed. Please try again.");
     }
   };
-
-  const PAYMENTS_ENABLED =
-  import.meta.env.VITE_PAYMENTS_ENABLED === "true";
-
-  return (
+return (
     <div className="min-h-screen bg-[#F8FAFC]">
       <Navbar user={user} logout={logout} setShowLogin={setShowLogin} />
 
@@ -222,7 +220,7 @@ const ExamCatalogPage = () => {
         {/* HERO SECTION */}
         <div className="text-center mb-20">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Crack Your Exam with <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">Confidence 🚀</span>
+            Crack Your Exam with <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">Confidence ðŸš€</span>
           </h1>
           <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
             High-quality mock tests designed by exam-focused experts. 
@@ -241,6 +239,10 @@ const ExamCatalogPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {exams.map((exam) => {
             const purchased = user?.purchasedExams?.includes(exam.id);
+            const configuredProduct = paymentProduct?.id === exam.id;
+            const displayedPrice = configuredProduct
+              ? new Intl.NumberFormat(undefined, { style: "currency", currency: paymentProduct.currency }).format(paymentProduct.price)
+              : exam.price === 0 ? "Free" : "Not configured";
 
             return (
               <div key={exam.id} className="group relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
@@ -249,7 +251,7 @@ const ExamCatalogPage = () => {
                     {exam.name}
                   </span>
                   <div className="text-right">
-                    <span className="text-2xl font-bold text-slate-900">₹{prices[exam.id] ?? exam.price}</span>
+                    <span className="text-2xl font-bold text-slate-900">{displayedPrice}</span>
                     <p className="text-[10px] text-slate-400 font-medium">LIFETIME ACCESS</p>
                   </div>
                 </div>
@@ -277,47 +279,38 @@ const ExamCatalogPage = () => {
                   ))}
                 </ul>
 
-               {purchased || !PAYMENTS_ENABLED ? (
-  /* ✅ FULL ACCESS */
+               {purchased ? (
   <button
     onClick={() => navigate(exam.route)}
-    className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold
-               hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
+    className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
   >
     Start Test Series <ArrowRight className="w-4 h-4" />
   </button>
 ) : (
-  /* 🔒 NOT PURCHASED */
- <div className="flex flex-col gap-[10px]">
-  <button
-    onClick={() => navigate(exam.route)}
-    className="w-full py-3 rounded-2xl border border-emerald-500
-               text-emerald-600 font-semibold hover:bg-emerald-50
-               transition-all flex items-center justify-center gap-2"
-  >
-    Start Free Mocks <ArrowRight className="w-4 h-4" />
-  </button>
-
-  <button
-    onClick={() => handleBuyExam(exam.id)}
-    className="w-full py-4 rounded-2xl bg-slate-900
-               text-white font-bold hover:opacity-90 transition-all
-               shadow-lg shadow-indigo-100"
-  >
-    Unlock Test Series
-  </button>
-</div>
-
-  
-  
+  <div className="flex flex-col gap-[10px]">
+    <button
+      onClick={() => navigate(exam.route)}
+      className="w-full py-3 rounded-2xl border border-emerald-500 text-emerald-600 font-semibold hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+    >
+      Start Free Mocks <ArrowRight className="w-4 h-4" />
+    </button>
+    {paymentsEnabled && configuredProduct ? (
+      <button
+        onClick={() => handleBuyExam(exam.id)}
+        className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-indigo-100"
+      >
+        Unlock {paymentProduct.name}
+      </button>
+    ) : (
+      <p className="text-center text-xs text-slate-500">
+        {paymentsEnabled ? "This product is not configured for checkout." : "New purchases are paused. Existing purchases remain available."}
+      </p>
+    )}
+  </div>
 )}
-
 <p className="mt-4 text-[11px] text-center text-slate-400 font-medium italic">
-  {PAYMENTS_ENABLED
-    ? "One-time payment • Secure checkout"
-    : "Free access enabled • No payment required"}
+  {paymentsEnabled ? "Secure checkout" : "Free mocks remain available"}
 </p>
-
               </div>
             );
           })}
@@ -330,7 +323,7 @@ const ExamCatalogPage = () => {
               Why serious aspirants invest in mock tests
             </h2>
             <p className="mt-4 text-slate-600 text-lg">
-              Preparation is not just about studying more — it’s about practicing
+              Preparation is not just about studying more â€” itâ€™s about practicing
               the right way. High-quality mock tests help you refine your performance.
             </p>
           </div>
@@ -339,8 +332,8 @@ const ExamCatalogPage = () => {
             {[
               { icon: Target, title: "Real exam experience", desc: "Our mocks follow the exact exam pattern and time pressure so nothing feels new on the final day." },
               { icon: BarChart3, title: "Identify weak areas", desc: "Detailed performance analysis shows exactly where you lose marks to fix mistakes early." },
-              { icon: Clock, title: "Master time management", desc: "Learn how to allocate time across sections—the biggest factor separating top ranks." },
-              { icon: TrendingUp, title: "Track real progress", desc: "See measurable improvement across tests—accuracy, speed, and score history." },
+              { icon: Clock, title: "Master time management", desc: "Learn how to allocate time across sectionsâ€”the biggest factor separating top ranks." },
+              { icon: TrendingUp, title: "Track real progress", desc: "See measurable improvement across testsâ€”accuracy, speed, and score history." },
               { icon: ShieldCheck, title: "Exam day confidence", desc: "Face exam-level pressure multiple times so the real exam becomes just another test." }
             ].map((feature, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-indigo-200 transition-colors">
@@ -362,7 +355,7 @@ const ExamCatalogPage = () => {
             <div className="h-20 w-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="h-10 w-10 text-green-600" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900">Payment Successful! 🎉</h2>
+            <h2 className="text-2xl font-bold text-slate-900">Payment Successful! ðŸŽ‰</h2>
             <p className="mt-3 text-slate-500 text-sm">Your exam access has been unlocked. Happy studying!</p>
             <button
               onClick={() => setPaymentSuccess(false)}

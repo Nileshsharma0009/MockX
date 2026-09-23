@@ -1,4 +1,4 @@
-# Backend environment setup
+﻿# Backend environment setup
 
 ## Local development
 
@@ -27,7 +27,13 @@ The server listens on `PORT`, defaulting to `10000`. The frontend Vite server de
 | `WEBSITE_URL` | No | Enables periodic HTTP keep-alive pings only when set. |
 | `RELOAD_INTERVAL` | No | Ping interval in milliseconds; defaults to `30000` when pinging is enabled. |
 | `EMAIL_USER`, `EMAIL_PSAS` | No | Existing email settings, if used by the configured integration. |
-
+| `PAYMENTS_ENABLED` | No | Backend switch for creating new checkout orders. Defaults to disabled unless exactly `true`. It does not grant entitlement; prior purchases remain usable. |
+| `PAYMENT_PRODUCT_ID` | When payments are enabled | The single purchasable product ID. It must match the exam/bundle identifier used by mocks. |
+| `PAYMENT_PRODUCT_NAME` | When payments are enabled | Display name for the configured product. |
+| `PAYMENT_PRODUCT_PRICE` | When payments are enabled | Server-side price in the configured currency's major units. |
+| `PAYMENT_CURRENCY` | When payments are enabled | Three-letter ISO currency code used for order creation and verification. |
+| `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` | When payments are enabled | Backend Razorpay credentials. Use test credentials in development/staging and live credentials only in production. |
+| `RAZORPAY_WEBHOOK_SECRET` | When using the webhook | Required to authenticate webhook events; unsigned webhook processing is rejected. |
 For local development, `APP_ENV=development` permits HTTP localhost origins on any port, plus origins listed in `ALLOWED_ORIGINS`. Staging and production permit only exact origins in `ALLOWED_ORIGINS`; both Express HTTP and Socket.IO use the same policy.
 
 ## Staging and production

@@ -1,4 +1,4 @@
-services:
+﻿services:
   - type: web
     name: mockx-backend
     runtime: node
@@ -20,4 +20,20 @@ services:
       - key: FRONTEND_URL
         sync: false
       - key: ALLOWED_ORIGINS
+        sync: false
+      - key: PAYMENTS_ENABLED
+        value: "false"
+      - key: PAYMENT_PRODUCT_ID
+        sync: false
+      - key: PAYMENT_PRODUCT_NAME
+        sync: false
+      - key: PAYMENT_PRODUCT_PRICE
+        sync: false
+      - key: PAYMENT_CURRENCY
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
         sync: false

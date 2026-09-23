@@ -45,8 +45,8 @@ export const markNotificationsRead = async (req, res) => {
 /* ---------------- SEND ADMIN NOTIFICATION (ADMIN ONLY) ---------------- */
 export const sendAdminNotification = async (req, res) => {
   try {
-    if (!req.user || req.user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied. Admins only." });
+    if (!req.user || req.user.role !== "SUPER_ADMIN") {
+      return res.status(403).json({ message: "Access denied. Super Admins only." });
     }
     const { targetUserId, title, message, type } = req.body;
     if (!targetUserId || !title || !message) {
@@ -78,8 +78,8 @@ export const sendAdminNotification = async (req, res) => {
 /* ---------------- GET ALL NOTIFICATIONS (ADMIN ONLY) ---------------- */
 export const getAllNotifications = async (req, res) => {
   try {
-    if (!req.user || req.user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied. Admins only." });
+    if (!req.user || req.user.role !== "SUPER_ADMIN") {
+      return res.status(403).json({ message: "Access denied. Super Admins only." });
     }
     const notifications = await Notification.find()
       .populate("userId", "name email")

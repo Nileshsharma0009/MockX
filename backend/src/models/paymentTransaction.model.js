@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+﻿import mongoose from "mongoose";
 
 const paymentTransactionSchema = new mongoose.Schema(
   {
@@ -32,10 +32,20 @@ const paymentTransactionSchema = new mongoose.Schema(
       index: true,
     },
 
-    // Payment amount (in main currency unit, i.e., Rupees)
+    productName: {
+      type: String,
+      default: null,
+    },
+
+    // Payment amount in the configured currency main unit
     amount: {
       type: Number,
       required: true,
+    },
+
+    currency: {
+      type: String,
+      default: null,
     },
 
     // Transaction status

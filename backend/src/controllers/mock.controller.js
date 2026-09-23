@@ -1,20 +1,19 @@
-import Question from "../models/question.model.js";
+﻿import Question from "../models/question.model.js";
 import Result from "../models/result.model.js";
 import Mock from "../models/mock.model.js";
 import Institute from "../models/institute.model.js";
 import TestAssignment from "../models/testAssignment.model.js";
-import { isPaymentEnabled } from "../utils/paymentToggle.js";
 export const getMockQuestions = async (req, res) => {
   try {
     const { mockId } = req.params;
     const user = req.user;
 
     /* -----------------------------
-       1️⃣ CHECK MOCK EXISTS (Safe Fallback)
+       1ï¸âƒ£ CHECK MOCK EXISTS (Safe Fallback)
     ----------------------------- */
     let mock = await Mock.findById(mockId);
 
-    // ⚠️ Fallback Data (Matches Frontend Config)
+    // âš ï¸ Fallback Data (Matches Frontend Config)
     const FALLBACK_MOCKS = {
       "1": { exam: "imucet", isFree: true, title: "IMUCET Mock 1", duration: 180, totalQuestions: 200, totalMarks: 200, marking: { correct: 1, incorrect: 0.25 }, sections: [{ id: "A", name: "Section A" }, { id: "B", name: "Section B" }] },
       "imu1": { exam: "imucet", isFree: true, title: "IMUCET Mock 1", duration: 180, totalQuestions: 200, totalMarks: 200, marking: { correct: 1, incorrect: 0.25 }, sections: [{ id: "A", name: "Section A" }, { id: "B", name: "Section B" }] },
@@ -62,11 +61,11 @@ export const getMockQuestions = async (req, res) => {
     const isFree = mock.isFree || mockId === "1" || mockId === "imu1";
 
     /* -----------------------------
-       2️⃣ ACCESS CONTROL CHECK
+       2ï¸âƒ£ ACCESS CONTROL CHECK
     ----------------------------- */
     let hasAccess = false;
 
-    // 🏫 Case 0: Institute Custom Mock (Strict Private Access)
+    // ðŸ« Case 0: Institute Custom Mock (Strict Private Access)
     if (mock.instituteId) {
       if (!user) {
         return res.status(401).json({
@@ -138,16 +137,12 @@ export const getMockQuestions = async (req, res) => {
 
       hasAccess = true;
     }
-    // ✅ Case A: It's free (public mock)
+    // âœ… Case A: It's free (public mock)
     else if (isFree) {
       hasAccess = true;
     }
-    // ✅ Case B: Payments are disabled globally
-    else if (!isPaymentEnabled()) {
-      hasAccess = true;
-    }
-    // ✅ Case C: User has purchased the specific exam bundle
-    else if (user && user.purchasedExams && user.purchasedExams.includes(examId)) {
+// âœ… Case C: User has purchased the specific exam bundle
+    else if (user && Array.isArray(user.purchasedExams) && user.purchasedExams.includes(examId)) {
       hasAccess = true;
     }
 
@@ -158,7 +153,7 @@ export const getMockQuestions = async (req, res) => {
     }
 
     /* -----------------------------
-       3️⃣ BLOCK RE-ATTEMPT (For public non-institute mocks)
+       3ï¸âƒ£ BLOCK RE-ATTEMPT (For public non-institute mocks)
     ----------------------------- */
     if (!mock.instituteId && user) {
       const alreadyAttempted = await Result.findOne({
@@ -178,7 +173,7 @@ export const getMockQuestions = async (req, res) => {
 
 
     /* -----------------------------
-       4️⃣ LOAD QUESTIONS
+       4ï¸âƒ£ LOAD QUESTIONS
     ----------------------------- */
     const questions = await Question.find({
       mockId,

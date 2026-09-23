@@ -48,7 +48,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
   };
 
   const navItems = ["Home", "Practice", "Results", "Help"];
-  if (user && user.role === "admin") {
+  if (user && user.role === "SUPER_ADMIN") {
     navItems.push("Dashboard");
   }
 
@@ -86,7 +86,7 @@ const Navbar = ({ user, logout, setShowLogin }) => {
             </button>
           ) : (
             <div className="flex items-center gap-3">
-              {user.role === "admin" && <Shield className="w-4 h-4 text-indigo-600" />}
+              {user.role === "SUPER_ADMIN" && <Shield className="w-4 h-4 text-indigo-600" />}
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100">
                 <User className="w-4 h-4 text-gray-600" />
                 <span className="text-sm font-medium text-gray-800">{user.name}</span>

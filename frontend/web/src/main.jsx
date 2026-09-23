@@ -235,7 +235,7 @@ const AppRoutes = () => {
           <Route
             path="/v2/admin"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["SUPER_ADMIN"]}>
                 <AdminDashboard />
               </ProtectedRoute>
             }
@@ -262,7 +262,7 @@ const AppRoutes = () => {
           <Route
             path="/v2/admin/institutes"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["SUPER_ADMIN"]}>
                 <SuperAdminInstitutes />
               </ProtectedRoute>
             }

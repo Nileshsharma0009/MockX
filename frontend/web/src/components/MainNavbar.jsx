@@ -11,7 +11,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
 
     // Dynamic lists to include Dashboard for admin users and Institutes link
     const finalDesktopLinks = [...desktopLinks];
-    if (user && (user.role === "admin" || user.role === "SUPER_ADMIN") && !finalDesktopLinks.includes("Dashboard")) {
+    if (user && user.role === "SUPER_ADMIN" && !finalDesktopLinks.includes("Dashboard")) {
         finalDesktopLinks.push("Dashboard");
     }
     if (!finalDesktopLinks.includes("Institutes")) {
@@ -20,7 +20,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
 
     const mobileLinks = ["Home", "Practice", "Institutes", "Ai-Analyzer", "Results", "Help"];
     const finalMobileLinks = [...mobileLinks];
-    if (user && (user.role === "admin" || user.role === "SUPER_ADMIN") && !finalMobileLinks.includes("Dashboard")) {
+    if (user && user.role === "SUPER_ADMIN" && !finalMobileLinks.includes("Dashboard")) {
         finalMobileLinks.push("Dashboard");
     }
 
@@ -118,7 +118,7 @@ const MainNavbar = ({ desktopLinks, setShowLogin }) => {
                     ) : (
                         <div className="flex items-center gap-3">
                             <NotificationBell />
-                            {user.role === "admin" && <Shield className="w-4 h-4 text-indigo-600" />}
+                            {user.role === "SUPER_ADMIN" && <Shield className="w-4 h-4 text-indigo-600" />}
                             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100">
                                 <User className="w-4 h-4 text-gray-600" />
                                 <span className="text-sm font-medium text-gray-800">{user.name}</span>

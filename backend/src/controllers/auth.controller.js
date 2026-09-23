@@ -146,8 +146,8 @@ export const getMe = (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    if (!req.user || req.user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied. Admins only." });
+    if (!req.user || req.user.role !== "SUPER_ADMIN") {
+      return res.status(403).json({ message: "Access denied. Super Admins only." });
     }
     const users = await User.find({}, "name email role phone purchasedExams createdAt")
       .sort({ createdAt: -1 });

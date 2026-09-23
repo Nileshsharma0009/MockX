@@ -1,4 +1,4 @@
-import PaymentTransaction from "../models/paymentTransaction.model.js";
+﻿import PaymentTransaction from "../models/paymentTransaction.model.js";
 import RecoveryAuditLog from "../models/recoveryAuditLog.model.js";
 import { getRecoveryMetrics } from "../ai/dbTools.js";
 import { runMerchantCopilot } from "../ai/merchantCopilot.js";
@@ -8,8 +8,8 @@ import mongoose from "mongoose";
 /* ---------------- GET RECOVERY METRICS (ADMIN ONLY) ---------------- */
 export const fetchRecoveryMetrics = async (req, res) => {
   try {
-    if (!req.user || req.user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied. Admins only." });
+    if (!req.user || req.user.role !== "SUPER_ADMIN") {
+      return res.status(403).json({ message: "Access denied. Super Admins only." });
     }
 
     const metrics = await getRecoveryMetrics();
@@ -23,8 +23,8 @@ export const fetchRecoveryMetrics = async (req, res) => {
 /* ---------------- GET AUDIT LOGS (ADMIN ONLY) ---------------- */
 export const fetchRecoveryAuditLogs = async (req, res) => {
   try {
-    if (!req.user || req.user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied. Admins only." });
+    if (!req.user || req.user.role !== "SUPER_ADMIN") {
+      return res.status(403).json({ message: "Access denied. Super Admins only." });
     }
 
     const logs = await RecoveryAuditLog.find({ agentName: "RevenueRecoveryAgent" })
@@ -65,6 +65,9 @@ export const handleCustomerAction = async (req, res) => {
     if (!txn) {
       return res.status(404).json({ message: "Transaction not found" });
     }
+    if (String(txn.userId) !== String(req.user._id)) {
+      return res.status(403).json({ message: "Transaction does not belong to this user" });
+    }
 
     // Update transaction recovery state
     txn.recovery.status = action;
@@ -101,8 +104,8 @@ export const handleCustomerAction = async (req, res) => {
 /* ---------------- RUN MERCHANT COPILOT CHAT (ADMIN ONLY) ---------------- */
 export const runCopilotChat = async (req, res) => {
   try {
-    if (!req.user || req.user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied. Admins only." });
+    if (!req.user || req.user.role !== "SUPER_ADMIN") {
+      return res.status(403).json({ message: "Access denied. Super Admins only." });
     }
 
     const { query, history } = req.body;

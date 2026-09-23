@@ -3,8 +3,6 @@ import Result from "../models/result.model.js";
 import Mock from "../models/mock.model.js";
 import Institute from "../models/institute.model.js";
 import TestAssignment from "../models/testAssignment.model.js";
-import { isPaymentEnabled } from "../utils/paymentToggle.js";
-
 async function verifyMockAttemptAccess(user, mock, mockId) {
   if (mock.instituteId) {
     if (!user.instituteId || String(user.instituteId) !== String(mock.instituteId)) {
@@ -43,10 +41,7 @@ async function verifyMockAttemptAccess(user, mock, mockId) {
   }
 
   const isFree = mock.isFree || mockId === "1" || mockId === "imu1";
-  const hasAccess =
-    isFree ||
-    !isPaymentEnabled() ||
-    (user.purchasedExams && user.purchasedExams.includes(mock.exam));
+  const hasAccess = isFree || (Array.isArray(user.purchasedExams) && user.purchasedExams.includes(mock.exam));
 
   if (!hasAccess) {
     return { message: "Please purchase this exam to access mocks" };

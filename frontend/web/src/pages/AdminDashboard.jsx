@@ -672,8 +672,8 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    if (!user || user.role !== "admin") {
-      toast.error("Access denied. Admins only.");
+    if (!user || user.role !== "SUPER_ADMIN") {
+      toast.error("Access denied. Super Admins only.");
       navigate("/v2");
       return;
     }

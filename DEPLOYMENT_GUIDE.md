@@ -1,4 +1,4 @@
-# MockX deployment guide
+﻿# MockX deployment guide
 
 ## Deployment layout
 
@@ -40,3 +40,8 @@ For a separate staging service, use separate database/secrets, set `NODE_ENV=pro
 Copy `backend/env.template` to `backend/.env`, fill in `MONGODB_URL` and `JWT_SECRET`, then start the backend with `npm run dev` from `backend`. It listens on port `10000` by default. Start the frontend with `npm run dev` from `frontend/web`; with no `VITE_API_BASE`, it connects to `http://localhost:10000` and uses `http://localhost:5173` for site metadata.
 
 In development, HTTP localhost origins are allowed on any port. Staging and production allow only origins listed in `ALLOWED_ORIGINS`.
+## Razorpay configuration
+
+Configure payment variables on the backend service only: `PAYMENTS_ENABLED`, `PAYMENT_PRODUCT_ID`, `PAYMENT_PRODUCT_NAME`, `PAYMENT_PRODUCT_PRICE`, `PAYMENT_CURRENCY`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, and `RAZORPAY_WEBHOOK_SECRET`. The backend accepts one configured product at a time; its ID must match the mock bundle identifier. Keep `PAYMENTS_ENABLED=false` until the product and credentials are configured. When disabled, new order creation is rejected, while purchases already recorded on user accounts remain available.
+
+Use Razorpay TEST credentials in development and staging, and LIVE credentials only in production. Keep the backend key secret and webhook secret out of frontend variables. Set only the matching Razorpay key ID as `VITE_RAZORPAY_KEY_ID` in the frontend build environment. The webhook is rejected unless its backend secret is configured.
