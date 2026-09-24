@@ -860,1189 +860,1803 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800">
-      {/* HEADER SECTION */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm backdrop-blur-md bg-white/90">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-3">
+  <div className="min-h-screen bg-slate-50 text-slate-800">
+
+    {/* =========================================================
+        HEADER
+    ========================================================= */}
+    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-md">
+  <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-3 sm:h-16 sm:px-6 lg:px-8">
+
+    {/* Left: Back + Title */}
+    <div className="flex min-w-0 items-center gap-2">
+      <button
+        onClick={() => navigate("/v2/mock-tests")}
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 sm:h-8 sm:w-8"
+        title="Back to Catalog"
+      >
+        <ArrowLeft className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+      </button>
+
+      <div className="min-w-0">
+        <div className="flex items-center gap-1.5">
+          <Shield className="h-3.5 w-3.5 shrink-0 text-indigo-600 sm:h-4 sm:w-4" />
+
+          <h1 className="truncate text-xs font-medium tracking-tight text-slate-900 sm:text-base sm:font-semibold">
+            Admin  Panel
+          </h1>
+        </div>
+
+        <p className="hidden text-[3px] text-slate-500 sm:block sm:text-[10px]">
+          Manage transactions, payments, and notifications
+        </p>
+      </div>
+    </div>
+
+    {/* Right: Actions */}
+    <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+
+      <button
+        onClick={() => navigate("/v2/admin/institutes")}
+        className="flex h-8 items-center justify-center gap-1 rounded-lg bg-indigo-600 px-2.5 text-[9px] text-white shadow-sm transition-all active:scale-95 hover:bg-indigo-500 sm:h-9 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:text-xs"
+      >
+        <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+
+        <span className="hidden sm:inline">
+          Institute Directory
+        </span>
+
+        <span className="sm:hidden">
+          Institutes
+        </span>
+      </button>
+
+      <button
+        onClick={() => {
+          if (activeTab === "transactions") loadTransactions(true);
+          else if (activeTab === "users") loadUsers();
+          else if (activeTab === "notifs") loadNotifications();
+          else if (activeTab === "recovery") loadRecoveryData();
+        }}
+        disabled={
+          refreshing ||
+          usersLoading ||
+          notifsLoading ||
+          metricsLoading ||
+          logsLoading
+        }
+        className="flex h-8 items-center justify-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 text-[9px] text-slate-700 shadow-sm transition-all active:scale-95 disabled:opacity-50 sm:h-9 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:text-xs"
+      >
+        <RefreshCw
+          className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${
+            refreshing ||
+            usersLoading ||
+            notifsLoading ||
+            metricsLoading ||
+            logsLoading
+              ? "animate-spin text-indigo-600"
+              : ""
+          }`}
+        />
+
+        <span className="hidden sm:inline">
+          {refreshing ||
+          usersLoading ||
+          notifsLoading ||
+          metricsLoading ||
+          logsLoading
+            ? "Refreshing..."
+            : "Refresh logs"}
+        </span>
+
+        <span className="sm:hidden">
+          {refreshing ||
+          usersLoading ||
+          notifsLoading ||
+          metricsLoading ||
+          logsLoading
+            ? "..."
+            : "Refresh"}
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+    {/* =========================================================
+        MAIN CONTAINER
+    ========================================================= */}
+    <div className="mx-auto max-w-7xl px-3 py-4 sm:px-6 sm:py-8 lg:px-8">
+
+      {/* =======================================================
+          TABS
+      ======================================================= */}
+      <div className="mb-5 overflow-x-auto border-b border-slate-200 sm:mb-8">
+        <div className="flex min-w-max gap-4 sm:gap-6">
+
+          {[
+            ["transactions", "Transactions & Revenue"],
+            ["recovery", "AI Revenue Recovery & Copilot"],
+            ["users", "User Messaging"],
+            ["notifs", "Message Logs"],
+          ].map(([tab, label]) => (
             <button
-              onClick={() => navigate("/v2/mock-tests")}
-              className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500 hover:text-slate-700"
-              title="Back to Catalog"
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`shrink-0 whitespace-nowrap border-b-2 pb-2 text-[10px] transition-all sm:pb-3 sm:text-sm ${
+                activeTab === tab
+                  ? "border-indigo-600 text-indigo-600"
+                  : "border-transparent text-slate-400 hover:text-slate-600"
+              }`}
             >
-              <ArrowLeft className="w-5 h-5" />
+              {label}
             </button>
-            <div>
-              <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-indigo-600" />
-                <h1 className="text-xl font-bold tracking-tight text-slate-900">Admin Control Panel</h1>
-              </div>
-              <p className="text-xs text-slate-500 font-medium">Manage transactions, payments, and notifications</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <button
-              onClick={() => navigate("/v2/admin/institutes")}
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-semibold transition-all shadow-sm active:scale-95"
-            >
-              <Shield className="w-4 h-4" />
-              Institute Directory
-            </button>
-            <button
-              onClick={() => {
-                if (activeTab === "transactions") loadTransactions(true);
-                else if (activeTab === "users") loadUsers();
-                else if (activeTab === "notifs") loadNotifications();
-                else if (activeTab === "recovery") loadRecoveryData();
-              }}
-              disabled={refreshing || usersLoading || notifsLoading || metricsLoading || logsLoading}
-              className="flex items-center gap-2 px-4 py-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 rounded-xl text-sm font-semibold transition-all shadow-sm active:scale-95 disabled:opacity-50"
-            >
-              <RefreshCw className={`w-4 h-4 ${(refreshing || usersLoading || notifsLoading || metricsLoading || logsLoading) ? "animate-spin text-indigo-600" : ""}`} />
-              {(refreshing || usersLoading || notifsLoading || metricsLoading || logsLoading) ? "Refreshing..." : "Refresh logs"}
-            </button>
-          </div>
+          ))}
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        
-        {/* TAB NAVIGATION */}
-        <div className="flex border-b border-slate-200 gap-6">
-          <button
-            onClick={() => setActiveTab("transactions")}
-            className={`pb-3 text-sm font-extrabold border-b-2 transition-all ${
-              activeTab === "transactions"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-400 hover:text-slate-600"
-            }`}
-          >
-            Transactions & Revenue
-          </button>
-          <button
-            onClick={() => setActiveTab("recovery")}
-            className={`pb-3 text-sm font-extrabold border-b-2 transition-all ${
-              activeTab === "recovery"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-400 hover:text-slate-600"
-            }`}
-          >
-            AI Revenue Recovery & Copilot
-          </button>
-          <button
-            onClick={() => setActiveTab("users")}
-            className={`pb-3 text-sm font-extrabold border-b-2 transition-all ${
-              activeTab === "users"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-400 hover:text-slate-600"
-            }`}
-          >
-            User Messaging
-          </button>
-          <button
-            onClick={() => setActiveTab("notifs")}
-            className={`pb-3 text-sm font-extrabold border-b-2 transition-all ${
-              activeTab === "notifs"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-400 hover:text-slate-600"
-            }`}
-          >
-            Message Logs
-          </button>
-        </div>
+      {/* =======================================================
+          TRANSACTIONS TAB
+      ======================================================= */}
+      {activeTab === "transactions" && (
+        <div className="space-y-5 sm:space-y-8">
 
-        {activeTab === "transactions" && (
-          <>
-            {/* METRICS ROW */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Card 1: Revenue */}
-              <div
-                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap"
-              >
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Revenue</span>
-                  <h3 className="text-3xl font-extrabold text-slate-900">₹{totalRevenue.toLocaleString("en-IN")}</h3>
-                  <p className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
-                    <TrendingUp className="w-3 h-3" /> Live earnings logged
-                  </p>
-                </div>
-                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl">
-                  <DollarSign className="w-6 h-6" />
-                </div>
+          {/* METRICS */}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+
+            {/* Revenue */}
+            <div className="stat-card-gsap group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+              <div className="min-w-0 space-y-0.5 sm:space-y-1">
+                <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                  Total Revenue
+                </span>
+
+                <h3 className="truncate text-base font-medium leading-tight text-slate-900 sm:text-3xl sm:font-semibold">
+                  ₹{totalRevenue.toLocaleString("en-IN")}
+                </h3>
+
+                <p className="flex items-center gap-0.5 truncate text-[8px] text-emerald-600 sm:text-[10px] sm:font-medium">
+                  <TrendingUp className="h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3" />
+                  Live earnings logged
+                </p>
               </div>
 
-              {/* Card 2: Success Rate */}
-              <div
-                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap"
-              >
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Success Rate</span>
-                  <h3 className="text-3xl font-extrabold text-slate-900">{successRate}%</h3>
-                  <p className="text-[10px] text-slate-500 font-semibold">
-                    {successfulTxns.length} of {transactions.length} successful
-                  </p>
-                </div>
-                <div className="p-3 bg-indigo-50 text-indigo-600 rounded-2xl">
-                  <CheckCircle2 className="w-6 h-6" />
-                </div>
-              </div>
-
-              {/* Card 3: Failed Payments */}
-              <div
-                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap"
-              >
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Failed Payments</span>
-                  <h3 className="text-3xl font-extrabold text-rose-600">{failedTxns.length}</h3>
-                  <p className="text-[10px] text-rose-500 font-bold">Requires support attention</p>
-                </div>
-                <div className="p-3 bg-rose-50 text-rose-600 rounded-2xl">
-                  <XCircle className="w-6 h-6" />
-                </div>
-              </div>
-
-              {/* Card 4: Pending Orders */}
-              <div
-                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap"
-              >
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Pending Checkout</span>
-                  <h3 className="text-3xl font-extrabold text-amber-600">{pendingTxns.length}</h3>
-                  <p className="text-[10px] text-slate-500 font-semibold">Awaiting gateway response</p>
-                </div>
-                <div className="p-3 bg-amber-50 text-amber-600 rounded-2xl">
-                  <AlertCircle className="w-6 h-6" />
-                </div>
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                <DollarSign className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
               </div>
             </div>
 
-            {/* CHARTS GRAPH GRID */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
-              {/* Revenue Trend Area Chart */}
-              <div className="bg-white p-6 rounded-[28px] border border-slate-200 shadow-sm space-y-4 chart-card-gsap">
-                <div>
-                  <h3 className="font-extrabold text-sm text-slate-900">Revenue Analytics</h3>
-                  <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Gross Sales vs Loss Trend</p>
-                </div>
-                <div className="h-[280px] w-full">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={getChartData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                      <defs>
-                        <linearGradient id="colorSuccess" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#10b981" stopOpacity={0.15}/>
-                          <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                        </linearGradient>
-                        <linearGradient id="colorFailed" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#ef4444" stopOpacity={0.15}/>
-                          <stop offset="95%" stopColor="#ef4444" stopOpacity={0}/>
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                      <XAxis dataKey="date" stroke="#94a3b8" fontSize={9} fontWeight="bold" tickLine={false} axisLine={false} />
-                      <YAxis stroke="#94a3b8" fontSize={9} fontWeight="bold" tickLine={false} axisLine={false} tickFormatter={(val) => `₹${val}`} />
-                      <Tooltip 
-                        contentStyle={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: "16px", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.05)" }}
-                        labelStyle={{ fontWeight: "bold", fontSize: "11px", color: "#1e293b" }}
-                        itemStyle={{ fontSize: "11px", fontWeight: "600" }}
-                      />
-                      <Area type="monotone" dataKey="Success" stroke="#10b981" strokeWidth={2} fillOpacity={1} fill="url(#colorSuccess)" name="Recovered/Paid" />
-                      <Area type="monotone" dataKey="Failed" stroke="#ef4444" strokeWidth={2} fillOpacity={1} fill="url(#colorFailed)" name="Failed Checkout" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
+            {/* Success */}
+            <div className="stat-card-gsap group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+              <div className="min-w-0 space-y-0.5 sm:space-y-1">
+                <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                  Success Rate
+                </span>
+
+                <h3 className="text-base font-medium leading-tight text-slate-900 sm:text-3xl sm:font-semibold">
+                  {successRate}%
+                </h3>
+
+                <p className="truncate text-[8px] text-slate-500 sm:text-[10px] sm:font-medium">
+                  {successfulTxns.length} of {transactions.length} successful
+                </p>
               </div>
 
-              {/* Conversion by Mock ID Bar Chart */}
-              <div className="bg-white p-6 rounded-[28px] border border-slate-200 shadow-sm space-y-4 chart-card-gsap">
-                <div>
-                  <h3 className="font-extrabold text-sm text-slate-900">Exam Bundle Performance</h3>
-                  <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Recovered vs Unresolved failed orders</p>
-                </div>
-                <div className="h-[280px] w-full">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={getMockPerformanceData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                      <XAxis dataKey="name" stroke="#94a3b8" fontSize={9} fontWeight="bold" tickLine={false} axisLine={false} />
-                      <YAxis stroke="#94a3b8" fontSize={9} fontWeight="bold" tickLine={false} axisLine={false} />
-                      <Tooltip
-                        contentStyle={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: "16px", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.05)" }}
-                        labelStyle={{ fontWeight: "bold", fontSize: "11px", color: "#1e293b" }}
-                        itemStyle={{ fontSize: "11px", fontWeight: "600" }}
-                      />
-                      <Legend verticalAlign="top" height={36} iconType="circle" iconSize={8} wrapperStyle={{ fontSize: "9px", fontWeight: "bold", textTransform: "uppercase" }} />
-                      <Bar dataKey="Recovered" fill="#10b981" radius={[4, 4, 0, 0]} name="Recovered Mocks" />
-                      <Bar dataKey="Unresolved" fill="#f43f5e" radius={[4, 4, 0, 0]} name="Unresolved Fails" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                <CheckCircle2 className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
               </div>
             </div>
 
-        {/* CONTROLS (SEARCH & FILTER) */}
-        <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
-          {/* Search Bar */}
-          <div className="relative w-full md:w-96">
-            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
-              <Search className="w-4 h-4" />
-            </span>
-            <input
-              type="text"
-              placeholder="Search by customer, email, order ID, payment ID..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-2xl bg-slate-50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
-            />
-            {searchQuery && (
-              <button 
-                onClick={() => setSearchQuery("")}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
+            {/* Failed */}
+            <div className="stat-card-gsap group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+              <div className="min-w-0 space-y-0.5 sm:space-y-1">
+                <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                  Failed Payments
+                </span>
+
+                <h3 className="text-base font-medium leading-tight text-rose-600 sm:text-3xl sm:font-semibold">
+                  {failedTxns.length}
+                </h3>
+
+                <p className="truncate text-[8px] text-rose-500 sm:text-[10px] sm:font-medium">
+                  Requires support attention
+                </p>
+              </div>
+
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                <XCircle className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
+              </div>
+            </div>
+
+            {/* Pending */}
+            <div className="stat-card-gsap group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+              <div className="min-w-0 space-y-0.5 sm:space-y-1">
+                <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                  Pending Checkout
+                </span>
+
+                <h3 className="text-base font-medium leading-tight text-amber-600 sm:text-3xl sm:font-semibold">
+                  {pendingTxns.length}
+                </h3>
+
+                <p className="truncate text-[8px] text-slate-500 sm:text-[10px] sm:font-medium">
+                  Awaiting gateway response
+                </p>
+              </div>
+
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-amber-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                <AlertCircle className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
+              </div>
+            </div>
           </div>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 mr-2 flex items-center gap-1.5">
-              <Filter className="w-3.5 h-3.5" /> Filter Status
-            </span>
-            {["ALL", "SUCCESS", "FAILED", "PENDING"].map((status) => (
-              <button
-                key={status}
-                onClick={() => setStatusFilter(status)}
-                className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all shadow-sm ${
-                  statusFilter === status
-                    ? "bg-indigo-600 text-white"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-600"
-                }`}
-              >
-                {status}
-              </button>
-            ))}
-          </div>
-        </div>
+          {/* =================================================
+              CHARTS
+          ================================================= */}
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 
-        {/* LOG LISTING */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="px-6 py-5 border-b border-slate-100">
-            <h2 className="text-lg font-bold text-slate-900">Transaction History</h2>
-            <p className="text-xs text-slate-400 font-medium">Showing {filteredTransactions.length} records</p>
-          </div>
+            {/* Revenue */}
+            <div className="chart-card-gsap rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm sm:rounded-[28px] sm:p-6">
+              <div className="mb-2">
+                <h3 className="text-xs font-medium text-slate-900 sm:text-sm sm:font-semibold">
+                  Revenue Analytics
+                </h3>
 
-          {filteredTransactions.length === 0 ? (
-            <div className="text-center py-20">
-              <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <p className="text-slate-500 font-medium">No transactions found matching your criteria</p>
-            </div>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 border-b border-slate-100 text-[10px] uppercase font-bold tracking-wider text-slate-400">
-                    <th className="px-6 py-4">Customer Details</th>
-                    <th className="px-6 py-4">Product Info</th>
-                    <th className="px-6 py-4">Razorpay Reference IDs</th>
-                    <th className="px-6 py-4">Amount</th>
-                    <th className="px-6 py-4">Status</th>
-                    <th className="px-6 py-4">Timestamp</th>
-                    <th className="px-6 py-4 text-right">Details</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
-                  {filteredTransactions.map((txn) => (
-                    <tr key={txn._id} className="hover:bg-slate-50/50 transition-colors">
-                      {/* Customer Info */}
-                      <td className="px-6 py-4.5">
-                        {txn.userId ? (
-                          <div className="space-y-0.5">
-                            <p className="font-bold text-slate-900">{txn.userId.name}</p>
-                            <div className="flex items-center gap-1 text-[11px] text-slate-400 font-medium">
-                              <Mail className="w-3 h-3 text-slate-300" />
-                              <span>{txn.userId.email}</span>
-                            </div>
-                            {txn.userId.phone && (
-                              <div className="flex items-center gap-1 text-[11px] text-slate-400 font-medium">
-                                <Phone className="w-3 h-3 text-slate-300" />
-                                <span>{txn.userId.phone}</span>
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <span className="text-slate-400 italic">User account missing</span>
-                        )}
-                      </td>
-
-                      {/* Product details */}
-                      <td className="px-6 py-4.5">
-                        <div className="space-y-0.5">
-                          <span className="uppercase text-[10px] tracking-wider font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100">
-                            {txn.mockId || "unknown"}
-                          </span>
-                        </div>
-                      </td>
-
-                      {/* Reference IDs */}
-                      <td className="px-6 py-4.5 font-mono text-xs">
-                        <div className="space-y-0.5">
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-slate-400 font-bold select-none text-[9px] uppercase tracking-wider w-8">Order</span>
-                            <span className="text-slate-600">{txn.orderId || "N/A"}</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-slate-400 font-bold select-none text-[9px] uppercase tracking-wider w-8">Pay</span>
-                            <span className="text-slate-600">{txn.paymentId || <span className="text-slate-300 italic">—</span>}</span>
-                          </div>
-                        </div>
-                      </td>
-
-                      {/* Amount */}
-                      <td className="px-6 py-4.5 font-bold text-slate-900">
-                        ₹{txn.amount || 0}
-                      </td>
-
-                      {/* Status */}
-                      <td className="px-6 py-4.5">
-                        <span
-                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
-                            txn.status === "SUCCESS"
-                              ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                              : txn.status === "FAILED"
-                              ? "bg-rose-50 text-rose-700 border border-rose-100"
-                              : "bg-amber-50 text-amber-700 border border-amber-100"
-                          }`}
-                        >
-                          <span
-                            className={`h-1.5 w-1.5 rounded-full ${
-                              txn.status === "SUCCESS"
-                                ? "bg-emerald-500"
-                                : txn.status === "FAILED"
-                                ? "bg-rose-500"
-                                : "bg-amber-500"
-                            }`}
-                          />
-                          {txn.status}
-                        </span>
-                      </td>
-
-                      {/* Timestamp */}
-                      <td className="px-6 py-4.5 text-xs text-slate-500 font-medium">
-                        {formatDate(txn.createdAt)}
-                      </td>
-
-                      {/* Actions */}
-                      <td className="px-6 py-4.5 text-right">
-                        <button
-                          onClick={() => setSelectedTxn(txn)}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors py-1.5 px-3 rounded-lg hover:bg-indigo-50"
-                        >
-                          View {txn.status === "FAILED" && <span className="text-rose-500">(Diag)</span>}
-                          <ChevronRight className="w-3.5 h-3.5" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-      </>
-    )}
-
-        {/* TAB: AI REVENUE RECOVERY */}
-        {activeTab === "recovery" && (
-          <div className="space-y-8 animate-in fade-in-50 duration-300">
-            {/* METRICS SUMMARY */}
-            {metricsLoading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-pulse">
-                {[1, 2, 3, 4].map(n => (
-                  <div key={n} className="bg-white h-28 rounded-3xl border border-slate-200 shadow-sm" />
-                ))}
+                <p className="mt-0.5 text-[8px] uppercase tracking-wide text-slate-400 sm:text-[10px] sm:font-medium sm:tracking-wider">
+                  Gross Sales vs Loss Trend
+                </p>
               </div>
-            ) : recoveryMetrics ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {/* Metric 1: Revenue at Risk */}
-                <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap">
-                  <div className="space-y-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Revenue at Risk</span>
-                    <h3 className="text-3xl font-extrabold text-rose-500">₹{recoveryMetrics.totalRevenueAtRisk.toLocaleString("en-IN")}</h3>
-                    <p className="text-[10px] text-slate-400 font-medium">Stalled or failed checkout value</p>
-                  </div>
-                  <div className="p-3 bg-rose-50 text-rose-500 rounded-2xl">
-                    <AlertCircle className="w-6 h-6" />
-                  </div>
-                </div>
 
-                {/* Metric 2: Recovery Rate */}
-                <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap">
-                  <div className="space-y-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Recovery Rate</span>
-                    <h3 className="text-3xl font-extrabold text-indigo-600">{recoveryMetrics.recoveryRate}%</h3>
-                    <p className="text-[10px] text-indigo-600 font-bold flex items-center gap-0.5">
-                      <TrendingUp className="w-3 h-3" />
-                      {recoveryMetrics.successfulRecoveries} of {recoveryMetrics.recoveriesAttempted} recovered
-                    </p>
-                  </div>
-                  <div className="p-3 bg-indigo-50 text-indigo-600 rounded-2xl">
-                    <Zap className="w-6 h-6" />
-                  </div>
-                </div>
+              <div className="h-[190px] w-full sm:h-[280px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart
+                    data={getChartData()}
+                    margin={{
+                      top: 10,
+                      right: 5,
+                      left: -25,
+                      bottom: 0,
+                    }}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="colorSuccess"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="5%"
+                          stopColor="#10b981"
+                          stopOpacity={0.15}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor="#10b981"
+                          stopOpacity={0}
+                        />
+                      </linearGradient>
 
-                {/* Metric 3: Recovered Amount */}
-                <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap">
-                  <div className="space-y-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Recovered Amount</span>
-                    <h3 className="text-3xl font-extrabold text-emerald-600">₹{recoveryMetrics.recoveredAmount.toLocaleString("en-IN")}</h3>
-                    <p className="text-[10px] text-emerald-500 font-bold">Successfully saved revenue</p>
-                  </div>
-                  <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl">
-                    <DollarSign className="w-6 h-6" />
-                  </div>
-                </div>
+                      <linearGradient
+                        id="colorFailed"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="5%"
+                          stopColor="#ef4444"
+                          stopOpacity={0.15}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor="#ef4444"
+                          stopOpacity={0}
+                        />
+                      </linearGradient>
+                    </defs>
 
-                {/* Metric 4: Messages Sent / Unresolved */}
-                <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between stat-card-gsap">
-                  <div className="space-y-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Active Interventions</span>
-                    <h3 className="text-3xl font-extrabold text-amber-600">{recoveryMetrics.unresolvedCases}</h3>
-                    <p className="text-[10px] text-slate-400 font-medium">
-                      {recoveryMetrics.messagesSent} notification alerts sent | {recoveryMetrics.ignoredUsers} opted out
-                    </p>
-                  </div>
-                  <div className="p-3 bg-amber-50 text-amber-600 rounded-2xl">
-                    <Sparkles className="w-6 h-6" />
-                  </div>
-                </div>
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      vertical={false}
+                      stroke="#f1f5f9"
+                    />
+
+                    <XAxis
+                      dataKey="date"
+                      stroke="#94a3b8"
+                      fontSize={8}
+                      fontWeight="500"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+
+                    <YAxis
+                      stroke="#94a3b8"
+                      fontSize={8}
+                      fontWeight="500"
+                      tickLine={false}
+                      axisLine={false}
+                      tickFormatter={(val) => `₹${val}`}
+                    />
+
+                    <Tooltip
+                      contentStyle={{
+                        background: "#fff",
+                        border: "1px solid #e2e8f0",
+                        borderRadius: "12px",
+                        boxShadow:
+                          "0 4px 6px -1px rgb(0 0 0 / 0.05)",
+                      }}
+                      labelStyle={{
+                        fontWeight: "500",
+                        fontSize: "10px",
+                        color: "#1e293b",
+                      }}
+                      itemStyle={{
+                        fontSize: "10px",
+                        fontWeight: "500",
+                      }}
+                    />
+
+                    <Area
+                      type="monotone"
+                      dataKey="Success"
+                      stroke="#10b981"
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#colorSuccess)"
+                      name="Recovered/Paid"
+                    />
+
+                    <Area
+                      type="monotone"
+                      dataKey="Failed"
+                      stroke="#ef4444"
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#colorFailed)"
+                      name="Failed Checkout"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* Mock performance */}
+            <div className="chart-card-gsap rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm sm:rounded-[28px] sm:p-6">
+              <div className="mb-2">
+                <h3 className="text-xs font-medium text-slate-900 sm:text-sm sm:font-semibold">
+                  Exam Bundle Performance
+                </h3>
+
+                <p className="mt-0.5 text-[8px] uppercase tracking-wide text-slate-400 sm:text-[10px] sm:font-medium sm:tracking-wider">
+                  Recovered vs Unresolved failed orders
+                </p>
+              </div>
+
+              <div className="h-[190px] w-full sm:h-[280px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={getMockPerformanceData()}
+                    margin={{
+                      top: 10,
+                      right: 5,
+                      left: -25,
+                      bottom: 0,
+                    }}
+                  >
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      vertical={false}
+                      stroke="#f1f5f9"
+                    />
+
+                    <XAxis
+                      dataKey="name"
+                      stroke="#94a3b8"
+                      fontSize={8}
+                      fontWeight="500"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+
+                    <YAxis
+                      stroke="#94a3b8"
+                      fontSize={8}
+                      fontWeight="500"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+
+                    <Tooltip
+                      contentStyle={{
+                        background: "#fff",
+                        border: "1px solid #e2e8f0",
+                        borderRadius: "12px",
+                        boxShadow:
+                          "0 4px 6px -1px rgb(0 0 0 / 0.05)",
+                      }}
+                      labelStyle={{
+                        fontWeight: "500",
+                        fontSize: "10px",
+                        color: "#1e293b",
+                      }}
+                      itemStyle={{
+                        fontSize: "10px",
+                        fontWeight: "500",
+                      }}
+                    />
+
+                    <Legend
+                      verticalAlign="top"
+                      height={28}
+                      iconType="circle"
+                      iconSize={7}
+                      wrapperStyle={{
+                        fontSize: "8px",
+                        fontWeight: "500",
+                        textTransform: "uppercase",
+                      }}
+                    />
+
+                    <Bar
+                      dataKey="Recovered"
+                      fill="#10b981"
+                      radius={[4, 4, 0, 0]}
+                      name="Recovered Mocks"
+                    />
+
+                    <Bar
+                      dataKey="Unresolved"
+                      fill="#f43f5e"
+                      radius={[4, 4, 0, 0]}
+                      name="Unresolved Fails"
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              SEARCH + FILTER
+          ================================================= */}
+          <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm md:flex-row md:items-center md:justify-between sm:rounded-3xl sm:p-5">
+
+            <div className="relative w-full md:w-96">
+              <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400 sm:left-3.5 sm:h-4 sm:w-4" />
+
+              <input
+                type="text"
+                placeholder="Search by customer, email, order ID, payment ID..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-9 text-[10px] text-slate-700 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-indigo-500 sm:rounded-2xl sm:pl-10 sm:text-sm"
+              />
+
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600"
+                >
+                  <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                </button>
+              )}
+            </div>
+
+            <div className="flex w-full items-center gap-1.5 overflow-x-auto pb-1 md:w-auto md:overflow-visible md:pb-0">
+              <span className="mr-1 flex shrink-0 items-center gap-1 text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                <Filter className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                Filter
+              </span>
+
+              {["ALL", "SUCCESS", "FAILED", "PENDING"].map((status) => (
+                <button
+                  key={status}
+                  onClick={() => setStatusFilter(status)}
+                  className={`shrink-0 rounded-lg px-2.5 py-1.5 text-[9px] font-medium shadow-sm transition-all sm:rounded-xl sm:px-4 sm:text-xs sm:font-semibold ${
+                    statusFilter === status
+                      ? "bg-indigo-600 text-white"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
+                >
+                  {status}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* =================================================
+              TRANSACTION TABLE
+          ================================================= */}
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:rounded-3xl">
+
+            <div className="border-b border-slate-100 px-3 py-3.5 sm:px-6 sm:py-5">
+              <h2 className="text-sm font-medium text-slate-900 sm:text-lg sm:font-semibold">
+                Transaction History
+              </h2>
+
+              <p className="mt-0.5 text-[10px] text-slate-400 sm:text-xs sm:font-medium">
+                Showing {filteredTransactions.length} records
+              </p>
+            </div>
+
+            {filteredTransactions.length === 0 ? (
+              <div className="py-16 text-center">
+                <AlertCircle className="mx-auto mb-4 h-10 w-10 text-slate-300 sm:h-12 sm:w-12" />
+
+                <p className="text-xs text-slate-500 sm:text-sm">
+                  No transactions found matching your criteria
+                </p>
               </div>
             ) : (
-              <div className="bg-white p-6 rounded-3xl border border-slate-200 text-center text-slate-500 font-medium shadow-sm">
-                Could not retrieve recovery metrics
-              </div>
-            )}
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[900px] border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-slate-100 bg-slate-50 text-[9px] uppercase tracking-wide text-slate-400 sm:text-[10px] sm:tracking-wider">
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Customer Details
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Product Info
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Razorpay Reference IDs
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Amount
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Status
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Timestamp
+                      </th>
+                      <th className="px-3 py-3 text-right sm:px-6 sm:py-4">
+                        Details
+                      </th>
+                    </tr>
+                  </thead>
 
-            {/* AUDIT TIMELINE (Full Width) */}
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-md flex flex-col min-h-[550px] overflow-hidden">
-              {/* Timeline Header */}
-              <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between flex-wrap gap-4">
-                <div>
-                  <h3 className="font-extrabold text-sm text-slate-900">Recovery Audit Logs</h3>
-                  <p className="text-[10px] text-slate-400 font-semibold">Real-time decisions and interventions</p>
-                </div>
-                
-                {/* View Mode Toggle & Transaction Selector */}
-                <div className="flex items-center gap-3 flex-wrap">
-                  <div className="flex bg-slate-100 p-1 rounded-xl">
-                    <button
-                      onClick={() => setLogViewMode("timeline")}
-                      className={`px-3 py-1.5 rounded-lg text-[10px] font-extrabold transition-all uppercase tracking-wider ${
-                        logViewMode === "timeline"
-                          ? "bg-white text-indigo-600 shadow-sm"
-                          : "text-slate-500 hover:text-slate-700"
-                      }`}
-                    >
-                      Timeline List
-                    </button>
-                    <button
-                      onClick={() => setLogViewMode("graph")}
-                      className={`px-3 py-1.5 rounded-lg text-[10px] font-extrabold transition-all uppercase tracking-wider ${
-                        logViewMode === "graph"
-                          ? "bg-white text-indigo-600 shadow-sm"
-                          : "text-slate-500 hover:text-slate-700"
-                      }`}
-                    >
-                      Decision Graph
-                    </button>
-                  </div>
+                  <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+                    {filteredTransactions.map((txn) => (
+                      <tr
+                        key={txn._id}
+                        className="transition-colors hover:bg-slate-50/50"
+                      >
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
+                          {txn.userId ? (
+                            <div className="space-y-0.5">
+                              <p className="text-xs font-medium text-slate-900 sm:text-sm sm:font-semibold">
+                                {txn.userId.name}
+                              </p>
 
-                  {logViewMode === "graph" && (
-                    <select
-                      value={selectedGraphTxn}
-                      onChange={(e) => setSelectedGraphTxn(e.target.value)}
-                      className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    >
-                      <option value="">Select Checkout Attempt...</option>
-                      {uniqueRecoveryTxns.map(t => (
-                        <option key={t.id} value={t.id}>
-                          {t.userName} ({t.mockId.toUpperCase()})
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                  
-                  {/* Inline Copilot Open Button */}
-                  <button
-                    onClick={() => setIsCopilotOpen(true)}
-                    className="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-sm hover:scale-105 active:scale-95 transition-all"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    Open AI Copilot
-                  </button>
-                </div>
-              </div>
+                              <div className="flex items-center gap-1 text-[9px] text-slate-400 sm:text-[11px]">
+                                <Mail className="h-3 w-3 shrink-0 text-slate-300" />
+                                <span>{txn.userId.email}</span>
+                              </div>
 
-              {/* Timeline Scroll Box */}
-              <div className="flex-1 p-6 overflow-y-auto bg-slate-50/50">
-                {logsLoading ? (
-                  <div className="flex flex-col items-center justify-center py-24 gap-2 text-slate-400">
-                    <RefreshCw className="w-7 h-7 animate-spin text-indigo-500" />
-                    <span className="text-xs font-medium">Fetching recovery audit logs...</span>
-                  </div>
-                ) : logViewMode === "graph" ? (
-                  <div className="bg-white p-4 rounded-3xl border border-slate-200 shadow-sm">
-                    <RecoveryGraph txnId={selectedGraphTxn} logs={recoveryLogs} />
-                  </div>
-                ) : recoveryLogs.length === 0 ? (
-                  <div className="text-center py-24 text-slate-400 font-medium text-xs">
-                    No recovery audit logs recorded yet.
-                  </div>
-                ) : (
-                  <div className="space-y-5 relative border-l border-slate-200 ml-2.5 pl-6 max-w-4xl">
-                    {recoveryLogs.map((log) => {
-                      let dotColor = "bg-indigo-500";
-                      let titleColor = "text-indigo-700 bg-indigo-50 border-indigo-100";
-                      if (log.action === "TRIGGER") {
-                        dotColor = "bg-slate-400 animate-pulse";
-                        titleColor = "text-slate-600 bg-slate-100 border-slate-200";
-                      } else if (log.action === "NOTIFICATION_SENT") {
-                        dotColor = "bg-purple-500";
-                        titleColor = "text-purple-700 bg-purple-50 border-purple-100";
-                      } else if (log.action === "PAYMENT_SUCCESS") {
-                        dotColor = "bg-emerald-500";
-                        titleColor = "text-emerald-700 bg-emerald-50 border-emerald-100";
-                      } else if (log.action === "CUSTOMER_ACTION") {
-                        dotColor = "bg-blue-500";
-                        titleColor = "text-blue-700 bg-blue-50 border-blue-100";
-                      } else if (log.action === "ESCALATED") {
-                        dotColor = "bg-rose-500";
-                        titleColor = "text-rose-700 bg-rose-50 border-rose-100";
-                      } else if (log.action === "STOPPED") {
-                        dotColor = "bg-rose-400";
-                        titleColor = "text-rose-700 bg-rose-50 border-rose-100";
-                      }
-
-                      return (
-                        <div key={log._id} className="relative space-y-1 text-xs">
-                          {/* Dot marker */}
-                          <span className={`absolute -left-[30.5px] top-1.5 h-3 w-3 rounded-full border-2 border-white ${dotColor}`} />
-                          
-                          {/* Time */}
-                          <span className="text-[10px] text-slate-400 font-semibold">
-                            {formatDate(log.createdAt)}
-                          </span>
-
-                          {/* Heading */}
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className={`px-2 py-0.5 rounded uppercase font-bold text-[9px] border ${titleColor}`}>
-                              {log.action}
+                              {txn.userId.phone && (
+                                <div className="flex items-center gap-1 text-[9px] text-slate-400 sm:text-[11px]">
+                                  <Phone className="h-3 w-3 shrink-0 text-slate-300" />
+                                  <span>{txn.userId.phone}</span>
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-slate-400">
+                              User account missing
                             </span>
-                            {log.userId && (
-                              <span className="font-bold text-slate-900 text-[10px]">
-                                ({log.userId.name})
+                          )}
+                        </td>
+
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
+                          <span className="rounded-md border border-indigo-100 bg-indigo-50 px-2 py-0.5 text-[9px] uppercase tracking-wide text-indigo-700 sm:text-[10px] sm:font-medium">
+                            {txn.mockId || "unknown"}
+                          </span>
+                        </td>
+
+                        <td className="px-3 py-3 font-mono text-[9px] sm:px-6 sm:py-4 sm:text-xs">
+                          <div className="space-y-0.5">
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-8 shrink-0 text-[8px] uppercase tracking-wide text-slate-400">
+                                Order
+                              </span>
+                              <span className="text-slate-600">
+                                {txn.orderId || "N/A"}
+                              </span>
+                            </div>
+
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-8 shrink-0 text-[8px] uppercase tracking-wide text-slate-400">
+                                Pay
+                              </span>
+                              <span className="text-slate-600">
+                                {txn.paymentId || "—"}
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="whitespace-nowrap px-3 py-3 text-xs font-medium text-slate-900 sm:px-6 sm:py-4 sm:text-sm sm:font-semibold">
+                          ₹{txn.amount || 0}
+                        </td>
+
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
+                          <span
+                            className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[9px] font-medium sm:px-3 sm:text-xs ${
+                              txn.status === "SUCCESS"
+                                ? "border-emerald-100 bg-emerald-50 text-emerald-700"
+                                : txn.status === "FAILED"
+                                ? "border-rose-100 bg-rose-50 text-rose-700"
+                                : "border-amber-100 bg-amber-50 text-amber-700"
+                            }`}
+                          >
+                            <span
+                              className={`h-1.5 w-1.5 rounded-full ${
+                                txn.status === "SUCCESS"
+                                  ? "bg-emerald-500"
+                                  : txn.status === "FAILED"
+                                  ? "bg-rose-500"
+                                  : "bg-amber-500"
+                              }`}
+                            />
+                            {txn.status}
+                          </span>
+                        </td>
+
+                        <td className="whitespace-nowrap px-3 py-3 text-[9px] text-slate-500 sm:px-6 sm:py-4 sm:text-xs">
+                          {formatDate(txn.createdAt)}
+                        </td>
+
+                        <td className="whitespace-nowrap px-3 py-3 text-right sm:px-6 sm:py-4">
+                          <button
+                            onClick={() => setSelectedTxn(txn)}
+                            className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-[10px] text-indigo-600 transition-colors hover:bg-indigo-50 hover:text-indigo-800 sm:px-3 sm:text-xs sm:font-medium"
+                          >
+                            View
+                            {txn.status === "FAILED" && (
+                              <span className="text-rose-500">
+                                (Diag)
                               </span>
                             )}
-                          </div>
+                            <ChevronRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
-                          {/* Details text */}
-                          <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm text-slate-600 leading-relaxed mt-1 max-w-2xl">
-                            <AIResponseRenderer content={cleanAuditMessage(log.details?.message || log.details?.reason || JSON.stringify(log.details))} />
-                            {log.details?.message && log.details?.reason && (
-                              <div className="mt-3 pt-2.5 border-t border-slate-100 text-[10px] text-slate-400 italic">
-                                <strong className="text-slate-500 font-bold not-italic">AI Reasoning:</strong> {log.details.reason}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+      {/* =======================================================
+          RECOVERY TAB
+      ======================================================= */}
+      {activeTab === "recovery" && (
+        <div className="space-y-5 sm:space-y-8">
+
+          {/* Metrics */}
+          {metricsLoading ? (
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+              {[1, 2, 3, 4].map((n) => (
+                <div
+                  key={n}
+                  className="h-24 rounded-xl border border-slate-200 bg-white shadow-sm sm:h-28 sm:rounded-3xl"
+                />
+              ))}
+            </div>
+          ) : recoveryMetrics ? (
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+
+              {/* Revenue Risk */}
+              <div className="stat-card-gsap flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+                <div className="min-w-0">
+                  <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                    Revenue at Risk
+                  </span>
+
+                  <h3 className="mt-1 truncate text-base font-medium text-rose-500 sm:text-3xl sm:font-semibold">
+                    ₹{recoveryMetrics.totalRevenueAtRisk.toLocaleString("en-IN")}
+                  </h3>
+
+                  <p className="mt-1 truncate text-[8px] text-slate-400 sm:text-[10px]">
+                    Stalled or failed checkout value
+                  </p>
+                </div>
+
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-500 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                  <AlertCircle className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
+                </div>
+              </div>
+
+              {/* Recovery Rate */}
+              <div className="stat-card-gsap flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+                <div className="min-w-0">
+                  <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                    Recovery Rate
+                  </span>
+
+                  <h3 className="mt-1 text-base font-medium text-indigo-600 sm:text-3xl sm:font-semibold">
+                    {recoveryMetrics.recoveryRate}%
+                  </h3>
+
+                  <p className="mt-1 flex items-center gap-0.5 truncate text-[8px] text-indigo-600 sm:text-[10px]">
+                    <TrendingUp className="h-2.5 w-2.5 shrink-0" />
+                    {recoveryMetrics.successfulRecoveries} of{" "}
+                    {recoveryMetrics.recoveriesAttempted} recovered
+                  </p>
+                </div>
+
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                  <Zap className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
+                </div>
+              </div>
+
+              {/* Recovered */}
+              <div className="stat-card-gsap flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+                <div className="min-w-0">
+                  <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                    Recovered Amount
+                  </span>
+
+                  <h3 className="mt-1 truncate text-base font-medium text-emerald-600 sm:text-3xl sm:font-semibold">
+                    ₹{recoveryMetrics.recoveredAmount.toLocaleString("en-IN")}
+                  </h3>
+
+                  <p className="mt-1 truncate text-[8px] text-emerald-500 sm:text-[10px]">
+                    Successfully saved revenue
+                  </p>
+                </div>
+
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                  <DollarSign className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
+                </div>
+              </div>
+
+              {/* Interventions */}
+              <div className="stat-card-gsap flex min-w-0 items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm sm:rounded-3xl sm:p-6">
+                <div className="min-w-0">
+                  <span className="block truncate text-[8px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+                    Active Interventions
+                  </span>
+
+                  <h3 className="mt-1 text-base font-medium text-amber-600 sm:text-3xl sm:font-semibold">
+                    {recoveryMetrics.unresolvedCases}
+                  </h3>
+
+                  <p className="mt-1 line-clamp-2 text-[8px] leading-3 text-slate-400 sm:text-[10px]">
+                    {recoveryMetrics.messagesSent} notification alerts sent |{" "}
+                    {recoveryMetrics.ignoredUsers} opted out
+                  </p>
+                </div>
+
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-amber-600 sm:h-12 sm:w-12 sm:rounded-2xl sm:p-3">
+                  <Sparkles className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 text-center text-xs text-slate-500 shadow-sm sm:rounded-3xl sm:p-6">
+              Could not retrieve recovery metrics
+            </div>
+          )}
+
+          {/* =================================================
+              AUDIT LOGS
+          ================================================= */}
+          <div className="flex min-h-[420px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md sm:min-h-[550px] sm:rounded-3xl">
+
+            {/* Header */}
+            <div className="flex flex-col gap-3 border-b border-slate-100 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
+
+              <div className="min-w-0">
+                <h3 className="text-xs font-medium text-slate-900 sm:text-sm sm:font-semibold">
+                  Recovery Audit Logs
+                </h3>
+
+                <p className="mt-0.5 text-[9px] text-slate-400 sm:text-[10px]">
+                  Real-time decisions and interventions
+                </p>
+              </div>
+
+              <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
+
+                <div className="flex rounded-xl bg-slate-100 p-1">
+                  <button
+                    onClick={() => setLogViewMode("timeline")}
+                    className={`rounded-lg px-2.5 py-1.5 text-[9px] uppercase tracking-wide transition-all sm:px-3 sm:text-[10px] ${
+                      logViewMode === "timeline"
+                        ? "bg-white text-indigo-600 shadow-sm"
+                        : "text-slate-500"
+                    }`}
+                  >
+                    Timeline
+                  </button>
+
+                  <button
+                    onClick={() => setLogViewMode("graph")}
+                    className={`rounded-lg px-2.5 py-1.5 text-[9px] uppercase tracking-wide transition-all sm:px-3 sm:text-[10px] ${
+                      logViewMode === "graph"
+                        ? "bg-white text-indigo-600 shadow-sm"
+                        : "text-slate-500"
+                    }`}
+                  >
+                    Graph
+                  </button>
+                </div>
+
+                {logViewMode === "graph" && (
+                  <select
+                    value={selectedGraphTxn}
+                    onChange={(e) =>
+                      setSelectedGraphTxn(e.target.value)
+                    }
+                    className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 text-[10px] text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:flex-none sm:text-xs"
+                  >
+                    <option value="">
+                      Select Checkout Attempt...
+                    </option>
+
+                    {uniqueRecoveryTxns.map((t) => (
+                      <option key={t.id} value={t.id}>
+                        {t.userName} ({t.mockId.toUpperCase()})
+                      </option>
+                    ))}
+                  </select>
                 )}
+
+                <button
+                  onClick={() => setIsCopilotOpen(true)}
+                  className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-indigo-600 px-3 py-2 text-[10px] text-white transition-all hover:bg-indigo-700 sm:flex-none sm:px-4 sm:text-xs"
+                >
+                  <Sparkles className="h-3 w-3" />
+                  Open AI Copilot
+                </button>
               </div>
             </div>
 
-            {/* Floating Merchant Copilot Trigger Button */}
-            <button
-              onClick={() => setIsCopilotOpen(true)}
-              className="fixed bottom-6 right-6 z-40 bg-slate-950 hover:bg-indigo-600 border border-slate-800 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all font-bold text-xs"
-            >
-              <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-              Ask AI Copilot
-            </button>
-
-            {/* Merchant AI Copilot Floating Window */}
-            <AnimatePresence>
-              {isCopilotOpen && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.92, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.92, y: 30 }}
-                  transition={{ duration: 0.22, ease: "easeOut" }}
-                  className="fixed bottom-24 right-6 w-full max-w-[420px] h-[580px] bg-white rounded-3xl border border-slate-200 shadow-2xl flex flex-col overflow-hidden z-40"
-                >
-                  {/* Chat Header */}
-                  <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <div className="p-2 bg-indigo-600 rounded-xl text-white">
-                        <Sparkles className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <h3 className="font-extrabold text-sm tracking-wide">Merchant AI Copilot</h3>
-                        <p className="text-[10px] text-slate-300 font-semibold flex items-center gap-1">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-                          Grounded in live database records
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded">
-                        Razor-AI
-                      </span>
-                      <button
-                        onClick={() => setIsCopilotOpen(false)}
-                        className="p-1.5 hover:bg-white/10 rounded-xl transition-all text-slate-400 hover:text-white"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
+            {/* Timeline */}
+            <div className="flex-1 overflow-y-auto bg-slate-50/50 p-3 sm:p-6">
+              {logsLoading ? (
+                <div className="flex flex-col items-center justify-center gap-2 py-24 text-slate-400">
+                  <RefreshCw className="h-6 w-6 animate-spin text-indigo-500 sm:h-7 sm:w-7" />
+                  <span className="text-[10px] sm:text-xs">
+                    Fetching recovery audit logs...
+                  </span>
+                </div>
+              ) : logViewMode === "graph" ? (
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:rounded-3xl sm:p-4">
+                  <div className="min-w-[600px]">
+                    <RecoveryGraph
+                      txnId={selectedGraphTxn}
+                      logs={recoveryLogs}
+                    />
                   </div>
+                </div>
+              ) : recoveryLogs.length === 0 ? (
+                <div className="py-24 text-center text-[10px] text-slate-400 sm:text-xs">
+                  No recovery audit logs recorded yet.
+                </div>
+              ) : (
+                <div className="relative ml-2 max-w-4xl space-y-4 border-l border-slate-200 pl-4 sm:ml-2.5 sm:space-y-5 sm:pl-6">
 
-                  {/* Messages Box */}
-                  <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-50/50">
-                    {copilotHistory.map((msg, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.98, y: 8 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  {recoveryLogs.map((log) => {
+                    let dotColor = "bg-indigo-500";
+                    let titleColor =
+                      "text-indigo-700 bg-indigo-50 border-indigo-100";
+
+                    if (log.action === "TRIGGER") {
+                      dotColor = "bg-slate-400 animate-pulse";
+                      titleColor =
+                        "text-slate-600 bg-slate-100 border-slate-200";
+                    } else if (
+                      log.action === "NOTIFICATION_SENT"
+                    ) {
+                      dotColor = "bg-purple-500";
+                      titleColor =
+                        "text-purple-700 bg-purple-50 border-purple-100";
+                    } else if (
+                      log.action === "PAYMENT_SUCCESS"
+                    ) {
+                      dotColor = "bg-emerald-500";
+                      titleColor =
+                        "text-emerald-700 bg-emerald-50 border-emerald-100";
+                    } else if (
+                      log.action === "CUSTOMER_ACTION"
+                    ) {
+                      dotColor = "bg-blue-500";
+                      titleColor =
+                        "text-blue-700 bg-blue-50 border-blue-100";
+                    } else if (
+                      log.action === "ESCALATED"
+                    ) {
+                      dotColor = "bg-rose-500";
+                      titleColor =
+                        "text-rose-700 bg-rose-50 border-rose-100";
+                    } else if (
+                      log.action === "STOPPED"
+                    ) {
+                      dotColor = "bg-rose-400";
+                      titleColor =
+                        "text-rose-700 bg-rose-50 border-rose-100";
+                    }
+
+                    return (
+                      <div
+                        key={log._id}
+                        className="relative space-y-1 text-[10px] sm:text-xs"
                       >
-                        <div
-                          className={`max-w-[85%] px-5 py-3.5 rounded-2xl text-xs font-medium leading-relaxed shadow-sm ${
-                            msg.role === "user"
-                              ? "bg-slate-900 text-white rounded-tr-none"
-                              : "bg-white border border-slate-200 text-slate-800 rounded-tl-none"
-                          }`}
-                        >
-                          {/* Render rich animated Markdown, lists, and tables */}
-                          {msg.role === "user" ? (
-                            <div className="whitespace-pre-wrap">{msg.content}</div>
-                          ) : (
-                            <AIResponseRenderer content={msg.content} />
+                        <span
+                          className={`absolute -left-[24px] top-1 h-2.5 w-2.5 rounded-full border-2 border-white sm:-left-[30.5px] sm:top-1.5 sm:h-3 sm:w-3 ${dotColor}`}
+                        />
+
+                        <span className="text-[9px] text-slate-400 sm:text-[10px]">
+                          {formatDate(log.createdAt)}
+                        </span>
+
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span
+                            className={`rounded border px-1.5 py-0.5 text-[8px] uppercase tracking-wide sm:px-2 sm:text-[9px] ${titleColor}`}
+                          >
+                            {log.action}
+                          </span>
+
+                          {log.userId && (
+                            <span className="break-words text-[9px] text-slate-900 sm:text-[10px]">
+                              ({log.userId.name})
+                            </span>
                           )}
                         </div>
-                      </motion.div>
-                    ))}
-                    {copilotLoading && (
-                      <div className="flex justify-start">
-                        <div className="bg-white border border-slate-200 px-5 py-3.5 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-2">
-                          <RefreshCw className="w-4 h-4 text-indigo-600 animate-spin" />
-                          <span className="text-xs font-semibold text-slate-500">Querying database aggregations...</span>
+
+                        <div className="mt-1 rounded-xl border border-slate-200/80 bg-white p-2.5 leading-relaxed text-slate-600 shadow-sm sm:rounded-2xl sm:p-4">
+                          <AIResponseRenderer
+                            content={cleanAuditMessage(
+                              log.details?.message ||
+                              log.details?.reason ||
+                              JSON.stringify(log.details)
+                            )}
+                          />
+
+                          {log.details?.message &&
+                            log.details?.reason && (
+                              <div className="mt-2.5 border-t border-slate-100 pt-2 text-[9px] text-slate-400 sm:mt-3 sm:pt-2.5 sm:text-[10px]">
+                                <strong className="text-slate-500">
+                                  AI Reasoning:
+                                </strong>{" "}
+                                {log.details.reason}
+                              </div>
+                            )}
                         </div>
                       </div>
-                    )}
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Floating AI button */}
+          <button
+            onClick={() => setIsCopilotOpen(true)}
+            className="fixed bottom-3 right-3 z-40 flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-950 px-3 py-2 text-[10px] text-white shadow-2xl sm:bottom-6 sm:right-6 sm:px-5 sm:py-3.5 sm:text-xs"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-amber-400 sm:h-4 sm:w-4" />
+            Ask AI Copilot
+          </button>
+
+          {/* Copilot */}
+          <AnimatePresence>
+            {isCopilotOpen && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 20 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-x-2 bottom-16 z-50 flex h-[calc(100dvh-5rem)] min-h-[420px] max-h-[600px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl sm:bottom-24 sm:right-6 sm:left-auto sm:h-[580px] sm:w-[420px] sm:rounded-3xl"
+              >
+                {/* Chat Header */}
+                <div className="flex items-center justify-between bg-slate-900 px-3 py-3 text-white sm:px-5 sm:py-4">
+
+                  <div className="flex min-w-0 items-center gap-2">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-indigo-600 sm:h-9 sm:w-9 sm:rounded-xl">
+                      <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h3 className="truncate text-xs font-medium tracking-wide sm:text-sm sm:font-semibold">
+                        Merchant AI Copilot
+                      </h3>
+
+                      <p className="flex items-center gap-1 truncate text-[8px] text-slate-300 sm:text-[10px]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                        Grounded in live database records
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Quick Prompts Suggestions */}
-                  <div className="px-6 py-3 border-t border-slate-100 bg-white flex flex-wrap gap-2">
-                    {[
-                      "What is our revenue recovery rate?",
-                      "Show payment failure trends",
-                      "Which product is most popular?",
-                      "What are our peak purchase times?"
-                    ].map((promptText, i) => (
-                      <button
-                        key={i}
-                        onClick={(e) => handleCopilotSend(e, promptText)}
-                        disabled={copilotLoading}
-                        className="text-[10px] font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 px-3 py-1.5 rounded-xl transition-all disabled:opacity-50"
-                      >
-                        {promptText}
-                      </button>
-                    ))}
-                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="hidden rounded border border-slate-700 bg-slate-800 px-2 py-0.5 text-[9px] text-slate-300 sm:block">
+                      Razor-AI
+                    </span>
 
-                  {/* Chat Form Input */}
-                  <form onSubmit={handleCopilotSend} className="p-4 border-t border-slate-200 flex gap-2.5 bg-white">
-                    <input
-                      type="text"
-                      placeholder="Ask about sales trends, conversions, recovery metrics, peak times..."
-                      value={copilotQuery}
-                      onChange={(e) => setCopilotQuery(e.target.value)}
-                      disabled={copilotLoading}
-                      className="flex-1 px-4 py-3 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs focus:bg-white bg-slate-50 transition-all font-medium"
-                    />
                     <button
-                      type="submit"
-                      disabled={copilotLoading || !copilotQuery.trim()}
-                      className="px-5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-2xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-md"
+                      onClick={() => setIsCopilotOpen(false)}
+                      className="rounded-xl p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
                     >
-                      <Send className="w-3.5 h-3.5" />
-                      Send
+                      <X className="h-4 w-4" />
                     </button>
-                  </form>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        )}
+                  </div>
+                </div>
 
-        {/* TAB 2: USER MESSAGING */}
-        {activeTab === "users" && (
-          <div className="space-y-6">
-            <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
-              <div className="relative w-full md:w-96">
-                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
-                  <Search className="w-4 h-4" />
-                </span>
-                <input
-                  type="text"
-                  placeholder="Search users by name, email, or ID..."
-                  value={userSearchQuery}
-                  onChange={(e) => setUserSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-2xl bg-slate-50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
-                />
-                {userSearchQuery && (
-                  <button 
-                    onClick={() => setUserSearchQuery("")}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600"
+                {/* Messages */}
+                <div className="flex-1 space-y-3 overflow-y-auto bg-slate-50/50 p-3 sm:space-y-4 sm:p-5">
+                  {copilotHistory.map((msg, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{
+                        opacity: 0,
+                        scale: 0.98,
+                        y: 8,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                      }}
+                      transition={{
+                        duration: 0.25,
+                      }}
+                      className={`flex ${
+                        msg.role === "user"
+                          ? "justify-end"
+                          : "justify-start"
+                      }`}
+                    >
+                      <div
+                        className={`max-w-[90%] rounded-2xl px-3 py-2.5 text-[10px] leading-relaxed sm:max-w-[85%] sm:px-5 sm:py-3.5 sm:text-xs ${
+                          msg.role === "user"
+                            ? "rounded-tr-none bg-slate-900 text-white"
+                            : "rounded-tl-none border border-slate-200 bg-white text-slate-800"
+                        }`}
+                      >
+                        {msg.role === "user" ? (
+                          <div className="whitespace-pre-wrap">
+                            {msg.content}
+                          </div>
+                        ) : (
+                          <AIResponseRenderer
+                            content={msg.content}
+                          />
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+
+                  {copilotLoading && (
+                    <div className="flex justify-start">
+                      <div className="flex items-center gap-2 rounded-2xl rounded-tl-none border border-slate-200 bg-white px-3 py-2.5 shadow-sm">
+                        <RefreshCw className="h-3.5 w-3.5 animate-spin text-indigo-600" />
+                        <span className="text-[9px] text-slate-500 sm:text-xs">
+                          Querying database...
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Quick prompts */}
+                <div className="flex flex-wrap gap-1.5 border-t border-slate-100 bg-white px-3 py-2.5 sm:gap-2 sm:px-5 sm:py-3">
+                  {[
+                    "What is our revenue recovery rate?",
+                    "Show payment failure trends",
+                    "Which product is most popular?",
+                    "What are our peak purchase times?",
+                  ].map((promptText, i) => (
+                    <button
+                      key={i}
+                      onClick={(e) =>
+                        handleCopilotSend(e, promptText)
+                      }
+                      disabled={copilotLoading}
+                      className="rounded-lg border border-indigo-100 bg-indigo-50 px-2 py-1 text-[8px] text-indigo-600 transition-all hover:bg-indigo-100 disabled:opacity-50 sm:rounded-xl sm:px-3 sm:py-1.5 sm:text-[10px]"
+                    >
+                      {promptText}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Input */}
+                <form
+                  onSubmit={handleCopilotSend}
+                  className="flex gap-2 border-t border-slate-200 bg-white p-3 sm:p-4"
+                >
+                  <input
+                    type="text"
+                    placeholder="Ask about sales trends..."
+                    value={copilotQuery}
+                    onChange={(e) =>
+                      setCopilotQuery(e.target.value)
+                    }
+                    disabled={copilotLoading}
+                    className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-[10px] outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500 sm:rounded-2xl sm:px-4 sm:py-3 sm:text-xs"
+                  />
+
+                  <button
+                    type="submit"
+                    disabled={
+                      copilotLoading ||
+                      !copilotQuery.trim()
+                    }
+                    className="flex shrink-0 items-center justify-center gap-1 rounded-xl bg-indigo-600 px-3 text-[10px] text-white shadow-md transition hover:bg-indigo-700 disabled:opacity-50 sm:rounded-2xl sm:px-5 sm:text-xs"
                   >
-                    <X className="w-4 h-4" />
+                    <Send className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                    Send
                   </button>
-                )}
-              </div>
-              <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                Registered Users List
-              </div>
-            </div>
+                </form>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
 
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-              {usersLoading ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-2">
-                  <RefreshCw className="w-8 h-8 text-indigo-600 animate-spin" />
-                  <span className="text-sm text-slate-500 font-medium">Fetching registered users...</span>
-                </div>
-              ) : users.length === 0 ? (
-                <div className="text-center py-20 text-slate-500 font-medium">
-                  No registered users found
-                </div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="bg-slate-50 border-b border-slate-100 text-[10px] uppercase font-bold tracking-wider text-slate-400">
-                        <th className="px-6 py-4">User Details</th>
-                        <th className="px-6 py-4">Unique User ID (ObjectId)</th>
-                        <th className="px-6 py-4">Contact</th>
-                        <th className="px-6 py-4">Purchased Exams</th>
-                        <th className="px-6 py-4 text-right">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
-                      {users
-                        .filter(u => 
-                          u.name?.toLowerCase().includes(userSearchQuery.toLowerCase()) ||
-                          u.email?.toLowerCase().includes(userSearchQuery.toLowerCase()) ||
-                          u._id?.toLowerCase().includes(userSearchQuery.toLowerCase())
-                        )
-                        .map(u => (
-                          <tr key={u._id} className="hover:bg-slate-50/50 transition-colors">
-                            <td className="px-6 py-4.5">
-                              <div className="space-y-0.5">
-                                <p className="font-bold text-slate-900 flex items-center gap-1.5">
-                                  {u.name}
-                                  {u.role === "admin" && (
-                                    <span className="text-[9px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-100 px-1.5 py-0.5 rounded">
-                                      ADMIN
-                                    </span>
-                                  )}
-                                </p>
-                                <p className="text-xs text-slate-400 font-medium">{u.email}</p>
-                              </div>
-                            </td>
-                            <td className="px-6 py-4.5 font-mono text-xs">
-                              <div className="flex items-center gap-2">
-                                <span className="text-slate-600 bg-slate-50 px-2 py-1 rounded border border-slate-100 select-all">{u._id}</span>
-                                <button 
-                                  onClick={() => {
-                                    navigator.clipboard.writeText(u._id);
-                                    toast.success("ID copied to clipboard!");
-                                  }}
-                                  className="p-1 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded transition-colors"
-                                  title="Copy User ID"
-                                >
-                                  <Copy className="w-3.5 h-3.5" />
-                                </button>
-                              </div>
-                            </td>
-                            <td className="px-6 py-4.5 text-xs text-slate-500 font-medium">
-                              {u.phone || <span className="text-slate-300 italic">None</span>}
-                            </td>
-                            <td className="px-6 py-4.5">
-                              <div className="flex flex-wrap gap-1">
-                                {u.purchasedExams && u.purchasedExams.length > 0 ? (
-                                  u.purchasedExams.map(ex => (
-                                    <span key={ex} className="uppercase text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
-                                      {ex}
-                                    </span>
-                                  ))
-                                ) : (
-                                  <span className="text-xs text-slate-400 italic">No bundles purchased</span>
-                                )}
-                              </div>
-                            </td>
-                            <td className="px-6 py-4.5 text-right">
-                              <button
-                                onClick={() => setSendModalUser(u)}
-                                className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors py-1.5 px-3 rounded-lg hover:bg-indigo-50"
-                              >
-                                <Send className="w-3.5 h-3.5" />
-                                Send Message
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
+      {/* =======================================================
+          USERS TAB
+      ======================================================= */}
+      {activeTab === "users" && (
+        <div className="space-y-5 sm:space-y-6">
+
+          <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm md:flex-row md:items-center md:justify-between sm:rounded-3xl sm:p-5">
+
+            <div className="relative w-full md:w-96">
+              <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400 sm:left-3.5 sm:h-4 sm:w-4" />
+
+              <input
+                type="text"
+                placeholder="Search users by name, email, or ID..."
+                value={userSearchQuery}
+                onChange={(e) =>
+                  setUserSearchQuery(e.target.value)
+                }
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-9 text-[10px] text-slate-700 outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500 sm:rounded-2xl sm:pl-10 sm:text-sm"
+              />
+
+              {userSearchQuery && (
+                <button
+                  onClick={() => setUserSearchQuery("")}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400"
+                >
+                  <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                </button>
               )}
             </div>
-          </div>
-        )}
 
-        {/* TAB 3: MESSAGE LOGS */}
-        {activeTab === "notifs" && (
-          <div className="space-y-6">
-            <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between">
-              <div>
-                <h2 className="text-lg font-bold text-slate-900">Notification Logs</h2>
-                <p className="text-xs text-slate-400 font-medium">History of all alerts sent to users</p>
-              </div>
-              <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                System Broadcast Log
-              </div>
+            <div className="text-[9px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+              Registered Users List
             </div>
+          </div>
 
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-              {notifsLoading ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-2">
-                  <RefreshCw className="w-8 h-8 text-indigo-600 animate-spin" />
-                  <span className="text-sm text-slate-500 font-medium">Fetching logs...</span>
-                </div>
-              ) : notificationsLog.length === 0 ? (
-                <div className="text-center py-20 text-slate-500 font-medium">
-                  No notifications recorded in logs
-                </div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="bg-slate-50 border-b border-slate-100 text-[10px] uppercase font-bold tracking-wider text-slate-400">
-                        <th className="px-6 py-4">Recipient</th>
-                        <th className="px-6 py-4">Message Title & Details</th>
-                        <th className="px-6 py-4">Type</th>
-                        <th className="px-6 py-4">Status</th>
-                        <th className="px-6 py-4">Sent At</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
-                      {notificationsLog.map((notif) => (
-                        <tr key={notif._id} className="hover:bg-slate-50/50 transition-colors">
-                          <td className="px-6 py-4.5">
-                            {notif.userId ? (
-                              <div className="space-y-0.5">
-                                <p className="font-bold text-slate-950">{notif.userId.name}</p>
-                                <p className="text-xs text-slate-400 font-medium">{notif.userId.email}</p>
-                              </div>
-                            ) : (
-                              <span className="text-slate-400 italic">User deleted</span>
-                            )}
-                          </td>
-                          <td className="px-6 py-4.5 max-w-sm">
-                            <div className="space-y-1">
-                              <p className="font-bold text-slate-900 leading-tight">{notif.title}</p>
-                              <p className="text-xs text-slate-500 leading-normal">{notif.message}</p>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:rounded-3xl">
+            {usersLoading ? (
+              <div className="flex flex-col items-center justify-center gap-2 py-20">
+                <RefreshCw className="h-7 w-7 animate-spin text-indigo-600" />
+                <span className="text-[10px] text-slate-500 sm:text-sm">
+                  Fetching registered users...
+                </span>
+              </div>
+            ) : users.length === 0 ? (
+              <div className="py-20 text-center text-xs text-slate-500">
+                No registered users found
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[720px] border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-slate-100 bg-slate-50 text-[9px] uppercase tracking-wide text-slate-400 sm:text-[10px]">
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        User Details
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Unique User ID
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Contact
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Purchased Exams
+                      </th>
+                      <th className="px-3 py-3 text-right sm:px-6 sm:py-4">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+                    {users
+                      .filter(
+                        (u) =>
+                          u.name
+                            ?.toLowerCase()
+                            .includes(
+                              userSearchQuery.toLowerCase()
+                            ) ||
+                          u.email
+                            ?.toLowerCase()
+                            .includes(
+                              userSearchQuery.toLowerCase()
+                            ) ||
+                          u._id
+                            ?.toLowerCase()
+                            .includes(
+                              userSearchQuery.toLowerCase()
+                            )
+                      )
+                      .map((u) => (
+                        <tr
+                          key={u._id}
+                          className="transition-colors hover:bg-slate-50/50"
+                        >
+                          <td className="px-3 py-3 sm:px-6 sm:py-4">
+                            <div className="space-y-0.5">
+                              <p className="flex items-center gap-1.5 text-xs font-medium text-slate-900 sm:text-sm sm:font-semibold">
+                                {u.name}
+
+                                {u.role === "admin" && (
+                                  <span className="rounded border border-indigo-100 bg-indigo-50 px-1.5 py-0.5 text-[8px] text-indigo-700 sm:text-[9px]">
+                                    ADMIN
+                                  </span>
+                                )}
+                              </p>
+
+                              <p className="text-[9px] text-slate-400 sm:text-xs">
+                                {u.email}
+                              </p>
                             </div>
                           </td>
-                          <td className="px-6 py-4.5">
-                            <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
-                              notif.type === "purchase"
-                                ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                                : notif.type === "agent"
-                                ? "bg-purple-50 text-purple-700 border border-purple-100"
-                                : notif.type === "support"
-                                ? "bg-amber-50 text-amber-700 border border-amber-100"
-                                : "bg-slate-100 text-slate-700 border border-slate-200"
-                            }`}>
-                              {notif.type}
-                            </span>
+
+                          <td className="px-3 py-3 font-mono text-[9px] sm:px-6 sm:py-4 sm:text-xs">
+                            <div className="flex items-center gap-1.5">
+                              <span className="select-all whitespace-nowrap rounded border border-slate-100 bg-slate-50 px-2 py-1 text-slate-600">
+                                {u._id}
+                              </span>
+
+                              <button
+                                onClick={() => {
+                                  navigator.clipboard.writeText(
+                                    u._id
+                                  );
+                                  toast.success(
+                                    "ID copied to clipboard!"
+                                  );
+                                }}
+                                className="rounded p-1 text-slate-400 hover:bg-slate-100"
+                                title="Copy User ID"
+                              >
+                                <Copy className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                              </button>
+                            </div>
                           </td>
-                          <td className="px-6 py-4.5">
-                            <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                              notif.isRead 
-                                ? "bg-slate-100 text-slate-600 border border-slate-200" 
-                                : "bg-indigo-50 text-indigo-700 border border-indigo-100"
-                            }`}>
-                              <span className={`w-1.5 h-1.5 rounded-full ${notif.isRead ? "bg-slate-400" : "bg-indigo-500 animate-pulse"}`} />
-                              {notif.isRead ? "READ" : "UNREAD"}
-                            </span>
+
+                          <td className="whitespace-nowrap px-3 py-3 text-[9px] text-slate-500 sm:px-6 sm:py-4 sm:text-xs">
+                            {u.phone || (
+                              <span className="text-slate-300">
+                                None
+                              </span>
+                            )}
                           </td>
-                          <td className="px-6 py-4.5 text-xs text-slate-500 font-medium">
-                            {formatDate(notif.createdAt)}
+
+                          <td className="px-3 py-3 sm:px-6 sm:py-4">
+                            <div className="flex flex-wrap gap-1">
+                              {u.purchasedExams &&
+                              u.purchasedExams.length > 0 ? (
+                                u.purchasedExams.map((ex) => (
+                                  <span
+                                    key={ex}
+                                    className="rounded border border-emerald-100 bg-emerald-50 px-1.5 py-0.5 text-[8px] uppercase text-emerald-700"
+                                  >
+                                    {ex}
+                                  </span>
+                                ))
+                              ) : (
+                                <span className="text-[9px] text-slate-400">
+                                  No bundles purchased
+                                </span>
+                              )}
+                            </div>
+                          </td>
+
+                          <td className="whitespace-nowrap px-3 py-3 text-right sm:px-6 sm:py-4">
+                            <button
+                              onClick={() =>
+                                setSendModalUser(u)
+                              }
+                              className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-[9px] text-indigo-600 hover:bg-indigo-50 sm:px-3 sm:text-xs sm:font-medium"
+                            >
+                              <Send className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                              Send Message
+                            </button>
                           </td>
                         </tr>
                       ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* =======================================================
+          NOTIFICATION LOGS
+      ======================================================= */}
+      {activeTab === "notifs" && (
+        <div className="space-y-5 sm:space-y-6">
+
+          <div className="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:rounded-3xl sm:p-5">
+            <div className="min-w-0">
+              <h2 className="text-sm font-medium text-slate-900 sm:text-lg sm:font-semibold">
+                Notification Logs
+              </h2>
+
+              <p className="mt-0.5 text-[9px] text-slate-400 sm:text-xs">
+                History of all alerts sent to users
+              </p>
+            </div>
+
+            <div className="text-[9px] uppercase tracking-wide text-slate-400 sm:text-xs sm:tracking-wider">
+              System Broadcast Log
             </div>
           </div>
-        )}
-      </div>
 
-      {/* COMPOSE NOTIFICATION MODAL */}
-      <AnimatePresence>
-        {sendModalUser && (
-          <div 
-            onClick={() => setSendModalUser(null)}
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200"
-          >
-            <motion.div
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-3xl w-full max-w-lg shadow-2xl border border-slate-200 overflow-hidden"
-            >
-              <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <MessageSquare className="w-5 h-5 text-indigo-600" />
-                    Send Notification
-                  </h3>
-                  <p className="text-xs text-slate-500 font-medium">Deliver a message to this user's inbox</p>
-                </div>
-                <button
-                  onClick={() => setSendModalUser(null)}
-                  className="p-1.5 hover:bg-slate-100 rounded-full transition-colors text-slate-400 hover:text-slate-600"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:rounded-3xl">
+            {notifsLoading ? (
+              <div className="flex flex-col items-center justify-center gap-2 py-20">
+                <RefreshCw className="h-7 w-7 animate-spin text-indigo-600" />
+                <span className="text-[10px] text-slate-500 sm:text-sm">
+                  Fetching logs...
+                </span>
               </div>
+            ) : notificationsLog.length === 0 ? (
+              <div className="py-20 text-center text-xs text-slate-500">
+                No notifications recorded in logs
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[720px] border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-slate-100 bg-slate-50 text-[9px] uppercase tracking-wide text-slate-400 sm:text-[10px]">
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Recipient
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Message Title & Details
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Type
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Status
+                      </th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">
+                        Sent At
+                      </th>
+                    </tr>
+                  </thead>
 
-              <form onSubmit={handleSendMessage}>
-                <div className="p-6 space-y-4">
-                  {/* Recipient Details */}
-                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-1">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Recipient Profile</span>
-                    <p className="font-extrabold text-slate-900">{sendModalUser.name}</p>
-                    <p className="text-xs font-semibold text-slate-500">{sendModalUser.email}</p>
-                    <div className="flex items-center gap-1.5 mt-2 font-mono text-[10px] text-slate-400">
-                      <span>Unique ID:</span>
-                      <span className="text-slate-700 select-all font-bold">{sendModalUser._id}</span>
-                    </div>
-                  </div>
+                  <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+                    {notificationsLog.map((notif) => (
+                      <tr
+                        key={notif._id}
+                        className="transition-colors hover:bg-slate-50/50"
+                      >
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
+                          {notif.userId ? (
+                            <div className="space-y-0.5">
+                              <p className="text-xs font-medium text-slate-950 sm:text-sm sm:font-semibold">
+                                {notif.userId.name}
+                              </p>
 
-                  {/* Title */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">Notification Title</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Purchase Successful! 🎉"
-                      value={messageTitle}
-                      onChange={(e) => setMessageTitle(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm animate-none"
-                    />
-                  </div>
+                              <p className="text-[9px] text-slate-400 sm:text-xs">
+                                {notif.userId.email}
+                              </p>
+                            </div>
+                          ) : (
+                            <span className="text-slate-400">
+                              User deleted
+                            </span>
+                          )}
+                        </td>
 
-                  {/* Message Type */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">Notification Category</label>
-                    <select
-                      value={messageType}
-                      onChange={(e) => setMessageType(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm bg-white"
-                    >
-                      <option value="general">General Alert</option>
-                      <option value="purchase">Purchase Log</option>
-                      <option value="support">Support Response</option>
-                      <option value="agent">Agent Recommendation</option>
-                    </select>
-                  </div>
+                        <td className="max-w-sm px-3 py-3 sm:px-6 sm:py-4">
+                          <div className="space-y-1">
+                            <p className="text-xs font-medium leading-tight text-slate-900 sm:text-sm sm:font-semibold">
+                              {notif.title}
+                            </p>
 
-                  {/* Body Message */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">Message Details</label>
-                    <textarea
-                      required
-                      rows="4"
-                      placeholder="Write your email/notification details here..."
-                      value={messageBody}
-                      onChange={(e) => setMessageBody(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm resize-none"
-                    />
-                  </div>
-                </div>
+                            <p className="text-[9px] leading-4 text-slate-500 sm:text-xs">
+                              {notif.message}
+                            </p>
+                          </div>
+                        </td>
 
-                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setSendModalUser(null)}
-                    className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold shadow-sm transition-all"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={sendingMessage}
-                    className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-xl text-xs font-bold shadow-sm transition-all flex items-center gap-1.5"
-                  >
-                    {sendingMessage ? (
-                      <>
-                        <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-3.5 h-3.5" />
-                        Send Notification
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
-            </motion.div>
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
+                          <span
+                            className={`inline-flex items-center rounded px-1.5 py-0.5 text-[8px] uppercase tracking-wide sm:px-2 sm:text-[10px] ${
+                              notif.type === "purchase"
+                                ? "border border-emerald-100 bg-emerald-50 text-emerald-700"
+                                : notif.type === "agent"
+                                ? "border border-purple-100 bg-purple-50 text-purple-700"
+                                : notif.type === "support"
+                                ? "border border-amber-100 bg-amber-50 text-amber-700"
+                                : "border border-slate-200 bg-slate-100 text-slate-700"
+                            }`}
+                          >
+                            {notif.type}
+                          </span>
+                        </td>
+
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
+                          <span
+                            className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[9px] sm:text-xs ${
+                              notif.isRead
+                                ? "border-slate-200 bg-slate-100 text-slate-600"
+                                : "border-indigo-100 bg-indigo-50 text-indigo-700"
+                            }`}
+                          >
+                            <span
+                              className={`h-1.5 w-1.5 rounded-full ${
+                                notif.isRead
+                                  ? "bg-slate-400"
+                                  : "animate-pulse bg-indigo-500"
+                              }`}
+                            />
+
+                            {notif.isRead
+                              ? "READ"
+                              : "UNREAD"}
+                          </span>
+                        </td>
+
+                        <td className="whitespace-nowrap px-3 py-3 text-[9px] text-slate-500 sm:px-6 sm:py-4 sm:text-xs">
+                          {formatDate(notif.createdAt)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
+    </div>
 
-      {/* OVERLAY DIAGNOSTIC DETAIL MODAL */}
-      <AnimatePresence>
-        {selectedTxn && (
-          <div 
-            onClick={() => setSelectedTxn(null)}
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200"
+    {/* =========================================================
+        SEND NOTIFICATION MODAL
+    ========================================================= */}
+    <AnimatePresence>
+      {sendModalUser && (
+        <div
+          onClick={() => setSendModalUser(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 backdrop-blur-sm sm:p-4"
+        >
+          <motion.div
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.96, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.96, opacity: 0 }}
+            className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl sm:rounded-3xl"
           >
-            <motion.div
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-3xl w-full max-w-lg shadow-2xl border border-slate-200 overflow-hidden"
-            >
-              {/* Header */}
-              <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900">Transaction Diagnostic Panel</h3>
-                  <p className="text-xs text-slate-500 font-medium">Detailed logs and gateway responses</p>
-                </div>
-                <button
-                  onClick={() => setSelectedTxn(null)}
-                  className="p-1.5 hover:bg-slate-100 rounded-full transition-colors text-slate-400 hover:text-slate-600"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+            <div className="flex items-center justify-between border-b border-slate-100 px-4 py-4 sm:px-6 sm:py-5">
+              <div className="min-w-0">
+                <h3 className="flex items-center gap-2 text-sm font-medium text-slate-900 sm:text-lg sm:font-semibold">
+                  <MessageSquare className="h-4 w-4 text-indigo-600 sm:h-5 sm:w-5" />
+                  Send Notification
+                </h3>
+
+                <p className="mt-0.5 text-[9px] text-slate-500 sm:text-xs">
+                  Deliver a message to this user's inbox
+                </p>
               </div>
 
-              {/* Body */}
-              <div className="p-5 space-y-4 text-xs max-h-[60vh] overflow-y-auto custom-scrollbar">
-                {/* Meta details */}
-                <div className="grid grid-cols-3 gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                  <div>
-                    <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Status</p>
-                    <span
-                      className={`inline-flex items-center gap-1 mt-0.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
-                        selectedTxn.status === "SUCCESS"
-                          ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                          : selectedTxn.status === "FAILED"
-                          ? "bg-rose-50 text-rose-700 border border-rose-100"
-                          : "bg-amber-50 text-amber-700 border border-amber-100"
-                      }`}
-                    >
-                      {selectedTxn.status}
+              <button
+                onClick={() => setSendModalUser(null)}
+                className="rounded-full p-1.5 text-slate-400 hover:bg-slate-100"
+              >
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSendMessage}>
+              <div className="space-y-4 p-4 sm:p-6">
+
+                <div className="space-y-1 rounded-2xl border border-slate-100 bg-slate-50 p-3 sm:p-4">
+                  <span className="text-[8px] uppercase tracking-wide text-slate-400 sm:text-[10px]">
+                    Recipient Profile
+                  </span>
+
+                  <p className="text-sm text-slate-900 sm:text-base sm:font-semibold">
+                    {sendModalUser.name}
+                  </p>
+
+                  <p className="break-all text-[10px] text-slate-500 sm:text-xs">
+                    {sendModalUser.email}
+                  </p>
+
+                  <div className="mt-2 break-all font-mono text-[9px] text-slate-400 sm:text-[10px]">
+                    Unique ID:{" "}
+                    <span className="select-all text-slate-700">
+                      {sendModalUser._id}
                     </span>
                   </div>
-                  <div>
-                    <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Amount</p>
-                    <p className="font-extrabold text-slate-900 mt-0.5">₹{selectedTxn.amount || 0}</p>
-                  </div>
-                  <div>
-                    <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Created At</p>
-                    <p className="text-slate-700 font-bold mt-0.5">{formatDate(selectedTxn.createdAt)}</p>
-                  </div>
                 </div>
 
-                {/* 2-Column Grid for System Identifiers and Buyer Profile */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {/* References */}
-                  <div className="space-y-1.5">
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Identifiers</h4>
-                    <div className="space-y-1.5 font-mono text-[11px] bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                      <div className="flex justify-between">
-                        <span className="text-slate-400">Order:</span>
-                        <span className="text-slate-755 select-all font-bold truncate max-w-[110px]" title={selectedTxn.orderId}>{selectedTxn.orderId || "N/A"}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400">Payment:</span>
-                        <span className="text-slate-755 select-all font-bold truncate max-w-[110px]" title={selectedTxn.paymentId}>{selectedTxn.paymentId || "N/A"}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400">Mock ID:</span>
-                        <span className="text-indigo-700 select-all font-sans font-black uppercase">{selectedTxn.mockId || "N/A"}</span>
-                      </div>
-                    </div>
-                  </div>
+                <div className="space-y-1.5">
+                  <label className="block text-[9px] uppercase tracking-wide text-slate-500 sm:text-xs sm:tracking-wider">
+                    Notification Title
+                  </label>
 
-                  {/* User info */}
-                  {selectedTxn.userId && (
-                    <div className="space-y-1.5">
-                      <h4 className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Buyer Profile</h4>
-                      <div className="space-y-1.5 bg-slate-50 p-3 rounded-2xl border border-slate-100 text-slate-700 text-[11px]">
-                        <div className="flex justify-between items-center">
-                          <span className="text-slate-400 flex items-center gap-1"><UserIcon className="w-3 h-3" /> Name:</span>
-                          <span className="font-bold text-slate-900 truncate max-w-[110px]">{selectedTxn.userId.name}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-slate-400 flex items-center gap-1"><Mail className="w-3 h-3" /> Email:</span>
-                          <span className="font-mono text-slate-700 truncate max-w-[110px]" title={selectedTxn.userId.email}>{selectedTxn.userId.email}</span>
-                        </div>
-                        {selectedTxn.userId.phone && (
-                          <div className="flex justify-between items-center">
-                            <span className="text-slate-400 flex items-center gap-1"><Phone className="w-3 h-3" /> Phone:</span>
-                            <span className="font-mono text-slate-700">{selectedTxn.userId.phone}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Purchase Successful!"
+                    value={messageTitle}
+                    onChange={(e) =>
+                      setMessageTitle(e.target.value)
+                    }
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-xs outline-none focus:ring-2 focus:ring-indigo-500 sm:px-4 sm:text-sm"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-[9px] uppercase tracking-wide text-slate-500 sm:text-xs sm:tracking-wider">
+                    Notification Category
+                  </label>
+
+                  <select
+                    value={messageType}
+                    onChange={(e) =>
+                      setMessageType(e.target.value)
+                    }
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs outline-none focus:ring-2 focus:ring-indigo-500 sm:px-4 sm:text-sm"
+                  >
+                    <option value="general">
+                      General Alert
+                    </option>
+                    <option value="purchase">
+                      Purchase Log
+                    </option>
+                    <option value="support">
+                      Support Response
+                    </option>
+                    <option value="agent">
+                      Agent Recommendation
+                    </option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-[9px] uppercase tracking-wide text-slate-500 sm:text-xs sm:tracking-wider">
+                    Message Details
+                  </label>
+
+                  <textarea
+                    required
+                    rows="4"
+                    placeholder="Write your message..."
+                    value={messageBody}
+                    onChange={(e) =>
+                      setMessageBody(e.target.value)
+                    }
+                    className="w-full resize-none rounded-xl border border-slate-200 px-3 py-2.5 text-xs outline-none focus:ring-2 focus:ring-indigo-500 sm:px-4 sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2 border-t border-slate-100 bg-slate-50 px-4 py-3 sm:px-6 sm:py-4">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSendModalUser(null)
+                  }
+                  className="rounded-xl border border-slate-200 px-3 py-2 text-[10px] text-slate-700 hover:bg-slate-100 sm:px-4 sm:text-xs"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  disabled={sendingMessage}
+                  className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3 py-2 text-[10px] text-white shadow-sm hover:bg-indigo-700 disabled:opacity-50 sm:px-4 sm:text-xs"
+                >
+                  {sendingMessage ? (
+                    <>
+                      <RefreshCw className="h-3 w-3 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-3 w-3" />
+                      Send Notification
+                    </>
                   )}
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+
+    {/* =========================================================
+        TRANSACTION DIAGNOSTIC MODAL
+    ========================================================= */}
+    <AnimatePresence>
+      {selectedTxn && (
+        <div
+          onClick={() => setSelectedTxn(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 backdrop-blur-sm sm:p-4"
+        >
+          <motion.div
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.96, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.96, opacity: 0 }}
+            className="max-h-[92vh] w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl sm:rounded-3xl"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-slate-100 px-4 py-4 sm:px-6 sm:py-5">
+              <div className="min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 sm:text-lg sm:font-semibold">
+                  Transaction Diagnostic Panel
+                </h3>
+
+                <p className="mt-0.5 text-[9px] text-slate-500 sm:text-xs">
+                  Detailed logs and gateway responses
+                </p>
+              </div>
+
+              <button
+                onClick={() => setSelectedTxn(null)}
+                className="rounded-full p-1.5 text-slate-400 hover:bg-slate-100"
+              >
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="max-h-[68vh] space-y-4 overflow-y-auto p-3 text-[10px] sm:p-5 sm:text-xs">
+
+              {/* Meta */}
+              <div className="grid grid-cols-3 gap-2 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 sm:gap-3 sm:p-3">
+                <div className="min-w-0">
+                  <p className="text-[8px] uppercase tracking-wide text-slate-400">
+                    Status
+                  </p>
+
+                  <span
+                    className={`mt-1 inline-flex rounded-full border px-2 py-0.5 text-[8px] ${
+                      selectedTxn.status === "SUCCESS"
+                        ? "border-emerald-100 bg-emerald-50 text-emerald-700"
+                        : selectedTxn.status === "FAILED"
+                        ? "border-rose-100 bg-rose-50 text-rose-700"
+                        : "border-amber-100 bg-amber-50 text-amber-700"
+                    }`}
+                  >
+                    {selectedTxn.status}
+                  </span>
                 </div>
 
-                {/* Failure diagnostics */}
-                {selectedTxn.status === "FAILED" && (
+                <div className="min-w-0">
+                  <p className="text-[8px] uppercase tracking-wide text-slate-400">
+                    Amount
+                  </p>
+
+                  <p className="mt-1 text-xs text-slate-900 sm:text-sm sm:font-medium">
+                    ₹{selectedTxn.amount || 0}
+                  </p>
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-[8px] uppercase tracking-wide text-slate-400">
+                    Created At
+                  </p>
+
+                  <p className="mt-1 break-words text-[9px] text-slate-700 sm:text-[10px]">
+                    {formatDate(selectedTxn.createdAt)}
+                  </p>
+                </div>
+              </div>
+
+              {/* IDs + Buyer */}
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+
+                <div className="space-y-1.5">
+                  <h4 className="text-[9px] uppercase tracking-wide text-slate-400 sm:text-[10px]">
+                    Identifiers
+                  </h4>
+
+                  <div className="space-y-1.5 rounded-2xl border border-slate-100 bg-slate-50 p-3 font-mono text-[9px] sm:text-[11px]">
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="shrink-0 text-slate-400">
+                        Order:
+                      </span>
+
+                      <span
+                        className="select-all break-all text-right text-slate-700"
+                        title={selectedTxn.orderId}
+                      >
+                        {selectedTxn.orderId || "N/A"}
+                      </span>
+                    </div>
+
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="shrink-0 text-slate-400">
+                        Payment:
+                      </span>
+
+                      <span
+                        className="select-all break-all text-right text-slate-700"
+                        title={selectedTxn.paymentId}
+                      >
+                        {selectedTxn.paymentId || "N/A"}
+                      </span>
+                    </div>
+
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="shrink-0 text-slate-400">
+                        Mock ID:
+                      </span>
+
+                      <span className="break-all text-right text-indigo-700">
+                        {selectedTxn.mockId || "N/A"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {selectedTxn.userId && (
                   <div className="space-y-1.5">
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-rose-500 flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" /> Failure Diagnostic Details
+                    <h4 className="text-[9px] uppercase tracking-wide text-slate-400 sm:text-[10px]">
+                      Buyer Profile
                     </h4>
-                    <div className="bg-rose-50/40 p-3 rounded-2xl border border-rose-100 text-rose-800 space-y-2 text-[11px]">
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <span className="font-bold uppercase tracking-wider text-[9px] text-rose-400 block">Error Code</span>
-                          <p className="font-mono font-bold text-rose-900">{selectedTxn.failureDetails?.code || "GENERIC_FAILURE"}</p>
-                        </div>
-                        <div>
-                          <span className="font-bold uppercase tracking-wider text-[9px] text-rose-400 block">Failed Step / Source</span>
-                          <p className="font-bold text-rose-955 capitalize">{selectedTxn.failureDetails?.step || "unknown"} ({selectedTxn.failureDetails?.source || "unknown"})</p>
-                        </div>
+
+                    <div className="space-y-1.5 rounded-2xl border border-slate-100 bg-slate-50 p-3 text-[9px] text-slate-700 sm:text-[11px]">
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="shrink-0 text-slate-400">
+                          Name:
+                        </span>
+
+                        <span className="break-words text-right text-slate-900">
+                          {selectedTxn.userId.name}
+                        </span>
                       </div>
-                      <div>
-                        <span className="font-bold uppercase tracking-wider text-[9px] text-rose-400 block">Gateway Description</span>
-                        <p className="text-rose-900 font-medium leading-normal">{selectedTxn.failureDetails?.description || "No failure description provided."}</p>
+
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="shrink-0 text-slate-400">
+                          Email:
+                        </span>
+
+                        <span className="break-all text-right text-slate-700">
+                          {selectedTxn.userId.email}
+                        </span>
                       </div>
-                      {selectedTxn.failureDetails?.reason && (
-                        <div className="pt-1.5 border-t border-rose-200/30">
-                          <span className="font-bold uppercase tracking-wider text-[9px] text-rose-400 block">AI Recovery Context</span>
-                          <p className="text-rose-900 font-medium italic mt-0.5">"{selectedTxn.failureDetails.reason}"</p>
+
+                      {selectedTxn.userId.phone && (
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="shrink-0 text-slate-400">
+                            Phone:
+                          </span>
+
+                          <span className="text-right text-slate-700">
+                            {selectedTxn.userId.phone}
+                          </span>
                         </div>
                       )}
                     </div>
@@ -2050,21 +2664,87 @@ const AdminDashboard = () => {
                 )}
               </div>
 
-              {/* Footer */}
-              <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end">
-                <button
-                  onClick={() => setSelectedTxn(null)}
-                  className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold shadow-sm transition-all active:scale-95"
-                >
-                  Close Diagnostic
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+              {/* Failure Details */}
+              {selectedTxn.status === "FAILED" && (
+                <div className="space-y-1.5">
+
+                  <h4 className="flex items-center gap-1 text-[9px] uppercase tracking-wide text-rose-500 sm:text-[10px]">
+                    <AlertCircle className="h-3 w-3" />
+                    Failure Diagnostic Details
+                  </h4>
+
+                  <div className="space-y-2 rounded-2xl border border-rose-100 bg-rose-50/40 p-3 text-[9px] text-rose-800 sm:text-[11px]">
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="min-w-0">
+                        <span className="block text-[8px] uppercase tracking-wide text-rose-400">
+                          Error Code
+                        </span>
+
+                        <p className="break-all font-mono text-rose-900">
+                          {selectedTxn.failureDetails?.code ||
+                            "GENERIC_FAILURE"}
+                        </p>
+                      </div>
+
+                      <div className="min-w-0">
+                        <span className="block text-[8px] uppercase tracking-wide text-rose-400">
+                          Failed Step / Source
+                        </span>
+
+                        <p className="break-words text-rose-900">
+                          {selectedTxn.failureDetails?.step ||
+                            "unknown"}{" "}
+                          (
+                          {selectedTxn.failureDetails?.source ||
+                            "unknown"}
+                          )
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="block text-[8px] uppercase tracking-wide text-rose-400">
+                        Gateway Description
+                      </span>
+
+                      <p className="leading-relaxed text-rose-900">
+                        {selectedTxn.failureDetails?.description ||
+                          "No failure description provided."}
+                      </p>
+                    </div>
+
+                    {selectedTxn.failureDetails?.reason && (
+                      <div className="border-t border-rose-200/30 pt-1.5">
+                        <span className="block text-[8px] uppercase tracking-wide text-rose-400">
+                          AI Recovery Context
+                        </span>
+
+                        <p className="mt-0.5 leading-relaxed text-rose-900">
+                          "{selectedTxn.failureDetails.reason}"
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="flex justify-end border-t border-slate-100 bg-slate-50 px-3 py-3 sm:px-6 sm:py-4">
+              <button
+                onClick={() => setSelectedTxn(null)}
+                className="rounded-xl bg-slate-900 px-3 py-2 text-[10px] text-white shadow-sm transition hover:bg-slate-800 sm:px-4 sm:text-xs"
+              >
+                Close Diagnostic
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  </div>
+);
 };
 
 export default AdminDashboard;

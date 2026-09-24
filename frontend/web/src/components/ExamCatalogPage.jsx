@@ -220,7 +220,7 @@ return (
         {/* HERO SECTION */}
         <div className="text-center mb-20">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Crack Your Exam with <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">Confidence ðŸš€</span>
+            Crack Your Exam with <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">Confidence </span>
           </h1>
           <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
             High-quality mock tests designed by exam-focused experts. 

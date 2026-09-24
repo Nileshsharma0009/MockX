@@ -137,21 +137,6 @@ const First = () => {
       />
 
 
-      {/* Main Hero */}
-      {/* <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 text-center relative z-10">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 md:mb-8 text-gray-800">
-          Ace Your <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
-        </h1>
-
-        <p className="max-w-2xl mx-auto text-gray-600 text-sm md:text-lg mb-8 px-2">    Studying hard is only half the battle. Structure your practice to ensure every hour of study translates into higher marks.</p>
-        <div className="p-4">
-          {!user ? (
-            <button onClick={() => setShowForm(true)} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Register Now</button>
-          ) : (
-            <button onClick={() => navigate("/v2/mock-tests")} className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 md:py-3.5 md:px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-base md:text-lg">Go to Practice</button>
-          )}
-        </div>
-      </main> */}
 
 
       {/* Main Hero */}
@@ -216,9 +201,6 @@ const First = () => {
                 </button>
               )}
 
-              {/* <button className="border border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-full hover:bg-gray-100 transition">
-                Watch Demo →
-              </button> */}
             </div>
 
          <div className="flex gap-10 justify-center md:justify-start text-sm text-gray-500 pt-6">
@@ -264,43 +246,6 @@ const First = () => {
       </main>
 
 
-      {/* Features */}
-      {/* <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-
-    <FeatureCard
-      icon="/clock.svg"
-      title="180-Minute Tests"
-      description="True exam duration to help you build stamina."
-      iconSize={50}
-    />
-
-    <FeatureCard
-      icon="/icons/graduation.svg"
-      title="200 Smart Questions"
-      description="Latest IMUCET patterns & difficulty levels."
-      bgColor="bg-indigo-100"
-      iconSize={70}
-    />
-
-    <FeatureCard
-      icon="/icons/chart.svg"
-      title="Progress Tracking"
-      description="Accuracy, weak areas, improvement charts."
-      bgColor="bg-emerald-100"
-      iconSize={90}
-    />
-
-    <FeatureCard
-      icon="/icons/trophy.svg"
-      title="Instant Results"
-      description="Detailed scorecards within seconds."
-      bgColor="bg-amber-100"
-      iconSize={110}
-    />
-
-  </div>
-</section> */}
 
       {/* Features */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
@@ -360,12 +305,7 @@ const First = () => {
 
         </div>
       </section>
-
-
-
-
-
-
+      
       {/* Comparison Section */}
       {/* Comparison Section - The Growth Path */}
       <section className="mt-32 relative">

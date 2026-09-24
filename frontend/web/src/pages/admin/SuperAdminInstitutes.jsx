@@ -135,237 +135,395 @@ export default function SuperAdminInstitutes() {
   if (loading) return <Loader />;
 
   return (
-    <div className="institute-ui min-h-screen bg-slate-50 text-slate-800 font-sans pb-16">
+    <div className="institute-ui min-h-screen  font :momo font-style: italic bg-slate-50 text-slate-800 pb-16">
       {/* Top Navbar */}
-      <header className="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center font-black text-white shadow-lg shadow-indigo-600/30">
-            MX
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="font-extrabold text-sm tracking-tight text-slate-900">MockX Super Admin</h1>
-              <span className="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider">
-                Platform Root
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-400">Coaching Institute & Academy Fleet Management</p>
-          </div>
+     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-md">
+  <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-3 sm:h-16 sm:px-6 lg:px-8">
+
+    {/* =====================================================
+        BRAND
+    ===================================================== */}
+    <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+
+      {/* MX Logo */}
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-600 text-[10px] font-medium text-white shadow-sm sm:h-10 sm:w-10 sm:rounded-xl sm:text-sm">
+        MX
+      </div>
+
+      {/* Title */}
+      <div className="min-w-0">
+        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
+          <Shield className="h-3.5 w-3.5 shrink-0 text-indigo-600 sm:h-4 sm:w-4" />
+
+          <h1 className="truncate text-xs font-medium tracking-tight text-slate-900 sm:text-base sm:font-semibold">
+            MockX Super Admin
+          </h1>
+
+          {/* Desktop badge */}
+          <span className="hidden rounded-md border border-indigo-100 bg-indigo-50 px-1.5 py-0.5 text-[8px] uppercase tracking-wide text-indigo-700 sm:inline-flex sm:px-2 sm:text-[10px]">
+            Platform administration
+          </span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => navigate("/v2/admin")}
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-all"
-          >
-            Back to Admin Dashboard
-          </button>
-          <button
-            onClick={() => navigate("/v2/admin")}
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all"
-          >
-            Merchant Dashboard
-          </button>
-          <button
-            onClick={logout}
-            className="flex items-center gap-1 text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors ml-2"
-          >
-            <LogOut className="w-3.5 h-3.5" />
-            <span>Logout</span>
-          </button>
-        </div>
-      </header>
+        {/* Desktop description */}
+        <p className="mt-0.5 hidden text-[9px] text-slate-500 sm:block sm:text-[10px]">
+          Manage the MockX platform
+        </p>
+      </div>
+    </div>
+
+    {/* =====================================================
+        NAVIGATION
+    ===================================================== */}
+    <nav
+      aria-label="Super admin navigation"
+      className="flex shrink-0 items-center gap-1.5 sm:gap-2"
+    >
+
+      {/* Admin Dashboard */}
+      <button
+        type="button"
+        onClick={() => navigate("/v2/admin")}
+        className="inline-flex h-8 items-center justify-center gap-1 rounded-lg border border-slate-200 bg-white px-2 text-[9px] text-slate-700 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 sm:h-9 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:text-xs sm:font-medium"
+      >
+     
+
+        <span className="hidden sm:inline">
+          Admin Dashboard
+        </span>
+      </button>
+
+      {/* Institutes */}
+      <button
+        type="button"
+        aria-current="page"
+        onClick={() => navigate("/v2/admin/")}
+        className="inline-flex h-8 items-center justify-center gap-1 rounded-lg bg-indigo-600 px-2 text-[9px] text-white shadow-sm transition-colors hover:bg-indigo-700 sm:h-9 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:text-xs sm:font-medium"
+      >
+        {/* <Building2 className="h-3 w-3 shrink-0 sm:h-3.5 sm:w-3.5" /> */}
+
+      Admin
+      </button>
+
+      {/* Logout */}
+      <button
+        type="button"
+        onClick={logout}
+        className="inline-flex h-8 items-center justify-center gap-1 rounded-lg border border-slate-200 bg-white px-2 text-[9px] text-rose-600 transition-colors hover:border-rose-200 hover:bg-rose-50 sm:h-9 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:text-xs sm:font-medium"
+      >
+        <LogOut className="h-3 w-3 shrink-0 sm:h-3.5 sm:w-3.5" />
+
+        <span>Logout</span>
+      </button>
+    </nav>
+  </div>
+</header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-6 pt-8">
-        {/* Metric Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
-          <div className="inst-card border border-slate-200 rounded-2xl p-5 shadow-lg">
-            <div className="flex items-center justify-between text-slate-400 text-xs font-semibold mb-2">
-              <span>Total Institutes</span>
-              <Building2 className="w-4 h-4 text-indigo-400" />
-            </div>
-            <div className="text-3xl font-extrabold text-slate-900">{institutes.length}</div>
-            <div className="text-[11px] text-emerald-400 font-medium mt-1">
-              {institutes.filter((i) => i.status === "ACTIVE").length} Active
-            </div>
-          </div>
+  <main className="mx-auto max-w-7xl px-3 pt-5 sm:px-6 sm:pt-8">
+  {/* =========================================================
+      METRIC CARDS
+  ========================================================= */}
+  <div className="mb-6 grid grid-cols-2 gap-2 sm:mb-8 sm:gap-4 lg:grid-cols-4">
 
-          <div className="inst-card border border-slate-200 rounded-2xl p-5 shadow-lg">
-            <div className="flex items-center justify-between text-slate-400 text-xs font-semibold mb-2">
-              <span>Total Students Enrolled</span>
-              <Users className="w-4 h-4 text-emerald-400" />
-            </div>
-            <div className="text-3xl font-extrabold text-slate-900">{totalStudents}</div>
-            <div className="text-[11px] text-slate-400 font-medium mt-1">Across all academies</div>
-          </div>
+    {/* Total Institutes */}
+    <div className="inst-card min-w-0 rounded-xl border border-slate-200 p-3 shadow-sm sm:rounded-2xl sm:p-5 sm:shadow-lg">
+      <div className="mb-2 flex items-start justify-between gap-1 text-slate-500">
+        <span className="min-w-0 text-[9px]  leading-tight sm:text-xs ">
+          Total Institutes
+        </span>
 
-          <div className="inst-card border border-slate-200 rounded-2xl p-5 shadow-lg">
-            <div className="flex items-center justify-between text-slate-400 text-xs font-semibold mb-2">
-              <span>Custom Mock Tests</span>
-              <FileText className="w-4 h-4 text-purple-400" />
-            </div>
-            <div className="text-3xl font-extrabold text-slate-900">{totalMocks}</div>
-            <div className="text-[11px] text-slate-400 font-medium mt-1">Created by institutes</div>
-          </div>
+        <Building2 className="h-3.5 w-3.5 shrink-0 text-indigo-600 sm:h-4 sm:w-4" />
+      </div>
 
-          <div className="inst-card border border-slate-200 rounded-2xl p-5 shadow-lg">
-            <div className="flex items-center justify-between text-slate-400 text-xs font-semibold mb-2">
-              <span>Total Test Attempts</span>
-              <Activity className="w-4 h-4 text-sky-400" />
-            </div>
-            <div className="text-3xl font-extrabold text-slate-900">{totalAttempts}</div>
-            <div className="text-[11px] text-slate-400 font-medium mt-1">Submissions recorded</div>
-          </div>
-        </div>
+      <div className="text-xl font- text-slate-900 sm:text-2xl ">
+        {institutes.length}
+      </div>
 
-        {/* Action Header & Search */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-          <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by name, code, email..."
-              className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+      <div className="mt-1 text-[9px] font-medium text-emerald-600 sm:text-[11px]">
+        {institutes.filter((i) => i.status === "ACTIVE").length} Active
+      </div>
+    </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <button
-              onClick={loadInstitutes}
-              className="p-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 transition-colors"
-              title="Refresh"
-            >
-              <RefreshCw className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setShowCreateModal(true)}
-              className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-lg shadow-indigo-600/30 transition-all ml-auto"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Register New Institute</span>
-            </button>
-          </div>
-        </div>
+    {/* Total Students */}
+    <div className="inst-card min-w-0 rounded-xl border border-slate-200 p-3 shadow-sm sm:rounded-2xl sm:p-5 sm:shadow-lg">
+      <div className="mb-2 flex items-start justify-between gap-1 text-slate-500">
+        <span className="min-w-0 text-[9px]  leading-tight sm:text-xs ">
+          Total Students Enrolled
+        </span>
 
-        {/* Institute Directory Cards */}
-        {filteredInstitutes.length === 0 ? (
-          <div className="inst-card border border-slate-200 rounded-3xl p-12 text-center">
-            <Building2 className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-            <p className="font-bold text-slate-900 text-base">No Institutes Found</p>
-            <p className="text-slate-400 text-xs mt-1">
-              {searchQuery ? "No institute matches your search query." : "Get started by registering your first coaching institute."}
-            </p>
-            {!searchQuery && (
-              <button
-                onClick={() => setShowCreateModal(true)}
-                className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold"
-              >
-                <Plus className="w-4 h-4" />
-                Register Institute
-              </button>
-            )}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredInstitutes.map((inst) => (
-              <div
-                key={inst._id}
-                className="inst-card inst-card-hover border border-slate-200 hover:border-slate-300 rounded-3xl p-6 shadow-sm transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Top line: Logo, Code, Status */}
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3">
-                      {inst.logo ? (
-                        <img
-                          src={inst.logo}
-                          alt={inst.name}
-                          className="w-12 h-12 rounded-2xl object-cover border border-slate-200 bg-slate-800"
-                        />
-                      ) : (
-                        <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-black flex items-center justify-center text-base">
-                          {inst.name.charAt(0)}
-                        </div>
-                      )}
-                      <div>
-                        <h3 className="font-extrabold text-slate-900 text-base leading-snug group-hover:text-indigo-600 transition-colors">
-                          {inst.name}
-                        </h3>
-                        <span className="inline-block px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-100 font-mono text-[10px] font-bold mt-1">
-                          {inst.code}
-                        </span>
-                      </div>
-                    </div>
+        <Users className="h-3.5 w-3.5 shrink-0 text-emerald-600 sm:h-4 sm:w-4" />
+      </div>
 
-                    <button
-                      onClick={() => handleToggleStatus(inst)}
-                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase transition-all ${
-                        inst.status === "ACTIVE"
-                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-rose-500/10 hover:text-rose-400 hover:border-rose-500/20"
-                          : "bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-emerald-500/10 hover:text-emerald-400 hover:border-emerald-500/20"
-                      }`}
-                      title="Click to toggle status"
-                    >
-                      {inst.status}
-                    </button>
+      <div className="text-xl  text-slate-900 sm:text-3xl">
+        {totalStudents}
+      </div>
+
+      <div className="mt-1 text-[9px] font-medium text-slate-500 sm:text-[11px]">
+        Across all academies
+      </div>
+    </div>
+
+    {/* Custom Mock Tests */}
+    <div className="inst-card min-w-0 rounded-xl border border-slate-200 p-3 shadow-sm sm:rounded-2xl sm:p-5 sm:shadow-lg">
+      <div className="mb-2 flex items-start justify-between gap-1 text-slate-500">
+        <span className="min-w-0 text-[9px]  leading-tight sm:text-xs ">
+          Custom Mock Tests
+        </span>
+
+        <FileText className="h-3.5 w-3.5 shrink-0 text-purple-600 sm:h-4 sm:w-4" />
+      </div>
+
+      <div className="text-xl  text-slate-900 sm:text-3xl ">
+        {totalMocks}
+      </div>
+
+      <div className="mt-1 text-[9px]  text-slate-500 sm:text-[11px]">
+        Created by institutes
+      </div>
+    </div>
+
+    {/* Total Test Attempts */}
+    <div className="inst-card min-w-0 rounded-xl border border-slate-200 p-3 shadow-sm sm:rounded-2xl sm:p-5 sm:shadow-lg">
+      <div className="mb-2 flex items-start justify-between gap-1 text-slate-500">
+        <span className="min-w-0 text-[9px]  leading-tight sm:text-xs ">
+          Total Test Attempts
+        </span>
+
+        <Activity className="h-3.5 w-3.5 shrink-0 text-sky-600 sm:h-4 sm:w-4" />
+      </div>
+
+      <div className="text-xl  text-slate-900 sm:text-3xl ">
+        {totalAttempts}
+      </div>
+
+      <div className="mt-1 text-[9px] text-slate-500 sm:text-[11px]">
+        Submissions recorded
+      </div>
+    </div>
+  </div>
+
+  {/* =========================================================
+      ACTION HEADER + SEARCH
+  ========================================================= */}
+  <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+
+    {/* Search */}
+    <div className="relative w-full sm:w-80">
+      <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500 sm:left-3.5 sm:h-4 sm:w-4" />
+
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search by name, code, email..."
+        className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-[11px] text-slate-900 placeholder-slate-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:pl-10 sm:pr-4 sm:text-xs"
+      />
+    </div>
+
+    {/* Actions */}
+    <div className="flex w-full items-center gap-2 sm:w-auto sm:gap-3">
+
+      <button
+        onClick={loadInstitutes}
+        className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 transition-colors hover:bg-slate-50 sm:p-2"
+        title="Refresh"
+      >
+        <RefreshCw className="h-4 w-4" />
+      </button>
+
+      <button
+        onClick={() => setShowCreateModal(true)}
+        className="ml-auto flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-3 py-2.5 text-[11px]  text-white shadow-lg shadow-indigo-600/30 transition-all hover:from-indigo-500 hover:to-violet-500 sm:flex-none sm:px-4 sm:text-xs"
+      >
+        <Plus className="h-4 w-4 shrink-0" />
+        <span>Register New Institute</span>
+      </button>
+    </div>
+  </div>
+
+  {/* =========================================================
+      EMPTY STATE
+  ========================================================= */}
+  {filteredInstitutes.length === 0 ? (
+    <div className="inst-card rounded-2xl border border-slate-200 p-6 text-center shadow-sm sm:rounded-3xl sm:p-12">
+      <Building2 className="mx-auto mb-3 h-10 w-10 text-slate-600 sm:h-12 sm:w-12" />
+
+      <p className="text-sm  text-slate-900 sm:text-base">
+        No Institutes Found
+      </p>
+
+      <p className="mx-auto mt-1 max-w-md text-[11px] leading-5 text-slate-500 sm:text-xs">
+        {searchQuery
+          ? "No institute matches your search query."
+          : "Get started by registering your first coaching institute."}
+      </p>
+
+      {!searchQuery && (
+        <button
+          onClick={() => setShowCreateModal(true)}
+          className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-xs  text-white transition-colors hover:bg-indigo-500"
+        >
+          <Plus className="h-4 w-4" />
+          Register Institute
+        </button>
+      )}
+    </div>
+  ) : (
+
+    /* =========================================================
+       INSTITUTE DIRECTORY
+    ========================================================= */
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-2 lg:grid-cols-4">
+
+      {filteredInstitutes.map((inst) => (
+        <div
+          key={inst._id}
+          className="inst-card group flex min-w-0 flex-col justify-between rounded-2xl border border-slate-200 p-4 shadow-sm transition-all hover:border-slate-300 sm:rounded-3xl sm:p-6"
+        >
+          <div className="min-w-0">
+
+            {/* =================================================
+                TOP LINE
+            ================================================= */}
+            <div className="mb-4 flex items-start justify-between gap-2 sm:gap-3">
+
+              {/* Logo + Name */}
+              <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+
+                {inst.logo ? (
+                  <img
+                    src={inst.logo}
+                    alt={inst.name}
+                    className="h-10 w-10 shrink-0 rounded-xl border border-slate-200 bg-slate-100 object-cover sm:h-12 sm:w-12 sm:rounded-2xl"
+                  />
+                ) : (
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-indigo-500/20 bg-indigo-500/10 text-sm font-black text-indigo-500 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-base">
+                    {inst.name.charAt(0).toUpperCase()}
                   </div>
+                )}
 
-                  {/* Contact info */}
-                  <div className="space-y-1.5 text-xs text-slate-400 border-t border-slate-200/80 pt-3 mb-4">
-                    <div className="flex items-center gap-2">
-                      <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                      <span className="truncate">{inst.email}</span>
-                    </div>
-                    {inst.phone && (
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                        <span>{inst.phone}</span>
-                      </div>
-                    )}
-                    {inst.admin && (
-                      <div className="flex items-center gap-2 text-indigo-700 font-medium pt-1">
-                        <Shield className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                        <span>Admin: {inst.admin.name} ({inst.admin.email})</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                <div className="min-w-0">
+                  <h3 className="break-words text-sm  leading-snug text-slate-900 transition-colors group-hover:text-indigo-600 sm:text-base">
+                    {inst.name}
+                  </h3>
 
-                {/* Bottom stats & action */}
-                <div>
-                  <div className="grid grid-cols-3 gap-2 bg-slate-50 rounded-xl p-3 border border-slate-200 text-center mb-4">
-                    <div>
-                      <div className="text-[10px] uppercase font-bold text-slate-500">Students</div>
-                      <div className="text-sm font-extrabold text-slate-900 mt-0.5">{inst.studentCount || 0}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] uppercase font-bold text-slate-500">Mocks</div>
-                      <div className="text-sm font-extrabold text-slate-900 mt-0.5">{inst.mockCount || 0}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] uppercase font-bold text-slate-500">Attempts</div>
-                      <div className="text-sm font-extrabold text-slate-900 mt-0.5">{inst.attemptCount || 0}</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => navigate("/v2/institute/login")}
-                      className="flex-1 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold py-2 px-3 rounded-xl transition-all flex items-center justify-center gap-1.5"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Login Portal</span>
-                    </button>
-                  </div>
+                  <span className="mt-1 inline-block max-w-full break-all rounded border border-indigo-100 bg-indigo-50 px-1.5 py-0.5 font-mono text-[9px] font-bold text-indigo-700 sm:px-2 sm:text-[10px]">
+                    {inst.code}
+                  </span>
                 </div>
               </div>
-            ))}
+
+              {/* Status */}
+              <button
+                onClick={() => handleToggleStatus(inst)}
+                className={`shrink-0 rounded-full border px-2 py-1 text-[8px] font-bold uppercase tracking-wide transition-all sm:px-2.5 sm:py-1 sm:text-[10px] ${
+                  inst.status === "ACTIVE"
+                    ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-500 hover:border-rose-500/20 hover:bg-rose-500/10 hover:text-rose-500"
+                    : "border-rose-500/20 bg-rose-500/10 text-rose-500 hover:border-emerald-500/20 hover:bg-emerald-500/10 hover:text-emerald-500"
+                }`}
+                title="Click to toggle status"
+              >
+                {inst.status}
+              </button>
+            </div>
+
+            {/* =================================================
+                CONTACT INFO
+            ================================================= */}
+            <div className="mb-4 space-y-2 border-t border-slate-200/80 pt-3 text-[11px] text-slate-500 sm:text-xs">
+
+              {/* Email */}
+              <div className="flex items-start gap-2">
+                <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-500" />
+
+                <span className="min-w-0 break-all leading-4">
+                  {inst.email}
+                </span>
+              </div>
+
+              {/* Phone */}
+              {inst.phone && (
+                <div className="flex items-center gap-2">
+                  <Phone className="h-3.5 w-3.5 shrink-0 text-slate-500" />
+
+                  <span className="break-words">
+                    {inst.phone}
+                  </span>
+                </div>
+              )}
+
+              {/* Admin */}
+              {inst.admin && (
+                <div className="flex items-start gap-2 pt-1 font-medium text-indigo-700">
+                  <Shield className="mt-0.5 h-3.5 w-3.5 shrink-0 text-indigo-600" />
+
+                  <span className="min-w-0 break-words leading-4">
+                    Admin: {inst.admin.name}{" "}
+                    <span className="text-slate-500">
+                      ({inst.admin.email})
+                    </span>
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </main>
+
+          {/* =================================================
+              BOTTOM STATS + ACTION
+          ================================================= */}
+          <div>
+
+            {/* Stats */}
+            <div className="mb-3 grid grid-cols-3 gap-1.5 rounded-xl border border-slate-200 bg-slate-50 p-2.5 text-center sm:mb-4 sm:gap-2 sm:p-3">
+
+              <div className="min-w-0">
+                <div className="text-[8px] font-bold uppercase tracking-wide text-slate-500 sm:text-[10px]">
+                  Students
+                </div>
+
+                <div className="mt-0.5 text-xs  text-slate-900 sm:text-sm">
+                  {inst.studentCount || 0}
+                </div>
+              </div>
+
+              <div className="min-w-0">
+                <div className="text-[8px] font-bold uppercase tracking-wide text-slate-500 sm:text-[10px]">
+                  Mocks
+                </div>
+
+                <div className="mt-0.5 text-xs  text-slate-900 sm:text-sm">
+                  {inst.mockCount || 0}
+                </div>
+              </div>
+
+              <div className="min-w-0">
+                <div className="text-[8px] font-bold uppercase tracking-wide text-slate-500 sm:text-[10px]">
+                  Attempts
+                </div>
+
+                <div className="mt-0.5 text-xs  text-slate-900 sm:text-sm">
+                  {inst.attemptCount || 0}
+                </div>
+              </div>
+            </div>
+
+            {/* Login Portal */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => navigate("/v2/institute/login")}
+                className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-semibold text-slate-700 transition-all hover:bg-slate-50 sm:text-xs"
+              >
+                <Eye className="h-3.5 w-3.5" />
+                <span>Login Portal</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</main>
 
       {/* CREATE INSTITUTE MODAL */}
       {showCreateModal && (
@@ -379,12 +537,12 @@ export default function SuperAdminInstitutes() {
             </button>
 
             <div className="mb-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 border border-indigo-500/20 text-xs font-semibold mb-2">
                 <Building2 className="w-3.5 h-3.5" />
                 <span>Onboard Academy</span>
               </div>
               <h2 className="text-2xl font-black text-slate-900">Create New Institute</h2>
-              <p className="text-slate-400 text-xs mt-1">
+              <p className="text-slate-500 text-xs mt-1">
                 Creates the institute profile and provisions the Institute Admin login credentials.
               </p>
             </div>
@@ -392,7 +550,7 @@ export default function SuperAdminInstitutes() {
             <form onSubmit={handleCreateInstitute} className="space-y-6">
               {/* Institute Details */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-3">
                   1. Institute Profile
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -481,7 +639,7 @@ export default function SuperAdminInstitutes() {
 
               {/* Admin Details */}
               <div className="border-t border-slate-200 pt-5">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-violet-400 mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-violet-600 mb-3">
                   2. Institute Admin Credentials
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
