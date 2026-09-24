@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
+import { randomUUID } from "node:crypto";
 import Institute from "../models/institute.model.js";
 import User from "../models/user.model.js";
 import Batch from "../models/batch.model.js";
@@ -643,11 +644,13 @@ export const getStudentPerformance = async (req, res) => {
 export const getQuestionBank = async (req, res) => {
   try {
     const instituteId = req.user.instituteId;
-    const { section, subject, search } = req.query;
+    const { section, subject, topic, questionBankName, search } = req.query;
 
     const query = { instituteId, isPrivate: true, isActive: true };
     if (section) query.section = section;
     if (subject) query.subject = subject;
+    if (topic) query.topic = topic;
+    if (questionBankName) query.questionBankName = questionBankName;
     if (search) {
       query.question = new RegExp(search.trim(), "i");
     }
@@ -664,20 +667,23 @@ export const getQuestionBank = async (req, res) => {
 export const createQuestion = async (req, res) => {
   try {
     const instituteId = req.user.instituteId;
-    const { section, subject, question, options, correctOption, marks, negativeMarks, paragraph, imageUrl } = req.body;
+    const { section, topic, subject, questionBankName, question, options, correctOption, marks, negativeMarks, paragraph, imageUrl } = req.body;
 
     if (!section || !subject || !question || !options || correctOption === undefined) {
       return res.status(400).json({ message: "Section, subject, question text, options, and correctOption are required." });
     }
 
     const institute = req.institute;
-    const questionCode = `inst_${institute.code.toLowerCase()}_q_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+    const questionCode = `inst_${institute.code.toLowerCase()}_q_${randomUUID()}`;
+    const normalizedTopic = String(topic || section || "General").trim();
 
     const newQuestion = await Question.create({
       questionCode,
       mockId: `bank_${institute._id}`, // Default bucket for bank questions
-      section: section.trim(),
-      subject: subject.trim().toLowerCase(),
+      section: normalizedTopic,
+      topic: normalizedTopic,
+      subject: subject.trim(),
+      questionBankName: String(questionBankName || "General Question Bank").trim(),
       question: question.trim(),
       options: options.map((opt) => String(opt).trim()),
       correctOption: Number(correctOption),
@@ -695,6 +701,78 @@ export const createQuestion = async (req, res) => {
   } catch (error) {
     console.error("createQuestion error:", error);
     return res.status(500).json({ message: "Failed to create question", error: error.message });
+  }
+};
+
+export const createQuestionBankQuestions = async (req, res) => {
+  try {
+    const instituteId = req.user.instituteId;
+    const institute = req.institute;
+    const questionBankName = String(req.body.questionBankName || "").trim();
+    const questions = req.body.questions;
+
+    if (!questionBankName || !Array.isArray(questions) || questions.length === 0 || questions.length > 100) {
+      return res.status(400).json({ message: "Question bank name and between 1 and 100 questions are required." });
+    }
+
+    const invalidIndex = questions.findIndex((question) => {
+      const options = question?.options;
+      const correctOption = Number(question?.correctOption);
+      const marks = Number(question?.marks ?? 1);
+      const negativeMarks = Number(question?.negativeMarks ?? 0.25);
+      return !String(question?.topic || "").trim()
+        || !String(question?.subject || "").trim()
+        || !String(question?.question || "").trim()
+        || !Array.isArray(options)
+        || options.length < 2
+        || options.some((option) => !String(option || "").trim())
+        || !Number.isInteger(correctOption)
+        || correctOption < 0
+        || correctOption >= options.length
+        || !Number.isFinite(marks)
+        || marks < 0
+        || !Number.isFinite(negativeMarks)
+        || negativeMarks < 0;
+    });
+
+    if (invalidIndex !== -1) {
+      return res.status(400).json({ message: `Question ${invalidIndex + 1} has incomplete or invalid fields.` });
+    }
+
+    const cleanInstituteCode = String(institute.code || "inst").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const documents = questions.map((question) => {
+      const topic = String(question.topic).trim();
+      const marks = question.marks === "" || question.marks === undefined ? 1 : Number(question.marks);
+      const negativeMarks = question.negativeMarks === "" || question.negativeMarks === undefined ? 0.25 : Number(question.negativeMarks);
+      return {
+        questionCode: `inst_${cleanInstituteCode}_q_${randomUUID()}`,
+        mockId: `bank_${institute._id}`,
+        section: topic,
+        topic,
+        subject: String(question.subject).trim(),
+        questionBankName,
+        question: String(question.question).trim(),
+        options: question.options.map((option) => String(option).trim()),
+        correctOption: Number(question.correctOption),
+        marks: Number.isFinite(marks) ? marks : 1,
+        negativeMarks: Number.isFinite(negativeMarks) ? negativeMarks : 0.25,
+        paragraph: question.paragraph || null,
+        imageUrl: question.imageUrl || null,
+        instituteId,
+        createdBy: req.user._id,
+        isPrivate: true,
+        isActive: true,
+      };
+    });
+
+    const createdQuestions = await Question.insertMany(documents, { ordered: true });
+    return res.status(201).json({
+      message: `${createdQuestions.length} question(s) added to ${questionBankName}.`,
+      questionCount: createdQuestions.length,
+    });
+  } catch (error) {
+    console.error("createQuestionBankQuestions error:", error);
+    return res.status(500).json({ message: "Failed to add questions to question bank" });
   }
 };
 
@@ -1257,6 +1335,77 @@ export const getTestWiseAnalytics = async (req, res) => {
   } catch (error) {
     console.error("getTestWiseAnalytics error:", error);
     return res.status(500).json({ message: "Failed to fetch test-wise analytics" });
+  }
+};
+
+/**
+ * Institute-wide result matrix for the results report.
+ * All records are scoped to the authenticated institute.
+ */
+export const getInstituteResultsReport = async (req, res) => {
+  try {
+    const instituteId = req.user.instituteId;
+    const [students, mocks, batches] = await Promise.all([
+      User.find({ instituteId, role: "STUDENT" })
+        .select("name email batch studentRollNo status")
+        .sort({ batch: 1, name: 1 }),
+      Mock.find({ instituteId, isInstituteCustom: true })
+        .select("title totalMarks totalQuestions duration")
+        .sort({ title: 1 }),
+      Batch.find({ instituteId }).select("name").sort({ name: 1 }),
+    ]);
+
+    const studentIds = students.map((student) => String(student._id));
+    const mockIds = mocks.map((mock) => String(mock._id));
+    let results = [];
+
+    if (studentIds.length && mockIds.length) {
+      const submitted = await Result.find({
+        instituteId,
+        userId: { $in: studentIds },
+        mockId: { $in: mockIds },
+        isSubmitted: true,
+      })
+        .select("userId mockId score total createdAt")
+        .sort({ createdAt: -1 });
+
+      results = submitted.map((result) => ({
+        studentId: String(result.userId),
+        mockId: String(result.mockId),
+        score: result.score,
+        total: result.total,
+        createdAt: result.createdAt,
+      }));
+    }
+
+    const batchNames = new Set([
+      ...batches.map((batch) => batch.name).filter(Boolean),
+      ...students.map((student) => student.batch || "Unassigned"),
+    ]);
+
+    return res.status(200).json({
+      institute: req.institute ? { name: req.institute.name, code: req.institute.code } : null,
+      batches: [...batchNames].sort((a, b) => a.localeCompare(b)),
+      students: students.map((student) => ({
+        _id: String(student._id),
+        name: student.name,
+        email: student.email,
+        batch: student.batch || "Unassigned",
+        rollNo: student.studentRollNo || "-",
+        status: student.status,
+      })),
+      mocks: mocks.map((mock) => ({
+        _id: String(mock._id),
+        title: mock.title,
+        totalMarks: mock.totalMarks,
+        totalQuestions: mock.totalQuestions,
+        duration: mock.duration,
+      })),
+      results,
+    });
+  } catch (error) {
+    console.error("getInstituteResultsReport error:", error);
+    return res.status(500).json({ message: "Failed to fetch institute results" });
   }
 };
 

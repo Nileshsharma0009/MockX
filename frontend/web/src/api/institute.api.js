@@ -30,6 +30,7 @@ export const getStudentPerformanceApi = (studentId) => api.get(`/institutes/my/s
 // Question Bank
 export const getQuestionBankApi = (params) => api.get("/institutes/my/questions", { params });
 export const createQuestionApi = (data) => api.post("/institutes/my/questions", data);
+export const createQuestionBankQuestionsApi = (data) => api.post("/institutes/my/questions/bulk", data);
 export const deleteQuestionApi = (id) => api.delete(`/institutes/my/questions/${id}`);
 
 // Custom Mocks
@@ -46,6 +47,7 @@ export const deleteAssignmentApi = (id) => api.delete(`/institutes/my/assignment
 // Multi-Dimensional Analytics
 export const getStudentWiseAnalyticsApi = (params) => api.get("/institutes/my/analytics/students", { params });
 export const getTestWiseAnalyticsApi = () => api.get("/institutes/my/analytics/tests");
+export const getInstituteResultsApi = () => api.get("/institutes/my/results");
 export const getQuestionWiseAnalyticsApi = (mockId) => api.get(`/institutes/my/analytics/tests/${mockId}/questions`);
 
 /* ==========================================================================

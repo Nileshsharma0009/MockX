@@ -82,3 +82,210 @@
   border: 1px solid #e2e8f0;
   box-shadow: 0 20px 40px rgba(79, 70, 229, 0.08), 0 4px 12px rgba(15, 23, 42, 0.06);
 }
+
+/* Institute dashboard responsive refinements */
+.institute-ui .inst-mobile-topbar {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--inst-border);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+.institute-ui .inst-sidebar {
+  overscroll-behavior: contain;
+}
+
+.institute-ui .inst-report-scroll {
+  scrollbar-color: #cbd5e1 #f8fafc;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 639px) {
+  .institute-ui .inst-sidebar {
+    height: 100dvh;
+    overflow-y: auto;
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .institute-ui .inst-report-scroll {
+    max-width: calc(100vw - 2rem);
+  }
+
+  /* Keep the dashboard's existing layout and grid columns; tighten its scale on phones. */
+  .institute-ui main > .space-y-8.animate-fadeIn > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > div:first-child h1 {
+    color: #0f172a;
+    font-size: 1.35rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > div:first-child p {
+    max-width: 34rem;
+    font-size: 0.7rem;
+    line-height: 1.15rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group > div:first-child p:first-child {
+    font-size: 0.65rem;
+    line-height: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group > div:first-child p:nth-child(2) {
+    margin-top: 0.15rem;
+    font-size: 1.35rem;
+    line-height: 1.7rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group > div:first-child > div:last-child {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.85rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group > div:first-child > div:last-child svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group > div:last-child {
+    margin-top: 0.65rem;
+    gap: 0.4rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .grid > .group > div:last-child p {
+    font-size: 0.72rem;
+    line-height: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .bg-gradient-to-r.from-indigo-50 {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .bg-gradient-to-r.from-indigo-50 > p {
+    margin-bottom: 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.15rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .bg-gradient-to-r.from-indigo-50 button {
+    gap: 0.4rem;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.68rem;
+    line-height: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .bg-gradient-to-r.from-indigo-50 button svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card > div:first-child {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card > div:first-child > div {
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card > div:first-child > div > div {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: 0.7rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card > div:first-child > div > div svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card h3 {
+    font-size: 0.82rem;
+    line-height: 1.1rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card > div:first-child > button {
+    flex-shrink: 0;
+    gap: 0.2rem;
+    font-size: 0.62rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card > div:first-child > button svg {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group {
+    gap: 0.5rem;
+    padding: 0.7rem 0.25rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:first-child {
+    min-width: 0;
+    flex: 1 1 0%;
+    gap: 0.5rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:first-child > div:first-child {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:first-child > div:last-child {
+    min-width: 0;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:first-child > div:last-child > p:first-child {
+    overflow: hidden;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:first-child > div:last-child > div {
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:first-child > div:last-child > div > p {
+    max-width: 34vw;
+    overflow-wrap: anywhere;
+    font-size: 0.62rem;
+    line-height: 0.9rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:last-child {
+    flex-shrink: 0;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:last-child > div > span:first-child {
+    font-size: 0.78rem;
+  }
+
+  .institute-ui main > .space-y-8.animate-fadeIn > .inst-card .divide-y > .group > div:last-child > p {
+    font-size: 0.62rem;
+    line-height: 0.9rem;
+  }
+}

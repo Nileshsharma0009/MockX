@@ -18,6 +18,7 @@ import {
   getStudentPerformance,
   getQuestionBank,
   createQuestion,
+  createQuestionBankQuestions,
   deleteQuestion,
   createCustomMock,
   getInstituteMocks,
@@ -28,6 +29,7 @@ import {
   deleteAssignment,
   getStudentWiseAnalytics,
   getTestWiseAnalytics,
+  getInstituteResultsReport,
   getQuestionWiseAnalytics,
 } from "../controllers/institute.controller.js";
 
@@ -64,6 +66,7 @@ router.get("/my/students/:studentId/performance", adminGuard, getStudentPerforma
 
 // Question Bank
 router.get("/my/questions", adminGuard, getQuestionBank);
+router.post("/my/questions/bulk", adminGuard, createQuestionBankQuestions);
 router.post("/my/questions", adminGuard, createQuestion);
 router.delete("/my/questions/:id", adminGuard, deleteQuestion);
 
@@ -77,6 +80,9 @@ router.delete("/my/mocks/:mockId", adminGuard, deleteCustomMock);
 router.post("/my/assignments", adminGuard, createAssignment);
 router.get("/my/assignments", adminGuard, getAssignments);
 router.delete("/my/assignments/:id", adminGuard, deleteAssignment);
+
+// Institute-wide score matrix for the Results Report
+router.get("/my/results", adminGuard, getInstituteResultsReport);
 
 // Multi-Dimensional Analytics
 router.get("/my/analytics/students", adminGuard, getStudentWiseAnalytics);

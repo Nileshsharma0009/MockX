@@ -26,6 +26,19 @@ const Question = new mongoose.Schema(
       index: true,
     },
 
+    questionBankName: {
+      type: String,
+      trim: true,
+      default: "General Question Bank",
+      index: true,
+    },
+
+    topic: {
+      type: String,
+      trim: true,
+      index: true,
+    },
+
     question: {
       type: String,
       required: true,
