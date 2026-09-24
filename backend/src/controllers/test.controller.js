@@ -51,17 +51,34 @@ async function verifyMockAttemptAccess(user, mock, mockId) {
 }
 
 export const submitTest = async (req, res) => {
+  const startedAt = Date.now();
+  const mockId = req.body?.mockId;
+  const userId = req.user?._id;
+  const logSubmission = (event, extra = {}) => {
+    console.info(JSON.stringify({
+      event,
+      mockId: typeof mockId === "string" ? mockId : null,
+      userId: userId ? String(userId) : null,
+      durationMs: Date.now() - startedAt,
+      ...extra,
+    }));
+  };
+  const reject = (status, message, fields = {}) => {
+    logSubmission(status === 409 ? "SUBMIT_DUPLICATE" : "SUBMIT_FAILED", { status });
+    return res.status(status).json({ message, ...fields });
+  };
+
+  logSubmission("SUBMIT_START");
   try {
-    const { mockId, answers: requestAnswers } = req.body || {};
-    const userId = req.user._id;
+    const { answers: requestAnswers } = req.body || {};
 
     if (typeof mockId !== "string" || !mockId.trim()) {
-      return res.status(400).json({ message: "A mock ID is required" });
+      return reject(400, "A mock ID is required");
     }
 
     const answers = requestAnswers === undefined ? {} : requestAnswers;
     if (!answers || typeof answers !== "object" || Array.isArray(answers)) {
-      return res.status(400).json({ message: "Answers must be an object keyed by question code" });
+      return reject(400, "Answers must be an object keyed by question code");
     }
 
     // Sequential retries are rejected here. The unique index and atomic update below
@@ -72,27 +89,24 @@ export const submitTest = async (req, res) => {
       isSubmitted: { $ne: false },
     });
     if (existingSubmittedResult) {
-      return res.status(409).json({
-        message: "Test already submitted",
-        resultId: existingSubmittedResult._id,
-      });
+      return reject(409, "Test already submitted", { resultId: existingSubmittedResult._id });
     }
 
     const mock = await Mock.findById(mockId);
     if (!mock) {
-      return res.status(404).json({ message: "Mock test not found" });
+      return reject(404, "Mock test not found");
     }
 
     const access = await verifyMockAttemptAccess(req.user, mock, mockId);
     if (!access.assignment && mock.instituteId) {
-      return res.status(403).json({ message: access.message || "This mock test is not available to you" });
+      return reject(403, access.message || "This mock test is not available to you");
     }
     if (access.message) {
-      return res.status(403).json({ message: access.message });
+      return reject(403, access.message);
     }
 
-    const draftResult = await Result.findOne({ userId, mockId, isSubmitted: false });
-    const finalAnswers = { ...(draftResult?.answers || {}), ...answers };
+    // The final request is the complete current answer snapshot and is authoritative.
+    const finalAnswers = answers;
 
     const questionCodes = Object.keys(finalAnswers);
     const questions = await Question.find({
@@ -102,7 +116,7 @@ export const submitTest = async (req, res) => {
     }).select("+correctOption +marks +negativeMarks +subject +section");
 
     if (questions.length !== questionCodes.length) {
-      return res.status(400).json({ message: "One or more question IDs are invalid for this mock" });
+      return reject(400, "One or more question IDs are invalid for this mock");
     }
 
     const questionMap = new Map();
@@ -174,15 +188,13 @@ export const submitTest = async (req, res) => {
       if (err?.code === 11000) {
         const submittedResult = await Result.findOne({ userId, mockId, isSubmitted: true });
         if (submittedResult) {
-          return res.status(409).json({
-            message: "Test already submitted",
-            resultId: submittedResult._id,
-          });
+          return reject(409, "Test already submitted", { resultId: submittedResult._id });
         }
       }
       throw err;
     }
 
+    logSubmission("SUBMIT_SUCCESS", { resultId: String(result._id), status: 201 });
     return res.status(201).json({
       resultId: result._id,
       score,
@@ -191,51 +203,114 @@ export const submitTest = async (req, res) => {
       sectionScores,
     });
   } catch (err) {
-    console.error("❌ SUBMIT ERROR:", err);
+    logSubmission("SUBMIT_FAILED", { errorName: err?.name || "Error" });
+    console.error("Submission failed:", err?.message || "Unknown error");
     return res.status(500).json({ message: "Test submission failed" });
   }
 };
 
 export const saveProgress = async (req, res) => {
   try {
-    const { mockId, answers } = req.body;
+    const { mockId, answers } = req.body || {};
     const userId = req.user._id;
 
+    if (typeof mockId !== "string" || !mockId.trim()) {
+      return res.status(400).json({ message: "A mock ID is required" });
+    }
+    if (!answers || typeof answers !== "object" || Array.isArray(answers)) {
+      return res.status(400).json({ message: "Answers must be an object keyed by question code" });
+    }
+
     const mock = await Mock.findById(mockId);
+    if (!mock) {
+      return res.status(404).json({ message: "Mock test not found" });
+    }
 
-    let result = await Result.findOne({ userId, mockId });
+    const access = await verifyMockAttemptAccess(req.user, mock, mockId);
+    if (access.message) {
+      return res.status(403).json({ message: access.message });
+    }
 
-    if (result && result.isSubmitted) {
+    const existingSubmittedResult = await Result.findOne({ userId, mockId, isSubmitted: true });
+    if (existingSubmittedResult) {
       return res.status(409).json({ message: "Cannot save, test already submitted" });
     }
 
-    if (result) {
-      // Merge new answers
-      result.answers = { ...result.answers, ...answers };
-      if (mock?.instituteId) {
-        result.instituteId = mock.instituteId;
-      }
-      await result.save();
-    } else {
-      // Create new draft
-      result = await Result.create({
-        userId,
-        mockId,
-        score: 0, // temporary
-        total: 0,
-        answers,
-        isSubmitted: false, // DRAFT
-        instituteId: mock?.instituteId || null,
-      });
+    const questionCodes = Object.keys(answers);
+    const questions = await Question.find({
+      mockId,
+      isActive: true,
+      questionCode: { $in: questionCodes },
+    }).select("questionCode options");
+    if (questions.length !== questionCodes.length) {
+      return res.status(400).json({ message: "One or more question IDs are invalid for this mock" });
     }
 
-    res.status(200).json({ message: "Progress saved", savedCount: Object.keys(result.answers).length });
+    const questionMap = new Map(questions.map((question) => [question.questionCode, question]));
+    for (const [questionCode, selectedOption] of Object.entries(answers)) {
+      const question = questionMap.get(questionCode);
+      if (
+        !Number.isInteger(selectedOption) ||
+        selectedOption < 0 ||
+        selectedOption >= (question?.options?.length || 0)
+      ) {
+        return res.status(400).json({ message: "One or more answer selections are invalid" });
+      }
+    }
+
+    // A complete snapshot plus a conditional atomic update prevents a checkpoint
+    // from mutating a result that has already transitioned to SUBMITTED.
+    let result;
+    try {
+      result = await Result.findOneAndUpdate(
+        { userId, mockId, isSubmitted: { $ne: true } },
+        {
+          $set: {
+            answers,
+            isSubmitted: false,
+            instituteId: mock.instituteId || null,
+            assignmentId: access.assignment?._id || null,
+          },
+          $setOnInsert: {
+            userId,
+            mockId,
+            score: 0,
+            total: 0,
+          },
+        },
+        { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
+      );
+    } catch (err) {
+      if (err?.code === 11000) {
+        const submittedResult = await Result.findOne({ userId, mockId, isSubmitted: true });
+        if (submittedResult) {
+          return res.status(409).json({ message: "Cannot save, test already submitted" });
+        }
+      }
+      throw err;
+    }
+
+    // A final submission may have won between the pre-check and the atomic write.
+    const submittedResult = await Result.findOne({ userId, mockId, isSubmitted: true });
+    if (submittedResult) {
+      if (String(submittedResult._id) !== String(result._id)) {
+        await Result.deleteOne({
+          _id: result._id,
+          userId,
+          mockId,
+          isSubmitted: false,
+        });
+      }
+      return res.status(409).json({ message: "Cannot save, test already submitted" });
+    }
+
+    return res.status(200).json({
+      message: "Progress saved",
+      savedCount: Object.keys(result.answers || {}).length,
+    });
 
   } catch (err) {
-    console.error("❌ SAVE ERROR:", err);
-    res.status(500).json({ message: "Save failed" });
+    console.error("Progress checkpoint failed:", err?.message || "Unknown error");
+    return res.status(500).json({ message: "Save failed" });
   }
 };
-
-
-// concurrency is added

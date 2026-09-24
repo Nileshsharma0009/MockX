@@ -50,11 +50,9 @@ export default function Timer() {
 
     if (state.totalSeconds <= 0) {
       clearInterval(intervalRef.current);
-      window.dispatchEvent(new CustomEvent('submit-test'));
     }
   }, [state.totalSeconds]);
 
   return null;
 }
-
 

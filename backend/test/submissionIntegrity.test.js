@@ -27,12 +27,12 @@ const mocks = {
 };
 
 const questions = [
-  { questionCode: "q-a", mockId: "mock-a", correctOption: 1, marks: 4, negativeMarks: 2, subject: "math", section: "A", isActive: true },
-  { questionCode: "q-paid", mockId: "paid-mock", correctOption: 1, marks: 4, negativeMarks: 2, subject: "math", section: "A", isActive: true },
-  { questionCode: "q-institute-a", mockId: "institute-mock-a", correctOption: 1, marks: 2, negativeMarks: 0.5, subject: "math", section: "A", isActive: true },
-  { questionCode: "q-institute-b", mockId: "institute-mock-b", correctOption: 2, marks: 2, negativeMarks: 0.5, subject: "math", section: "A", isActive: true },
-  { questionCode: "q-custom-correct", mockId: "custom-mock", correctOption: 1, marks: 7, negativeMarks: 4, subject: "math", section: "A", isActive: true },
-  { questionCode: "q-custom-wrong", mockId: "custom-mock", correctOption: 1, marks: 7, negativeMarks: 4, subject: "math", section: "A", isActive: true },
+  { questionCode: "q-a", mockId: "mock-a", correctOption: 1, options: ["A", "B", "C", "D"], marks: 4, negativeMarks: 2, subject: "math", section: "A", isActive: true },
+  { questionCode: "q-paid", mockId: "paid-mock", correctOption: 1, options: ["A", "B", "C", "D"], marks: 4, negativeMarks: 2, subject: "math", section: "A", isActive: true },
+  { questionCode: "q-institute-a", mockId: "institute-mock-a", correctOption: 1, options: ["A", "B", "C", "D"], marks: 2, negativeMarks: 0.5, subject: "math", section: "A", isActive: true },
+  { questionCode: "q-institute-b", mockId: "institute-mock-b", correctOption: 2, options: ["A", "B", "C", "D"], marks: 2, negativeMarks: 0.5, subject: "math", section: "A", isActive: true },
+  { questionCode: "q-custom-correct", mockId: "custom-mock", correctOption: 1, options: ["A", "B", "C", "D"], marks: 7, negativeMarks: 4, subject: "math", section: "A", isActive: true },
+  { questionCode: "q-custom-wrong", mockId: "custom-mock", correctOption: 1, options: ["A", "B", "C", "D"], marks: 7, negativeMarks: 4, subject: "math", section: "A", isActive: true },
 ];
 
 const institutes = {
@@ -47,6 +47,7 @@ const originals = {
   resultFindOne: Result.findOne,
   resultCreate: Result.create,
   resultFindOneAndUpdate: Result.findOneAndUpdate,
+  resultDeleteOne: Result.deleteOne,
   assignmentFindOne: TestAssignment.findOne,
   instituteFindById: Institute.findById,
 };
@@ -58,11 +59,19 @@ let assignmentRecords;
 let concurrentFindBarrier;
 let concurrentFindArrivals;
 let releaseConcurrentFinds;
+let draftWriteGate;
 const originalPaymentsEnabled = process.env.PAYMENTS_ENABLED;
 
 function findStoredResult(query) {
   return storedResults.find(
-    (result) => String(result.userId) === String(query.userId) && String(result.mockId) === String(query.mockId)
+    (result) => {
+      if (String(result.userId) !== String(query.userId) || String(result.mockId) !== String(query.mockId)) return false;
+      if (query._id && String(result._id) !== String(query._id)) return false;
+      if (query.isSubmitted === true && result.isSubmitted !== true) return false;
+      if (query.isSubmitted === false && result.isSubmitted !== false) return false;
+      if (query.isSubmitted?.$ne !== undefined && result.isSubmitted === query.isSubmitted.$ne) return false;
+      return true;
+    }
   ) ?? null;
 }
 
@@ -101,13 +110,22 @@ before(async () => {
     return result;
   };
   Result.findOneAndUpdate = async (filter, update, options = {}) => {
-    const existing = findStoredResult(filter);
+    if (filter.isSubmitted?.$ne === true && draftWriteGate) {
+      const gate = draftWriteGate;
+      draftWriteGate = null;
+      gate.entered();
+      await gate.wait;
+    }
     const excludesSubmitted = filter.isSubmitted?.$ne === true;
-    if (existing && excludesSubmitted && existing.isSubmitted) {
+    const existingForAttempt = storedResults.find((result) =>
+      String(result.userId) === String(filter.userId) && String(result.mockId) === String(filter.mockId)
+    );
+    if (update.$set?.isSubmitted === true && existingForAttempt?.isSubmitted === true) {
       const duplicate = new Error("duplicate key");
       duplicate.code = 11000;
       throw duplicate;
     }
+    const existing = findStoredResult(filter);
     if (existing) {
       Object.assign(existing, update.$set ?? {});
       return existing;
@@ -120,6 +138,16 @@ before(async () => {
     };
     storedResults.push(result);
     return result;
+  };
+  Result.deleteOne = async (query) => {
+    const index = storedResults.findIndex((result) =>
+      String(result._id) === String(query._id) &&
+      String(result.userId) === String(query.userId) &&
+      String(result.mockId) === String(query.mockId) &&
+      result.isSubmitted === query.isSubmitted
+    );
+    if (index >= 0) storedResults.splice(index, 1);
+    return { deletedCount: index >= 0 ? 1 : 0 };
   };
   TestAssignment.findOne = async (query) => assignmentRecords.find((assignment) =>
     assignment.mockId === query.mockId &&
@@ -134,7 +162,7 @@ before(async () => {
   app.use("/api/tests", testRoutes);
   server = http.createServer(app);
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-  baseUrl = `http://127.0.0.1:${server.address().port}/api/tests/submit`;
+  baseUrl = `http://127.0.0.1:${server.address().port}/api/tests`;
 });
 
 beforeEach(() => {
@@ -143,6 +171,7 @@ beforeEach(() => {
   concurrentFindBarrier = null;
   concurrentFindArrivals = 0;
   releaseConcurrentFinds = null;
+  draftWriteGate = null;
   process.env.PAYMENTS_ENABLED = "false";
 });
 
@@ -158,6 +187,7 @@ after(async () => {
   Result.findOne = originals.resultFindOne;
   Result.create = originals.resultCreate;
   Result.findOneAndUpdate = originals.resultFindOneAndUpdate;
+  Result.deleteOne = originals.resultDeleteOne;
   TestAssignment.findOne = originals.assignmentFindOne;
   Institute.findById = originals.instituteFindById;
   if (server?.listening) {
@@ -171,7 +201,15 @@ function authHeader(userId) {
 }
 
 async function submit(userId, payload) {
-  return fetch(baseUrl, {
+  return fetch(`${baseUrl}/submit`, {
+    method: "POST",
+    headers: { Authorization: authHeader(userId), "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}
+
+async function save(userId, payload) {
+  return fetch(`${baseUrl}/save`, {
     method: "POST",
     headers: { Authorization: authHeader(userId), "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -315,6 +353,35 @@ test("rejects a replayed submission request without creating another result", as
   const replayResponse = await submit("student-a", payload);
   assert.equal(firstResponse.status, 201);
   assert.equal(replayResponse.status, 409);
+  assert.equal(storedResults.length, 1);
+});
+
+test("a 30-second safety checkpoint racing final submission cannot overwrite the final result", async () => {
+  let enteredDraftWrite;
+  let releaseDraftWrite;
+  const entered = new Promise((resolve) => { enteredDraftWrite = resolve; });
+  const wait = new Promise((resolve) => { releaseDraftWrite = resolve; });
+  draftWriteGate = { entered: enteredDraftWrite, wait };
+
+  const checkpointPromise = save("student-a", {
+    mockId: "mock-a",
+    answers: { "q-a": 0 },
+  });
+  await entered;
+
+  const finalResponse = await submit("student-a", {
+    mockId: "mock-a",
+    answers: { "q-a": 1 },
+  });
+  assert.equal(finalResponse.status, 201);
+
+  releaseDraftWrite();
+  const checkpointResponse = await checkpointPromise;
+  assert.equal(checkpointResponse.status, 409);
+
+  const submitted = storedResults.filter((result) => result.isSubmitted === true);
+  assert.equal(submitted.length, 1);
+  assert.deepEqual(submitted[0].answers, { "q-a": 1 });
   assert.equal(storedResults.length, 1);
 });
 

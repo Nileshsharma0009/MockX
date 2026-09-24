@@ -13,6 +13,8 @@ import {
   TestProvider,
   useTestState,
   useTestDispatch,
+  useTestProgress,
+  getTestStorageKey,
 } from "./context/TestContext.jsx";
 
 import { submitAttempt, saveProgress } from "./api/api";
@@ -38,26 +40,23 @@ function resolveMockId() {
 }
 
 /* ---------- PAGE ---------- */
-function TestPageInner() {
+function TestPageInner({ mockId }) {
   const state = useTestState();
   const dispatch = useTestDispatch();
+  const { getDirtyAnswersSnapshot, clearDirtyAnswers } = useTestProgress();
   const navigate = useNavigate();
 
   const [statsOpen, setStatsOpen] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [mockId, setMockId] = useState("imu1");
-
-  // 🔄 Auto-Save Refs
-  const lastSavedData = React.useRef({}); // Tracks what's in DB
-  const isSavingRef = React.useRef(false); // Prevents overlapping saves
+  const checkpoint60TriggeredRef = React.useRef(false);
+  const finalCheckpointStartedRef = React.useRef(false);
+  const submissionInFlightRef = React.useRef(false);
+  const checkpointMockRef = React.useRef(null);
 
   /* 📥 Load questions & exam config */
   useEffect(() => {
-    const resolvedMock = resolveMockId();
-    setMockId(resolvedMock);
+    const resolvedMock = mockId;
     setLoading(true);
-
-    localStorage.removeItem("testState_v1");
 
     fetch(`${API_BASE}/api/mocks/${resolvedMock}/questions`, {
       credentials: "include",
@@ -89,6 +88,7 @@ function TestPageInner() {
         dispatch({
           type: "SET_QUESTIONS",
           payload: {
+            mockId: resolvedMock,
             exam,
             questions: shuffledQuestions,
             A: shuffledQuestions["A"] || [],
@@ -103,7 +103,7 @@ function TestPageInner() {
         toast.error("Failed to load questions");
         setLoading(false);
       });
-  }, [dispatch, navigate]);
+  }, [dispatch, mockId, navigate]);
 
   /* 💾 Helper: Get Current Answers Object across all sections */
   const computeCurrentAnswers = useCallback(() => {
@@ -124,59 +124,109 @@ function TestPageInner() {
     return answers;
   }, [state.questionsBySection, state.selectedOptionsBySection]);
 
-  /* 💾 Auto-Save Logic */
+  const saveCheckpoint = useCallback(async (answers, { mark60PercentComplete = false } = {}) => {
+    const dirtySnapshot = getDirtyAnswersSnapshot();
+    try {
+      await saveProgress({ mockId, answers });
+      clearDirtyAnswers(dirtySnapshot);
+      if (mark60PercentComplete) {
+        dispatch({ type: "MARK_60_PERCENT_CHECKPOINT_COMPLETE" });
+      }
+      return true;
+    } catch (err) {
+      // Checkpoints are best-effort. Keep local recovery and dirty values for the next safe opportunity.
+      console.warn("Exam checkpoint failed; local progress is retained.", {
+        mockId,
+        status: err.response?.status,
+      });
+      return false;
+    }
+  }, [clearDirtyAnswers, dispatch, getDirtyAnswersSnapshot, mockId]);
+
   useEffect(() => {
-    if (loading || state.isSubmitted) return;
+    if (!state.questionsLoaded) return;
+    if (checkpointMockRef.current === state.mockId) return;
+    checkpointMockRef.current = state.mockId;
+    checkpoint60TriggeredRef.current = Boolean(state.checkpoint60Complete);
+    finalCheckpointStartedRef.current = false;
+  }, [state.questionsLoaded, state.mockId, state.checkpoint60Complete]);
 
-    const interval = setInterval(async () => {
-      if (isSavingRef.current) return;
+  // One automatic durable checkpoint, the first time the answered share reaches 60%.
+  useEffect(() => {
+    if (
+      loading ||
+      !state.questionsLoaded ||
+      state.checkpoint60Complete ||
+      checkpoint60TriggeredRef.current ||
+      submissionInFlightRef.current
+    ) return;
 
-      const currentAnswers = computeCurrentAnswers();
-      const currentKeys = Object.keys(currentAnswers);
+    const totalQuestions = Object.values(state.questionsBySection || {})
+      .reduce((count, questions) => count + questions.length, 0);
+    const answers = computeCurrentAnswers();
+    if (!totalQuestions || Object.keys(answers).length / totalQuestions < 0.6) return;
 
-      // Calculate Delta (Answers that are NEW or CHANGED)
-      const delta = {};
-      let changesCount = 0;
+    checkpoint60TriggeredRef.current = true;
+    void saveCheckpoint(answers, { mark60PercentComplete: true });
+  }, [
+    computeCurrentAnswers,
+    loading,
+    saveCheckpoint,
+    state.checkpoint60Complete,
+    state.questionsBySection,
+    state.questionsLoaded,
+  ]);
 
-      for (const key of currentKeys) {
-        if (currentAnswers[key] !== lastSavedData.current[key]) {
-          delta[key] = currentAnswers[key];
-          changesCount++;
-        }
-      }
+  // A single complete safety snapshot near expiry; final submission remains independent and authoritative.
+  useEffect(() => {
+    if (
+      loading ||
+      !state.questionsLoaded ||
+      state.totalSeconds > 30 ||
+      finalCheckpointStartedRef.current ||
+      submissionInFlightRef.current
+    ) return;
 
-      // THRESHOLD: Save if user made >= 20 changes
-      if (changesCount >= 20) {
-        isSavingRef.current = true;
-        try {
-          await saveProgress({ mockId, answers: delta });
-          lastSavedData.current = { ...lastSavedData.current, ...delta };
-        } catch (err) {
-          console.error("❌ Auto-save failed (background)", err);
-        } finally {
-          isSavingRef.current = false;
-        }
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [computeCurrentAnswers, loading, mockId, state.isSubmitted]);
+    finalCheckpointStartedRef.current = true;
+    void saveCheckpoint(computeCurrentAnswers());
+  }, [computeCurrentAnswers, loading, saveCheckpoint, state.questionsLoaded, state.totalSeconds]);
 
   /* 📝 Submit */
   const handleSubmit = useCallback(async () => {
-    if (!window.confirm("Are you sure you want to submit the test?")) return;
-
+    if (!state.questionsLoaded || submissionInFlightRef.current) return;
+    submissionInFlightRef.current = true;
     const answers = computeCurrentAnswers();
-    const res = await submitAttempt({ mockId, answers });
-    navigate(`/result/${res.data.resultId}`, { replace: true });
-  }, [computeCurrentAnswers, mockId, navigate]);
+    let resultId = null;
+
+    try {
+      const response = await submitAttempt({ mockId, answers });
+      resultId = response.data?.resultId || null;
+      if (!resultId) throw new Error("Submission response did not include a result ID");
+    } catch (err) {
+      const duplicateResultId = err.response?.status === 409 ? err.response.data?.resultId : null;
+      if (duplicateResultId) {
+        resultId = duplicateResultId;
+      } else {
+        submissionInFlightRef.current = false;
+        toast.error(err.response?.data?.message || "Submission failed. Your answers are still saved on this device.");
+        return;
+      }
+    }
+
+    try {
+      window.localStorage.removeItem(getTestStorageKey(mockId));
+    } catch (storageError) {
+      console.warn("Could not clear submitted exam recovery data:", storageError);
+    }
+    navigate(`/result/${resultId}`, { replace: true });
+  }, [computeCurrentAnswers, mockId, navigate, state.questionsLoaded]);
 
   /* ⏰ Auto submit when timer reaches 0 */
   useEffect(() => {
-    if (state.totalSeconds === 0 && !state.isSubmitted && !loading) {
-      handleSubmit();
+    if (state.totalSeconds <= 0 && state.questionsLoaded && !loading) {
+      void handleSubmit();
     }
-  }, [state.totalSeconds, state.isSubmitted, loading, handleSubmit]);
+  }, [state.totalSeconds, state.questionsLoaded, loading, handleSubmit]);
 
   return (
     <Suspense fallback={<Loader />}>
@@ -206,9 +256,10 @@ function TestPageInner() {
 
 /* ---------- PROVIDER ---------- */
 export default function App() {
+  const mockId = resolveMockId();
   return (
-    <TestProvider>
-      <TestPageInner />
+    <TestProvider mockId={mockId}>
+      <TestPageInner mockId={mockId} />
     </TestProvider>
   );
 }
