@@ -6,6 +6,7 @@ import AIChatPanel from "./AIChatPanel";
 import { User, LogOut, Shield, Menu, X, Bot, ArrowRight } from "lucide-react";
 import LoginModal from "../components/LoginModal"; // Assuming this exists based on context
 import Loader from "../components/Loader";
+import MainNavbar from "../components/MainNavbar.jsx";
 
 import { API_BASE } from "../api/apiBase.js";
 
@@ -52,10 +53,12 @@ const Navbar = ({ user, logout, setShowLogin }) => {
     navItems.push("Dashboard");
   }
 
+  <MainNavbar desktopLinks={["Home", "Practice", "Results", "Help"]} setShowLogin={setShowLogin} />
   return (
-    <header className="py-4 px-4 md:px-12 relative z-20">
-      <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-md">
+    <header className="mockx-site-header py-4 px-4 md:px-12 relative z-20">
+      <nav className="mockx-site-header__inner flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-md">
         {/* Mobile Menu Button */}
+
         <button
           className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -64,10 +67,10 @@ const Navbar = ({ user, logout, setShowLogin }) => {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/v2")}>
+        <div className="mockx-site-brand flex items-center gap-3 cursor-pointer" onClick={() => navigate("/v2")}>
           <div>
-            <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
-            <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
+            <span className="mockx-site-brand-name">MockX</span>
+
           </div>
         </div>
 
@@ -151,8 +154,9 @@ const ResultStat = () => {
   if (loading) return <Loader />;
 
   return (
+     <>
+<MainNavbar desktopLinks={["Home", "Practice", "Results", "Help"]} setShowLogin={setShowLogin} />
     <div className="min-h-screen bg-slate-50 relative">
-      <Navbar user={user} logout={logout} setShowLogin={setShowLogin} />
 
       <main className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -225,7 +229,7 @@ const ResultStat = () => {
         </div>
       </main>
 
-      <button onClick={() => setIsAiOpen((s) => !s)} className="lg:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+      <button onClick={() => setIsAiOpen((s) => !s)} className="study-assistant-toggle lg:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform" aria-label={isAiOpen ? "Close performance insights" : "Open performance insights"} aria-expanded={isAiOpen}>
         <Bot size={28} />
       </button>
 
@@ -234,15 +238,15 @@ const ResultStat = () => {
           className="fixed inset-0 z-50 lg:hidden pointer-events-none flex flex-col justify-end"
         >
           <div
-            className="w-full pointer-events-auto bg-white rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] border-t border-gray-100 flex flex-col transition-all duration-300 ease-out h-[60vh]"
+          className="study-assistant-sheet w-full pointer-events-auto bg-white border-t border-gray-100 flex flex-col transition-all duration-300 ease-out"
           >
-            <div className="flex items-center justify-between p-3 border-b border-gray-100 bg-white rounded-t-3xl">
+            <div className="study-assistant-mobile-header flex items-center justify-between p-3 border-b border-gray-100 bg-white">
               <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-2xl bg-indigo-600 flex items-center justify-center text-white">
+                <div className="study-assistant-mobile-icon h-8 w-8 rounded-2xl bg-indigo-600 flex items-center justify-center text-white">
                   <Bot size={18} />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-800">Performance Summary</div>
+                  <div className="text-sm font-semibold text-gray-800">Performance insights</div>
                   <div className="text-xs text-slate-400">Context: {selected?.mockId || "General"}</div>
                 </div>
               </div>
@@ -268,6 +272,7 @@ const ResultStat = () => {
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} onOpenRegister={() => setShowLogin(false)} />}
     </div>
+    </>
   );
 };
 

@@ -7,19 +7,19 @@
 
     <!-- TITLE (MOST IMPORTANT SEO SIGNAL) -->
     <title>
-      MockX – IMU CET & MHT CET Mock Tests | Real Exam Pattern & Analysis
+      MockX | Online Mock Tests, Results & Performance Insights
     </title>
 
     <!-- META DESCRIPTION -->
     <meta
       name="description"
-      content="MockX provides IMU CET and MHT CET mock tests based on real exam patterns with negative marking, subject-wise performance analysis, detailed results, and AI-powered guidance."
+      content="Practice with timed mock tests, review detailed results, and track performance with MockX. Tools for students and institutes."
     />
 
     <!-- KEYWORDS -->
     <meta
       name="keywords"
-      content="IMU CET mock test, IMUCET practice test, MHT CET mock test, MHTCET online test, engineering entrance mock tests, maritime entrance exam, CET preparation"
+      content="MockX, online mock tests, timed mock tests, mock exam practice, exam results, performance analysis, institute test management"
     />
 
     <!-- AUTHOR -->
@@ -32,10 +32,10 @@
     <link rel="canonical" href="%VITE_SITE_URL%/" />
 
     <!-- OPEN GRAPH (Google + Social) -->
-    <meta property="og:title" content="MockX – IMU CET & MHT CET Mock Tests" />
+    <meta property="og:title" content="MockX | Online Mock Tests and Results" />
     <meta
       property="og:description"
-      content="Practice IMU CET and MHT CET with real exam mock tests, negative marking, performance analytics and AI-based feedback."
+      content="Take timed mock tests, review your results, and use performance insights to guide your next study session with MockX."
     />
     <meta property="og:url" content="%VITE_SITE_URL%" />
     <meta property="og:type" content="website" />
@@ -46,10 +46,10 @@
 
     <!-- TWITTER -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MockX – CET Mock Tests Platform" />
+    <meta name="twitter:title" content="MockX | Mock-Test Platform" />
     <meta
       name="twitter:description"
-      content="Mock tests for IMU CET & MHT CET with real pattern, analytics and AI coaching."
+      content="Timed mock tests, detailed results, and performance insights for students and institutes."
     />
     <meta
       name="twitter:image"
@@ -58,10 +58,27 @@
 
     <!-- ICON -->
     <link rel="icon" type="image/jpeg" href="/mockxlogo.jpg" />
+    <style>
+      .mockx-startup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fffcf7;color:#0d0129;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+      .mockx-startup-inner{display:flex;flex-direction:column;align-items:center;gap:12px}
+      .mockx-startup-spinner{width:30px;height:30px;border:3px solid #e7e1d8;border-top-color:#19615c;border-radius:50%;animation:mockx-startup-spin .8s linear infinite}
+      .mockx-startup-brand{font-size:20px;font-weight:700;letter-spacing:-.03em}
+      .mockx-startup-message{font-size:13px;color:#625b69}
+      @keyframes mockx-startup-spin{to{transform:rotate(360deg)}}
+      @media(prefers-reduced-motion:reduce){.mockx-startup-spinner{animation:none;border-top-color:#19615c}}
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="mockx-startup" role="status" aria-live="polite">
+        <div class="mockx-startup-inner">
+          <span class="mockx-startup-spinner" aria-hidden="true"></span>
+          <span class="mockx-startup-brand">MockX</span>
+          <span class="mockx-startup-message">Loading your workspace…</span>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.jsx"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>

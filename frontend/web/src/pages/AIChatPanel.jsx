@@ -1,5 +1,5 @@
 import React from "react";
-import { Bot } from "lucide-react";
+import { Bot, BookOpenCheck, Target } from "lucide-react";
 
 const getWeakestSubject = (subjectStats = {}, subjectsMap = {}) => {
   const entries = Object.entries(subjectStats).filter(
@@ -33,82 +33,72 @@ const getWeakestSubject = (subjectStats = {}, subjectsMap = {}) => {
 
 const AIChatPanel = ({ isOpenDesktop = true, selected, subjectsMap = {} }) => {
   const weakestSubject = getWeakestSubject(selected?.subjectStats, subjectsMap);
-
-  const summaryRows = [
-    {
-      label: "Mock",
-      value: selected?.mockId || "Not available",
-    },
-    {
-      label: "Score",
-      value:
-        selected?.score != null && selected?.total != null
-          ? `${selected.score}/${selected.total}`
-          : "Not available",
-    },
-    {
-      label: "Weakest subject",
-      value: weakestSubject
-        ? `${weakestSubject.name} (${weakestSubject.accuracy}%)`
-        : "Not available",
-    },
-  ];
+  const scorePercent = selected?.score != null && Number(selected?.total) > 0
+    ? Math.max(0, Math.min(100, Math.round((selected.score / selected.total) * 100)))
+    : null;
 
   return (
-    <div
-      className={`flex flex-col bg-white ${
-        isOpenDesktop ? "rounded-3xl border shadow-sm h-[560px]" : "flex-1 h-full"
-      }`}
-    >
-      <div className="px-5 py-4 border-b flex gap-3 items-center">
-        <div className="h-9 w-9 rounded-2xl bg-indigo-600 flex items-center justify-center">
-          <Bot className="w-5 h-5 text-white" />
-        </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-wider text-slate-400">
-            Performance Summary
-          </p>
-          <p className="text-xs text-slate-500">
-            RAG bot logic has been removed from this panel
-          </p>
-        </div>
-      </div>
+    <section className={`study-assistant ${isOpenDesktop ? "study-assistant--desktop" : "study-assistant--embedded"}`} aria-label="Performance insights">
+      {isOpenDesktop && (
+        <header className="study-assistant-header">
+          <span className="study-assistant-icon" aria-hidden="true"><Bot size={19} /></span>
+          <div className="study-assistant-heading">
+            <p className="study-assistant-eyebrow">MockX study assistant</p>
+            <h2>Performance insights</h2>
+          </div>
+          <span className="study-assistant-status"><span /> Result based</span>
+        </header>
+      )}
 
-      <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
-        <div className="rounded-2xl border bg-slate-50 px-4 py-3">
-          <p className="text-sm font-semibold text-slate-900">
-            Current result snapshot
-          </p>
-          <div className="mt-3 space-y-2">
-            {summaryRows.map((row) => (
-              <div
-                key={row.label}
-                className="flex items-center justify-between gap-3 text-sm"
-              >
-                <span className="text-slate-500">{row.label}</span>
-                <span className="font-medium text-slate-900">{row.value}</span>
-              </div>
-            ))}
+      <div className="study-assistant-content">
+        <div className="study-assistant-message">
+          <span className="study-assistant-message-icon" aria-hidden="true"><Bot size={16} /></span>
+          <div>
+            <p className="study-assistant-message-label">Your latest attempt</p>
+            <p className="study-assistant-message-copy">
+              {weakestSubject
+                ? `A useful place to focus next is ${weakestSubject.name}. You answered ${weakestSubject.correct} of ${weakestSubject.attempted} attempted questions correctly.`
+                : "Choose a completed mock with subject results to see a focused review suggestion here."}
+            </p>
           </div>
         </div>
 
-        <div className="rounded-2xl border px-4 py-3">
-          <p className="text-sm font-semibold text-slate-900">
-            What is still shown
-          </p>
-          <ul className="mt-3 space-y-2 text-sm text-slate-600 list-disc list-inside">
-            <li>Your mock selection and subject cards</li>
-            <li>The current score and weakest visible subject</li>
-            <li>The mobile and desktop sidebar layout</li>
-          </ul>
+        <div className="study-assistant-result">
+          <div className="study-assistant-result-heading">
+            <div>
+              <p className="study-assistant-eyebrow">Result snapshot</p>
+              <h3>{selected?.mockId || "No mock selected"}</h3>
+            </div>
+            <BookOpenCheck size={19} aria-hidden="true" />
+          </div>
+
+          {scorePercent !== null ? (
+            <div className="study-assistant-score">
+              <div className="study-assistant-score-label">
+                <span>Score</span>
+                <strong>{selected.score}/{selected.total}</strong>
+              </div>
+              <div className="study-assistant-progress" role="progressbar" aria-label="Score percentage" aria-valuemin="0" aria-valuemax="100" aria-valuenow={scorePercent}>
+                <span style={{ width: `${scorePercent}%` }} />
+              </div>
+              <p>{scorePercent}% of available marks</p>
+            </div>
+          ) : (
+            <p className="study-assistant-empty">Score details are not available for this result.</p>
+          )}
         </div>
 
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          AI chat, local analysis responses, and RAG-style assistant logic are no
-          longer active here.
+        <div className="study-assistant-focus">
+          <span className="study-assistant-focus-icon" aria-hidden="true"><Target size={17} /></span>
+          <div>
+            <p className="study-assistant-eyebrow">Review focus</p>
+            <strong>{weakestSubject ? weakestSubject.name : "Subject insights unavailable"}</strong>
+            <p>{weakestSubject ? `${weakestSubject.accuracy}% accuracy · ${weakestSubject.attempted} attempted` : "Subject-wise performance will appear when available."}</p>
+          </div>
         </div>
+        <p className="study-assistant-note">Suggestions are calculated from this result’s recorded score and subject data.</p>
       </div>
-    </div>
+    </section>
   );
 };
 

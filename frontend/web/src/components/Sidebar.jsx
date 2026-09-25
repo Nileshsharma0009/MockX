@@ -27,7 +27,7 @@ export default function Sidebar({ visible = true }) {
   return (
     <aside
       id={`statsSidebar${state.currentSection}`}
-      className={`fixed right-6 top-20 z-50 w-64 rounded-lg p-3 bg-white shadow-lg transform transition-transform duration-300
+      className={`exam-question-palette fixed right-6 top-20 z-50 w-64 rounded-lg p-3 bg-white shadow-lg transform transition-transform duration-300
         ${visible ? "translate-x-0" : "translate-x-full"}`}
       aria-label="Question palette"
     >
@@ -63,7 +63,8 @@ export default function Sidebar({ visible = true }) {
             <div
               key={i}
               id={`qbox-${i}`}
-              className={`${base} ${stateClasses}`}
+              data-question-status={s}
+              className={`exam-palette-question ${isActive ? "is-current" : `is-${s}`} ${base} ${stateClasses}`}
               onClick={() => goTo(i)}
               title={`Question ${i + 1}`}
               role="button"

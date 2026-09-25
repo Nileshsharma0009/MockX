@@ -180,9 +180,14 @@ export default function ResultPage() {
   return (
     <div className="result-page-root">
       {/* Simple Header with Back Button */}
-      <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50 bg-white/95 border-b border-gray-200">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
+      <header className="mockx-site-header fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50 bg-white/95 border-b border-gray-200">
+        <div className="mockx-site-header__inner">
+          <button type="button" className="mockx-site-brand" onClick={() => navigate("/v2")} aria-label="MockX home">
+            <span className="mockx-site-brand-mark">MX</span>
+            <span className="mockx-site-brand-name">MockX<span className="mockx-site-brand-detail">Result report</span></span>
+          </button>
           <button
+            type="button"
             onClick={() => {
               if (userData?.role === "STUDENT" || userData?.instituteId) {
                 navigate("/v2/institute/student/dashboard");
@@ -197,8 +202,6 @@ export default function ResultPage() {
               {userData?.role === "STUDENT" || userData?.instituteId ? "Back to Student Portal" : "Back"}
             </span>
           </button>
-          {/* <h1 className="text-2xl font-extrabold text-gray-900">MockX Result</h1> */}
-          <div className="w-20" /> {/* Spacer for alignment */}
         </div>
       </header>
 

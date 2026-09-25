@@ -1,426 +1,297 @@
-import React, { useState, useEffect } from "react";
-import RegistrationForm from "./Registration.jsx";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight, BarChart3, Building2, Check, Clock3, FileText, Target } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import RegistrationForm from "./Registration.jsx";
 import LoginModal from "./LoginModal";
 import { useAuth } from "../context/AuthContext";
-import { Clock, GraduationCap, BarChart3, Trophy, User, LogOut, Shield } from "lucide-react";
-import {
-  XCircle,
-  CheckCircle2,
-  AlertTriangle,
-  TrendingUp,
-  Sparkles,
-  Menu,
-  X
-} from "lucide-react";
 import Footer from "./Footer.jsx";
 import MainNavbar from "./MainNavbar.jsx";
+import "../styles/landing-page.css";
 
+const features = [
+  {
+    icon: Clock3,
+    eyebrow: "Practice",
+    title: "Timed mock tests",
+    description: "Work through exams with a timer and a focused test-taking experience.",
+  },
+  {
+    icon: FileText,
+    eyebrow: "Review",
+    title: "Clear result reports",
+    description: "See your score, answers, and performance details after you submit.",
+  },
+  {
+    icon: BarChart3,
+    eyebrow: "Improve",
+    title: "Performance insights",
+    description: "Use attempt and subject-level analysis to decide what to practice next.",
+  },
+  {
+    icon: Building2,
+    eyebrow: "For institutes",
+    title: "Tools for your academy",
+    description: "Manage students, question banks, custom mocks, assignments, and results.",
+  },
+];
 
-// --- Typewriter Component (Keep as is) ---
-const Typewriter = ({ words, typingSpeed = 150, deletingSpeed = 100, delay = 1000 }) => {
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [reverse, setReverse] = useState(false);
-  useEffect(() => {
-    if (index === words.length) setIndex(0);
-    if (subIndex === words[index].length + 1 && !reverse) { setTimeout(() => setReverse(true), delay); return; }
-    if (subIndex === 0 && reverse) { setReverse(false); setIndex((prev) => (prev + 1) % words.length); return; }
-    const timeout = setTimeout(() => { setSubIndex((prev) => prev + (reverse ? -1 : 1)); }, reverse ? deletingSpeed : typingSpeed);
-    return () => clearTimeout(timeout);
-  }, [subIndex, index, reverse, words, typingSpeed, deletingSpeed, delay]);
-  return <span className="inline-block min-w-[150px] font-extrabold text-sky-600">{words[index].substring(0, subIndex)}<span className="border-r-2 border-sky-500 animate-blink ml-0.5" /></span>;
-};
-
-// --- Feature Card Component ---
-// const FeatureCard = ({
-//   icon,
-//   title,
-//   description,
-//   iconSize = 80,
-//   bgColor
-// }) => (
-//   <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 h-full flex flex-col items-center text-center">
-
-//     <div className={`mb-6 p-4 rounded-2xl ${bgColor || ""} flex items-center justify-center`}>
-//       <img
-//         src={icon}
-//         alt={title}
-//         style={{
-//           width: `${iconSize}px`,
-//           height: `${iconSize}px`
-//         }}
-//         className="object-contain"
-//       />
-//     </div>
-
-//     <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
-//       {title}
-//     </h3>
-
-//     <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-//       {description}
-//     </p>
-
-//   </div>
-// );
-
-
-
-
+const preparationComparison = [
+  {
+    id: "hard-way",
+    label: "WITHOUT MOCK TESTS",
+    title: "The Hard Way",
+    items: [
+      "No real sense of exam pressure or time constraints",
+      "Difficult to identify weak topics and recurring mistakes",
+      "Overconfidence or underconfidence without feedback",
+      "Poor time management during the actual exam",
+      "Exam day feels unfamiliar and stressful",
+    ],
+  },
+  {
+    id: "smart-way",
+    label: "WITH MOCKX PLATFORM",
+    title: "The Smart Way",
+    items: [
+      "Experience real exam-level pressure early",
+      "Clear insights with AI-driven performance analysis",
+      "Data-driven confidence based on actual accuracy",
+      "Master a section-wise time-allocation strategy",
+      "Arrive on exam day feeling calmer and more familiar",
+    ],
+  },
+];
 
 const First = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const reduceMotion = useReducedMotion();
   const [showLogin, setShowLogin] = useState(false);
-  const { user, logout } = useAuth();
   const [showForm, setShowForm] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleNavClick = (item) => {
-    setIsMobileMenuOpen(false);
-    switch (item) {
-      case "Home": navigate("/v2"); break;
-      case "Practice":
-        if (!user) setShowLogin(true);
-        else navigate("/v2/mock-tests");
-        break;
-      case "Results":
-        if (!user) setShowLogin(true);
-        else navigate("/v2/result-history");
-        break;
-      case "Help":
-        navigate("/v2/review-faq");
-      default: break;
-    }
-  };
-
-  // ✅ LOGOUT FUNCTION
-
-  const Counter = ({ end, duration = 2000, suffix = "" }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const increment = end / (duration / 16); // 60fps approx
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [end, duration]);
 
   return (
-    <span>
-      {count}
-      {suffix}
-    </span>
-  );
-};
-
-
-  return (
-    <div className="min-h-screen font-sans text-gray-900 relative bg-white overflow-x-hidden">
-      {/* Background blobs */}
-      <div className="absolute top-[-6rem] -left-24 w-80 h-80 bg-sky-100 rounded-full blur-3xl" />
-      <div className="absolute top-[-4rem] -right-24 w-96 h-96 bg-indigo-100 rounded-full blur-3xl" />
-
-      {/* Header */}
+    <div className="mockx-landing min-h-screen overflow-x-hidden">
       <MainNavbar
         desktopLinks={["Home", "Practice", "Results", "Help"]}
         setShowLogin={setShowLogin}
       />
 
+      <main>
+ <section className="landing-hero">
+  <div className="landing-container landing-hero-grid">
 
+    <motion.div
+      className="landing-hero-copy"
+      initial={reduceMotion ? false : { opacity: 0, x: -18 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.48, ease: "easeOut", delay: 0.08 }}
+    >
+      <p className="landing-kicker">
+        <span /> MOCKX · MOCK-TEST PLATFORM
+      </p>
 
+      <h1>
+        Make practice<br />
+        <span>feel like progress.</span>
+      </h1>
 
-      {/* Main Hero */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-16 md:pt-24 md:pb-20 relative z-10">
+      <p className="landing-hero-description">
+        Take a timed mock, understand your result, and choose what to work on next.
+        MockX brings practice and progress into one place.
+      </p>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div className="landing-hero-actions">
+        <button
+          type="button"
+          onClick={() => user ? navigate("/v2/mock-tests") : setShowForm(true)}
+          className="landing-primary"
+        >
+          {user ? "Explore mock tests" : "Create your account"}
+          <ArrowRight size={18} />
+        </button>
 
+        <button
+          type="button"
+          onClick={() =>
+            user ? navigate("/v2/result-history") : setShowLogin(true)
+          }
+          className="landing-secondary"
+        >
+          {user ? "View my results" : "Log in"}
+        </button>
+      </div>
 
-          {/* LEFT SIDE - TEXT CONTENT */}
-          <div className="md:w-1/2 text-center md:text-left space-y-6 md:space-y-8">
+      <div className="landing-hero-note">
+        <span className="landing-note-mark">✳</span>
+        <span>
+          For independent learners and institutes running structured practice.
+        </span>
+      </div>
+    </motion.div>
 
-            {/* 1. Small Badge (Visible on both) */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-100 to-sky-100 text-indigo-600 text-sm font-medium shadow-sm">
-              India’s Smartest Mock Platform
-            </div>
+    <motion.figure
+      className="landing-hero-art landing-product-art"
+      initial={reduceMotion ? false : { opacity: 0, x: 18 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.55, ease: "easeOut", delay: 0.16 }}
+    >
+      <img
+        src="/Assets/asset1.png"
+        alt="MockX exam interface with a timer, question navigation, and performance by topic"
+      />
 
-            {/* 2. MOBILE ONLY IMAGE - Appears after Badge on Mobile */}
-            <div className="flex justify-center md:hidden my-6">
-              <img
-                src="/test1.svg"
-                alt="MockX Illustration"
-                className="w-64 max-w-full drop-shadow-lg"
-              />
-            </div>
+      <figcaption>
+        From a focused attempt to a useful result review.
+      </figcaption>
+    </motion.figure>
 
-            {/* 3. Premium Heading */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight">
-
-              <span className="block text-gray-800">
-                Crack Your
-              </span>
-
-              <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent mt-2">
-                <Typewriter words={["IMUCET", "Dream", "MHTCET"]} />
-              </span>
-
-            </h1>
-
-
-            {/* 4. Premium Subtext */}
-            <p className="text-gray-600 text-base md:text-lg max-w-lg mx-auto md:mx-0">
-              Smart analytics. Real exam simulation. Personalized insights.
-              Transform your preparation into guaranteed performance growth.
-            </p>
-
-            {/* 5. CTA Section */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              {!user ? (
-                <button
-                  onClick={() => setShowForm(true)}
-                  className="relative group bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
-                >
-                  <span className="relative z-10">Start Free Trial</span>
-                  <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition"></div>
-                </button>
-              ) : (
-                <button
-                  onClick={() => navigate("/v2/mock-tests")}
-                  className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
-                >
-                  Continue Practice
-                </button>
-              )}
-
-            </div>
-
-         <div className="flex gap-10 justify-center md:justify-start text-sm text-gray-500 pt-6">
-
-  <div className="flex flex-col items-center md:items-start">
-    <strong className="text-2xl font-bold text-gray-900">
-      <Counter end={400} suffix="+" />
-    </strong>
-    <span>Students</span>
   </div>
+</section>
 
-  <div className="flex flex-col items-center md:items-start">
-    <strong className="text-2xl font-bold text-gray-900">
-      <Counter end={379}  />
-    </strong>
-    <span>Tests Taken</span>
-  </div>
-
-  <div className="flex flex-col items-center md:items-start">
-    <strong className="text-2xl font-bold text-gray-900">
-      <Counter end={95} suffix="%" />
-    </strong>
-    <span>Success Rate</span>
-  </div>
-
-</div>
-
-
+        <section className="landing-features landing-container" aria-labelledby="features-title">
+          <div className="landing-section-heading">
+            <p className="landing-kicker"><span /> THE MOCKX WORKFLOW</p>
+            <h2 id="features-title">Everything you need to make practice count.</h2>
+            <p>From taking a test to understanding the result, MockX keeps your preparation in one place.</p>
           </div>
-
-          {/* RIGHT SIDE - DESKTOP IMAGE (Hidden on Mobile) */}
-          <div className="hidden md:flex md:w-1/2 justify-center relative">
-            {/* Background Blob for Desktop Image */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-indigo-50 to-sky-50 rounded-full blur-3xl -z-10 opacity-60"></div>
-            <img
-              src="/test1.svg"
-              alt="MockX Illustration"
-              className="w-full max-w-lg drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
-            />
+          <div className="landing-feature-grid">
+            {features.map(({ icon: Icon, eyebrow, title, description }, index) => (
+              <motion.article
+                className="landing-feature-card"
+                key={title}
+                initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.38, delay: index * 0.06, ease: "easeOut" }}
+              >
+                <div className="landing-feature-top"><span>0{index + 1}</span><Icon size={22} strokeWidth={1.7} /></div>
+                <p className="landing-feature-eyebrow">{eyebrow}</p>
+                <h3>{title}</h3>
+                <p className="landing-feature-description">{description}</p>
+              </motion.article>
+            ))}
           </div>
+        </section>
 
-        </div>
-      </main>
-
-
-
-      {/* Features */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-
-          {/* Card 1 */}
-          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
-           
-              <img src="/clock.svg" alt="Clock" style={{ width: "200px" }}   className="w-24 sm:w-28 md:w-40 object-contain mb-4" />
-          
-            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
-              180-Minute Tests
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              True exam duration to help you build stamina.
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
-
-              <img src="/exam.svg" alt="Graduation" style={{ width: "200px" }} className="object-contain" />
+        <section className="landing-compare" aria-labelledby="landing-compare-title">
+          <div className="landing-container">
+            <motion.div
+              className="landing-compare-heading"
+              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <p className="landing-kicker"><span /> THE DIFFERENCE PRACTICE MAKES</p>
        
-            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
-              200 Smart Questions
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              Latest IMUCET patterns & difficulty levels.
-            </p>
-          </div>
+              <p>Build exam familiarity before the real day, one focused MockX attempt at a time.</p>
+            </motion.div>
 
-          {/* Card 3 */}
-          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
-
-              <img src="/chart.svg" alt="Chart" style={{ width: "200px" }} className="object-contain" />
-           
-            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
-              Progress Tracking
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              Accuracy, weak areas, improvement charts.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-white p-6 md:p-7 rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 border border-gray-200 flex flex-col items-center text-center">
-         
-              <img src="/win.svg" alt="Trophy" style={{ width: "200px" }} className="object-contain" />
-     
-            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
-              Instant Results
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              Detailed scorecards within seconds.
-            </p>
-          </div>
-
-        </div>
-      </section>
-      
-      {/* Comparison Section */}
-      {/* Comparison Section - The Growth Path */}
-      <section className="mt-32 relative">
-        {/* Background Decorative Element */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-transparent to-transparent -z-10" />
-
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 tracking-tight">
-            Bridging the <span className="text-indigo-600">Preparation Gap</span>
-          </h2>
-          <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-            Exam-like mock tests with real-time tracking, instant results, and deep analytics to help you dominate Exam with confidence
-          </p>
-        </div>
-
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-2xl bg-white">
-
-          {/* Center "VS" Badge (Hidden on mobile) */}
-          <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <div className="h-16 w-16 rounded-full bg-white border-4 border-[#F8FAFC] shadow-xl flex items-center justify-center">
-              <span className="text-gray-400 font-black italic text-xl">VS</span>
-            </div>
-          </div>
-
-          {/* LEFT SIDE: WITHOUT MOCKS */}
-          <div className="p-8 md:p-12 bg-slate-50/50 relative">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-12 w-12 rounded-2xl bg-red-100 flex items-center justify-center shadow-sm shadow-red-100">
-                <AlertTriangle className="h-6 w-6 text-red-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900">The Hard Way</h3>
-                <p className="text-sm text-red-600 font-medium">Without Mock Tests</p>
-              </div>
-            </div>
-
-            <ul className="space-y-6">
-              {[
-                "No real sense of exam pressure or time constraints",
-                "Difficult to identify weak topics and recurring mistakes",
-                "Overconfidence or underconfidence without feedback",
-                "Poor time management during the actual exam",
-                "Exam day feels unfamiliar and stressful"
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-start gap-4 group">
-                  <div className="mt-1 bg-white rounded-full p-0.5 border border-red-100 group-hover:scale-110 transition-transform">
-                    <XCircle className="h-5 w-5 text-red-400" />
-                  </div>
-                  <span className="text-gray-600 leading-snug">{item}</span>
-                </li>
+            <div className="landing-compare-grid">
+              {preparationComparison.map((way, index) => (
+                <motion.article
+                  key={way.id}
+                  className={`landing-compare-card ${index === 1 ? "landing-compare-card-smart" : "landing-compare-card-hard"}`}
+                  initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.42, delay: reduceMotion ? 0 : index * 0.12, ease: "easeOut" }}
+                >
+                  <p className="landing-compare-label">{way.label}</p>
+                  <h3>{way.title}</h3>
+                  <ul>
+                    {way.items.map((item, itemIndex) => (
+                      <motion.li
+                        key={item}
+                        initial={reduceMotion ? false : { opacity: 0, x: index === 0 ? -8 : 8 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.28, delay: reduceMotion ? 0 : index * 0.12 + itemIndex * 0.045, ease: "easeOut" }}
+                      >
+                        {item}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.article>
               ))}
-            </ul>
-          </div>
-
-          {/* RIGHT SIDE: WITH MOCKS */}
-          <div className="p-8 md:p-12 bg-white relative">
-            {/* Subtle Highlight Border for the "Winner" side */}
-            <div className="absolute inset-0 border-l lg:border-l-0 border-t lg:border-t-0 border-indigo-50" />
-
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-12 w-12 rounded-2xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-100">
-                <TrendingUp className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900">The Smart Way</h3>
-                <p className="text-sm text-green-600 font-medium">With MockX Platform</p>
-              </div>
             </div>
-
-            <ul className="space-y-6">
-              {[
-                "Experience real exam-level pressure early",
-                "Clear insights with AI-driven performance analysis",
-                "Data-driven confidence based on actual accuracy",
-                "Mastered section-wise time allocation strategy",
-                "Calm, confident, and familiar exam-day experience"
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-start gap-4 group">
-                  <div className="mt-1 bg-green-50 rounded-full p-0.5 border border-green-100 group-hover:scale-110 transition-transform">
-                    <CheckCircle2 className="h-5 w-5 text-green-600" />
-                  </div>
-                  <span className="text-gray-800 font-medium leading-snug">{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
-        </div>
+        </section>
 
-        {/* BOTTOM INSIGHT CARD */}
-        <section>
-          <div className="mt-12 max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-gray-900 to-indigo-950 rounded-3xl p-1 shadow-xl">
-              <div className="bg-white/5 backdrop-blur-sm rounded-[1.4rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-                <div className="h-14 w-14 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="h-7 w-7 text-indigo-300" />
-                </div>
-                <div className="text-center md:text-left">
-                  <h4 className="text-white text-lg font-semibold mb-1">Pro Tip for Aspirants</h4>
-                  <p className="text-indigo-100/70 text-sm leading-relaxed">
-                    Mocks don’t just test your knowledge; they build your <span className="text-indigo-300 font-semibold underline decoration-indigo-500/50 underline-offset-4">test-taking stamina</span>.
-                    Students who take at least 10 mocks are 65% more likely to manage time effectively on the final day.
-                  </p>
-                </div>
+        <section className="landing-teal-band">
+          <div className="landing-container landing-teal-grid">
+            <div>
+              <p className="landing-kicker landing-kicker-light"><span /> PREPARATION, WITH PURPOSE</p>
+              <h2>Make each attempt useful.</h2>
+            </div>
+            <div className="landing-teal-copy">
+              <p>Practising is only part of the work. MockX helps you review what happened, notice where to focus, and start your next attempt with a clearer plan.</p>
+              <ul>
+                <li><Check size={17} /> Timed practice and a familiar exam flow</li>
+                <li><Check size={17} /> Results and answer review after submission</li>
+                <li><Check size={17} /> Institute tools for classes and assigned tests</li>
+              </ul>
+              <button type="button" onClick={() => navigate("/v2/mock-tests")} className="landing-teal-link">Explore mock tests <ArrowRight size={17} /></button>
+            </div>
+          </div>
+        </section>
+
+        <section className="landing-steps landing-container">
+          <div className="landing-section-heading">
+            <p className="landing-kicker"><span /> A SIMPLE ROUTINE</p>
+            <h2>Practice. Review. Repeat.</h2>
+            <p>Use each mock test as a practical step in your preparation.</p>
+          </div>
+          <div className="landing-step-grid">
+            {[
+              { icon: Target, title: "Choose a mock", description: "Pick an available test that fits what you are studying." },
+              { icon: Clock3, title: "Take the test", description: "Answer questions in the timed test environment." },
+              { icon: BarChart3, title: "Review your result", description: "Check your score and use the report to plan what comes next." },
+            ].map(({ icon: Icon, title, description }, index) => (
+              <motion.article
+                key={title}
+                initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.38, delay: index * 0.07, ease: "easeOut" }}
+              >
+                <span>0{index + 1}</span><Icon size={24} /><h3>{title}</h3><p>{description}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section className="landing-audience-section">
+          <div className="landing-container landing-audience-grid">
+            <figure className="landing-audience-art">
+              <img src="/Assets/asset2.png" alt="MockX student, teacher, and institute admin views connected in one platform" loading="lazy" />
+              <figcaption>One platform with role-based spaces for students and institutes.</figcaption>
+            </figure>
+            <div className="landing-audience-copy">
+              <p className="landing-kicker"><span /> FOR LEARNERS AND INSTITUTES</p>
+              <h2>Practice on your own. Organise it together.</h2>
+              <p>Students can take available mocks and review their attempts. Institutes can build custom tests, manage question banks, assign work to students, and follow results from their portal.</p>
+              <div className="landing-audience-actions">
+                <button type="button" onClick={() => user ? navigate("/v2/mock-tests") : setShowForm(true)} className="landing-secondary">Explore mock tests <ArrowRight size={16} /></button>
+                <button type="button" onClick={() => navigate("/v2/institute/login")} className="landing-secondary">Institute portal <ArrowRight size={16} /></button>
               </div>
             </div>
           </div>
         </section>
-      </section>
 
+        <section className="landing-final-cta">
+          <div className="landing-container landing-final-inner">
+            <div><p className="landing-kicker"><span /> YOUR NEXT ATTEMPT STARTS HERE</p><h2>Put your preparation into practice.</h2></div>
+            <button type="button" onClick={() => user ? navigate("/v2/mock-tests") : setShowForm(true)} className="landing-primary">{user ? "Browse mock tests" : "Get started with MockX"}<ArrowRight size={18} /></button>
+          </div>
+        </section>
+      </main>
 
+      <Footer />
       {showForm && <RegistrationForm onClose={() => setShowForm(false)} onOpenLogin={() => { setShowForm(false); setShowLogin(true); }} />}
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} onOpenRegister={() => { setShowLogin(false); setShowForm(true); }} />}
-      <Footer />
     </div>
-
   );
 };
 

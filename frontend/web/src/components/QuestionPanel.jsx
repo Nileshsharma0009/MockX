@@ -70,11 +70,11 @@ export default function QuestionPanel() {
   }
 
   return (
-    <main className="flex flex-col justify-center items-center min-h-[80vh] px-6 md:px-20 bg-white">
-      <div className="w-full max-w-4xl text-left">
+    <main className="exam-question-panel flex flex-col justify-center items-center min-h-[80vh] px-6 md:px-20 bg-white">
+      <div className="exam-question-card w-full max-w-4xl text-left">
 
         {/* ================= Header ================= */}
-        <div className="flex items-center justify-between mb-3">
+        <div className="exam-question-heading flex items-center justify-between mb-3">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Question {state.currentIndex + 1} of {totalQuestions}
           </h2>
@@ -159,7 +159,7 @@ export default function QuestionPanel() {
         )}
 
         {/* ================= Question ================= */}
-        <p className="mb-8 text-lg text-gray-800">
+        <p className="exam-question-text mb-8 text-lg text-gray-800">
           {q.question}
         </p>
 
@@ -172,7 +172,7 @@ export default function QuestionPanel() {
               <button
                 key={idx}
                 onClick={() => setSelected(idx)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition
+                className={`exam-answer-option flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition
                   ${
                     isSelected
                       ? "bg-violet-100 border-violet-600 text-violet-900"

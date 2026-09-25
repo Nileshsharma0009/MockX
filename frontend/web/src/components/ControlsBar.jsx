@@ -30,12 +30,12 @@ export default function ControlsBar({ onSubmit }) {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t shadow-md flex items-center justify-between px-2 py-2 md:px-10 md:py-3"
+      className="exam-controls-bar fixed bottom-0 left-0 right-0 z-40 bg-white border-t shadow-md flex items-center justify-between px-2 py-2 md:px-10 md:py-3"
       role="toolbar"
       aria-label="Question controls"
     >
       {/* Center buttons */}
-      <div className="flex justify-center gap-2 md:gap-4 mx-auto">
+      <div className="exam-controls-actions flex justify-center gap-2 md:gap-4 mx-auto">
         <button
           className="px-2 py-1.5 text-xs md:px-4 md:py-2 md:text-sm font-medium bg-[#5c4d7d] hover:bg-[#43325f] text-white rounded-md whitespace-nowrap"
           onClick={handleMarkReview}
@@ -67,7 +67,7 @@ export default function ControlsBar({ onSubmit }) {
 
       {/* Submit button */}
       <button
-        className={`px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm font-medium text-white rounded-md transition-all duration-200 ml-2 md:ml-8 ${submitting
+        className={`exam-submit-button px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm font-medium text-white rounded-md transition-all duration-200 ml-2 md:ml-8 ${submitting
           ? "bg-gray-400 cursor-not-allowed"
           : "bg-green-600 hover:bg-green-700"
           }`}

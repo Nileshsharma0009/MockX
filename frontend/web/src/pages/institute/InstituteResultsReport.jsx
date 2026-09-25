@@ -200,6 +200,40 @@ export default function InstituteResultsReport({ instituteName, report: reportDa
           ) : !filteredStudents.length ? (
             <div className="p-8 text-center text-sm text-slate-600">No students match the selected filters.</div>
           ) : (
+            <>
+            <div className="inst-report-mobile-list" aria-label="Student results">
+              {filteredStudents.map((student) => (
+                <article className="inst-report-mobile-student" key={student._id}>
+                  <header className="inst-report-mobile-student-header">
+                    <div className="min-w-0">
+                      <h3>{student.name}</h3>
+                      <p>Roll no. {student.rollNo || "—"} <span>·</span> {student.batch || "No batch"}</p>
+                      <span className="inst-report-mobile-email">{student.email}</span>
+                    </div>
+                  </header>
+                  <div className="inst-report-mobile-mocks">
+                    {filteredMocks.map((mock) => {
+                      const result = resultsByStudentMock.get(`${student._id}:${mock._id}`);
+                      const percentage = result && result.total > 0 ? Math.round((result.score / result.total) * 100) : null;
+                      return (
+                        <div className="inst-report-mobile-mock" key={mock._id}>
+                          <div className="inst-report-mobile-mock-title">
+                            <strong>{mock.title}</strong>
+                            <span>{mock.totalMarks ?? "-"} marks</span>
+                          </div>
+                          {result ? (
+                            <div className="inst-report-mobile-result-score">
+                              <strong>{result.score} / {result.total}</strong>
+                              <span>{percentage}% · {result.createdAt ? new Date(result.createdAt).toLocaleDateString() : "Submitted"}</span>
+                            </div>
+                          ) : <span className="inst-report-mobile-not-attempted">Not attempted</span>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </article>
+              ))}
+            </div>
             <div className="inst-report-scroll overflow-x-auto">
               <table className="inst-report-table min-w-[900px] w-full border-collapse text-left text-sm">
                 <thead>
@@ -243,6 +277,7 @@ export default function InstituteResultsReport({ instituteName, report: reportDa
                 </tbody>
               </table>
             </div>
+            </>
           )}
           <div className="border-t border-slate-200 px-4 py-3 text-xs text-slate-600 sm:px-5">
             Report includes submitted scores only. Students without a submission are shown as not attempted.
