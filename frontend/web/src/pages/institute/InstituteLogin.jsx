@@ -118,7 +118,7 @@ export default function InstituteLogin() {
               Quick Demo Fill
             </p>
             <div className="grid grid-cols-2 gap-2">
-              <button
+              {/* <button
                 type="button"
                 onClick={() => fillDemoCreds("admin@apex.edu", "apex123")}
                 className="p-2.5 rounded-xl bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 text-left transition-all"
@@ -128,9 +128,9 @@ export default function InstituteLogin() {
                   <span>Institute Admin</span>
                 </div>
                 <div className="text-[10px] text-slate-500 truncate mt-0.5">admin@apex.edu</div>
-              </button>
+              </button> */}
 
-              <button
+              {/* <button
                 type="button"
                 onClick={() => fillDemoCreds("aryan@apex.edu", "student123")}
                 className="p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-200 text-left transition-all"
@@ -140,8 +140,8 @@ export default function InstituteLogin() {
                   <span>Student (Active)</span>
                 </div>
                 <div className="text-[10px] text-slate-500 truncate mt-0.5">aryan@apex.edu</div>
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 type="button"
                 onClick={() => fillDemoCreds("priya@apex.edu", "student123")}
                 className="p-2.5 rounded-xl bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-200 text-left transition-all"
@@ -151,7 +151,7 @@ export default function InstituteLogin() {
                   <span>Student (Done)</span>
                 </div>
                 <div className="text-[10px] text-slate-500 truncate mt-0.5">priya@apex.edu</div>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
