@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, Eye, EyeOff, X, Building2 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
+import "../styles/auth-modal.css";
 
 export default function LoginModal({ onClose, onOpenRegister }) {
   const { login } = useAuth();
@@ -43,7 +44,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center mockx-auth-overlay">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/40"
@@ -51,7 +52,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
       />
 
       {/* Modal */}
-      <div className="relative z-10 w-[90%] max-w-sm bg-white rounded-2xl shadow-2xl p-6 md:p-8 animate-fadeIn max-h-[90vh] overflow-y-auto">
+      <div className="relative z-10 w-[90%] max-w-sm bg-white rounded-2xl shadow-2xl p-6 md:p-8 animate-fadeIn max-h-[90vh] overflow-y-auto mockx-auth-panel">
         {/* Close */}
         <button
           onClick={onClose}
@@ -61,7 +62,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
         </button>
 
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-6 mockx-auth-heading">
           <h2 className="text-2xl font-bold text-gray-900">Welcome Back</h2>
           <p className="text-sm text-gray-500">
             Login to continue your mock tests
@@ -79,7 +80,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="text-xs font-semibold text-gray-600">Email</label>
+            <label className="text-xs font-semibold text-gray-600 mockx-auth-label">Email</label>
             <div className="relative mt-1">
               <Mail
                 size={18}
@@ -87,7 +88,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
               />
               <input
                 type="email"
-                className="w-full pl-10 pr-3 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                className="w-full pl-10 pr-3 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none mockx-auth-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -96,13 +97,13 @@ export default function LoginModal({ onClose, onOpenRegister }) {
 
           {/* Password */}
           <div>
-            <label className="text-xs font-semibold text-gray-600">
+            <label className="text-xs font-semibold text-gray-600 mockx-auth-label">
               Password
             </label>
             <div className="relative mt-1">
               <input
                 type={showPassword ? "text" : "password"}
-                className="w-full pr-10 pl-3 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                className="w-full pr-10 pl-3 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none mockx-auth-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -120,9 +121,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-sky-500 to-indigo-500 
-            text-white font-semibold py-2.5 rounded-lg 
-            hover:shadow-lg transition"
+            className="w-full bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold py-2.5 rounded-lg hover:shadow-lg transition mockx-auth-submit"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -135,7 +134,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
                 onOpenRegister?.(); // close login modal
                 // open register modal OR navigate
               }}
-              className="text-indigo-600 font-medium cursor-pointer hover:underline"
+              className="text-indigo-600 font-medium cursor-pointer hover:underline mockx-auth-link"
             >
               Register
             </span>
@@ -160,7 +159,7 @@ export default function LoginModal({ onClose, onOpenRegister }) {
                 onClose();
                 navigate("/v2/institute/login");
               }}
-              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-sky-50 to-cyan-50 hover:from-sky-100 hover:to-cyan-100 border border-sky-100/80 text-xs font-bold text-sky-700 flex items-center justify-center gap-2 transition-all shadow-sm"
+              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-sky-50 to-cyan-50 hover:from-sky-100 hover:to-cyan-100 border border-sky-100/80 text-xs font-bold text-sky-700 flex items-center justify-center gap-2 transition-all shadow-sm mockx-auth-institute-link"
             >
               <Building2 className="w-3.5 h-3.5 text-sky-600" />
               <span>Institutes Login</span>

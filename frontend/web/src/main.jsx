@@ -1,85 +1,4 @@
-// import { StrictMode } from "react";
-// import { createRoot } from "react-dom/client";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import ResultStat from "./pages/ResultStat.jsx";
 
-// import "./index.css";
-// import ResultHistory from "./pages/ResultHistory.jsx";
-// import ResultDetail from "./pages/ResultDetail.jsx";
-// import First from "./components/First.jsx";
-// import MockTestPage from "./components/MocktestPage.jsx";
-// import App from "./App.jsx";
-// import ResultPage from "./components/ResultPage.jsx";
-// import ExamCatalogPage from "./components/ExamCatalogPage.jsx";
-// import ReviewFaqPage from "./pages/ReviewFaqPage.jsx";
-
-// import ProtectedRoute from "./routes/ProtectedRoute.jsx";
-// import { AuthProvider } from "./context/AuthContext.jsx";
-// import AuthModals from "./pages/AuthModals.jsx";
-
-// createRoot(document.getElementById("root")).render(
-//   <StrictMode>
-//       <BrowserRouter>
-//     <AuthProvider>
-
-//         {/* ✅ AUTH MODALS LIVE HERE */}
-//         <AuthModals />
-
-//         <Routes>
-          
-//           <Route path="/" element={<First />} />
-//           <Route path="/result-history" element={<ProtectedRoute><ResultHistory /></ProtectedRoute>} />
-// {/* 
-//           <Route
-//             path="/mock-tests"
-//             element={
-//               <ProtectedRoute>
-//                 <MockTestPage />
-//               </ProtectedRoute>
-//             }
-//           /> */}
-//          {/* <Route
-//   path="/result/:mockId"
-//   element={
-//     <ProtectedRoute>
-//       <ResultDetail />
-//     </ProtectedRoute>
-//   }
-// /> */}
-
-// <Route path="/mock-tests" element={<ExamCatalogPage />} />
-
-// <Route path="/mock-tests/imucet" element={<MockTestPage />} />
-
-// <Route path="/result/:resultId" element={<ResultPage />} />
-
-//           <Route
-//             path="/test"
-//             element={
-//               <ProtectedRoute>
-//                 <App />
-//               </ProtectedRoute>
-//             }
-//           />
-
-          
-//           <Route
-//   path="/result-stat"
-//   element={
-
-//       <ResultStat />
-    
-//   }
-// />
-
-
-// <Route path="/review-faq" element={<ReviewFaqPage />} />
-//         </Routes>
-
-//     </AuthProvider>
-//       </BrowserRouter>
-//   </StrictMode>
-// );
 
 // Programmatic service worker unregistration to prevent old cached assets/scripts blocking Razorpay
 if ("serviceWorker" in navigator) {
@@ -91,12 +10,13 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-import { StrictMode, lazy, Suspense } from "react";
+import { StrictMode, lazy, Suspense, useLayoutEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import "./index.css";
 import "./styles/institute-ui.css";
+import "./styles/mockx-app.css";
 
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
@@ -123,6 +43,61 @@ const V2_ROUTES = {
   loader: "/v2/loader",
 };
 
+
+function getPageClass(pathname) {
+  const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+  if (normalizedPath === "/v2/admin") return "mockx-page-admin-dashboard";
+  if (normalizedPath === "/v2/admin/institutes") return "mockx-page-admin-institutes";
+  if (normalizedPath.startsWith("/v2/admin/") || normalizedPath === "/admin" || normalizedPath.startsWith("/admin/")) return "mockx-admin-exempt";
+  if (pathname === "/v2") return "mockx-page-home";
+  if (pathname === "/v2/test") return "mockx-page-exam";
+  if (pathname.startsWith("/v2/mock-tests/")) return "mockx-page-mock-detail";
+  if (pathname === "/v2/mock-tests") return "mockx-page-catalog";
+  if (pathname.startsWith("/v2/result/")) return "mockx-page-result";
+  if (pathname === "/v2/result-history") return "mockx-page-history";
+  if (pathname === "/v2/result-stat") return "mockx-page-analytics";
+  if (pathname === "/v2/institute/login") return "mockx-page-institute-login";
+  if (pathname === "/v2/institute/dashboard") return "mockx-page-institute-admin";
+  if (pathname === "/v2/institute/student/dashboard") return "mockx-page-student-portal";
+  if (pathname === "/v2/review-faq") return "mockx-page-help";
+  return "mockx-page-generic";
+}
+
+function RouteMotion({ children, routeKey, enabled }) {
+  const pageRef = useRef(null);
+  const shouldAnimate = enabled && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  useLayoutEffect(() => {
+    if (!shouldAnimate || !pageRef.current) return undefined;
+    let context;
+    let cancelled = false;
+    import("gsap").then(({ gsap }) => {
+      if (cancelled || !pageRef.current) return;
+      context = gsap.context(() => {
+        const headings = pageRef.current.querySelectorAll("h1");
+        if (headings.length) gsap.fromTo(headings, { autoAlpha: 0, y: 10 }, {
+          autoAlpha: 1, y: 0, duration: 0.36, stagger: 0.045, ease: "power2.out",
+          clearProps: "opacity,visibility,transform",
+        });
+        const cards = pageRef.current.querySelectorAll(".inst-card");
+        if (cards.length) gsap.fromTo(cards, { autoAlpha: 0, y: 14 }, {
+          autoAlpha: 1, y: 0, duration: 0.38, stagger: 0.055, delay: 0.08,
+          ease: "power2.out", clearProps: "opacity,visibility,transform",
+        });
+      }, pageRef);
+    }).catch(() => {});
+    return () => {
+      cancelled = true;
+      context?.revert();
+    };
+  }, [shouldAnimate, routeKey]);
+
+  if (!shouldAnimate) return children;
+  return (
+    <div ref={pageRef} key={routeKey} className="mockx-route-motion">
+      {children}
+    </div>
+  );
+}
 /* ---------------- LAZY LOADED PAGES ---------------- */
 
 // Landing / light pages
@@ -155,11 +130,15 @@ const App = lazy(() => import("./App.jsx")); // Test engine
 // the ErrorBoundary resets itself automatically, instead of staying stuck!
 const AppRoutes = () => {
   const location = useLocation();
+  const pageClass = getPageClass(location.pathname);
+  const motionEnabled = pageClass !== "mockx-admin-exempt" && pageClass !== "mockx-page-exam";
 
   return (
-    <ErrorBoundary key={location.pathname}>
+    <div className={"mockx-app " + pageClass}>
+      <ErrorBoundary key={location.pathname}>
       <Suspense fallback={<Loader />}>
-        <Routes>
+        <RouteMotion routeKey={location.pathname} enabled={motionEnabled}>
+          <Routes>
           <Route path="/" element={<Navigate to={V2_ROUTES.home} replace />} />
           <Route path="/mock-tests" element={<Navigate to={V2_ROUTES.mockTests} replace />} />
           <Route path="/mock-tests/:examId" element={<Navigate to={location.pathname.replace("/mock-tests", V2_ROUTES.mockTests)} replace />} />
@@ -276,9 +255,11 @@ const AppRoutes = () => {
           {/* ⏳ ROUTE TO VIEW LOADER DIRECTLY */}
           <Route path="/v2/loader" element={<Loader />} />
           <Route path="*" element={<Navigate to={V2_ROUTES.home} replace />} />
-        </Routes>
+          </Routes>
+        </RouteMotion>
       </Suspense>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </div>
   );
 };
 

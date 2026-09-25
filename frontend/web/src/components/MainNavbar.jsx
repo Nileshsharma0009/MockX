@@ -1,159 +1,78 @@
 import React, { useState } from "react";
-import { User, LogOut, Shield, Menu, X } from "lucide-react";
+import { User, LogOut, Shield, Menu, X, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import NotificationBell from "./NotificationInbox";
 
-const MainNavbar = ({ desktopLinks, setShowLogin }) => {
-    const navigate = useNavigate();
-    const { user, logout } = useAuth();
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const MainNavbar = ({ desktopLinks = [], setShowLogin }) => {
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    // Dynamic lists to include Dashboard for admin users and Institutes link
-    const finalDesktopLinks = [...desktopLinks];
-    if (user && user.role === "SUPER_ADMIN" && !finalDesktopLinks.includes("Dashboard")) {
-        finalDesktopLinks.push("Dashboard");
+  const links = [...desktopLinks];
+  if (!links.includes("Institutes")) links.push("Institutes");
+  if (user?.role === "SUPER_ADMIN" && !links.includes("Dashboard")) links.push("Dashboard");
+
+  const handleNavClick = (item) => {
+    setIsMobileMenuOpen(false);
+    switch (item) {
+      case "Home": navigate("/v2"); break;
+      case "Practice": user ? navigate("/v2/mock-tests") : setShowLogin?.(true); break;
+      case "Results": user ? navigate("/v2/result-history") : setShowLogin?.(true); break;
+      case "Help": navigate("/v2/review-faq"); break;
+      case "Institutes":
+        if (user?.role === "INSTITUTE_ADMIN") navigate("/v2/institute/dashboard");
+        else if (user?.role === "STUDENT") navigate("/v2/institute/student/dashboard");
+        else if (user?.role === "SUPER_ADMIN") navigate("/v2/admin/institutes");
+        else navigate("/v2/institute/login");
+        break;
+      case "Dashboard": navigate("/v2/admin"); break;
+      default: break;
     }
-    if (!finalDesktopLinks.includes("Institutes")) {
-        finalDesktopLinks.push("Institutes");
-    }
+  };
 
-    const mobileLinks = ["Home", "Practice", "Institutes", "Ai-Analyzer", "Results", "Help"];
-    const finalMobileLinks = [...mobileLinks];
-    if (user && user.role === "SUPER_ADMIN" && !finalMobileLinks.includes("Dashboard")) {
-        finalMobileLinks.push("Dashboard");
-    }
+  return (
+    <header className="landing-header mockx-site-header">
+      <nav className="landing-nav mockx-site-header__wrap" aria-label="Main navigation">
+        <div className="landing-nav-inner mockx-site-header__inner">
+          <div className="landing-brand-group">
+            <button className="landing-menu-button" type="button" onClick={() => setIsMobileMenuOpen((open) => !open)} aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"} aria-expanded={isMobileMenuOpen}>
+              {isMobileMenuOpen ? <X size={21} /> : <Menu size={21} />}
+            </button>
+            <button className="landing-brand mockx-site-brand" type="button" onClick={() => navigate("/v2")} aria-label="MockX home">
 
-    const handleNavClick = (item) => {
-        setIsMobileMenuOpen(false); // Close menu on click
-        switch (item) {
-            case "Home":
-                navigate("/v2");
-                break;
-            case "Practice":
-                if (!user) {
-                    if (setShowLogin) setShowLogin(true);
-                } else {
-                    navigate("/v2/mock-tests");
-                }
-                break;
-            case "Institutes":
-                if (user?.role === "INSTITUTE_ADMIN") {
-                    navigate("/v2/institute/dashboard");
-                } else if (user?.role === "STUDENT") {
-                    navigate("/v2/institute/student/dashboard");
-                } else if (user?.role === "SUPER_ADMIN") {
-                    navigate("/v2/admin/institutes");
-                } else {
-                    navigate("/v2/institute/login");
-                }
-                break;
-            case "Ai-Analyzer":
-                if (!user) {
-                    if (setShowLogin) setShowLogin(true);
-                } else {
-                    navigate("/v2/result-stat");
-                }
-                break;
-            case "Results":
-                if (!user) {
-                    if (setShowLogin) setShowLogin(true);
-                } else {
-                    navigate("/v2/result-history");
-                }
-                break;
-            case "Help":
-                navigate("/v2/review-faq");
-                break;
-            case "Dashboard":
-                navigate("/v2/admin");
-                break;
-            default:
-                break;
-        }
-    };
+              <span><strong>MockX</strong>
+              {/* <small>MOCK-TEST PLATFORM</small> */}
+              </span>
+            </button>
+          </div>
 
-    return (
-        <header className="py-4 px-4 md:px-12 relative z-20">
-            <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-md">
+          <div className="landing-desktop-links">
+            {links.map((item) => <button key={item} type="button" onClick={() => handleNavClick(item)}>{item}</button>)}
+          </div>
 
-                {/* LEFT: Mobile Menu Button & Logo */}
-                <div className="flex items-center gap-3">
-                    <button
-                        className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-
-                    <div className="cursor-pointer" onClick={() => navigate("/v2")}>
-                        <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
-                        <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">IMUCET • Mock Tests</p>
-                    </div>
-                </div>
-
-                {/* CENTER: Desktop Navigation (Specific to Page) */}
-                <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-                    {finalDesktopLinks.map((item) => (
-                        <button
-                            key={item}
-                            onClick={() => handleNavClick(item)}
-                            className="hover:text-sky-600 transition duration-200"
-                        >
-                            {item}
-                        </button>
-                    ))}
-                </div>
-
-                {/* RIGHT: User Profile / Login */}
-                <div className="flex items-center gap-3">
-                    {!user ? (
-                        <button
-                            onClick={() => setShowLogin && setShowLogin(true)}
-                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-sm font-semibold shadow hover:shadow-lg hover:scale-105 transition"
-                        >
-                            <User className="w-4 h-4" /> Login
-                        </button>
-                    ) : (
-                        <div className="flex items-center gap-3">
-                            <NotificationBell />
-                            {user.role === "SUPER_ADMIN" && <Shield className="w-4 h-4 text-indigo-600" />}
-                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100">
-                                <User className="w-4 h-4 text-gray-600" />
-                                <span className="text-sm font-medium text-gray-800">{user.name}</span>
-                            </div>
-                            <LogOut
-                                onClick={logout}
-                                className="w-5 h-5 cursor-pointer text-red-500 hover:text-red-600 transition"
-                                title="Logout"
-                            />
-                        </div>
-                    )}
-                </div>
-            </nav>
-
-            {/* MOBILE NAVIGATION DROPDOWN (Unified) */}
-            {isMobileMenuOpen && (
-                <div className="absolute left-0 right-0 top-full z-50 md:hidden px-4">
-                    {/* Backdrop to close when clicking outside could be added here if needed, 
-               but for now relying on menu item click or toggle button */}
-                    <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2 mt-2">
-                        {finalMobileLinks.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => handleNavClick(item)}
-                                className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition duration-200 flex items-center justify-between group"
-                            >
-                                <span>{item}</span>
-                                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">→</span>
-                            </button>
-                        ))}
-                    </div>
-                </div>
+          <div className="landing-nav-actions">
+            {!user ? (
+              <button type="button" onClick={() => setShowLogin?.(true)} className="landing-nav-cta">Log in <ArrowUpRight size={15} /></button>
+            ) : (
+              <div className="landing-user-actions">
+                <NotificationBell />
+                {user.role === "SUPER_ADMIN" && <Shield className="landing-admin-mark" size={17} aria-label="Super admin" />}
+                <span className="landing-user-name"><User size={15} />{user.name}</span>
+                <button type="button" onClick={logout} className="landing-logout" aria-label="Log out" title="Log out"><LogOut size={17} /></button>
+              </div>
             )}
-        </header>
-    );
+          </div>
+        </div>
+
+        {isMobileMenuOpen && (
+          <div className="landing-mobile-menu">
+            {links.map((item) => <button key={item} type="button" onClick={() => handleNavClick(item)}>{item}<ArrowUpRight size={15} /></button>)}
+          </div>
+        )}
+      </nav>
+    </header>
+  );
 };
 
 export default MainNavbar;

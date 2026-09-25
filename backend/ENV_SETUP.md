@@ -30,7 +30,7 @@ The server listens on `PORT`, defaulting to `10000`. The frontend Vite server de
 | `PAYMENTS_ENABLED` | No | Backend switch for creating new checkout orders. Defaults to disabled unless exactly `true`. It does not grant entitlement; prior purchases remain usable. |
 | `PAYMENT_PRODUCT_ID` | When payments are enabled | The single purchasable product ID. It must match the exam/bundle identifier used by mocks. |
 | `PAYMENT_PRODUCT_NAME` | When payments are enabled | Display name for the configured product. |
-| `PAYMENT_PRODUCT_PRICE` | When payments are enabled | Server-side price in the configured currency's major units. |
+| `PAYMENT_PRODUCT_PRICE` | When payments are enabled | Server-side price in the configured currency's major units. If omitted, the backend accepts the legacy `PRICE_<NORMALIZED_PRODUCT_ID>` key (for example, product ID `mht-cet` maps to `PRICE_MHT_CET`). |
 | `PAYMENT_CURRENCY` | When payments are enabled | Three-letter ISO currency code used for order creation and verification. |
 | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` | When payments are enabled | Backend Razorpay credentials. Use test credentials in development/staging and live credentials only in production. |
 | `RAZORPAY_WEBHOOK_SECRET` | When using the webhook | Required to authenticate webhook events; unsigned webhook processing is rejected. |

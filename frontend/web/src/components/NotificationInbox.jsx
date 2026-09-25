@@ -158,12 +158,15 @@ export default function NotificationBell() {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="notification-root relative" ref={dropdownRef}>
       {/* Bell Trigger Icon */}
       <button
         onClick={handleToggle}
-        className="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-all duration-200 active:scale-95"
+        className="notification-trigger relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-all duration-200 active:scale-95"
         title="Notifications"
+        aria-label={unreadCount ? `Notifications, ${unreadCount} unread` : "Notifications"}
+        aria-expanded={isOpen}
+        aria-haspopup="dialog"
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
@@ -175,9 +178,9 @@ export default function NotificationBell() {
 
       {/* Dropdown Box */}
       {isOpen && (
-        <div className="absolute right-0 mt-3 w-80 sm:w-96 bg-white border border-slate-200 rounded-3xl shadow-2xl z-50 overflow-hidden animate-in fade-in-50 zoom-in-95 duration-200 origin-top-right">
+        <div className="notification-dropdown absolute right-0 mt-3 bg-white z-50 overflow-hidden animate-in fade-in-50 zoom-in-95 duration-200 origin-top-right" role="dialog" aria-label="Notifications">
           {/* Header */}
-          <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+          <div className="notification-dropdown-header px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-sm text-slate-800">Inbox Notifications</span>
               {unreadCount > 0 && (
@@ -197,7 +200,7 @@ export default function NotificationBell() {
           </div>
 
           {/* List Content */}
-          <div className="max-h-[360px] overflow-y-auto divide-y divide-slate-100">
+          <div className="notification-dropdown-list max-h-[360px] overflow-y-auto divide-y divide-slate-100">
             {loading ? (
               <div className="flex flex-col items-center justify-center py-16 gap-2">
                 <Loader2 className="w-6 h-6 text-indigo-600 animate-spin" />
@@ -213,15 +216,15 @@ export default function NotificationBell() {
               </div>
             ) : (
               notifications.map((notif) => (
-                <div
+                <article
                   key={notif._id}
-                  className={`p-4 flex gap-3 hover:bg-slate-50/50 transition-colors ${
-                    !notif.isRead ? "bg-indigo-50/10" : ""
+                  className={`notification-item p-4 flex gap-3 hover:bg-slate-50/50 transition-colors ${
+                    !notif.isRead ? "is-unread bg-indigo-50/10" : "is-read"
                   }`}
                 >
                   {getNotificationIcon(notif.type)}
                   
-                  <div className="flex-grow space-y-1">
+                  <div className="notification-content flex-grow space-y-1">
                     <div className="flex items-start justify-between gap-2">
                       <h4 className={`text-xs font-extrabold text-slate-900 leading-tight ${!notif.isRead ? "font-black" : ""}`}>
                         {notif.title}
@@ -244,7 +247,7 @@ export default function NotificationBell() {
                       <Check className="w-3.5 h-3.5" />
                     </button>
                   )}
-                </div>
+                </article>
               ))
             )}
           </div>

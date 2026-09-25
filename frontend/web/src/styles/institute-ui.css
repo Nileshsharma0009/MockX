@@ -289,3 +289,55 @@
     line-height: 0.9rem;
   }
 }
+.landing-hero {
+  width: 100%;
+}
+
+.landing-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 60px;
+}
+
+.landing-hero-copy {
+  min-width: 0;
+}
+
+.landing-hero-art {
+  min-width: 0;
+  margin: 0;
+}
+
+.landing-product-art {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-product-art img {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+.landing-product-art figcaption {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.institute-dashboard-grid{
+    clip-path: polygon(
+    10% 0,
+    100% 0,
+    100% 85%,
+    90% 100%,
+    0 100%,
+    0 15%
+  );
+}

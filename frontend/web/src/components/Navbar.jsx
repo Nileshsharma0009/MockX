@@ -17,9 +17,9 @@ export default function Navbar({ onToggleSidebar }) {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="py-4 px-4 md:px-12">
-        <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-4 md:px-6 py-3 shadow-md">
+    <header className="mockx-site-header fixed inset-x-0 top-0 z-50">
+      <div className="mockx-site-header__wrap py-4 px-4 md:px-12">
+        <nav className="exam-header-inner mockx-site-header__inner flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/70 border border-gray-200 backdrop-blur-xl px-4 md:px-6 py-3 shadow-md">
           {/* LEFT: hamburger + logo */}
           <div className="flex items-center gap-3">
             <button
@@ -30,11 +30,10 @@ export default function Navbar({ onToggleSidebar }) {
 
             </button>
 
-            <div className="flex items-center gap-2 ml-1">
-              <span className="text-2xl"></span>
+            <div className="mockx-site-brand flex items-center gap-2 ml-1">
               <div className="flex flex-col leading-tight">
-                <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gray-500 hidden sm:block truncate max-w-[200px]">
+                <span className="mockx-site-brand-name">MockX</span>
+                <span className="mockx-site-brand-detail hidden sm:block truncate max-w-[200px]">
                   {state.exam?.title || (state.exam?.exam ? `${state.exam.exam.toUpperCase()} • Mock Test` : "IMUCET • Mock Test")}
                 </span>
               </div>
@@ -42,7 +41,7 @@ export default function Navbar({ onToggleSidebar }) {
           </div>
 
           {/* CENTER: dynamic section toggles */}
-          <div className="flex items-center gap-2 sm:gap-3 bg-slate-100/80 rounded-full px-2 py-1 shadow-sm overflow-x-auto max-w-[50vw]">
+          <div className="exam-section-tabs flex items-center gap-2 sm:gap-3 bg-slate-100/80 rounded-full px-2 py-1 shadow-sm overflow-x-auto max-w-[50vw]">
             {(state.sections && state.sections.length > 0
               ? state.sections
               : [
@@ -68,7 +67,7 @@ export default function Navbar({ onToggleSidebar }) {
           </div>
 
           {/* RIGHT: fullscreen + timer */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="exam-header-actions flex items-center gap-3 sm:gap-4">
             <button
               onClick={enterFullscreen}
               className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-[#5c4d7d] hover:bg-[#43325f] text-white text-xs md:text-sm font-semibold transition"
