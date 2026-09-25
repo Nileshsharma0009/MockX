@@ -1,223 +1,209 @@
-# MockX — Enterprise Mock Exam & Assessment Platform
+# MockX — Mock Exams and Institute Assessments
 
-Welcome to the **MockX** developer portal. MockX is a high-performance, secure, and highly scalable mock testing and examination software platform. Designed with advanced analytics, interactive AI-powered coaching (RAG/Gemini), real-time leaderboards, automated evaluation, and secure payment processing, MockX offers a complete, turn-key solution for competitive examinations (including specialized frameworks like the IMU-CET).
+MockX is a full-stack platform for timed exam practice, result review, and institute-managed assessments. Students can practise with available mocks, review performance, and continue their preparation. Institutes can manage learners, private question banks, custom exams, assignments, and batch-level reports. Platform administrators manage institutes and platform operations.
 
----
+## Platform capabilities
 
-## 1. Project Description
+### For students
 
-MockX is built as a decoupled, multi-tier application comprising a robust **Express/Node.js REST API backend** and a responsive **Modern Web frontend**. 
+- Browse available mock tests and see backend-configured pricing where checkout is enabled.
+- Take timed tests with section and question navigation.
+- Save answer progress during an attempt and restore a draft against question codes.
+- Submit an attempt for server-side validation and scoring; the server applies the configured mock scoring rules.
+- Review result history and performance summaries.
+- Receive in-app notifications about account and payment events.
 
-### Core Features
+### For institutes
 
-*   **Adaptive Testing Engine**: Dynamically loads exams, records interactive test attempts, monitors elapsed durations, manages attempt states, and enforces testing constraints (e.g., limits, timeouts).
-*   **AI-Enhanced Insights**: Features built-in integration with Google Gemini and RAG (Retrieval-Augmented Generation) chat systems, utilizing an on-demand knowledge base (`imucetKnowledge.base.js`) to provide candidates with deep conceptual feedback.
-*   **Configurable Payments Ecosystem**: Built with modular payment gateways, dynamic toggle capabilities (`paymentToggle.js`), and manual management guides to scale monetization paths effortlessly.
-*   **Result Normalization & Analytics Engine**: Converts raw answers into analytical reports, grades responses, flags performance bottlenecks, and pushes scores directly to real-time Leaderboards.
-*   **Seeding & Migration Utilities**: Comprehensive tooling to populate test items, subjects, and complete mock configurations via structured configuration frameworks.
+- Manage enrolled students, batches, and institute admins.
+- Keep question banks private to the owning institute; organize questions by bank, subject, and topic.
+- Build custom mock tests with sections, duration, and marking rules using the shared exam engine.
+- Assign tests to an institute or a target batch and set an availability window.
+- Review analytics and student results by batch and mock.
+- Export question papers and result reports as formatted A4 PDFs; question bank exports can optionally include correct answers.
 
----
+### For platform administrators
 
-## 2. Codebase Directory Architecture
+- Manage institutes through the platform administration pages.
+- Review transaction and recovery information, registered users, and notification logs.
+- Use the payment recovery Copilot panel for supported operational questions.
+- Use role-protected routes for platform administration.
 
-Below is an overview of the structural layout of the MockX repository. It highlights the logical separation between the server business logic, web clients, database schemas, and external helper utilities.
+### Platform safeguards and recent UI improvements
 
-```directory
-MockX/
-├── backend/                             # Express REST API Server
-│   ├── src/
-│   │   ├── config/                      # Database, token, and exam configurations
-│   │   │   ├── db.js                    # Database driver entrypoint (MongoDB)
-│   │   │   ├── examConfig.js            # Global rules and limits for exam templates
-│   │   │   └── token.js                 # JWT secret & expiry configurations
-│   │   ├── controllers/                 # Express Request/Response orchestrators
-│   │   │   ├── ai.controller.js         # Handles AI-assisted analysis and query inputs
-│   │   │   ├── attempt.controller.js    # Registers test session initializations/updates
-│   │   │   ├── auth.controller.js       # Admin & Student authentication lifecycles
-│   │   │   ├── leaderboard.controller.js# Computes and displays absolute and relative rankings
-│   │   │   ├── mock.controller.js       # CRUD operations for Mock templates
-│   │   │   ├── payment.controller.js    # Monitors transaction callbacks and invoices
-│   │   │   ├── question.controller.js   # Question bank administrative controller
-│   │   │   ├── result.controller.js     # Calculates metrics, aggregates scoring metrics
-│   │   │   └── test.controller.js       # Active test phase processing and evaluation logic
-│   │   ├── middleware/                  # HTTP Request processing chain
-│   │   │   ├── auth.middleware.js       # Enforces session token validity 
-│   │   │   └── optionalAuth.middleware.js# Non-blocking context resolver for public routes
-│   │   ├── models/                      # MongoDB Data Schemas (Mongoose)
-│   │   │   ├── mock.model.js            # Exam profiles, rulesets, and pricing
-│   │   │   ├── question.model.js        # Multi-choice format, options, keys, and tags
-│   │   │   ├── result.model.js          # Calculated outcomes, score weights, subject metrics
-│   │   │   ├── testAttempt.model.js     # State preservation for ongoing/unfinished tests
-│   │   │   └── user.model.js            # User accounts, payment histories, privileges
-│   │   ├── routes/                      # API Endpoint mappings
-│   │   │   ├── ai.routes.js             # Route endpoints: AI evaluations, prompt channels
-│   │   │   ├── auth.routes.js           # Route endpoints: Signup, login, status
-│   │   │   ├── mock.routes.js           # Route endpoints: Mock templates management
-│   │   │   ├── payment.routes.js        # Route endpoints: Checkouts, webhooks
-│   │   │   ├── question.routes.js       # Route endpoints: Question bank queries
-│   │   │   ├── result.routes.js         # Route endpoints: Analytics & score retrievals
-│   │   │   └── test.routes.js           # Route endpoints: Active test submissions
-│   │   ├── seed/                        # Base data & configuration seeds
-│   │   │   ├── debug_ids.cjs            # Mock and Question ID references for consistency
-│   │   │   ├── index.js                 # Orchestrates systematic seeding actions
-│   │   │   └── mocks.config.js          # Predefined structural targets for test instances
-│   │   ├── services/                    # Autonomous Domain Services
-│   │   │   ├── aiAnalyzer.service.js    # Processes result objects into LLM prompt templates
-│   │   │   ├── emailService.js          # Transactional mail delivery service
-│   │   │   ├── gemini.service.js        # Google Gemini integration driver
-│   │   │   ├── imucetKnowledge.base.js  # Curated contextual engine for semantic search (RAG)
-│   │   │   └── ragChat.service.js       # Evaluates context-aware user inputs
-│   │   └── utils/                       # Standalone utility modules
-│   │       ├── normalizeResult.js       # Normalizes results data sets across variants
-│   │       └── paymentToggle.js         # Runtime toggle mechanisms for checking paywalls
-│   ├── scripts/
-│   │   └── seedQuestions.js             # Parses raw questions into DB formats
-│   ├── env.template                     # Template structure for backend environments
-│   ├── package.json                     # Server runtime dependencies & execution scripts
-│   ├── seedMocks.js                     # Root execution script for system Mock database seeding
-│   └── work.js                          # Temporary utility execution buffer
-├── frontend/                            # Client-Side Application Space
-│   └── web/
-│       ├── public/                      # Static client assets and offline fallbacks
-│       │   ├── Nimu5.json               # Local dataset fallback mock
-│       │   └── answers/                 # Solution key directories
-│       ├── analysis/
-│       │   └── analysisEngine.js        # Browser-side metric visualizer and parsing logic
-│       ├── eslint.config.js             # Linter configurations
-│       ├── index.html                   # Single-Page Application entry target
-│       ├── package.json                 # Web tooling & component dependencies
-│       └── postcss.config.cjs           # PostCSS compiler options for Tailwind CSS engine
-├── DEPLOYMENT_GUIDE.md                  # Infrastructure and Cloud Deployment processes
-├── MANAGE_PAYMENTS.md                   # Operator runbook for managing transactions
-├── PRODUCTION_CHECKLIST.md              # Final safety, optimization, and security audits
-└── SETUP_GUIDE.md                       # Comprehensive environment initialization manual
+- Authentication responses use a safe user representation, public registration cannot assign platform-admin privileges, and suspended accounts are rejected at login.
+- Result access and final exam submission are authorized on the backend.
+- Exam submission rechecks access, assignment and availability rules, validates question codes against the selected mock, calculates marks on the server, and protects finalization from duplicate requests.
+- Payment checkout is controlled by the backend `PAYMENTS_ENABLED` setting. Disabling new payments does not grant paid access or invalidate existing purchases; free mocks remain available.
+- Backend origins, frontend API URLs, and the optional keep-alive ping are configured through environment variables.
+- The landing page, navigation, exam views, result pages, institute dashboards, and administration screens have responsive layouts and a consistent visual theme. The landing page includes an animated preparation comparison; the admin dashboard is split into focused components, with a responsive Copilot panel.
+
+## How MockX works
+
+### Application architecture
+
+```mermaid
+flowchart LR
+  Learner[Student or institute user] --> Browser[React web application]
+  Admin[Platform administrator] --> Browser
+  Browser -->|HTTPS JSON requests| API[Node.js and Express API]
+  Browser <-->|Live update events| Socket[Socket.IO service]
+  Socket --- API
+  API --> Auth[Authentication and role checks]
+  Auth --> Controllers[Route controllers and domain services]
+  Controllers --> DB[(MongoDB through Mongoose)]
+  Controllers -->|Configured checkout and signature verification| Razorpay[Razorpay]
+  Controllers --> Copilot[Payment recovery and admin Copilot services]
 ```
 
----
+The React single-page application calls the Express API using the configured API base URL. Express applies authentication and role checks before protected controller actions. Controllers and services read or update MongoDB through Mongoose. Socket.IO carries supported live-update events. Razorpay is used for checkout when payments are configured and enabled.
 
-## 3. Architecture & Data Flow
+### Student exam and result flow
 
+```mermaid
+flowchart TD
+  A[Student opens mock catalog] --> B[Selects an available mock]
+  B --> C{Access allowed?}
+  C -->|Free or already entitled| D[Start or restore attempt]
+  C -->|Paid and not entitled| E{New payments enabled?}
+  E -->|Yes| F[Backend creates configured Razorpay order]
+  F --> G[Backend verifies payment before granting entitlement]
+  E -->|No| H[Checkout rejected; no paid entitlement granted]
+  G --> D
+  D --> I[Timed test with question-code answer draft and checkpoints]
+  I --> J[Student submits or timer expires]
+  J --> K[Server revalidates attempt, access, window, and question codes]
+  K --> L[Server calculates score using mock rules]
+  L --> M[One final result is stored]
+  M --> N[Student reviews result history and performance]
 ```
-┌──────────────┐         ┌───────────────┐         ┌─────────────────────────┐
-│              │  HTTPS  │               │  Mongoose │                         │
-│ Client SPA   │────────>│ Express API   │────────>│ MongoDB Database        │
-│ (Vite/React) │<────────│ (App Instance)│<────────│ (Users, Mocks, Results) │
-│              │   JSON  │               │         │                         │
-└──────────────┘         └───────┬───────┘         └─────────────────────────┘
-                                 │
-                                 ├─────────────────> Google Gemini API
-                                 │  (RAG / Vector Concept Lookup)
-                                 │
-                                 └─────────────────> Transaction Provider (Paywall)
+
+The browser keeps a mock-specific answer draft for recovery, while the backend remains authoritative for final access checks and scoring. The server protects final submission from duplicate requests and does not use client-supplied marks as the final score.
+
+### Institute workflow
+
+```mermaid
+flowchart LR
+  PlatformAdmin[Platform administrator] -->|Creates or manages| Institute[Institute]
+  InstituteAdmin[Institute admin] -->|Enrolls and organizes| Students[Students and batches]
+  InstituteAdmin -->|Creates and curates| Bank[Private question banks]
+  Bank --> Mock[Custom mock test]
+  InstituteAdmin -->|Assigns to all or a batch| Assignment[Test assignment and time window]
+  Students -->|Take assigned or available tests| Exam[Shared timed exam engine]
+  Assignment --> Exam
+  Exam --> Results[Stored results]
+  Results --> Reports[Batch and mock reports, analytics, A4 export]
 ```
 
-1. **Authentication Flow**: Users register/log in via `/api/auth`. Safe JSON Web Tokens (JWT) are signed and returned to authorize subsequent private requests (stored either in HttpOnly cookies or Authorization headers).
-2. **Taking an Exam**: 
-   * When an exam begins, `/api/tests/start` constructs a new, unique state-tracked token inside the `testAttempt` collection.
-   * Answers are continuously cached back to the server to prevent data loss in case of hardware or connection failures.
-   * Upon completion, `/api/tests/submit` executes grading sequences against `questions`, standardizes raw data using `normalizeResult.js`, creates permanent records in `results`, and removes temporary tracking contexts.
-3. **AI Concept Analysis**: The `ai.controller.js` parses the structural elements inside a user's graded `result` payload, requests localized insights from `imucetKnowledge.base.js`, and uses `gemini.service.js` to build a personalized performance improvement report.
+Question bank data is scoped to its institute. Institute dashboards organize students, assignments, analytics, and results within institute workflows.
 
----
+## Technology and source layout
 
-## 4. Development Environment Configuration
+- **Frontend:** React, Vite, React Router, Framer Motion, and GSAP.
+- **Backend:** Node.js, Express, REST endpoints, and Socket.IO.
+- **Database:** MongoDB with Mongoose models.
+- **Payments:** Razorpay integration with backend order creation and verification.
+- **Deployment shape:** a persistent Express/Socket.IO service and a separately deployed Vite frontend.
 
-To configure MockX locally, follow the guidelines below to set up your backend and frontend application spaces.
+```text
+backend/
+  src/
+    ai/             Admin and payment-recovery AI services
+    config/         Runtime, database, token, and payment configuration
+    controllers/    API request handlers
+    middleware/     Authentication, role, CSRF, and request protections
+    models/         Mongoose data models
+    routes/         Express route definitions
+    services/       Email and real-time services
+  test/             Node test-runner suites
 
-### Prerequisites
+frontend/web/
+  src/
+    api/            API clients and configured API base URL
+    components/     Shared navigation and product components
+    pages/          Learner, institute, and admin pages
+    routes/         Protected-route handling
+    styles/         Shared and page-level visual styles
+    utils/          PDF export and frontend utilities
+```
 
-*   **Node.js**: v18.x or above installed.
-*   **MongoDB**: A running local MongoDB community instance or a MongoDB Atlas cloud URI.
-*   **Package Managers**: `npm` (packaged default) or `yarn`.
+## Local development
 
----
+### Requirements
 
-### Step 1: Configure Backend Environment Variables
+- Node.js compatible with the project dependencies.
+- MongoDB locally or a MongoDB Atlas database.
+- npm.
 
-Navigate to your `/backend` directory and create an `.env` file using the `env.template` model:
+### Backend
 
-```bash
+In PowerShell:
+
+```powershell
 cd backend
-cp env.template .env
-```
-
-Open the `.env` file and customize the following environment keys:
-
-```ini
-# Application Configurations
-PORT=10000
-NODE_ENV=development
-
-# Database Configurations
-MONGODB_URL=mongodb://localhost:27017/mockx
-
-# Cryptographic Tokens
-JWT_SECRET=your_jwt_strong_secret_key
-JWT_EXPIRE=30d
-
-# Transaction Gateways (Dynamic Configurations)
-PAYMENT_GATEWAY_API_KEY=your_payment_provider_key
-PAYMENT_MODE=sandbox # 'sandbox' or 'production'
-BYPASS_PAYMENTS=true # Toggle to true for development/local testing
-
-# AI Providers
-GEMINI_API_KEY=your_google_gemini_api_key_here
-
-# Transporter Mail Setup (Optional)
-EMAIL_SERVICE=SendGrid
-EMAIL_USERNAME=your_smtp_username
-EMAIL_PASSWORD=your_smtp_password
-EMAIL_FROM=noreply@mockx.com
-```
-
----
-
-### Step 2: Install Backend Dependencies & Populate Seed Data
-
-Run development installations and seed initial questions and mock exams to populate your MongoDB instance:
-
-```bash
-# Install packages
 npm install
-
-# Run migration to seed basic mock configurations
-node seedMocks.js
-
-# Load questions into the database
-node src/scripts/seedQuestions.js
+Copy-Item env.template .env
 ```
 
-To run your API server in watch-mode:
+Set the required development values in `backend/.env`, at minimum `MONGODB_URL` and a strong `JWT_SECRET` (at least 32 bytes), then start the API:
 
-```bash
+```powershell
 npm run dev
-# Server initiates on http://localhost:10000
 ```
 
----
+The backend defaults to port `10000`.
 
-### Step 3: Configure and Initialize Frontend
+### Frontend
 
-Open a new terminal session, navigate to `/frontend/web`, install the front-end toolchain dependencies, and launch the development environment:
+Open another terminal:
 
-```bash
+```powershell
 cd frontend/web
-
-# Install packages
 npm install
-
-# Run client-side environment in developer mode
 npm run dev
 ```
-*The build toolchain (Vite) will launch your local web client environment, typically exposing the server at `http://localhost:5173`.*
 
----
+The Vite development server defaults to `http://localhost:5173`. In development, the frontend API client defaults to `http://localhost:10000` if `VITE_API_BASE` is not set.
 
-## 5. Operations & Developer Guides
+## Environment and deployment
 
-To ensure success across non-development environments, please consult the operational manuals provided in the root directory:
+Use `backend/env.template` as the backend environment reference. Do not commit `.env` files or put server secrets in frontend variables.
 
-*   **System Setup Details**: For advanced configurations or troubleshooting during initialization, refer to [SETUP_GUIDE.md](./SETUP_GUIDE.md).
-*   **Payment Controls**: Learn how to toggle, test, or restrict transaction frameworks using [MANAGE_PAYMENTS.md](./MANAGE_PAYMENTS.md).
-*   **Infrastructure Strategy**: For information on containers, cloud deployments, and configurations for continuous delivery, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md).
-*   **Launch Verifications**: To verify security, database performance, and token validation parameters prior to launch, review the [PRODUCTION_CHECKLIST.md](./PRODUCTION_CHECKLIST.md).
+| Variable | Where | Purpose |
+| --- | --- | --- |
+| `MONGODB_URL` | Backend | MongoDB connection string. |
+| `JWT_SECRET` | Backend | JWT signing secret; configure a unique strong value per environment. |
+| `PORT` | Backend | Host-provided port; defaults to `10000`. |
+| `NODE_ENV`, `APP_ENV` | Backend | Runtime and CORS environment behavior. |
+| `ALLOWED_ORIGINS` | Backend | Exact frontend origins allowed outside development. |
+| `FRONTEND_URL` | Backend | Frontend origin used in email links. |
+| `WEBSITE_URL` | Backend, optional | Enables periodic keep-alive pings only when explicitly configured. |
+| `PAYMENTS_ENABLED` | Backend | Enables or rejects creation of new payment orders. |
+| `PAYMENT_PRODUCT_ID`, `PAYMENT_PRODUCT_NAME`, `PAYMENT_PRODUCT_PRICE`, `PAYMENT_CURRENCY` | Backend | Server-side configuration for the current single purchasable product. |
+| `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET` | Backend | Razorpay credentials and webhook verification. |
+| `VITE_API_BASE` | Frontend | Backend base URL, without an `/api` suffix; required for production builds. |
+| `VITE_SITE_URL` | Frontend | Public site URL used by the deployment configuration. |
+| `VITE_RAZORPAY_KEY_ID` | Frontend | Public Razorpay key ID for the checkout client; never put a secret here. |
+
+Changing the frontend or backend domain should be handled through the corresponding environment values and deployment settings, rather than editing API URLs in application components. Use separate databases and credentials for development, staging, and production.
+
+See [backend environment setup](./backend/ENV_SETUP.md), the [deployment guide](./DEPLOYMENT_GUIDE.md), and the [production checklist](./PRODUCTION_CHECKLIST.md) for operational details.
+
+## Useful commands
+
+```powershell
+# Backend tests
+cd backend
+npm test
+
+# Frontend production build
+cd frontend/web
+npm run build
+```
+
+## Related guides
+
+- [Setup guide](./SETUP_GUIDE.md)
+- [Deployment guide](./DEPLOYMENT_GUIDE.md)
+- [Payment operations](./MANAGE_PAYMENTS.md)
+- [Production checklist](./PRODUCTION_CHECKLIST.md)
