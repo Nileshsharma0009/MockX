@@ -46,7 +46,28 @@ export default function AnalyticsSection({
       {/* 1. Student-wise Leaderboard */}
       {subTab === "student" && (
         <div className="inst-card border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
-          <table className="w-full text-left text-xs text-slate-600">
+          <div className="inst-analytics-student-cards" aria-label="Student performance leaderboard">
+            {studentAnalytics.map((student, index) => (
+              <article className="inst-analytics-student-card" key={student._id}>
+                <header className="inst-analytics-student-header">
+                  <span className="inst-analytics-rank">#{index + 1}</span>
+                  <div className="inst-analytics-identity">
+                    <h3>{student.name}</h3>
+                    <p>{student.email}</p>
+                  </div>
+                  <span className="inst-analytics-batch">{student.batch || "No batch"}</span>
+                </header>
+                <div className="inst-analytics-metrics">
+                  <div><span>Tests attempted</span><strong>{student.testsAttempted}</strong></div>
+                  <div><span>Average score</span><strong>{student.avgScore}</strong></div>
+                  <div><span>Best score</span><strong>{student.bestScore}</strong></div>
+                  <div><span>Accuracy</span><strong>{student.avgAccuracy}%</strong></div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="inst-analytics-student-table-scroll">
+            <table className="w-full text-left text-xs text-slate-600">
             <thead className="bg-slate-50 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
               <tr>
                 <th className="py-3.5 px-5">Rank</th>
@@ -92,6 +113,7 @@ export default function AnalyticsSection({
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 

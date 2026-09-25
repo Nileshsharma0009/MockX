@@ -433,7 +433,7 @@ export default function StudentsAndBatchesSection({
 
   {/* CREATE STUDENT MODAL */}
   {showAddStudentModal && (
-    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 backdrop-blur-sm">
+    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 ">
       <div className="inst-modal-panel border border-slate-200 rounded-3xl w-full max-w-md p-6 shadow-2xl relative bg-white">
         <button
           onClick={() => setShowAddStudentModal(false)}
@@ -559,7 +559,7 @@ export default function StudentsAndBatchesSection({
 
   {/* BULK CSV MODAL */}
   {showBulkStudentModal && (
-    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 backdrop-blur-sm">
+    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 ">
       <div className="inst-modal-panel border border-slate-200 rounded-3xl w-full max-w-lg p-6 shadow-2xl relative bg-white">
         <button
           onClick={() => setShowBulkStudentModal(false)}
@@ -611,7 +611,7 @@ export default function StudentsAndBatchesSection({
 
   {/* CREATE BATCH MODAL */}
   {showAddBatchModal && (
-    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 backdrop-blur-sm">
+    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 ">
       <div className="inst-modal-panel border border-slate-200 rounded-3xl w-full max-w-sm p-6 shadow-2xl relative bg-white">
         <button
           onClick={() => setShowAddBatchModal(false)}
@@ -677,7 +677,7 @@ export default function StudentsAndBatchesSection({
 
   {/* STUDENT PERFORMANCE MODAL */}
   {selectedStudentPerf && (
-    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn bg-slate-900/50 backdrop-blur-sm">
+    <div className="inst-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn  ">
       <div className="inst-modal-panel border border-slate-200 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative bg-white">
         <button
           onClick={() => setSelectedStudentPerf(null)}

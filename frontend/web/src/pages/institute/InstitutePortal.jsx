@@ -41,6 +41,7 @@ import CustomMocksSection from "./InstituteMocksSection";
 import TestAssignmentsSection from "./InstituteAssignmentsSection";
 import AnalyticsSection from "./InstituteAnalyticsSection";
 
+
 export default function InstitutePortal() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -260,34 +261,51 @@ export default function InstitutePortal() {
 
   return (
     <div className="institute-ui min-h-screen bg-slate-50 text-slate-300 font-momo font-style: italic flex flex-col md:flex-row">
-      <header className="inst-mobile-topbar md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-3">
-        <div className="flex min-w-0 items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-sm font-extrabold text-white">
-            {(institute.name || "I").charAt(0)}
-          </div>
-          <div className="min-w-0">
-            <p className="truncate text-sm font-bold text-slate-900">
-              {institute.name}
-            </p>
-            <p className="text-xs text-slate-500">Institute portal</p>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen((open) => !open)}
-          className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-700 shadow-sm"
-          aria-label={
-            mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
-          }
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
-        </button>
-      </header>
+   <header className="inst-mobile-topbar sticky top-0 z-30 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 md:hidden">
+  {/* Institute branding */}
+  <div className="flex min-w-0 items-center gap-2.5">
+    {institute.logo ? (
+      <img
+        src={institute.logo}
+        alt={institute.name}
+        className="h-9 w-9 shrink-0 rounded-lg border border-slate-200 bg-slate-100 object-cover"
+      />
+    ) : (
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-600 text-sm font-black text-white">
+        {institute.name.charAt(0)}
+      </div>
+    )}
+
+    <div className="min-w-0">
+      <h2 className="truncate text-sm font-bold text-slate-900">
+        {institute.name}
+      </h2>
+
+      <span className="text-[9px] font-medium text-slate-500">
+        {institute.code}
+      </span>
+    </div>
+  </div>
+
+  {/* Mobile menu */}
+  <button
+    type="button"
+    onClick={() => setMobileMenuOpen((open) => !open)}
+    className="ml-3 shrink-0 rounded-lg border border-slate-200 bg-white p-2 text-slate-700 shadow-sm"
+    aria-label={
+      mobileMenuOpen
+        ? "Close navigation menu"
+        : "Open navigation menu"
+    }
+    aria-expanded={mobileMenuOpen}
+  >
+    {mobileMenuOpen ? (
+      <X className="h-5 w-5" />
+    ) : (
+      <Menu className="h-5 w-5" />
+    )}
+  </button>
+</header>
 
       {mobileMenuOpen && (
         <button
@@ -304,6 +322,7 @@ export default function InstitutePortal() {
       >
         <div>
           {/* Institute Branding */}
+        
           <div className="flex items-center gap-3 mb-8 pb-5 border-b border-slate-200">
             {institute.logo ? (
               <img
@@ -317,7 +336,7 @@ export default function InstitutePortal() {
               </div>
             )}
             <div className="min-w-0">
-              <h2 className="font-extrabold text-sm text-slate-900 truncate">
+              <h2 className=" text-[9px] text-slate-900 truncate">
                 {institute.name}
               </h2>
               <span className="inline-block px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-[10px] font-mono font-bold mt-0.5">
@@ -399,9 +418,23 @@ export default function InstitutePortal() {
               </p>
             </div>
 {/*  */}
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+     <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+
   {/* Enrolled Students */}
-  <div className="group relative min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white p-2 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-500/10 sm:rounded-2xl sm:p-5 lg:p-6">
+  <div
+    className="
+      group relative min-w-0 overflow-hidden
+      border border-slate-200 bg-white
+      p-2
+      shadow-[5px_5px_0px_#12052b]
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:border-indigo-300
+      hover:shadow-[7px_7px_0px_#12052b]
+      sm:p-5 lg:p-6
+      [clip-path:polygon(8%_0,100%_0,100%_90%,92%_100%,0_100%,0_10%)]
+    "
+  >
     <div className="flex items-start justify-between gap-1">
       <div className="min-w-0">
         <p className="truncate text-[9px] font-medium uppercase tracking-wide text-slate-500 sm:text-xs">
@@ -413,49 +446,75 @@ export default function InstitutePortal() {
         </p>
       </div>
 
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-50 to-indigo-100 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg sm:h-11 sm:w-11 sm:rounded-2xl">
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-indigo-50 sm:h-11 sm:w-11">
         <Users className="h-3.5 w-3.5 text-indigo-600 sm:h-5 sm:w-5" />
       </div>
     </div>
 
     <div className="mt-2 flex min-w-0 items-center gap-1 sm:mt-4 sm:gap-2">
       <span className="h-1 w-1 shrink-0 rounded-full bg-indigo-500 sm:h-2 sm:w-2" />
-
       <p className="truncate text-[9px] font-medium text-slate-600 sm:text-sm">
         In {stats.batchesCount || 0} batches
       </p>
     </div>
   </div>
 
-  {/* Custom Mock Tests */}
-  <div className="group relative min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white p-2 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-500/10 sm:rounded-2xl sm:p-5 lg:p-6">
+
+  {/* Mock Tests */}
+  <div
+    className="
+      group relative min-w-0 overflow-hidden
+      border border-slate-200 bg-white
+      p-2
+      shadow-[5px_5px_0px_#12052b]
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:border-violet-300
+      hover:shadow-[7px_7px_0px_#12052b]
+      sm:p-5 lg:p-6
+      [clip-path:polygon(8%_0,100%_0,100%_90%,92%_100%,0_100%,0_10%)]
+    "
+  >
     <div className="flex items-start justify-between gap-1">
       <div className="min-w-0">
         <p className="truncate text-[9px] font-medium uppercase tracking-wide text-slate-500 sm:text-xs">
           Mock Tests
         </p>
 
-        <p className="mt-0.5 text-lg font-medium tracking-tight text-slate-900 sm:mt-3 sm:text-2xl">
+        <p className="mt-0.5 text-lg font-medium tracking-tight text-slate-900 sm:mt-1 sm:text-2xl">
           {stats.mocksCount || 0}
         </p>
       </div>
 
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-50 to-violet-100 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg sm:h-11 sm:w-11 sm:rounded-2xl">
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-violet-50 sm:h-11 sm:w-11">
         <FileText className="h-3.5 w-3.5 text-violet-600 sm:h-5 sm:w-5" />
       </div>
     </div>
 
     <div className="mt-2 flex min-w-0 items-center gap-1 sm:mt-4 sm:gap-2">
       <span className="h-1 w-1 shrink-0 rounded-full bg-violet-500 sm:h-2 sm:w-2" />
-
       <p className="truncate text-[9px] font-medium text-slate-600 sm:text-sm">
         {stats.activeAssignmentsCount || 0} active
       </p>
     </div>
   </div>
 
+
   {/* Total Attempts */}
-  <div className="group relative min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white p-2 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/10 sm:rounded-2xl sm:p-5 lg:p-6">
+  <div
+    className="
+      group relative min-w-0 overflow-hidden
+      border border-slate-200 bg-white
+      p-2
+      shadow-[5px_5px_0px_#12052b]
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:border-emerald-300
+      hover:shadow-[7px_7px_0px_#12052b]
+      sm:p-5 lg:p-6
+      [clip-path:polygon(8%_0,100%_0,100%_90%,92%_100%,0_100%,0_10%)]
+    "
+  >
     <div className="flex items-start justify-between gap-1">
       <div className="min-w-0">
         <p className="truncate text-[9px] font-medium uppercase tracking-wide text-slate-500 sm:text-xs">
@@ -467,22 +526,35 @@ export default function InstitutePortal() {
         </p>
       </div>
 
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-50 to-emerald-100 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg sm:h-11 sm:w-11 sm:rounded-2xl">
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-emerald-50 sm:h-11 sm:w-11">
         <Award className="h-3.5 w-3.5 text-emerald-600 sm:h-5 sm:w-5" />
       </div>
     </div>
 
     <div className="mt-2 flex min-w-0 items-center gap-1 sm:mt-4 sm:gap-2">
       <span className="h-1 w-1 shrink-0 rounded-full bg-emerald-500 sm:h-2 sm:w-2" />
-
       <p className="truncate text-[9px] font-medium text-slate-600 sm:text-sm">
         Completed submissions
       </p>
     </div>
   </div>
 
+
   {/* Average Accuracy */}
-  <div className="group relative min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white p-2 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl hover:shadow-amber-500/10 sm:rounded-2xl sm:p-5 lg:p-6">
+  <div
+    className="
+      group relative min-w-0 overflow-hidden
+      border border-slate-200 bg-white
+      p-2
+      shadow-[5px_5px_0px_#12052b]
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:border-amber-300
+      hover:shadow-[7px_7px_0px_#12052b]
+      sm:p-5 lg:p-6
+      [clip-path:polygon(8%_0,100%_0,100%_90%,92%_100%,0_100%,0_10%)]
+    "
+  >
     <div className="flex items-start justify-between gap-1">
       <div className="min-w-0">
         <p className="truncate text-[9px] font-medium uppercase tracking-wide text-slate-500 sm:text-xs">
@@ -494,7 +566,7 @@ export default function InstitutePortal() {
         </p>
       </div>
 
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber-50 to-amber-100 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg sm:h-11 sm:w-11 sm:rounded-2xl">
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-amber-50 sm:h-11 sm:w-11">
         <TrendingUp className="h-3.5 w-3.5 text-amber-600 sm:h-5 sm:w-5" />
       </div>
     </div>
@@ -507,6 +579,7 @@ export default function InstitutePortal() {
       </p>
     </div>
   </div>
+
 </div>
 
             {/* Quick Actions Shortcuts */}

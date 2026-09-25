@@ -137,8 +137,8 @@ export default function SuperAdminInstitutes() {
   return (
     <div className="institute-ui min-h-screen  font :momo font-style: italic bg-slate-50 text-slate-800 pb-16">
       {/* Top Navbar */}
-     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-md">
-  <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-3 sm:h-16 sm:px-6 lg:px-8">
+     <header className="mockx-site-header sticky top-0 z-30">
+  <div className="mockx-site-header__inner mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-3 sm:h-16 sm:px-6 lg:px-8">
 
     {/* =====================================================
         BRAND
@@ -146,19 +146,21 @@ export default function SuperAdminInstitutes() {
     <div className="flex min-w-0 items-center gap-2 sm:gap-3">
 
       {/* MX Logo */}
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-600 text-[10px] font-medium text-white shadow-sm sm:h-10 sm:w-10 sm:rounded-xl sm:text-sm">
+      {/* <div className="mockx-site-brand-mark flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[10px] font-medium sm:h-10 sm:w-10 sm:rounded-xl sm:text-sm">
         MX
-      </div>
+      </div> */}
 
       {/* Title */}
       <div className="min-w-0">
         <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
-          <Shield className="h-3.5 w-3.5 shrink-0 text-indigo-600 sm:h-4 sm:w-4" />
 
-          <h1 className="truncate text-xs font-medium tracking-tight text-slate-900 sm:text-base sm:font-semibold">
+
+          {/* <h1 className="truncate text-[10px] font-medium tracking-tight text-slate-900  sm:font-semibold">
             MockX Super Admin
-          </h1>
-
+          </h1> */}
+<p className="truncate text-[14px]  tracking-tight text-slate-900 sm:text-sm sm:font-semibold">
+  MockX Super Admin
+</p>
           {/* Desktop badge */}
           <span className="hidden rounded-md border border-indigo-100 bg-indigo-50 px-1.5 py-0.5 text-[8px] uppercase tracking-wide text-indigo-700 sm:inline-flex sm:px-2 sm:text-[10px]">
             Platform administration
@@ -181,7 +183,7 @@ export default function SuperAdminInstitutes() {
     >
 
       {/* Admin Dashboard */}
-      <button
+      {/* <button
         type="button"
         onClick={() => navigate("/v2/admin")}
         className="inline-flex h-8 items-center justify-center gap-1 rounded-lg border border-slate-200 bg-white px-2 text-[9px] text-slate-700 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 sm:h-9 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:text-xs sm:font-medium"
@@ -191,7 +193,7 @@ export default function SuperAdminInstitutes() {
         <span className="hidden sm:inline">
           Admin Dashboard
         </span>
-      </button>
+      </button> */}
 
       {/* Institutes */}
       <button
@@ -374,12 +376,12 @@ export default function SuperAdminInstitutes() {
     /* =========================================================
        INSTITUTE DIRECTORY
     ========================================================= */
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-2 lg:grid-cols-4">
+    <div className="admin-institute-directory grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-2 lg:grid-cols-4">
 
       {filteredInstitutes.map((inst) => (
         <div
           key={inst._id}
-          className="inst-card group flex min-w-0 flex-col justify-between rounded-2xl border border-slate-200 p-4 shadow-sm transition-all hover:border-slate-300 sm:rounded-3xl sm:p-6"
+          className="admin-institute-card inst-card group flex min-w-0 flex-col justify-between rounded-2xl border border-slate-200 p-4 shadow-sm transition-all hover:border-slate-300 sm:rounded-3xl sm:p-6"
         >
           <div className="min-w-0">
 

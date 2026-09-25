@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { X, Book, CheckCircle } from "lucide-react";
 import { signupUser } from "../api/auth.api";
+import "../styles/auth-modal.css";
 
 const indianStates = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -13,7 +14,7 @@ const indianStates = [
 
 const FormInput = ({ id, label, type = "text", value, onChange, error }) => (
   <div className="mb-4">
-    <label className="block text-sm font-medium text-gray-700 mb-1">
+    <label className="block text-sm font-medium text-gray-700 mb-1 mockx-auth-label">
       {label}
     </label>
     <input
@@ -23,7 +24,7 @@ const FormInput = ({ id, label, type = "text", value, onChange, error }) => (
       value={value}
       onChange={onChange}
       autoComplete="off"
-      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 ${error ? "border-red-500" : "border-gray-300"
+      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 mockx-auth-input ${error ? "border-red-500" : "border-gray-300"
         }`}
       required
     />
@@ -112,14 +113,14 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 mockx-auth-overlay"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className="bg-white rounded-2xl w-full max-w-lg shadow-xl max-h-[90vh] flex flex-col"
+        className="bg-white rounded-2xl w-full max-w-lg shadow-xl max-h-[90vh] flex flex-col mockx-auth-panel"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-4 md:p-5 border-b bg-indigo-50 flex justify-between items-center shrink-0">
+        <div className="p-4 md:p-5 border-b bg-indigo-50 flex justify-between items-center shrink-0 mockx-auth-register-header">
           <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800">
             <Book className="text-indigo-600 w-6 h-6" /> Create Account
           </h2>
@@ -129,7 +130,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
         </div>
 
         {success ? (
-          <div className="p-8 text-center flex flex-col items-center justify-center flex-1">
+          <div className="p-8 text-center flex flex-col items-center justify-center flex-1 mockx-auth-success">
             <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
             <h3 className="text-2xl font-bold mb-2 text-gray-800">Registration Successful</h3>
             <p className="mb-6 text-gray-600 text-lg">
@@ -140,7 +141,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
                 onClose();
                 onOpenLogin?.();
               }}
-              className="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-semibold shadow-lg hover:bg-indigo-700 transition-all"
+              className="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-semibold shadow-lg hover:bg-indigo-700 transition-all mockx-auth-submit"
             >
               Login Now
             </button>
@@ -204,7 +205,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3.5 rounded-xl font-bold shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+              className="mt-2 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3.5 rounded-xl font-bold shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed mockx-auth-submit"
             >
               {loading ? "Creating Account..." : "Complete Registration"}
             </button>
@@ -217,7 +218,7 @@ const RegistrationForm = ({ onClose, onOpenLogin }) => {
                   onClose();
                   onOpenLogin?.();
                 }}
-                className="text-indigo-600 font-bold hover:underline bg-transparent border-none cursor-pointer"
+                className="text-indigo-600 font-bold hover:underline bg-transparent border-none cursor-pointer mockx-auth-link"
               >
                 Login
               </button>

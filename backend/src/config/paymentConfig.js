@@ -7,7 +7,11 @@
 export const getPaymentProductConfig = () => {
   const id = requiredValue("PAYMENT_PRODUCT_ID");
   const name = requiredValue("PAYMENT_PRODUCT_NAME");
-  const priceText = requiredValue("PAYMENT_PRODUCT_PRICE");
+  const legacyPriceKey = `PRICE_${id.replace(/[^a-zA-Z0-9]+/g, "_").toUpperCase()}`;
+  const priceText = process.env.PAYMENT_PRODUCT_PRICE?.trim() || process.env[legacyPriceKey]?.trim();
+  if (!priceText) {
+    throw new Error(`PAYMENT_PRODUCT_PRICE or ${legacyPriceKey} must be configured.`);
+  }
   const currency = requiredValue("PAYMENT_CURRENCY").toUpperCase();
   const price = Number(priceText);
 

@@ -69,7 +69,7 @@ export default function StudentInstitutePortal() {
 
   return (
     <div className="institute-ui min-h-screen bg-slate-50 text-slate-800 pb-16">
-      <header className="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between shadow-sm">
+      <header className="mockx-site-header mockx-site-header__inner sticky top-0 z-30">
         <div className="flex items-center gap-3">
           {instituteData?.logo ? (
             <img
@@ -83,6 +83,7 @@ export default function StudentInstitutePortal() {
             </div>
           )}
           <div>
+            <p className="mockx-site-brand-detail">MockX · Student portal</p>
             <div className="flex items-center gap-2">
               <h1 className="font-extrabold text-sm tracking-tight text-slate-900">
                 {instituteData?.name || "Institute Student Portal"}

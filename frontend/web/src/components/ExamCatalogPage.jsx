@@ -3,126 +3,24 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { 
-  User, LogOut, Shield, BookOpen, CheckCircle, 
-  Lock, ArrowRight, TrendingUp, Target, Menu, X,
+  CheckCircle, ArrowRight, TrendingUp, Target,
   BarChart3, Clock, ShieldCheck 
 } from "lucide-react";
 import LoginModal from "./LoginModal";
 import exams from "../data/SelectExam";
 import { createOrder, verifyPayment, reportPaymentFailure, fetchPrices } from "../api/payment";
 import Footer from "./Footer.jsx";
-import NotificationBell from "./NotificationInbox.jsx";
-
-/* ---------------- NAVBAR COMPONENT ---------------- */
-const Navbar = ({ user, logout, setShowLogin }) => {
-  const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleNavClick = (item) => {
-    switch (item) {
-      case "Home": navigate("/v2"); break;
-      case "Results": 
-        if (!user) setShowLogin(true);
-        else navigate("/v2/result-history");
-        break;
-      case "Help": 
-        navigate("/v2/review-faq");
-        break;
-      case "Dashboard":
-        navigate("/v2/admin");
-        break;
-      default: break;
-    }
-  };
-
-  const navItems = ["Home", "Results", "Help"];
-  if (user && user.role === "SUPER_ADMIN") {
-    navItems.push("Dashboard");
-  }
-
-  return (
-    <header className="fixed top-0 left-0 right-0 py-4 px-4 md:px-12 z-50">
-      <nav className="flex items-center justify-between max-w-7xl mx-auto rounded-2xl bg-white/80 border border-gray-200 backdrop-blur-xl px-6 py-3 shadow-sm">
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/v2")}>
-          
-          <div>
-            <span className="text-2xl font-extrabold tracking-tight text-gray-900">MockX</span>
-            <p className="text-[10px] text-gray-500 tracking-[0.18em] uppercase">Exam Prep</p>
-          </div>
-        </div>
-
-        <div className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-          {navItems.map((item) => (
-            <button key={item} onClick={() => handleNavClick(item)} className="hover:text-sky-600 transition-colors">
-              {item}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          {!user ? (
-            <button
-              onClick={() => setShowLogin(true)}
-              className="flex items-center gap-2 px-5 py-2 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm"
-            >
-              <User className="w-4 h-4" /> Login
-            </button>
-          ) : (
-            <div className="flex items-center gap-3">
-              <NotificationBell />
-              {user.role === "SUPER_ADMIN" && <Shield className="w-4 h-4 text-indigo-600" />}
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200">
-                <div className="h-6 w-6 rounded-full bg-sky-100 flex items-center justify-center">
-                  <User className="w-3.5 h-3.5 text-sky-600" />
-                </div>
-                <span className="text-sm font-medium text-gray-800">{user.name}</span>
-              </div>
-              <button onClick={logout} className="p-2 hover:bg-red-50 rounded-full transition group">
-                <LogOut className="w-5 h-5 text-gray-400 group-hover:text-red-500" />
-              </button>
-            </div>
-          )}
-        </div>
-      </nav>
-
-      {/* Mobile Navigation Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden px-4 mt-4 w-full absolute left-0 right-0">
-          <div className="w-full bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-4 flex flex-col space-y-1 animate-in slide-in-from-top-2 mx-4">
-            {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => { handleNavClick(item); setIsMobileMenuOpen(false); }}
-                className="w-full text-left px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-indigo-50 hover:text-indigo-600 transition duration-200 flex items-center justify-between group"
-              >
-                <span>{item}</span>
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400">â†’</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-    </header>
-  );
-};
+import MainNavbar from "./MainNavbar.jsx";
 
 /* ---------------- MAIN PAGE ---------------- */
 const ExamCatalogPage = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const { user, logout, refreshUser } = useAuth();
+  const { user, refreshUser } = useAuth();
   const navigate = useNavigate();
   const [paymentProduct, setPaymentProduct] = useState(null);
   const [paymentsEnabled, setPaymentsEnabled] = useState(false);
+  const [priceConfigStatus, setPriceConfigStatus] = useState("loading");
 
   useEffect(() => {
     const getPrices = async () => {
@@ -131,9 +29,13 @@ const ExamCatalogPage = () => {
         if (res?.data) {
           setPaymentProduct(res.data.product || null);
           setPaymentsEnabled(Boolean(res.data.paymentsEnabled));
+          setPriceConfigStatus("loaded");
+        } else {
+          setPriceConfigStatus("error");
         }
       } catch (err) {
         console.error("Failed to fetch dynamic prices:", err);
+        setPriceConfigStatus("error");
       }
     };
     getPrices();
@@ -214,13 +116,13 @@ const ExamCatalogPage = () => {
   };
 return (
     <div className="min-h-screen bg-[#F8FAFC]">
-      <Navbar user={user} logout={logout} setShowLogin={setShowLogin} />
+      <MainNavbar desktopLinks={["Home", "Practice", "Results", "Help"]} setShowLogin={setShowLogin} />
 
-      <main className="max-w-7xl mx-auto pt-32 px-6 pb-28">
+      <main className="catalog-main max-w-7xl mx-auto pt-32 px-6 pb-28">
         {/* HERO SECTION */}
-        <div className="text-center mb-20">
+        <div className="catalog-hero text-center mb-20">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Crack Your Exam with <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">Confidence </span>
+            Crack Your Exam with <span className="text-transparent bg-clip-text  from-sky-600 to-indigo-600">Confidence </span>
           </h1>
           <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
             High-quality mock tests designed by exam-focused experts. 
@@ -236,27 +138,33 @@ return (
         </div>
 
         {/* EXAM GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="catalog-exam-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {exams.map((exam) => {
             const purchased = user?.purchasedExams?.includes(exam.id);
             const configuredProduct = paymentProduct?.id === exam.id;
             const displayedPrice = configuredProduct
               ? new Intl.NumberFormat(undefined, { style: "currency", currency: paymentProduct.currency }).format(paymentProduct.price)
-              : exam.price === 0 ? "Free" : "Not configured";
+              : exam.price === 0
+                ? "Free"
+                : priceConfigStatus === "loading"
+                  ? "Loading price…"
+                  : priceConfigStatus === "error"
+                    ? "Price unavailable"
+                    : "Not configured";
 
             return (
-              <div key={exam.id} className="group relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                <div className="flex justify-between items-start mb-6">
+              <div key={exam.id} className="catalog-exam-card group relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <div className="catalog-card-top flex justify-between items-start mb-6">
                   <span className="uppercase text-[10px] tracking-widest font-bold text-sky-700 bg-sky-50 px-3 py-1 rounded-lg border border-sky-100">
                     {exam.name}
                   </span>
                   <div className="text-right">
-                    <span className="text-2xl font-bold text-slate-900">{displayedPrice}</span>
+                    <span className="catalog-price text-2xl font-bold text-slate-900">{displayedPrice}</span>
                     <p className="text-[10px] text-slate-400 font-medium">LIFETIME ACCESS</p>
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                <h2 className="catalog-card-title text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
                   {exam.fullName}
                 </h2>
                 <p className="text-slate-500 text-sm mb-8 leading-relaxed">
@@ -282,7 +190,7 @@ return (
                {purchased ? (
   <button
     onClick={() => navigate(exam.route)}
-    className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
+    className="catalog-primary-action w-full py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
   >
     Start Test Series <ArrowRight className="w-4 h-4" />
   </button>
@@ -290,26 +198,36 @@ return (
   <div className="flex flex-col gap-[10px]">
     <button
       onClick={() => navigate(exam.route)}
-      className="w-full py-3 rounded-2xl border border-emerald-500 text-emerald-600 font-semibold hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+      className="catalog-secondary-action w-full py-3 rounded-2xl border border-emerald-500 text-emerald-600 font-semibold hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
     >
       Start Free Mocks <ArrowRight className="w-4 h-4" />
     </button>
     {paymentsEnabled && configuredProduct ? (
       <button
         onClick={() => handleBuyExam(exam.id)}
-        className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-indigo-100"
+        className="catalog-primary-action w-full py-4 rounded-2xl bg-slate-900 text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-indigo-100"
       >
         Unlock {paymentProduct.name}
       </button>
     ) : (
       <p className="text-center text-xs text-slate-500">
-        {paymentsEnabled ? "This product is not configured for checkout." : "New purchases are paused. Existing purchases remain available."}
+        {priceConfigStatus === "loading"
+          ? "Checking checkout availability…"
+          : priceConfigStatus === "error"
+            ? "Could not load checkout settings. Please refresh and try again."
+            : paymentsEnabled
+              ? "This product is not configured for checkout."
+              : "New purchases are paused. Existing purchases remain available."}
       </p>
     )}
   </div>
 )}
 <p className="mt-4 text-[11px] text-center text-slate-400 font-medium italic">
-  {paymentsEnabled ? "Secure checkout" : "Free mocks remain available"}
+  {priceConfigStatus === "error"
+    ? "Price information is temporarily unavailable"
+    : paymentsEnabled
+      ? "Secure checkout"
+      : "Free mocks remain available"}
 </p>
               </div>
             );
@@ -323,7 +241,7 @@ return (
               Why serious aspirants invest in mock tests
             </h2>
             <p className="mt-4 text-slate-600 text-lg">
-              Preparation is not just about studying more â€” itâ€™s about practicing
+              Preparation is not just about studying more about practicing
               the right way. High-quality mock tests help you refine your performance.
             </p>
           </div>
@@ -355,7 +273,7 @@ return (
             <div className="h-20 w-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="h-10 w-10 text-green-600" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900">Payment Successful! ðŸŽ‰</h2>
+            <h2 className="text-2xl font-bold text-slate-900">Payment Successful! </h2>
             <p className="mt-3 text-slate-500 text-sm">Your exam access has been unlocked. Happy studying!</p>
             <button
               onClick={() => setPaymentSuccess(false)}
