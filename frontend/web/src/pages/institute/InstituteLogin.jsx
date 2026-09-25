@@ -55,11 +55,11 @@ export default function InstituteLogin() {
 
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold mb-4">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold mb-4">
             <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
             MockX Institute Portal
-          </div>
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Academy & Student Login</h1>
+          </div> */}
+          <h1 className="text-3xl  text-slate-900 tracking-tight">Institute & Student Login</h1>
           <p className="text-slate-600 text-sm mt-2">
             Access your private institute exams, tests, and analytics
           </p>
