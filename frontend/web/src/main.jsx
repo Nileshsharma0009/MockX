@@ -142,7 +142,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Navigate to={V2_ROUTES.home} replace />} />
           <Route path="/mock-tests" element={<Navigate to={V2_ROUTES.mockTests} replace />} />
           <Route path="/mock-tests/:examId" element={<Navigate to={location.pathname.replace("/mock-tests", V2_ROUTES.mockTests)} replace />} />
-          <Route path="/test" element={<Navigate to={V2_ROUTES.test} replace />} />
+          <Route path="/test" element={<Navigate to={`${V2_ROUTES.test}${location.search}`} replace />} />
           <Route path="/result/:resultId" element={<Navigate to={V2_ROUTES.result(location.pathname.split('/').pop())} replace />} />
           <Route path="/result-history" element={<Navigate to={V2_ROUTES.resultHistory} replace />} />
           <Route path="/result-stat" element={<Navigate to={V2_ROUTES.resultStat} replace />} />

@@ -57,7 +57,7 @@ const MockTestCard = ({
       }
 
       if (!res.ok) throw new Error("Failed to start");
-      navigate(`/test?mock=${id}`);
+      navigate(`/v2/test?mock=${encodeURIComponent(id)}`);
     } catch (err) {
       console.error(err);
       toast.error("Unable to start test. Please try again.");

@@ -2,39 +2,39 @@
 
 const mockTests = [
   {
-    id: 1,
+    id: "imu1",
     title: "Mock Test 1",
     description: "Full syllabus coverage | 180 minutes | 200 questions",
     releaseDate: "2025-11-01T11:00:00+05:30",
     isFree: true,          // ✅ FREE MOCK
   },
   {
-    id: 2,
+    id: "imu2",
     title: "Mock Test 2",
     description: "Full syllabus coverage | 180 minutes | 200 questions",
     releaseDate: "2026-01-10T11:00:00+05:30",
     isFree: true,         // ✅ FREE MOCK
   },
   {
-    id: 3,
+    id: "imu3",
     title: "Mock Test 3",
     releaseDate: "2026-02-11T11:00:00+05:30",
     isFree: false,
   },
   {
-    id: 4,
+    id: "imu4",
     title: "Mock Test 4",
     releaseDate: "2026-03-15T11:00:00+05:30",
     isFree: false,
   },
   {
-    id: 5,
+    id: "imu5",
     title: "Mock Test 5",
     releaseDate: "2026-03-29T11:00:00+05:30",
     isFree: false,
   },
   {
-    id:6 ,
+    id: "imu6",
     title: "Mock Test 6",
     releaseDate: "2026-04-13T11:00:00+05:30",
     isFree: false,
