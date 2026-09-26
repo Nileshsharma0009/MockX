@@ -142,15 +142,8 @@ return (
           {exams.map((exam) => {
             const purchased = user?.purchasedExams?.includes(exam.id);
             const configuredProduct = paymentProduct?.id === exam.id;
-            const displayedPrice = configuredProduct
-              ? new Intl.NumberFormat(undefined, { style: "currency", currency: paymentProduct.currency }).format(paymentProduct.price)
-              : exam.price === 0
-                ? "Free"
-                : priceConfigStatus === "loading"
-                  ? "Loading price…"
-                  : priceConfigStatus === "error"
-                    ? "Price unavailable"
-                    : "Not configured";
+         
+            const displayedPrice = exam.price 
 
             return (
               <div key={exam.id} className="catalog-exam-card group relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
@@ -159,7 +152,7 @@ return (
                     {exam.name}
                   </span>
                   <div className="text-right">
-                    <span className="catalog-price text-2xl font-bold text-slate-900">{displayedPrice}</span>
+                    <span className="catalog-price text-2xl font-bold text-slate-900">{displayedPrice}₹</span>
                     <p className="text-[10px] text-slate-400 font-medium">LIFETIME ACCESS</p>
                   </div>
                 </div>

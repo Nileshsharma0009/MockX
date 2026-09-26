@@ -65,8 +65,8 @@ async function seed() {
 
   await mongoose.connect(process.env.MONGODB_URL);
 
-  const mockFile = path.resolve(process.cwd(), "../frontend/web/public/imu4.json");
-  const answerFile = path.resolve(process.cwd(), "../frontend/web/public/answers/imu4-answers.json");
+  const mockFile = path.resolve(process.cwd(), "../frontend/web/public/imu2.json");
+  const answerFile = path.resolve(process.cwd(), "../frontend/web/public/answers/imu2-answers.json");
 
   const raw = JSON.parse(fs.readFileSync(mockFile, "utf-8"));
   const answerMap = buildAnswerMap(answerFile);

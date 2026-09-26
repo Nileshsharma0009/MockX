@@ -22,7 +22,7 @@ router.post("/failure", protect, reportPaymentFailure);
 router.post(
   "/webhook",
   express.raw({ type: "application/json" }),
-  razorpayWebhook
+  razorpayWebhook,
 );
 
 export default router;

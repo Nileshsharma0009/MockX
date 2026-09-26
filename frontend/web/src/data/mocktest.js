@@ -19,13 +19,13 @@ const mockTests = [
     id: 3,
     title: "Mock Test 3",
     releaseDate: "2026-02-11T11:00:00+05:30",
-    isFree: true,
+    isFree: false,
   },
   {
     id: 4,
     title: "Mock Test 4",
     releaseDate: "2026-03-15T11:00:00+05:30",
-    isFree: true,
+    isFree: false,
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const mockTests = [
     title: "Physics Practice Test",
     description: "25 Questions | 30 Minutes | +2 / -0.5 Marking",
     releaseDate: "2026-01-01T00:00:00+05:30",
-    isFree: true,
+    isFree: false,
   },
   {
     id:8 ,

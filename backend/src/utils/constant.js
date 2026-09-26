@@ -1,5 +1,13 @@
 const SelectExam = [
-
+  {
+     id: "imucet",
+  name: "IMUCET",
+  fullName: "IMU CET Exam",
+  description: "Indian Maritime University Common Entrance Test",
+  
+  route: "/mock-tests/imucet",
+  price: 499,
+  },
   {
     id: "mht-cet",
     name: "MHT-CET",
@@ -8,15 +16,6 @@ const SelectExam = [
     route: "/mock-tests/mht-cet",
     price: 149,
     comingSoon: true,
-  },
-    {
-     id: "imucet",
-  name: "IMUCET",
-  fullName: "IMU CET Exam",
-  description: "Indian Maritime University Common Entrance Test",
-  
-  route: "/mock-tests/imucet",
-  price: 499,
   },
   {
     id: "mht-cet-MBA",
